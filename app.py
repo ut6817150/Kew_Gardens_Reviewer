@@ -2,6 +2,7 @@ import streamlit as st
 import tempfile
 import json
 from pathlib import Path
+from docx import Document
 
 from assessment_processor import parse_docx_to_dict
 
