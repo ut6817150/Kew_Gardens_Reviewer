@@ -13,7 +13,7 @@ uploaded = st.file_uploader("Upload a Word file (.docx preferred)", type=["doc",
 
 tmp_path: Path | None = None
 if uploaded:
-    with tempfile.NamedTemporaryFile(delete=False, suffix=".doc") as tmp:
+    with tempfile.NamedTemporaryFile(delete=False, suffix=".docx") as tmp:
         tmp.write(uploaded.getbuffer())
         tmp_path = Path(tmp.name)
 
