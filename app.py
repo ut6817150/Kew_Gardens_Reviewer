@@ -9,13 +9,15 @@ from assessment_processor import parse_docx_to_dict
 st.set_page_config(page_title="Assessment Feedback Tool", layout="centered")
 st.title("Assessment Feedback Tool")
 
-uploaded = st.file_uploader("Upload a Word file (.docx preferred)", type=["doc", "docx"])
+uploaded = st.file_uploader("Upload a Word file (.docx)", type=["docx"])
 
 tmp_path: Path | None = None
 if uploaded:
-    with tempfile.NamedTemporaryFile(delete=False, suffix=".docx") as tmp:
-        tmp.write(uploaded.getbuffer())
-        tmp_path = Path(tmp.name)
+    # Save using the same filename (so Path(docx_path).stem matches uploaded name)
+    tmp_dir = Path(tempfile.mkdtemp(prefix="upload_"))
+    safe_name = Path(uploaded.name).name  # strips any path components
+    tmp_path = tmp_dir / safe_name
+    tmp_path.write_bytes(uploaded.getbuffer())
 
     st.success(f"Uploaded: {uploaded.name}")
     st.caption(f"Temp file: {tmp_path}")
