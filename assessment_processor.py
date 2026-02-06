@@ -76,7 +76,8 @@ class AssessmentParser:
         """Main file parser, takes one DOCX file and produces a JSON dict."""
         doc = Document(docx_path)
 
-        root = self._build_heading_skeleton(doc)
+        doc_title = Path(docx_path).stem
+        root = self._build_heading_skeleton(doc, doc_title=doc_title)
         self._attach_blocks(doc, root)
 
         out = root.to_dict()
@@ -141,11 +142,11 @@ class AssessmentParser:
 
 
     # Header builder:
-    def _build_heading_skeleton(self, doc: _Document) -> HeadingNode:
+    def _build_heading_skeleton(self, doc: _Document, doc_title: str) -> HeadingNode:
         """
         Build Heading 1/Heading 2 skeleton in document order.
         """
-        root = HeadingNode(title=None, level=0, path=[], blocks=[], children=[])
+        root = HeadingNode(title=doc_title, level=0, path=[], blocks=[], children=[])
         current_h1: Optional[HeadingNode] = None
 
         def add_heading(title: str, lvl: int) -> None:
