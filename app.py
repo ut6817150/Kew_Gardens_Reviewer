@@ -21,7 +21,7 @@ if uploaded:
 
     # Doc file -> raise error
     if uploaded_ext == ".doc":
-        st.error("The feedback tool only supports .docx files. Please convert .doc → .docx and re-upload. Or, upload a HTML file.")
+        st.error("The feedback tool only supports .docx files. Please convert .doc to .docx and re-upload. Or, upload a HTML file.")
 
     # Any other file type uploaded
     elif uploaded_ext not in [".docx", ".html"]:
@@ -64,3 +64,33 @@ if run and tmp_path is not None:
         
 
 # TEMP: testing display options
+
+# Test print statements -----------------------------------------------------------------
+
+import io
+import contextlib
+
+def run_with_prints():
+    print("Step 1")
+    print("Step 2")
+    return {"ok": True}
+
+# Display print statements
+buf = io.StringIO()
+with contextlib.redirect_stdout(buf):
+    result = run_with_prints()
+
+st.subheader("Print Statements")
+st.code(buf.getvalue())
+
+# Second function which also uses print statements
+
+buf.truncate(0)            # clear buffer
+buf.seek(0)                # move cursor back to start
+
+# run function
+with contextlib.redirect_stdout(buf):
+    result = run_with_prints()
+st.subheader("Print Statements")
+st.code(buf.getvalue())
+
