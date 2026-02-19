@@ -27,8 +27,8 @@ if uploaded:
     elif uploaded_ext not in [".docx", ".html"]:
         st.error("The feedback tool only supports .docx or HTML files.")
 
-    # Docx File -> to temp directory
-    elif uploaded_ext == ".docx":
+    # Docx/HTML File -> to temp directory
+    elif uploaded_ext == ".docx" or uploaded_ext == ".html":
         # Save using the same filename (so Path(docx_path).stem matches uploaded name)
         tmp_dir = Path(tempfile.mkdtemp(prefix="upload_"))
         safe_name = Path(uploaded.name).name  # strips any path components
@@ -38,10 +38,6 @@ if uploaded:
         st.success(f"Uploaded: {uploaded.name}")
         st.caption(f"Temp file: {tmp_path}")
 
-    # HTML file -> TBC
-    elif uploaded_ext == ".html":
-        pass
-
 # Generate Feedback button
 run = st.button("Generate Feedback", type="primary", disabled=(tmp_path is None))
 
@@ -49,8 +45,8 @@ run = st.button("Generate Feedback", type="primary", disabled=(tmp_path is None)
 # Generate Feedback
 if run and tmp_path is not None:
 
-    # Docx file process
-    if uploaded_ext == ".docx":
+    # Docx/HTML file process
+    if uploaded_ext == ".docx" or uploaded_ext == ".html":
         #convert to python dict
         data = parse_docx_to_dict(str(tmp_path))
 
@@ -61,6 +57,10 @@ if run and tmp_path is not None:
                            data=json_bytes,
                            file_name=f"{Path(uploaded.name).stem}.json",
                            mime="application/json",)   
+        
+        # Generate rules based feedback
+
+        # function(dict)
         
 
 # TEMP: testing display options
