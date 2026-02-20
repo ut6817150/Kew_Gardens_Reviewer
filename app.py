@@ -3,8 +3,39 @@ import tempfile
 import json
 from pathlib import Path
 from docx import Document
+import io
+import contextlib
+import pandas as pd
+from collections import defaultdict
+from dataclasses import asdict, is_dataclass
 
 from preprocessing.assessment_processor import parse_docx_to_dict
+from iucn_rules_checker.engine import IUCNRuleChecker
+
+# ----------------------------
+# Helpers (must be defined before use)
+# ----------------------------
+def to_dict_safe(x):
+    """Convert dataclass / objects with to_dict() / dict-like into a plain dict."""
+    if hasattr(x, "to_dict"):
+        return x.to_dict()
+    if is_dataclass(x):
+        return asdict(x)
+    if isinstance(x, dict):
+        return x
+    if hasattr(x, "__dict__"):
+        return dict(x.__dict__)
+    return {"value": str(x)}
+
+
+def severity_str(sev):
+    """Support Enum severities or plain strings."""
+    return sev.value if hasattr(sev, "value") else str(sev)
+
+
+# ----------------------------
+# App
+# ----------------------------
 
 st.set_page_config(page_title="IUCN Assessment Feedback Tool", layout="centered")
 st.title("IUCN Assessment Feedback Tool")
@@ -47,50 +78,62 @@ if run and tmp_path is not None:
 
     # Docx/HTML file process
     if uploaded_ext == ".docx" or uploaded_ext == ".html":
-        #convert to python dict
-        data = parse_docx_to_dict(str(tmp_path))
+        pass
 
-        # Download parsed JSON
-        st.subheader("Download")
-        json_bytes = json.dumps(data, indent=2, ensure_ascii=False).encode("utf-8")
-        st.download_button(label="Download JSON",
-                           data=json_bytes,
-                           file_name=f"{Path(uploaded.name).stem}.json",
-                           mime="application/json",)   
+    #convert to python dict
+    data = parse_docx_to_dict(str(tmp_path))
+
+    # ----------------------------
+    # Rules-based system output
+    # ----------------------------
+    checker = IUCNRuleChecker()
+    report = checker.check_json(data)
+
+    st.divider()
+    st.subheader("Rules Based System Output")
+
+    # Group violations by assessment_section
+    violations = getattr(report, "violations", None)
+    if violations is None:
+        report_dict = to_dict_safe(report)
+        violations = report_dict.get("violations", [])
+
+    grouped = defaultdict(list)
+    for v in violations:
+        vd = to_dict_safe(v)
+        section = vd.get("assessment_section") or "Whole Document"
+        grouped[section].append(vd)
+
+    st.subheader("Violations by assessment_section")
+
+    # Display grouped sections
+    for section in sorted(grouped.keys(), key=lambda s: (s != "Whole Document", s)):
+        vs = grouped[section]
+
+        with st.expander(f"{section} ({len(vs)})", expanded=(section == "Whole Document")):
+            rows = []
+            for vd in vs:
+                pos = vd.get("position") or {}
+                rows.append({
+                    "severity": severity_str(vd.get("severity")),
+                    "category": vd.get("category", ""),
+                    "rule_name": vd.get("rule_name", ""),
+                    "message": vd.get("message", ""),
+                    "matched_text": vd.get("matched_text", ""),
+                    "line": pos.get("line", None),
+                    "column": pos.get("column", None),
+                })
+
+            st.dataframe(rows, use_container_width=True)
+
+    # (optional) download the grouped violations as JSON
+    st.subheader("Download violations")
+    grouped_bytes = json.dumps(grouped, indent=2, ensure_ascii=False).encode("utf-8")
+    st.download_button(
+        label="Download Violations (grouped JSON)",
+        data=grouped_bytes,
+        file_name=f"{Path(uploaded.name).stem}_violations_grouped.json",
+        mime="application/json",
+    )
         
-        # Generate rules based feedback
-
-        # function(dict)
         
-
-# TEMP: testing display options
-
-# Test print statements -----------------------------------------------------------------
-
-import io
-import contextlib
-
-def run_with_prints():
-    print("Step 1")
-    print("Step 2")
-    return {"ok": True}
-
-# Display print statements
-buf = io.StringIO()
-with contextlib.redirect_stdout(buf):
-    result = run_with_prints()
-
-st.subheader("Print Statements")
-st.code(buf.getvalue())
-
-# Second function which also uses print statements
-
-buf.truncate(0)            # clear buffer
-buf.seek(0)                # move cursor back to start
-
-# run function
-with contextlib.redirect_stdout(buf):
-    result = run_with_prints()
-st.subheader("Print Statements")
-st.code(buf.getvalue())
-

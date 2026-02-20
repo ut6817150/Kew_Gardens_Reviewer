@@ -1,0 +1,1006 @@
+{
+  "summary": {
+    "text_length": 9847,
+    "total_violations": 54,
+    "by_severity": {
+      "warning": 54
+    },
+    "by_category": {
+      "Language": 1,
+      "Numbers": 30,
+      "Symbols": 2,
+      "Punctuation": 6,
+      "Formatting": 15
+    },
+    "rules_checked": 11,
+    "rules_skipped": 0
+  },
+  "violations": [
+    {
+      "rule_id": "formatting_italics",
+      "rule_name": "Formatting rules (italics)",
+      "category": "Formatting",
+      "matched_text": "Acianthera odontotepala",
+      "position": {
+        "start": 24,
+        "end": 47,
+        "line": 2,
+        "column": 1
+      },
+      "severity": "warning",
+      "message": "Scientific name should be italicized: <i>Acianthera odontotepala</i>",
+      "suggested_fix": "<i>Acianthera odontotepala</i>",
+      "context": "## Assessment Rationale\nAcianthera odontotepala is an epiphytic orchid native to Jamaic...",
+      "assessment_section": "Whole Document",
+      "metadata": {}
+    },
+    {
+      "rule_id": "symbols_format",
+      "rule_name": "Symbol and unit formatting rules",
+      "category": "Symbols",
+      "matched_text": "km2",
+      "position": {
+        "start": 201,
+        "end": 204,
+        "line": 2,
+        "column": 178
+      },
+      "severity": "warning",
+      "message": "Use 'km²' not 'km2'",
+      "suggested_fix": "km²",
+      "context": "...an extent of occurrence (EOO) of 73,697 km2 and an area of occupancy (AOO) of 40 km...",
+      "assessment_section": "Whole Document",
+      "metadata": {}
+    },
+    {
+      "rule_id": "symbols_format",
+      "rule_name": "Symbol and unit formatting rules",
+      "category": "Symbols",
+      "matched_text": "km2",
+      "position": {
+        "start": 242,
+        "end": 245,
+        "line": 2,
+        "column": 219
+      },
+      "severity": "warning",
+      "message": "Use 'km²' not 'km2'",
+      "suggested_fix": "km²",
+      "context": "...m2 and an area of occupancy (AOO) of 40 km2. The AOO calculated from specimens shou...",
+      "assessment_section": "Whole Document",
+      "metadata": {}
+    },
+    {
+      "rule_id": "numbers_format",
+      "rule_name": "Number formatting rules",
+      "category": "Numbers",
+      "matched_text": "3349",
+      "position": {
+        "start": 1551,
+        "end": 1555,
+        "line": 5,
+        "column": 343
+      },
+      "severity": "warning",
+      "message": "Use commas for numbers >= 1,000: '3349' should be '3,349'",
+      "suggested_fix": "3,349",
+      "context": "...inces; a specimen collected by Wright (#3349) with locality 'Monte Verde' is conside...",
+      "assessment_section": "Whole Document",
+      "metadata": {}
+    },
+    {
+      "rule_id": "formatting_italics",
+      "rule_name": "Formatting rules (italics)",
+      "category": "Formatting",
+      "matched_text": "Pinus caribaea",
+      "position": {
+        "start": 2389,
+        "end": 2403,
+        "line": 14,
+        "column": 288
+      },
+      "severity": "warning",
+      "message": "Scientific name should be italicized: <i>Pinus caribaea</i>",
+      "suggested_fix": "<i>Pinus caribaea</i>",
+      "context": "...ions, alongside large-scale planting of Pinus caribaea. While commercial forestry has largely ...",
+      "assessment_section": "Whole Document",
+      "metadata": {}
+    },
+    {
+      "rule_id": "formatting_italics",
+      "rule_name": "Formatting rules (italics)",
+      "category": "Formatting",
+      "matched_text": "et al",
+      "position": {
+        "start": 2787,
+        "end": 2792,
+        "line": 14,
+        "column": 686
+      },
+      "severity": "warning",
+      "message": "'et al.' should be italicized: <i>et al.</i>",
+      "suggested_fix": "<i>et al</i>",
+      "context": "...f the National Park (Headley 2003, Chai et al. 2009). Continued road construction int...",
+      "assessment_section": "Whole Document",
+      "metadata": {}
+    },
+    {
+      "rule_id": "numbers_format",
+      "rule_name": "Number formatting rules",
+      "category": "Numbers",
+      "matched_text": "2009",
+      "position": {
+        "start": 2794,
+        "end": 2798,
+        "line": 14,
+        "column": 693
+      },
+      "severity": "warning",
+      "message": "Do not start sentences with numerals; write the number out or rephrase",
+      "suggested_fix": null,
+      "context": "...ational Park (Headley 2003, Chai et al. 2009). Continued road construction into the ...",
+      "assessment_section": "Whole Document",
+      "metadata": {}
+    },
+    {
+      "rule_id": "formatting_italics",
+      "rule_name": "Formatting rules (italics)",
+      "category": "Formatting",
+      "matched_text": "Pittosporum undulatum",
+      "position": {
+        "start": 3145,
+        "end": 3166,
+        "line": 14,
+        "column": 1044
+      },
+      "severity": "warning",
+      "message": "Scientific name should be italicized: <i>Pittosporum undulatum</i>",
+      "suggested_fix": "<i>Pittosporum undulatum</i>",
+      "context": "...ountains, including the Australian tree Pittosporum undulatum (Bellingham et al. 2018). The spread of...",
+      "assessment_section": "Whole Document",
+      "metadata": {}
+    },
+    {
+      "rule_id": "formatting_italics",
+      "rule_name": "Formatting rules (italics)",
+      "category": "Formatting",
+      "matched_text": "et al",
+      "position": {
+        "start": 3179,
+        "end": 3184,
+        "line": 14,
+        "column": 1078
+      },
+      "severity": "warning",
+      "message": "'et al.' should be italicized: <i>et al.</i>",
+      "suggested_fix": "<i>et al</i>",
+      "context": "... tree Pittosporum undulatum (Bellingham et al. 2018). The spread of P. undulatum acce...",
+      "assessment_section": "Whole Document",
+      "metadata": {}
+    },
+    {
+      "rule_id": "numbers_format",
+      "rule_name": "Number formatting rules",
+      "category": "Numbers",
+      "matched_text": "2018",
+      "position": {
+        "start": 3186,
+        "end": 3190,
+        "line": 14,
+        "column": 1085
+      },
+      "severity": "warning",
+      "message": "Do not start sentences with numerals; write the number out or rephrase",
+      "suggested_fix": null,
+      "context": "...ittosporum undulatum (Bellingham et al. 2018). The spread of P. undulatum accelerate...",
+      "assessment_section": "Whole Document",
+      "metadata": {}
+    },
+    {
+      "rule_id": "formatting_italics",
+      "rule_name": "Formatting rules (italics)",
+      "category": "Formatting",
+      "matched_text": "et al",
+      "position": {
+        "start": 3410,
+        "end": 3415,
+        "line": 14,
+        "column": 1309
+      },
+      "severity": "warning",
+      "message": "'et al.' should be italicized: <i>et al.</i>",
+      "suggested_fix": "<i>et al</i>",
+      "context": "... longer-established forests (Bellingham et al. 2018). Long term monitoring indicates ...",
+      "assessment_section": "Whole Document",
+      "metadata": {}
+    },
+    {
+      "rule_id": "numbers_format",
+      "rule_name": "Number formatting rules",
+      "category": "Numbers",
+      "matched_text": "2018",
+      "position": {
+        "start": 3417,
+        "end": 3421,
+        "line": 14,
+        "column": 1316
+      },
+      "severity": "warning",
+      "message": "Do not start sentences with numerals; write the number out or rephrase",
+      "suggested_fix": null,
+      "context": "...-established forests (Bellingham et al. 2018). Long term monitoring indicates that a...",
+      "assessment_section": "Whole Document",
+      "metadata": {}
+    },
+    {
+      "rule_id": "formatting_italics",
+      "rule_name": "Formatting rules (italics)",
+      "category": "Formatting",
+      "matched_text": "Pittosporum undulatum",
+      "position": {
+        "start": 3492,
+        "end": 3513,
+        "line": 14,
+        "column": 1391
+      },
+      "severity": "warning",
+      "message": "Scientific name should be italicized: <i>Pittosporum undulatum</i>",
+      "suggested_fix": "<i>Pittosporum undulatum</i>",
+      "context": "...es that an increase in the dominance of Pittosporum undulatum in forest plots is associated with a de...",
+      "assessment_section": "Whole Document",
+      "metadata": {}
+    },
+    {
+      "rule_id": "formatting_italics",
+      "rule_name": "Formatting rules (italics)",
+      "category": "Formatting",
+      "matched_text": "et al",
+      "position": {
+        "start": 3625,
+        "end": 3630,
+        "line": 14,
+        "column": 1524
+      },
+      "severity": "warning",
+      "message": "'et al.' should be italicized: <i>et al.</i>",
+      "suggested_fix": "<i>et al</i>",
+      "context": "...ness of native tree species (Bellingham et al. 2018). The same study noted that epiph...",
+      "assessment_section": "Whole Document",
+      "metadata": {}
+    },
+    {
+      "rule_id": "numbers_format",
+      "rule_name": "Number formatting rules",
+      "category": "Numbers",
+      "matched_text": "2018",
+      "position": {
+        "start": 3632,
+        "end": 3636,
+        "line": 14,
+        "column": 1531
+      },
+      "severity": "warning",
+      "message": "Do not start sentences with numerals; write the number out or rephrase",
+      "suggested_fix": null,
+      "context": "... native tree species (Bellingham et al. 2018). The same study noted that epiphytes w...",
+      "assessment_section": "Whole Document",
+      "metadata": {}
+    },
+    {
+      "rule_id": "formatting_italics",
+      "rule_name": "Formatting rules (italics)",
+      "category": "Formatting",
+      "matched_text": "et al",
+      "position": {
+        "start": 3770,
+        "end": 3775,
+        "line": 14,
+        "column": 1669
+      },
+      "severity": "warning",
+      "message": "'et al.' should be italicized: <i>et al.</i>",
+      "suggested_fix": "<i>et al</i>",
+      "context": "...individuals of P. undulatum (Bellingham et al. 2018), indicating that this species ma...",
+      "assessment_section": "Whole Document",
+      "metadata": {}
+    },
+    {
+      "rule_id": "numbers_format",
+      "rule_name": "Number formatting rules",
+      "category": "Numbers",
+      "matched_text": "2018",
+      "position": {
+        "start": 3777,
+        "end": 3781,
+        "line": 14,
+        "column": 1676
+      },
+      "severity": "warning",
+      "message": "Do not start sentences with numerals; write the number out or rephrase",
+      "suggested_fix": null,
+      "context": "...uals of P. undulatum (Bellingham et al. 2018), indicating that this species may not ...",
+      "assessment_section": "Whole Document",
+      "metadata": {}
+    },
+    {
+      "rule_id": "formatting_italics",
+      "rule_name": "Formatting rules (italics)",
+      "category": "Formatting",
+      "matched_text": "et al",
+      "position": {
+        "start": 4347,
+        "end": 4352,
+        "line": 16,
+        "column": 422
+      },
+      "severity": "warning",
+      "message": "'et al.' should be italicized: <i>et al.</i>",
+      "suggested_fix": "<i>et al</i>",
+      "context": "...nt (BirdLife International 2024, Rimmer et al. 2024). \n\nThe status of this species in...",
+      "assessment_section": "Whole Document",
+      "metadata": {}
+    },
+    {
+      "rule_id": "numbers_format",
+      "rule_name": "Number formatting rules",
+      "category": "Numbers",
+      "matched_text": "2024",
+      "position": {
+        "start": 4354,
+        "end": 4358,
+        "line": 16,
+        "column": 429
+      },
+      "severity": "warning",
+      "message": "Do not start sentences with numerals; write the number out or rephrase",
+      "suggested_fix": null,
+      "context": "...dLife International 2024, Rimmer et al. 2024). \n\nThe status of this species in the D...",
+      "assessment_section": "Whole Document",
+      "metadata": {}
+    },
+    {
+      "rule_id": "formatting_italics",
+      "rule_name": "Formatting rules (italics)",
+      "category": "Formatting",
+      "matched_text": "et al",
+      "position": {
+        "start": 5622,
+        "end": 5627,
+        "line": 21,
+        "column": 462
+      },
+      "severity": "warning",
+      "message": "'et al.' should be italicized: <i>et al.</i>",
+      "suggested_fix": "<i>et al</i>",
+      "context": "...ue to occur within its boundaries (Chai et al. 2009). Despite the impacts of invasive...",
+      "assessment_section": "Whole Document",
+      "metadata": {}
+    },
+    {
+      "rule_id": "numbers_format",
+      "rule_name": "Number formatting rules",
+      "category": "Numbers",
+      "matched_text": "2009",
+      "position": {
+        "start": 5629,
+        "end": 5633,
+        "line": 21,
+        "column": 469
+      },
+      "severity": "warning",
+      "message": "Do not start sentences with numerals; write the number out or rephrase",
+      "suggested_fix": null,
+      "context": "...ccur within its boundaries (Chai et al. 2009). Despite the impacts of invasive speci...",
+      "assessment_section": "Whole Document",
+      "metadata": {}
+    },
+    {
+      "rule_id": "formatting_italics",
+      "rule_name": "Formatting rules (italics)",
+      "category": "Formatting",
+      "matched_text": "et al",
+      "position": {
+        "start": 5867,
+        "end": 5872,
+        "line": 21,
+        "column": 707
+      },
+      "severity": "warning",
+      "message": "'et al.' should be italicized: <i>et al.</i>",
+      "suggested_fix": "<i>et al</i>",
+      "context": "...ty (BirdLife International 2024, Rimmer et al. 2024). This species is not held in any...",
+      "assessment_section": "Whole Document",
+      "metadata": {}
+    },
+    {
+      "rule_id": "numbers_format",
+      "rule_name": "Number formatting rules",
+      "category": "Numbers",
+      "matched_text": "2024",
+      "position": {
+        "start": 5874,
+        "end": 5878,
+        "line": 21,
+        "column": 714
+      },
+      "severity": "warning",
+      "message": "Do not start sentences with numerals; write the number out or rephrase",
+      "suggested_fix": null,
+      "context": "...dLife International 2024, Rimmer et al. 2024). This species is not held in any ex si...",
+      "assessment_section": "Whole Document",
+      "metadata": {}
+    },
+    {
+      "rule_id": "spelling_uk",
+      "rule_name": "UK English spelling required",
+      "category": "Language",
+      "matched_text": "utilised",
+      "position": {
+        "start": 6114,
+        "end": 6122,
+        "line": 25,
+        "column": 33
+      },
+      "severity": "warning",
+      "message": "Use UK spelling 'utilized' instead of 'utilised'",
+      "suggested_fix": "utilized",
+      "context": "...d: true\nThis species is not known to be utilised. There is no indication that this speci...",
+      "assessment_section": "Whole Document",
+      "metadata": {}
+    },
+    {
+      "rule_id": "numbers_format",
+      "rule_name": "Number formatting rules",
+      "category": "Numbers",
+      "matched_text": "1",
+      "position": {
+        "start": 6617,
+        "end": 6618,
+        "line": 32,
+        "column": 50
+      },
+      "severity": "warning",
+      "message": "Numbers 1-9 should be written out: '1' should be 'one'",
+      "suggested_fix": "one",
+      "context": "...hera odontotepala_draft_status_Jun2025 (1)\nDraft\nAcianthera odontotepala - (Rchb....",
+      "assessment_section": "Whole Document",
+      "metadata": {}
+    },
+    {
+      "rule_id": "formatting_italics",
+      "rule_name": "Formatting rules (italics)",
+      "category": "Formatting",
+      "matched_text": "Acianthera odontotepala",
+      "position": {
+        "start": 6626,
+        "end": 6649,
+        "line": 34,
+        "column": 1
+      },
+      "severity": "warning",
+      "message": "Scientific name should be italicized: <i>Acianthera odontotepala</i>",
+      "suggested_fix": "<i>Acianthera odontotepala</i>",
+      "context": "...totepala_draft_status_Jun2025 (1)\nDraft\nAcianthera odontotepala - (Rchb.f.) Luer\nPLANTAE - TRACHEOPHYTA...",
+      "assessment_section": "Whole Document",
+      "metadata": {}
+    },
+    {
+      "rule_id": "formatting_italics",
+      "rule_name": "Formatting rules (italics)",
+      "category": "Formatting",
+      "matched_text": "Pleurothallis odontotepala",
+      "position": {
+        "start": 6799,
+        "end": 6825,
+        "line": 37,
+        "column": 11
+      },
+      "severity": "warning",
+      "message": "Scientific name should be italicized: <i>Pleurothallis odontotepala</i>",
+      "suggested_fix": "<i>Pleurothallis odontotepala</i>",
+      "context": "...Common Names: No Common Names\nSynonyms: Pleurothallis odontotepala Rchb.f.\n\n## Acianthera odontotepala_dra...",
+      "assessment_section": "Whole Document",
+      "metadata": {}
+    },
+    {
+      "rule_id": "numbers_format",
+      "rule_name": "Number formatting rules",
+      "category": "Numbers",
+      "matched_text": "1",
+      "position": {
+        "start": 6884,
+        "end": 6885,
+        "line": 39,
+        "column": 50
+      },
+      "severity": "warning",
+      "message": "Numbers 1-9 should be written out: '1' should be 'one'",
+      "suggested_fix": "one",
+      "context": "...hera odontotepala_draft_status_Jun2025 (1) > Red List Assessment > Assessment Inf...",
+      "assessment_section": "Whole Document",
+      "metadata": {}
+    },
+    {
+      "rule_id": "punctuation_format",
+      "rule_name": "Punctuation formatting rules",
+      "category": "Punctuation",
+      "matched_text": "2024-05",
+      "position": {
+        "start": 6954,
+        "end": 6961,
+        "line": 40,
+        "column": 21
+      },
+      "severity": "warning",
+      "message": "Use en dash (–) for ranges, not hyphen (-)",
+      "suggested_fix": "2024–05",
+      "context": "...essment Information\nDate of Assessment: 2024-05-15\nAssessor(s): Svahnström, V. & Campbe...",
+      "assessment_section": "Whole Document",
+      "metadata": {}
+    },
+    {
+      "rule_id": "numbers_format",
+      "rule_name": "Number formatting rules",
+      "category": "Numbers",
+      "matched_text": "1",
+      "position": {
+        "start": 7182,
+        "end": 7183,
+        "line": 47,
+        "column": 50
+      },
+      "severity": "warning",
+      "message": "Numbers 1-9 should be written out: '1' should be 'one'",
+      "suggested_fix": "one",
+      "context": "...hera odontotepala_draft_status_Jun2025 (1) > Distribution > Elevation / Depth / D...",
+      "assessment_section": "Whole Document",
+      "metadata": {}
+    },
+    {
+      "rule_id": "numbers_format",
+      "rule_name": "Number formatting rules",
+      "category": "Numbers",
+      "matched_text": "1300",
+      "position": {
+        "start": 7340,
+        "end": 7344,
+        "line": 49,
+        "column": 52
+      },
+      "severity": "warning",
+      "message": "Use commas for numbers >= 1,000: '1300' should be '1,300'",
+      "suggested_fix": "1,300",
+      "context": "...pper Limit (in metres above sea level): 1300\n\n## Acianthera odontotepala_draft_statu...",
+      "assessment_section": "Whole Document",
+      "metadata": {}
+    },
+    {
+      "rule_id": "numbers_format",
+      "rule_name": "Number formatting rules",
+      "category": "Numbers",
+      "matched_text": "1",
+      "position": {
+        "start": 7395,
+        "end": 7396,
+        "line": 51,
+        "column": 50
+      },
+      "severity": "warning",
+      "message": "Numbers 1-9 should be written out: '1' should be 'one'",
+      "suggested_fix": "one",
+      "context": "...hera odontotepala_draft_status_Jun2025 (1) > Distribution > Biogeographic Realms\n...",
+      "assessment_section": "Whole Document",
+      "metadata": {}
+    },
+    {
+      "rule_id": "numbers_format",
+      "rule_name": "Number formatting rules",
+      "category": "Numbers",
+      "matched_text": "1",
+      "position": {
+        "start": 7519,
+        "end": 7520,
+        "line": 54,
+        "column": 50
+      },
+      "severity": "warning",
+      "message": "Numbers 1-9 should be written out: '1' should be 'one'",
+      "suggested_fix": "one",
+      "context": "...hera odontotepala_draft_status_Jun2025 (1) > Bibliography\nAdams, C.D. 1972. Flowe...",
+      "assessment_section": "Whole Document",
+      "metadata": {}
+    },
+    {
+      "rule_id": "numbers_format",
+      "rule_name": "Number formatting rules",
+      "category": "Numbers",
+      "matched_text": "1972",
+      "position": {
+        "start": 7549,
+        "end": 7553,
+        "line": 55,
+        "column": 13
+      },
+      "severity": "warning",
+      "message": "Do not start sentences with numerals; write the number out or rephrase",
+      "suggested_fix": null,
+      "context": "..._Jun2025 (1) > Bibliography\nAdams, C.D. 1972. Flowering Plants of Jamaica. Universit...",
+      "assessment_section": "Whole Document",
+      "metadata": {}
+    },
+    {
+      "rule_id": "numbers_format",
+      "rule_name": "Number formatting rules",
+      "category": "Numbers",
+      "matched_text": "2024",
+      "position": {
+        "start": 7630,
+        "end": 7634,
+        "line": 56,
+        "column": 7
+      },
+      "severity": "warning",
+      "message": "Do not start sentences with numerals; write the number out or rephrase",
+      "suggested_fix": null,
+      "context": "...sity of the West Indies, Jamaica.\nBGCI. 2024. Botanic Gardens Conservation Internati...",
+      "assessment_section": "Whole Document",
+      "metadata": {}
+    },
+    {
+      "rule_id": "numbers_format",
+      "rule_name": "Number formatting rules",
+      "category": "Numbers",
+      "matched_text": "2011",
+      "position": {
+        "start": 7839,
+        "end": 7843,
+        "line": 57,
+        "column": 66
+      },
+      "severity": "warning",
+      "message": "Do not start sentences with numerals; write the number out or rephrase",
+      "suggested_fix": null,
+      "context": "...ll, A.W., de la Torre, J. and Scott, B. 2011. Supporting Red List threat assessments...",
+      "assessment_section": "Whole Document",
+      "metadata": {}
+    },
+    {
+      "rule_id": "numbers_format",
+      "rule_name": "Number formatting rules",
+      "category": "Numbers",
+      "matched_text": "2018",
+      "position": {
+        "start": 8035,
+        "end": 8039,
+        "line": 58,
+        "column": 76
+      },
+      "severity": "warning",
+      "message": "Do not start sentences with numerals; write the number out or rephrase",
+      "suggested_fix": null,
+      "context": "...tin, P.H., Healey, J.R. and Burge, O.R. 2018. Endemic trees in a tropical biodiversi...",
+      "assessment_section": "Whole Document",
+      "metadata": {}
+    },
+    {
+      "rule_id": "punctuation_format",
+      "rule_name": "Punctuation formatting rules",
+      "category": "Punctuation",
+      "matched_text": "47-53",
+      "position": {
+        "start": 8151,
+        "end": 8156,
+        "line": 58,
+        "column": 192
+      },
+      "severity": "warning",
+      "message": "Use en dash (–) for ranges, not hyphen (-)",
+      "suggested_fix": "47–53",
+      "context": "...sive tree. Biological Conservation 217: 47-53.\nBirdLife International. 2024c. Importa...",
+      "assessment_section": "Whole Document",
+      "metadata": {}
+    },
+    {
+      "rule_id": "numbers_format",
+      "rule_name": "Number formatting rules",
+      "category": "Numbers",
+      "matched_text": "2024",
+      "position": {
+        "start": 8356,
+        "end": 8360,
+        "line": 60,
+        "column": 23
+      },
+      "severity": "warning",
+      "message": "Do not start sentences with numerals; write the number out or rephrase",
+      "suggested_fix": null,
+      "context": "...sa-iba-cuba/text.\nCITES Trade Database. 2024. CITES Trade Database. Available at: ht...",
+      "assessment_section": "Whole Document",
+      "metadata": {}
+    },
+    {
+      "rule_id": "numbers_format",
+      "rule_name": "Number formatting rules",
+      "category": "Numbers",
+      "matched_text": "2009",
+      "position": {
+        "start": 8488,
+        "end": 8492,
+        "line": 61,
+        "column": 41
+      },
+      "severity": "warning",
+      "message": "Do not start sentences with numerals; write the number out or rephrase",
+      "suggested_fix": null,
+      "context": "...Chai, S.-L., Tanner, E. and McLaren, K. 2009. High rates of forest clearance and fra...",
+      "assessment_section": "Whole Document",
+      "metadata": {}
+    },
+    {
+      "rule_id": "numbers_format",
+      "rule_name": "Number formatting rules",
+      "category": "Numbers",
+      "matched_text": "2484",
+      "position": {
+        "start": 8662,
+        "end": 8666,
+        "line": 61,
+        "column": 215
+      },
+      "severity": "warning",
+      "message": "Use commas for numbers >= 1,000: '2484' should be '2,484'",
+      "suggested_fix": "2,484",
+      "context": "...orest. Biological Conservation 142(11): 2484-2492.\nGreuter, W. and Rankin Rodriguez,...",
+      "assessment_section": "Whole Document",
+      "metadata": {}
+    },
+    {
+      "rule_id": "punctuation_format",
+      "rule_name": "Punctuation formatting rules",
+      "category": "Punctuation",
+      "matched_text": "2484-2492",
+      "position": {
+        "start": 8662,
+        "end": 8671,
+        "line": 61,
+        "column": 215
+      },
+      "severity": "warning",
+      "message": "Use en dash (–) for ranges, not hyphen (-)",
+      "suggested_fix": "2484–2492",
+      "context": "...orest. Biological Conservation 142(11): 2484-2492.\nGreuter, W. and Rankin Rodriguez, R. 2...",
+      "assessment_section": "Whole Document",
+      "metadata": {}
+    },
+    {
+      "rule_id": "numbers_format",
+      "rule_name": "Number formatting rules",
+      "category": "Numbers",
+      "matched_text": "2007",
+      "position": {
+        "start": 8710,
+        "end": 8714,
+        "line": 62,
+        "column": 38
+      },
+      "severity": "warning",
+      "message": "Do not start sentences with numerals; write the number out or rephrase",
+      "suggested_fix": null,
+      "context": "...2.\nGreuter, W. and Rankin Rodriguez, R. 2007. Flora de la República de Cuba: Orchida...",
+      "assessment_section": "Whole Document",
+      "metadata": {}
+    },
+    {
+      "rule_id": "numbers_format",
+      "rule_name": "Number formatting rules",
+      "category": "Numbers",
+      "matched_text": "2003",
+      "position": {
+        "start": 8791,
+        "end": 8795,
+        "line": 63,
+        "column": 13
+      },
+      "severity": "warning",
+      "message": "Do not start sentences with numerals; write the number out or rephrase",
+      "suggested_fix": null,
+      "context": "...idaceae I-II. A.R. Gantner.\nHeadley, M. 2003. Co-Management of Jamaica’s Blue and Jo...",
+      "assessment_section": "Whole Document",
+      "metadata": {}
+    },
+    {
+      "rule_id": "numbers_format",
+      "rule_name": "Number formatting rules",
+      "category": "Numbers",
+      "matched_text": "8",
+      "position": {
+        "start": 9171,
+        "end": 9172,
+        "line": 63,
+        "column": 393
+      },
+      "severity": "warning",
+      "message": "Numbers 1-9 should be written out: '8' should be 'eight'",
+      "suggested_fix": "eight",
+      "context": "...cal Diversity (CBD Technical Series No. 8), pp. 16-19. Secretariat of the Convent...",
+      "assessment_section": "Whole Document",
+      "metadata": {}
+    },
+    {
+      "rule_id": "numbers_format",
+      "rule_name": "Number formatting rules",
+      "category": "Numbers",
+      "matched_text": "8",
+      "position": {
+        "start": 9171,
+        "end": 9172,
+        "line": 63,
+        "column": 393
+      },
+      "severity": "warning",
+      "message": "Do not start sentences with numerals; write the number out or rephrase",
+      "suggested_fix": null,
+      "context": "...cal Diversity (CBD Technical Series No. 8), pp. 16-19. Secretariat of the Convent...",
+      "assessment_section": "Whole Document",
+      "metadata": {}
+    },
+    {
+      "rule_id": "numbers_format",
+      "rule_name": "Number formatting rules",
+      "category": "Numbers",
+      "matched_text": "16",
+      "position": {
+        "start": 9179,
+        "end": 9181,
+        "line": 63,
+        "column": 401
+      },
+      "severity": "warning",
+      "message": "Do not start sentences with numerals; write the number out or rephrase",
+      "suggested_fix": null,
+      "context": "...rsity (CBD Technical Series No. 8), pp. 16-19. Secretariat of the Convention on Bi...",
+      "assessment_section": "Whole Document",
+      "metadata": {}
+    },
+    {
+      "rule_id": "punctuation_format",
+      "rule_name": "Punctuation formatting rules",
+      "category": "Punctuation",
+      "matched_text": "16-19",
+      "position": {
+        "start": 9179,
+        "end": 9184,
+        "line": 63,
+        "column": 401
+      },
+      "severity": "warning",
+      "message": "Use en dash (–) for ranges, not hyphen (-)",
+      "suggested_fix": "16–19",
+      "context": "...rsity (CBD Technical Series No. 8), pp. 16-19. Secretariat of the Convention on Biolo...",
+      "assessment_section": "Whole Document",
+      "metadata": {}
+    },
+    {
+      "rule_id": "numbers_format",
+      "rule_name": "Number formatting rules",
+      "category": "Numbers",
+      "matched_text": "2019",
+      "position": {
+        "start": 9278,
+        "end": 9282,
+        "line": 64,
+        "column": 28
+      },
+      "severity": "warning",
+      "message": "Do not start sentences with numerals; write the number out or rephrase",
+      "suggested_fix": null,
+      "context": "...y, Montreal.\nLloyd, J.D. and León, Y.M. 2019. Forest change within and outside prote...",
+      "assessment_section": "Whole Document",
+      "metadata": {}
+    },
+    {
+      "rule_id": "punctuation_format",
+      "rule_name": "Punctuation formatting rules",
+      "category": "Punctuation",
+      "matched_text": "2000-2016",
+      "position": {
+        "start": 9360,
+        "end": 9369,
+        "line": 64,
+        "column": 110
+      },
+      "severity": "warning",
+      "message": "Use en dash (–) for ranges, not hyphen (-)",
+      "suggested_fix": "2000–2016",
+      "context": "...tected areas in the Dominican Republic, 2000-2016. BioRxiv (in press).\nLuer C.A. 2004. Ic...",
+      "assessment_section": "Whole Document",
+      "metadata": {}
+    },
+    {
+      "rule_id": "numbers_format",
+      "rule_name": "Number formatting rules",
+      "category": "Numbers",
+      "matched_text": "2004",
+      "position": {
+        "start": 9401,
+        "end": 9405,
+        "line": 65,
+        "column": 11
+      },
+      "severity": "warning",
+      "message": "Do not start sentences with numerals; write the number out or rephrase",
+      "suggested_fix": null,
+      "context": "...000-2016. BioRxiv (in press).\nLuer C.A. 2004. Icones Pleurothallidinarum XXVI. Misso...",
+      "assessment_section": "Whole Document",
+      "metadata": {}
+    },
+    {
+      "rule_id": "formatting_italics",
+      "rule_name": "Formatting rules (italics)",
+      "category": "Formatting",
+      "matched_text": "Catharus bicknelli",
+      "position": {
+        "start": 9650,
+        "end": 9668,
+        "line": 66,
+        "column": 168
+      },
+      "severity": "warning",
+      "message": "Scientific name should be italicized: <i>Catharus bicknelli</i>",
+      "suggested_fix": "<i>Catharus bicknelli</i>",
+      "context": "...Overwinter status of Bicknell's Thrush (Catharus bicknelli) in eastern Cuba. Journal of Caribbean ...",
+      "assessment_section": "Whole Document",
+      "metadata": {}
+    },
+    {
+      "rule_id": "punctuation_format",
+      "rule_name": "Punctuation formatting rules",
+      "category": "Punctuation",
+      "matched_text": "1-11",
+      "position": {
+        "start": 9724,
+        "end": 9728,
+        "line": 66,
+        "column": 242
+      },
+      "severity": "warning",
+      "message": "Use en dash (–) for ranges, not hyphen (-)",
+      "suggested_fix": "1–11",
+      "context": "...a. Journal of Caribbean Ornithology 37: 1-11.\nSchipper, J. 2024. Jamaican Moist Fore...",
+      "assessment_section": "Whole Document",
+      "metadata": {}
+    },
+    {
+      "rule_id": "numbers_format",
+      "rule_name": "Number formatting rules",
+      "category": "Numbers",
+      "matched_text": "2024",
+      "position": {
+        "start": 9743,
+        "end": 9747,
+        "line": 67,
+        "column": 14
+      },
+      "severity": "warning",
+      "message": "Do not start sentences with numerals; write the number out or rephrase",
+      "suggested_fix": null,
+      "context": "...bean Ornithology 37: 1-11.\nSchipper, J. 2024. Jamaican Moist Forests. Available at: ...",
+      "assessment_section": "Whole Document",
+      "metadata": {}
+    }
+  ],
+  "checked_rules": [
+    "spelling_uk",
+    "numbers_format",
+    "dates_format",
+    "abbreviations_format",
+    "symbols_format",
+    "punctuation_format",
+    "iucn_terms",
+    "geography_names",
+    "scientific_names",
+    "references_format",
+    "formatting_italics"
+  ],
+  "skipped_rules": []
+}

@@ -1,0 +1,347 @@
+Draft
+
+Acianthera odontotepala - (Rchb.f.) Luer
+PLANTAE - TRACHEOPHYTA - LILIOPSIDA - ASPARAGALES - ORCHIDACEAE - Acianthera - odontotepala
+Common Names: No Common Names
+Synonyms: Pleurothallis odontotepala Rchb.f.
+Red List Status
+VU - Vulnerable, B2ab(iii) (IUCN version 3.1)
+Red List Assessment
+Assessment Information
+Date of Assessment: 2024-05-15
+Reviewed?
+Date of Review:
+Status:
+Reasons for Rejection:
+Improvements Needed:
+true
+2025-05-22
+Passed
+-
+-
+Assessor(s): Svahnstrm, V. & Campbell, K.C.St.E.
+Reviewer(s): Kumar, P.
+Facilitators/Compilers: Barker, A.
+Institution(s): Royal Botanic Gardens, Kew
+Regions: Global
+Assessment Rationale
+Acianthera odontotepala is an epiphytic orchid native to Jamaica, Cuba, and the Dominican Republic. Based on herbarium specimens, it has an extent of occurrence (EOO) of 73,697 km2 and an area of occupancy (AOO) of 40 km2. The AOO calculated from specimens should be considered a minimum value, however, given the restricted area of potentially suitable montane rainforest habitat within the range of this species, it is considered highly unlikely that the true value exceeds thresholds for a threatened category under criterion B2. This species is known from seven to ten locations and is undergoing a continuing decline in the area, extent, and quality of its habitat due to encroachment for agriculture and settlement, expansion of coffee plantations, forest fires, and the effects of invasive species. Due to its restricted AOO, presence at only seven to ten locations, and continuing decline of habitat, this species is assessed as Vulnerable B2ab(iii). Targeted surveys and research on the contemporary population status of this species are urgently needed to further clarify its conservation status and determine the most appropriate conservation measures.
+Distribution
+Geographic Range
+This species occurs in Jamaica, Cuba, and the Dominican Republic at elevations between 600 and 1,300 m asl (Adams 1972). In Jamaica, it has been recorded from the Blue Mountains in Saint Andrew and Portland parishes. In Cuba, it has been recorded from Sierra Maestra in Santiago de Cuba and Granma provinces; a specimen collected by Wright (#3349) with locality 'Monte Verde' is considered likely to be mislabeled and is therefore excluded from the assessment (Greuter and Rodriguez 2007). It has only been collected once in the Dominican Republic, in Santiago Rodrguez Province.
+Area of Occupancy (AOO)
+Estimated area of occupancy (AOO) - in km2
+Justification
+40
+Calculated from a 2x2 km grid from herbarium point data mapped using GeoCAT (Bachman et al. 2011). 
+
+Continuing decline in area of occupancy (AOO)
+Qualifier
+Justification
+Unknown
+Inferred
+-
+
+Extreme fluctuations in area of occupancy (AOO)
+Justification
+Unknown
+-
+Extent of Occurrence (EOO)
+Estimated extent of occurrence (EOO)- in km2
+EOO estimate calculated from Minimum Convex Polygon
+Justification
+73697
+true
+EOO estimated from a minimum convex polygon using GeoCAT (Bachman et al. 2011).
+
+Continuing decline in extent of occurrence (EOO)
+Qualifier
+Justification
+Unknown
+-
+-
+
+Extreme fluctuations in extent of occurrence (EOO)
+Justification
+Unknown
+-
+Locations Information
+Number of Locations
+Justification
+7-10
+Known from seven to 10 locations (1-4 in Jamaica, 1 in Dominican Republic, and 5 in Cuba) where the most serious plausible threats are forest fires, invasive species, or encroachment for agriculture. Lower estimate considers the Blue Mountain subpopulation in Jamaica as a single location based on the threat of invasive species; upper estimate considers that different peaks may face different threatening events. 
+
+Continuing decline in number of locations
+Qualifier
+Justification
+Unknown
+Inferred
+-
+
+Extreme fluctuations in the number of locations
+Justification
+Unknown
+-
+Very restricted AOO or number of locations (triggers VU D2)
+Very restricted in area of occupancy (AOO) and/or # of locations
+Justification
+No
+Widespread.
+Elevation / Depth / Depth Zones
+Elevation Lower Limit (in metres above sea level): 600
+Elevation Upper Limit (in metres above sea level): 1300
+Map Status
+Map Status
+Use map from previous assessment
+How the map was created, including data sources/methods used:
+Please state reason for map not available:
+Data Sensitive?
+Justification
+Geographic range this applies to:
+Date restriction imposed:
+Done
+-
+Map created from georeferenced herbarium specimens.
+-
+-
+-
+-
+-
+Biogeographic Realms
+Biogeographic Realm: Neotropical
+Occurrence
+Countries of Occurrence
+Country
+Presence
+Origin
+Formerly Bred
+Seasonality
+Cuba
+Extant
+Native
+-
+Resident
+Dominican Republic
+Extant
+Native
+-
+Resident
+Jamaica
+Extant
+Native
+-
+Resident
+Population
+There is no detailed population data for this species, although it has been noted as rare in Jamaica (Adams 1972). Research on population size and trends is recommended.
+Population Information
+Current Population Trend: Unknown
+Extreme fluctuations? (in # of mature individuals)
+Justification
+No
+-
+
+Severely fragmented?
+Justification
+Unknown
+-
+
+Continuing decline in mature individuals?
+Qualifier
+Justification
+Unknown
+Inferred
+-
+
+Extreme fluctuations in the number of subpopulations
+Justification
+No
+-
+
+Continuing decline in number of subpopulations
+Qualifier
+Justification
+Unknown
+Inferred
+-
+All individuals in one subpopulation: No
+Habitats and Ecology
+This species is an epiphyte that grows on tree trunks and branches in montane rainforest (Adams 1972).
+IUCN Habitats Classification Scheme
+Habitat
+Season
+Suitability
+Major Importance?
+1.9. Forest -> Forest - Subtropical/Tropical Moist Montane
+Resident
+Suitable
+-
+Continuing Decline in Habitat
+Continuing decline in area, extent and/or quality of habitat?
+Qualifier
+Justification
+Yes
+Inferred
+The area of primary montane forest in the Blue Mountains is in continuing decline due to encroachment for agriculture and coffee plantations. The quality of suitable habitat in the Blue mountains is declining due to invasion by invasive species such as Pittosporum undulatum. Satellite imagery suggests encroachment is likely ongoing near known localities in Dominican Republic and Cuba as well.
+Systems
+System: Terrestrial
+Plant / Fungi Specific
+Wild relative of a crop? No
+Plant and Fungal Growth Forms
+Epiphyte
+Forb or Herb
+Use and Trade
+General Use and Trade Information
+Species not utilized: true
+This species is not known to be utilised. There is no indication that this species is targeted by collectors for horticultural purposes, and there are no reports of it in international trade (CITES Trade Database 2024).
+Subsistence:
+Rationale:
+Local Commercial:
+Further detail including information on economic value if available:
+No
+-
+No
+-
+National Commercial Value: No
+International Commercial Value: No
+Is there harvest from captive/cultivated sources of this species? Unknown
+Trend in level of total offtake from wild sources: Unknown
+Trend in level of total offtake from domesticated sources: Unknown
+Threats
+In the Blue Mountains, where this species occurs in Jamaica, much of the natural habitat within the elevation range of this species is secondary forest, reflecting a long history of clearance for small-scale shifting agriculture and coffee plantations, alongside large-scale planting of Pinus caribaea. While commercial forestry has largely ceased since the 1980s due to the effects of Hurricane Gilbert, forest loss and fragmentation associated with subsistence farming and housing, shifting agriculture for cash crops, illegal selective logging, and expansion of coffee plantations continues, particularly in the lower elevation buffer zones of the National Park (Headley 2003, Chai et al. 2009). Continued road construction into the interior region of the Blue Mountains is likely to increase the rate of deforestation in previously inaccessible areas (Schipper 2024). Past clearance and subsequent regeneration of secondary forest has facilitated the spread of several invasive species in the Blue Mountains, including the Australian tree Pittosporum undulatum (Bellingham et al. 2018). The spread of P. undulatum accelerated after Hurricane Gilbert in 1988; it now comprises a dominant component of secondary forests in the Blue Mountains, and continues to invade longer-established forests (Bellingham et al. 2018). Long term monitoring indicates that an increase in the dominance of Pittosporum undulatum in forest plots is associated with a decrease in diversity and and richness of native tree species (Bellingham et al. 2018). The same study noted that epiphytes were absent from the trunks and branches of even large individuals of P. undulatum (Bellingham et al. 2018), indicating that this species may not act as a suitable host for A. odontotepala, further decreasing the quality of habitat for this species.
+
+A large portion of montane rainforest in the Sierra Maestra mountain range in Cuba is protected and managed in the Turquino and Bayamesa National Parks. Expansion of agricultural lands, logging, forest fires, high levels of tourism, and invasive species have been noted as threats within these protected areas, however they are considered fairly well-protected with active management (BirdLife International 2024, Rimmer et al. 2024). 
+
+The status of this species in the Dominican Republic is highly uncertain; it has only been collected there once nearly a century ago, however it is uncertain if the absence of recent records is due to a lack of botanical collecting effort or genuine rarity, although a combination of the two factors is likely. The area where the single known collection was made is not protected and has likely experienced extensive loss and degradation of potentially suitable habitat since this species was recorded there. Given the high and accelerating rates of deforestation in montane rainforest in the Dominican Republic due to encroachment and fires, in both protected and unprotected areas, it is likely that this apparently rare species is highly threatened there (Lloyd and Len 2019).
+Threats Classification Scheme
+Threat
+Timing
+Scope
+Severity
+1.1. Residential & commercial development -> Housing & urban areas
+Ongoing
+Unknown
+Unknown
+2.1.1. Agriculture & aquaculture -> Annual & perennial non-timber crops -> Shifting agriculture
+Ongoing
+Majority (50-90%)
+Unknown
+2.1.2. Agriculture & aquaculture -> Annual & perennial non-timber crops -> Small-holder farming
+Ongoing
+Unknown
+Unknown
+2.2.1. Agriculture & aquaculture -> Wood & pulp plantations -> Small-holder plantations
+Ongoing
+Unknown
+Unknown
+4.1. Transportation & service corridors -> Roads & railroads
+Ongoing
+Unknown
+Unknown
+5.3.1. Biological resource use -> Logging & wood harvesting -> Intentional use: (subsistence/small scale) [harvest]
+Ongoing
+Unknown
+Unknown
+8.1.2. Invasive and other problematic species, genes & diseases -> Invasive non-native/alien species/diseases -> Named species
+Ongoing
+Majority (50-90%)
+Unknown
+Conservation
+All orchid species are included in Appendix II of the Convention on International Trade in Endangered Species of Wild Fauna and Flora (CITES). This species is thought to occur within the Blue and John Crow Mountains National Park in Jamaica and Turquino National Park in Cuba. While net deforestation rates in the Blue Mountains have decreased since the establishment of the Park, encroachment and illegal clearing continue to occur within its boundaries (Chai et al. 2009). Despite the impacts of invasive species, forest fires, and tourism, large areas of intact high elevation montane forest in Turquino National Park are well protected and managed for biodiversity (BirdLife International 2024, Rimmer et al. 2024). This species is not held in any ex situ conservation collections (BGCI 2024) and collection of germplasm or plants for ex situ conservation is recommended.
+Conservation Actions In- Place
+Action Recovery Plan
+Note
+No
+-
+
+Systematic monitoring scheme
+Note
+No
+-
+
+Conservation sites identified
+Note
+No
+-
+
+Occur in at least one PA
+Note
+Yes
+This species is thought to occur within the Blue and John Crow Mountains National Park in Jamaica and Turquino National Park in Cuba. 
+
+Area based regional management plan
+Note
+Unknown
+-
+
+Invasive species control or prevention
+Note
+Unknown
+-
+
+Harvest management plan
+Note
+No
+-
+
+Successfully reintroduced or introduced benignly
+Note
+No
+-
+
+Subject to ex-situ conservation
+Note
+No
+Not listed in any ex situ collections in PlantSearch (BGCI 2024).
+
+Subject to recent education and awareness programmes
+Note
+Unknown
+-
+
+Included in international legislation
+Note
+Yes
+CITES Appendix II
+
+Subject to any international management/trade controls
+Note
+Yes
+CITES Appendix II
+Important Conservation Actions Needed
+Conservation Actions
+Note
+1.1. Land/water protection -> Site/area protection
+-
+2.1. Land/water management -> Site/area management
+-
+2.2. Land/water management -> Invasive/problematic species control
+-
+3.4.2. Species management -> Ex-situ conservation -> Genome resource bank
+-
+Research Needed
+Research
+Note
+1.2. Research -> Population size, distribution & trends
+-
+3.1. Monitoring -> Population trends
+-
+Ecosystem Services
+Ecosystem Services Provided by the Species
+Insufficient Information Available
+All coded services should have an importance score of 5 - Not Known.
+true
+-
+Bibliography
+Adams, C.D. 1972. Flowering Plants of Jamaica. University of the West Indies, Jamaica.
+BGCI. 2024. Botanic Gardens Conservation International (BGCI) - PlantSearch. Available at: https://tools.bgci.org/plant_search.php. (Accessed: 2024).
+Bachman, S., Moat, J., Hill, A.W., de la Torre, J. and Scott, B. 2011. Supporting Red List threat assessments with GeoCAT: geospatial conservation assessment tool. Zookeys 150: 117Ð126.
+Bellingham, P.J., Tanner, E.V., Martin, P.H., Healey, J.R. and Burge, O.R. 2018. Endemic trees in a tropical biodiversity hotspot imperilled by an invasive tree. Biological Conservation 217: 47-53.
+BirdLife International. 2024c. Important Bird Area factsheet: Turquino - Bayamesa. Available at: https://datazone.birdlife.org/site/factsheet/turquino--bayamesa-iba-cuba/text. 
+CITES Trade Database. 2024. CITES Trade Database. Available at: https://trade.cites.org/. (Accessed: 17/10/2024).
+Chai, S.-L., Tanner, E. and McLaren, K. 2009. High rates of forest clearance and fragmentation pre- and post-National Park establishment: The case of a Jamaican montane rainforest. Biological Conservation 142(11): 2484-2492.
+Greuter, W. and Rankin Rodriguez, R. 2007. Flora de la Repblica de Cuba: Orchidaceae I-II. A.R. Gantner.
+Headley, M. 2003. Co-Management of JamaicaÕs Blue and John Crow Mountains National Park. Status and trends of, and threats to, mountain biodiversity, marine, coastal and inland water ecosystems: Abstracts of poster presentations at the eighth meeting of the Subsidiary Body on Scientific, Technical and Technological Advice of the Convention on Biological Diversity (CBD Technical Series No. 8), pp. 16-19. Secretariat of the Convention on Biological Diversity, Montreal.
+Lloyd, J.D. and Len, Y.M. 2019. Forest change within and outside protected areas in the Dominican Republic, 2000-2016. BioRxiv (in press).
+Luer C.A. 2004. Icones Pleurothallidinarum XXVI. Missouri Botanical Garden, Estados Unidos.
+Rimmer, C.C., Davila, N.V., Lloyd, J.D., Aubry, Y., Len, C.P., Vega, Y.S., Santana, F.R., Fuentes, J.R. and Sosa, A.L., 2024. Overwinter status of Bicknell's Thrush (Catharus bicknelli) in eastern Cuba. Journal of Caribbean Ornithology 37: 1-11.
+Schipper, J. 2024. Jamaican Moist Forests. Available at: https://www.oneearth.org/ecoregions/jamaican-moist-forests/. 
