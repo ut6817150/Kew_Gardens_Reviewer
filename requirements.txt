@@ -2,3 +2,4 @@ streamlit
 docx
 python-docx
 bs4
+pandas
