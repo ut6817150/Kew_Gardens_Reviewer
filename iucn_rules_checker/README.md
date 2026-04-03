@@ -1,6 +1,7 @@
 # IUCN Rules Checker
 
 Utilities for parsing an IUCN assessment JSON tree and running rule-based text checks on the parsed content.
+This package also powers the repo-level Streamlit interface in `app.py`.
 
 This README documents the code that currently exists in `iucn_rules_checker/`. For rule-by-rule checker behavior, see `checkers/README.md`.
 

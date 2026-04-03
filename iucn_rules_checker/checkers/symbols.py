@@ -13,11 +13,16 @@ class SymbolChecker(BaseChecker):
     def __init__(self):
         super().__init__()
 
+    def is_preceded_by_range(self, cleaned_text: str, match_start: int) -> bool:
+        """Return True when a match starts at the second value in a numeric range."""
+        return bool(re.search(r'\d+(?:\.\d+)?\s*[-–—]\s*$', cleaned_text[:match_start]))
+
     def check_text(self, section_name: str, text: str) -> List[Violation]:
         """Check for symbol and unit formatting violations."""
         violations = []
         violations.extend(self.check_area_units(section_name, text))
-        violations.extend(self.check_degree_symbol(section_name, text))
+        violations.extend(self.check_degree_text(section_name, text))
+        violations.extend(self.check_degree_symbol_spacing(section_name, text))
         violations.extend(self.check_percentage(section_name, text))
         violations.extend(self.check_percentage_symbol_spacing(section_name, text))
         return violations
@@ -129,12 +134,12 @@ class SymbolChecker(BaseChecker):
 
         return violations
 
-    def check_degree_symbol(self, section_name: str, text: str) -> List[Violation]:
-        """Check written-out degree forms and spacing around `°`.
+    def check_degree_text(self, section_name: str, text: str) -> List[Violation]:
+        """Check written-out degree forms and suggest `°` notation.
 
         This method strips simple inline bold/italic HTML tags first:
         `<i>`, `<em>`, `<b>`, and `<strong>`.
-        It then applies three checks:
+        It then applies two checks:
 
         1. Direction forms written with words:
         `12 degrees N` -> `12°N`
@@ -144,19 +149,11 @@ class SymbolChecker(BaseChecker):
         `20 degrees C` -> `20°C`
         `20.75 degrees Celsius` -> `20.75°C`
 
-        3. Existing degree-symbol forms with incorrect spacing:
-        `12 °C` -> `12°C`
-        `12° C` -> `12°C`
-        `12.5 ° N` -> `12.5°N`
-
         Examples flagged:
         `12 degrees N`
         `12.5 degrees n`
         `20 degrees C`
         `20.75 degrees Celsius`
-        `12 °C`
-        `12° C`
-        `12.5 ° N`
 
         Examples not flagged:
         `12°N`
@@ -207,8 +204,53 @@ class SymbolChecker(BaseChecker):
                 suggested_fix=fix,
             ))
 
+        return violations
+
+    def check_degree_symbol_spacing(self, section_name: str, text: str) -> List[Violation]:
+        """Check spacing around an existing degree symbol.
+
+        This method strips simple inline bold/italic HTML tags first:
+        `<i>`, `<em>`, `<b>`, and `<strong>`.
+        It then checks existing degree-symbol forms with incorrect spacing.
+        Shared-unit ranges such as `14-26 °C` or `14–26 °C` are ignored:
+
+        `12 °C` -> `12°C`
+        `12° C` -> `12°C`
+        `12.5 ° N` -> `12.5°N`
+
+        Examples flagged:
+        `12 °C`
+        `12° C`
+        `12.5 ° N`
+
+        Examples not flagged:
+        `12°N`
+        `12.5°N`
+        `20°C`
+        `20.75°C`
+        `<i>12.5°N</i>`
+        `<b>20.75°C</b>`
+
+        What it misses:
+        it only checks direction letters `N`, `S`, `E`, `W` and Celsius (`C`).
+        It does not handle Fahrenheit or more complex coordinate formats.
+        Shared-unit ranges are intentionally skipped.
+        It only strips the simple style tags listed above.
+        """
+        violations = []
+        cleaned_text, index_map = self.strip_style_markers(
+            text,
+            italics=True,
+            bold=True,
+            superscript=True,
+            subscript=True,
+        )
+
         spaced_degree_symbol = re.compile(r'(\d+(?:\.\d+)?)\s*°\s*([NSEWC])\b', re.IGNORECASE)
         for match in spaced_degree_symbol.finditer(cleaned_text):
+            if self.is_preceded_by_range(cleaned_text, match.start()):
+                continue
+
             fix = f"{match.group(1)}°{match.group(2).upper()}"
             if match.group(0) == fix:
                 continue
@@ -307,6 +349,13 @@ class SymbolChecker(BaseChecker):
         Wrapped or split-tag forms are still checked, for example:
         `<i>12</i> <b>%</b>` -> `12%`
         `<i>12</i><b>km</b>` -> `12 km`
+        Shared-unit ranges such as `12-15 %`, `12–15 %`, `12—15 %`, and
+        `600-1200m` are ignored.
+
+        What it misses:
+        it does not check range-preceded spacing cases.
+        It only checks the hard-coded unit list `km`, `ha`, `kg`, `m`, `cm`,
+        `mm`, `ml`, and `l`.
         """
         violations = []
         cleaned_text, index_map = self.strip_style_markers(
@@ -319,6 +368,9 @@ class SymbolChecker(BaseChecker):
 
         space_percent = re.compile(r'(\d+)\s+%')
         for match in space_percent.finditer(cleaned_text):
+            if self.is_preceded_by_range(cleaned_text, match.start()):
+                continue
+
             fix = f"{match.group(1)}%"
             start = index_map[match.start()]
             end = index_map[match.end() - 1] + 1
@@ -332,6 +384,9 @@ class SymbolChecker(BaseChecker):
 
         no_space_units = re.compile(r'(\d+)(km|ha|kg|m|cm|mm|ml|l)\b(?!Â²)')
         for match in no_space_units.finditer(cleaned_text):
+            if self.is_preceded_by_range(cleaned_text, match.start()):
+                continue
+
             fix = f"{match.group(1)} {match.group(2)}"
             start = index_map[match.start()]
             end = index_map[match.end() - 1] + 1

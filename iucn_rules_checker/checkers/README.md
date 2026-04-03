@@ -272,7 +272,7 @@ Detailed coverage:
     - `80's`
     - `the eighties`
     - `1980s-1990s`
-    - `1980â€™s` with a curly apostrophe
+    - `1980’s` with a curly apostrophe
     - `2000s and 2010s`
 
 Aggregated misses for `DateChecker` as a whole:
@@ -552,7 +552,7 @@ Detailed coverage:
 
 - `check_small_numbers(...)`
   How it works:
-  does not run in bibliography sections, strips all simple style markers, then matches standalone numerals `1` to `9`. Before creating a violation it applies deterministic exclusions for dates, units, percentages, degrees, decimals, ranges, and any digit adjacent to another digit.
+  strips all simple style markers, then matches standalone numerals `1` to `9`. Before creating a violation it applies deterministic exclusions for dates, units, percentages, degrees, decimals, ranges, and any digit adjacent to another digit.
   Hard-coded list dependency:
   this method relies on the hard-coded `NUMBER_WORDS`, `MONTHS`, and `SMALL_NUMBER_UNITS` lists.
 
@@ -561,12 +561,11 @@ Detailed coverage:
     - `The species survives in 2 valleys`
 
   - Misses:
-    - anything in a section whose name contains `Bibliography`
     - `3 May`
     - `5 km`, `7 ha`, `3 sq km`, `4 m asl`, `3 m3`, `4 km2`, `2 t`
-    - `6%`, `8Â°`
+    - `6%`, `8°`
     - `1.5`
-    - `4-5`, `2-3`, `2â€“3`
+    - `4-5`, `2-3`, `2–3`, `2—3`
     - small-number contexts outside the hard-coded month and unit lists
 
 - `check_large_numbers(...)`
@@ -589,7 +588,7 @@ Detailed coverage:
 
 - `check_sentence_start(...)`
   How it works:
-  does not run in bibliography sections, strips all simple style markers, then looks for digit strings at the start of the text or immediately after `. `, `! `, or `? `. It also skips numeral starts immediately preceded by `et al. `.
+  strips all simple style markers, then looks for digit strings at the start of the text or immediately after `. `, `! `, or `? `. It also skips numeral starts immediately preceded by `et al. `.
   Hard-coded scope:
   this method only treats `. `, `! `, and `? ` as sentence-start triggers, and only uses the literal exclusion `et al. `.
 
@@ -600,7 +599,6 @@ Detailed coverage:
     - `<b>3</b> sites were surveyed.`
 
   - Misses:
-    - any bibliography section
     - mid-sentence numbers
     - written-out starts such as `Three sites were surveyed.`
     - bibliography-style `et al. 2006`
@@ -650,17 +648,17 @@ Detailed coverage:
 
 - `check_range_dashes(...)`
   How it works:
-  strips italic and bold markers but preserves superscript/subscript markup, then looks for numeric pairs such as `10-20`, `10 - 20`, or `10 â€“ 20`. It rewrites the separator to an unspaced en dash, still allows shared trailing units such as `10-20 km`, and skips date-like three-part numeric chains.
+  strips italic and bold markers but preserves superscript/subscript markup, then looks for numeric pairs such as `10-20`, `10 - 20`, or `10 – 20`. It rewrites the separator to an unspaced en dash, still allows shared trailing units such as `10-20 km`, and skips date-like three-part numeric chains.
   Hard-coded list dependency:
   the rule uses the hard-coded `RANGE_UNITS` list to recognize repeated-unit range structures that should be skipped.
 
   - Catches:
     - `10-20`
     - `10 - 20`
-    - `10 â€“ 20`
+    - `10 – 20`
     - `10-20 km`
     - `600-1200 m`
-    - `14-26 Â°C`
+    - `14-26 °C`
 
   - Misses:
     - already-correct unspaced en-dash ranges
@@ -915,8 +913,10 @@ are routed to `BibliographyChecker` only.
 Aggregated method list:
 - `check_area_units(...)`
   Normalizes a small set of text-based area units into squared-symbol forms.
-- `check_degree_symbol(...)`
-  Converts written-out degree forms to `Â°` notation and removes spacing around an existing degree symbol.
+- `check_degree_text(...)`
+  Converts written-out degree forms to `°` notation.
+- `check_degree_symbol_spacing(...)`
+  Removes spacing around an existing degree symbol.
 - `check_percentage(...)`
   Converts `percent` / `per cent` wording into `%`.
 - `check_percentage_symbol_spacing(...)`
@@ -931,22 +931,22 @@ Detailed coverage:
   this method only normalizes the hard-coded forms `sq km`, `sqkm`, `km2`, `m2`, `cm2`, and `mm2`.
 
   - Catches:
-    - `sq km` or `sqkm` -> `kmÂ²`
-    - `km2` -> `kmÂ²`
-    - `m2` -> `mÂ²`
-    - `cm2` -> `cmÂ²`
-    - `mm2` -> `mmÂ²`
+    - `sq km` or `sqkm` -> `km²`
+    - `km2` -> `km²`
+    - `m2` -> `m²`
+    - `cm2` -> `cm²`
+    - `mm2` -> `mm²`
     - simple-tag wrapped or split forms built from those patterns
 
   - Misses:
-    - already-correct `kmÂ²`, `mÂ²`, `cmÂ²`, `mmÂ²`
+    - already-correct `km²`, `m²`, `cm²`, `mm²`
     - other area-unit variants outside the hardcoded list
     - arbitrary markup beyond the supported simple tags
     - any non-preferred area form not present in the hard-coded set
 
-- `check_degree_symbol(...)`
+- `check_degree_text(...)`
   How it works:
-  strips all simple style markers, then applies three checks: written-out direction forms such as `12 degrees N`, written-out Celsius forms such as `20 degrees C` / `20 degrees Celsius`, and existing degree-symbol forms with incorrect spacing such as `12 Â°C`, `12Â° C`, or `12.5 Â° N`.
+  strips all simple style markers, then checks written-out direction forms such as `12 degrees N` and written-out Celsius forms such as `20 degrees C` / `20 degrees Celsius`.
   Hard-coded list dependency:
   this method only knows the direction letters `N`, `S`, `E`, `W` and Celsius forms `C` / `Celsius`.
 
@@ -955,15 +955,32 @@ Detailed coverage:
     - `12.5 degrees n`
     - `20 degrees C`
     - `20.75 degrees Celsius`
-    - `12 Â°C`
-    - `12Â° C`
-    - `12.5 Â° N`
 
   - Misses:
-    - correct `12Â°N` and `20Â°C`
+    - correct `12°N` and `20°C`
     - Fahrenheit
     - more complex coordinate notation
     - temperature or coordinate notations outside the hard-coded direction/Celsius cases
+
+- `check_degree_symbol_spacing(...)`
+  How it works:
+  strips all simple style markers, then checks existing degree-symbol forms with incorrect spacing such as `12 °C`, `12° C`, or `12.5 ° N`.
+  Hard-coded list dependency:
+  this method only knows the direction letters `N`, `S`, `E`, `W` and Celsius form `C`.
+  Range behavior:
+  shared-unit ranges such as `14-26 °C`, `14–26 °C`, and `14—26 °C` are skipped.
+
+  - Catches:
+    - `12 °C`
+    - `12° C`
+    - `12.5 ° N`
+
+  - Misses:
+    - correct `12°N` and `20°C`
+    - shared-unit ranges such as `14-26 °C`, `14–26 °C`, and `14—26 °C`
+    - Fahrenheit
+    - more complex coordinate notation
+    - temperature or coordinate notations outside the hard-coded direction/Celsius spacing cases
 
 - `check_percentage(...)`
   How it works:
@@ -988,6 +1005,8 @@ Detailed coverage:
   strips all simple style markers, then applies two spacing checks: remove spaces before `%` and add spaces between integers and the short fixed unit list `km`, `ha`, `kg`, `m`, `cm`, `mm`, `ml`, `l`.
   Hard-coded list dependency:
   the number-unit spacing part of this rule only uses the hard-coded short unit list `km`, `ha`, `kg`, `m`, `cm`, `mm`, `ml`, `l`.
+  Range behavior:
+  shared-unit ranges such as `12-15 %`, `12–15 %`, `12—15 %`, and `600-1200m` are skipped.
 
   - Catches:
     - `12 %` -> `12%`
@@ -999,6 +1018,7 @@ Detailed coverage:
 
   - Misses:
     - decimal+unit spacing in this rule
+    - shared-unit ranges such as `12-15 %`, `12–15 %`, `12—15 %`, and `600-1200m`
     - units outside that short list
     - richer unit forms such as `sq km`, `m3`, `km2`
     - number-unit spacing for any unit outside the hard-coded unit list
