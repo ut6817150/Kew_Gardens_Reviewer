@@ -1,22 +1,20 @@
 """
 assessment_processor.py
 
-Converts a word document of an assessment draft to a json dict.
-
-Produces (per file):
-- Heading skeleton (Heading 1/Heading 2) in document order
-- Under each heading: ordered blocks[] of typed items: paragraph, list, table
-- Dcomment comments: including context 
+Convert assessment files from `.docx` or `.html` into a structured JSON
+dictionary with headings, paragraphs, lists, tables, and comments.
 
 Run:
-  (A) Default batch mode:
-      python3.12 assessment_processor.py
+  Batch mode:
+    python3.12 assessment_processor.py
+    Reads files from `converted/` and saves JSON files to `json_converted/`.
 
-  (B) Single-file debug mode:
-      python3.12 assessment_processor.py "My Assessment.docx"
+  Single file:
+    python3.12 assessment_processor.py "converted/My Assessment.docx"
+    Prints the parsed JSON to stdout.
 """
 
-# Imports: 
+# Imports
 from __future__ import annotations
 import json
 import sys
@@ -32,12 +30,12 @@ from docx.text.paragraph import Paragraph
 from bs4 import BeautifulSoup
 
 
-# Default folders in the same directory
+# Default folders
 DEFAULT_INPUT_FOLDER = "converted"
 DEFAULT_OUTPUT_FOLDER = "json_converted"
 
 
-# Create the tree structure:
+# Data structure
 @dataclass
 class HeadingNode:
     """A heading node in the skeleton tree."""
@@ -59,21 +57,18 @@ class HeadingNode:
 
 class AssessmentParser:
     """
-    Document parser class.
+    Parser for assessment documents.
 
-    The class goes through a word file to:
-      - Build heading skeleton 
-      - Attach blocks to headings (paragraph/list/table)
-      - Extract comments 
+    It builds the heading structure, attaches content blocks, and extracts
+    comments with anchor context.
     """
 
-    ## WordprocessingML namespace used by Microsoft Word (.docx).
-    # Required to correctly find comments and comment anchors in the XML;
-    # without this, ElementTree searches would return nothing.
+    # WordprocessingML namespace used by DOCX comment and anchor XML.
     W_NS = "http://schemas.openxmlformats.org/wordprocessingml/2006/main"
     NS = {"w": W_NS}
 
     def parse_file(self, path: str) -> Dict[str, Any]:
+        """Parse one `.docx` or `.html` file into the output JSON schema."""
         p = Path(path)
         ext = p.suffix.lower()
 
@@ -91,10 +86,7 @@ class AssessmentParser:
             return self._parse_html(path)
 
         raise ValueError(f"Unsupported file type: {ext}")
-
-
-
-    # DOCX traversal:
+    # DOCX traversal
     def _iter_block_items_in_order(self, doc: _Document) -> Iterable[Union[Paragraph, Table]]:
         """Yield top-level paragraphs and tables in the order they appear."""
         for child in doc.element.body.iterchildren():
@@ -104,6 +96,7 @@ class AssessmentParser:
                 yield Table(child, doc)
 
     def _paragraph_style_name(self, p: Paragraph) -> str:
+        """Return the paragraph style name, or an empty string."""
         try:
             return (p.style.name or "").strip()
         except Exception:
@@ -149,11 +142,96 @@ class AssessmentParser:
             rows.append(out_row)
         return rows
 
+    def _table_to_rows_rich(self, tbl: Table) -> List[List[str]]:
+        """Extract table into 2D list of cell text preserving super/sub script markup."""
+        rows: List[List[str]] = []
+        for row in tbl.rows:
+            out_row: List[str] = []
+            for cell in row.cells:
+                text = "\n".join(
+                    [
+                        rich_text
+                        for p in cell.paragraphs
+                        if (rich_text := self._paragraph_text_with_scripts(p)).strip()
+                    ]
+                )
+                out_row.append(text)
+            rows.append(out_row)
+        return rows
+
     def _empty_style_bucket(self) -> Dict[str, List[str]]:
+        """Return an empty container for collected style snippets."""
         return {"bold": [], "italic": []}
 
+    def _run_vertical_align(self, run) -> Optional[str]:
+        """
+        Return 'superscript', 'subscript', or None for a run.
+
+        Prefer python-docx properties when available, then fall back to the raw
+        WordprocessingML vertAlign value.
+        """
+        try:
+            if run.font.superscript is True:
+                return "superscript"
+            if run.font.subscript is True:
+                return "subscript"
+        except Exception:
+            pass
+
+        try:
+            vert = run._r.find(".//w:vertAlign", self.NS)
+            if vert is not None:
+                val = vert.get(f"{{{self.W_NS}}}val")
+                if val == "superscript":
+                    return "superscript"
+                if val == "subscript":
+                    return "subscript"
+        except Exception:
+            pass
+
+        return None
+
+    def _paragraph_text_with_scripts(self, p: Paragraph) -> str:
+        """
+        Return paragraph text while preserving superscript/subscript using inline
+        HTML-like markup, e.g. km<sup>2</sup> or CO<sub>2</sub>.
+        """
+        parts: List[str] = []
+        for run in getattr(p, "runs", []):
+            if not run.text:
+                continue
+
+            text = run.text
+            vert = self._run_vertical_align(run)
+            if vert == "superscript":
+                parts.append(f"<sup>{text}</sup>")
+            elif vert == "subscript":
+                parts.append(f"<sub>{text}</sub>")
+            else:
+                parts.append(text)
+
+        return "".join(parts).strip()
+
+    def _xml_run_text_with_scripts(self, run_el: ET.Element) -> str:
+        """Render a raw WordprocessingML <w:r> element with super/sub script markup."""
+        texts = [t.text for t in run_el.findall(".//w:t", self.NS) if t.text]
+        if not texts:
+            return ""
+
+        text = "".join(texts)
+        vert = run_el.find(".//w:vertAlign", self.NS)
+        if vert is None:
+            return text
+
+        val = vert.get(f"{{{self.W_NS}}}val")
+        if val == "superscript":
+            return f"<sup>{text}</sup>"
+        if val == "subscript":
+            return f"<sub>{text}</sub>"
+        return text
+
     def _merge_style_bucket(self, target: Dict[str, List[str]], src: Dict[str, List[str]]) -> None:
-        # preserve order, avoid duplicates
+        # Preserve order and avoid duplicates.
         for k, vals in src.items():
             if k not in target:
                 target[k] = []
@@ -174,7 +252,7 @@ class AssessmentParser:
         out = self._empty_style_bucket()
 
         def tri_to_bool(x):
-            # x can be True/False/None in python-docx
+            # python-docx uses True / False / None
             return None if x is None else bool(x)
 
         def eff(prop_name: str, run) -> bool:
@@ -217,7 +295,8 @@ class AssessmentParser:
         buf: List[str] = []
 
         for run in getattr(p, "runs", []):
-            t = run.text  # IMPORTANT: don’t strip per-run (keeps spaces/punctuation joining correctly)
+            # Keep per-run spacing so punctuation and words join correctly.
+            t = run.text
             if not t:
                 continue
 
@@ -236,7 +315,7 @@ class AssessmentParser:
         if cur_flags is not None:
             flush(cur_flags, buf)
 
-        # hyperlinks (your XML approach kept)
+        # Hyperlinks are collected separately from the raw XML.
         try:
             for hl in p._p.findall(".//w:hyperlink", self.NS):
                 texts = [t.text for t in hl.findall(".//w:t", self.NS) if t.text]
@@ -276,8 +355,8 @@ class AssessmentParser:
                 out["italic"].append(t)
 
         # Class-based (common in SIS HTML: <span class="dataLabel">...</span>)
-        BOLD_CLASSES = {"dataLabel"}   # you can add more later
-        ITALIC_CLASSES = set()         # if you later discover any italic classes
+        BOLD_CLASSES = {"dataLabel"}   
+        ITALIC_CLASSES = set()         
 
         for tag in el.find_all(True):
             classes = set(tag.get("class") or [])
@@ -311,7 +390,7 @@ class AssessmentParser:
         self._merge_style_bucket(deduped, out)
         return deduped
 
-    # Header builder:
+    # Heading builder
     def _build_heading_skeleton(self, doc: _Document, doc_title: str) -> HeadingNode:
         """
         Build Heading 1/Heading 2 skeleton in document order.
@@ -344,11 +423,11 @@ class AssessmentParser:
             if isinstance(item, Paragraph):
                 lvl = self._heading_level(item)
                 if lvl in (1, 2):
-                    add_heading(item.text, lvl)
+                    add_heading((item.text or "").strip(), lvl)
 
         return root
 
-    # Blocks attacher:
+    # Block attachment
     def _attach_blocks(self, doc: _Document, root: HeadingNode) -> None:
         """
         Walk the doc in order and attach paragraph/list/table blocks to the
@@ -380,7 +459,7 @@ class AssessmentParser:
                     if n.level == 1 and n.title == title:
                         current_h1, current_h2 = n, None
                         return
-                # fallback create
+                # Fallback: create the heading if it was not in the skeleton.
                 n = HeadingNode(title=title, level=1, path=[title], blocks=[], children=[])
                 root.children.append(n)
                 current_h1, current_h2 = n, None
@@ -389,7 +468,7 @@ class AssessmentParser:
             if lvl == 2:
                 parent = current_h1
                 if parent is None:
-                    # orphan H2
+                    # Allow Heading 2 items that appear before any Heading 1.
                     for n in root.children:
                         if n.level == 2 and n.title == title:
                             current_h2 = n
@@ -426,6 +505,7 @@ class AssessmentParser:
                     continue
 
                 text = (item.text or "").strip()
+                rich_text = self._paragraph_text_with_scripts(item)
                 if not text:
                     continue
 
@@ -438,14 +518,26 @@ class AssessmentParser:
                         flush_list()
                         pending_list = {"type": "list", "signature": sig, "items": []}
                         pending_sig = sig
-                    pending_list["items"].append({"text": text, "style": self._paragraph_style_name(item)})
+                    pending_list["items"].append(
+                        {
+                            "text": text,
+                            "text_rich": rich_text,
+                            "style": self._paragraph_style_name(item),
+                        }
+                    )
                 else:
                     flush_list()
-                    container().blocks.append({"type": "paragraph", "text": text})
+                    container().blocks.append({"type": "paragraph", "text": text, "text_rich": rich_text})
 
             elif isinstance(item, Table):
                 flush_list()
-                container().blocks.append({"type": "table", "rows": self._table_to_rows(item)})
+                container().blocks.append(
+                    {
+                        "type": "table",
+                        "rows": self._table_to_rows(item),
+                        "rows_rich": self._table_to_rows_rich(item),
+                    }
+                )
 
         flush_list()
 
@@ -458,7 +550,7 @@ class AssessmentParser:
 
         add_style_block_if_any(root)
 
-    # Comment handling:
+    # Comment handling
     def _read_comments_xml(self, docx_path: str) -> Dict[str, Dict[str, Any]]:
         """Return {comment_id: {id, author, date, text}}."""
         try:
@@ -482,7 +574,7 @@ class AssessmentParser:
         except Exception:
             return {}
 
-    # comment anchers handling:
+    # Comment anchor handling
     def _extract_comments_with_anchors(self, docx_path: str) -> List[Dict[str, Any]]:
         """
         Extract comments + where they attach:
@@ -498,7 +590,13 @@ class AssessmentParser:
 
         current_path: List[str] = []
         acc: Dict[str, Dict[str, Any]] = {
-            cid: {"anchor_heading_path": [], "anchor_text_parts": [], "anchor_context_parts": []}
+            cid: {
+                "anchor_heading_path": [],
+                "anchor_text_parts": [],
+                "anchor_text_rich_parts": [],
+                "anchor_context_parts": [],
+                "anchor_context_rich_parts": [],
+            }
             for cid in comment_meta.keys()
         }
 
@@ -556,19 +654,28 @@ class AssessmentParser:
                 elif tag == f"{{{self.W_NS}}}r":
                     texts = [t.text for t in child.findall(".//w:t", self.NS) if t.text]
                     chunk = "".join(texts)
+                    chunk_rich = self._xml_run_text_with_scripts(child)
                     if chunk:
                         for cid in active_stack:
                             if cid in acc:
                                 ensure_heading(cid)
                                 acc[cid]["anchor_text_parts"].append(chunk)
+                                acc[cid]["anchor_text_rich_parts"].append(chunk_rich or chunk)
                                 paragraph_touched.add(cid)
 
-            # paragraph-level context
+            # Keep a short paragraph-level context for each touched comment.
             ptxt = (p.text or "").strip()
             if ptxt:
                 for cid in (paragraph_touched | set(active_stack)):
                     if cid in acc and len(acc[cid]["anchor_context_parts"]) < 6:
                         acc[cid]["anchor_context_parts"].append(ptxt)
+
+            ptxt_rich = self._paragraph_text_with_scripts(p)
+            if ptxt_rich:
+                for cid in (paragraph_touched | set(active_stack)):
+                    if cid in acc:
+                        if len(acc[cid]["anchor_context_rich_parts"]) < 6:
+                            acc[cid]["anchor_context_rich_parts"].append(ptxt_rich)
 
         for item in self._iter_block_items_in_order(doc):
             if isinstance(item, Paragraph):
@@ -586,7 +693,9 @@ class AssessmentParser:
                     **meta,
                     "anchor_heading_path": acc[cid]["anchor_heading_path"],
                     "anchor_text": "".join(acc[cid]["anchor_text_parts"]).strip(),
+                    "anchor_text_rich": "".join(acc[cid]["anchor_text_rich_parts"]).strip(),
                     "anchor_context": " ".join(acc[cid]["anchor_context_parts"]).strip(),
+                    "anchor_context_rich": " ".join(acc[cid]["anchor_context_rich_parts"]).strip(),
                 }
             )
         return out
@@ -597,13 +706,10 @@ class AssessmentParser:
 
         Comments: HTML typically has none => [].
         """
-        # NEW IMPORT needed at top:
-        # from bs4 import BeautifulSoup
-
         html = Path(html_path).read_text(encoding="utf-8", errors="ignore")
         soup = BeautifulSoup(html, "html.parser")
 
-        # Discover class names that imply bold/italic from embedded CSS
+        # Discover class names that imply bold/italic from embedded CSS.
         css_text = ""
         style_tag = soup.find("style")
         if style_tag:
@@ -660,7 +766,7 @@ class AssessmentParser:
         def clean_text(el) -> str:
             return " ".join(el.get_text(" ", strip=True).split())
 
-        # iterate in DOM order: headings + p + lists + tables
+        # Iterate in DOM order: headings, paragraphs, lists, and tables.
         for el in soup.find_all(["h1", "h2", "p", "ul", "ol", "table"]):
             name = el.name.lower()
 
@@ -717,7 +823,7 @@ class AssessmentParser:
 
 
 
-# Processor for multible documents:
+# Batch processing
 def run_batch_default(parser: AssessmentParser) -> int:
     """Batch mode using DEFAULT_INPUT_FOLDER and DEFAULT_OUTPUT_FOLDER."""
     in_path = Path(DEFAULT_INPUT_FOLDER)

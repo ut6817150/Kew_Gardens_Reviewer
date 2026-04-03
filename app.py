@@ -1,58 +1,63 @@
-import streamlit as st
-import tempfile
 import json
-from pathlib import Path
-from docx import Document
-import io
-import contextlib
-import pandas as pd
+import re
+import tempfile
 from collections import defaultdict
-from dataclasses import asdict, is_dataclass
+from pathlib import Path
 
+import pandas as pd
+import streamlit as st
+
+from iucn_rules_checker.assessment_parser import AssessmentParser
+from iucn_rules_checker.assessment_reviewer import IUCNAssessmentReviewer
 from preprocessing.assessment_processor import parse_docx_to_dict
-from iucn_rules_checker.engine import IUCNRuleChecker
-
-# ----------------------------
-# Helpers (must be defined before use)
-# ----------------------------
-def to_dict_safe(x):
-    """Convert dataclass / objects with to_dict() / dict-like into a plain dict."""
-    if hasattr(x, "to_dict"):
-        return x.to_dict()
-    if is_dataclass(x):
-        return asdict(x)
-    if isinstance(x, dict):
-        return x
-    if hasattr(x, "__dict__"):
-        return dict(x.__dict__)
-    return {"value": str(x)}
 
 
-def severity_str(sev):
-    """Support Enum severities or plain strings."""
-    return sev.value if hasattr(sev, "value") else str(sev)
-
-
-# ----------------------------
-# App
-# ----------------------------
-
-st.set_page_config(page_title="IUCN Assessment Feedback Tool", layout="centered")
+st.set_page_config(page_title="IUCN Assessment Feedback Tool", layout="wide")
 st.title("IUCN Assessment Feedback Tool")
+st.caption(
+    "Upload one assessment, then run the rules-based and LLM systems separately "
+    "from the tabs below."
+)
 
 
-uploaded = st.file_uploader("Upload a .docx, .html or .htm file", type=["docx", "html", "doc"])
+def normalize_display_section_name(section_name: str) -> str:
+    """Remove parser block markers from a section label for UI grouping."""
+    return re.sub(
+        r"\s+\[(?:paragraph|table|row)\s+\d+\]",
+        "",
+        section_name,
+        flags=re.IGNORECASE,
+    )
+
+if "uploaded_file_signature" not in st.session_state:
+    st.session_state["uploaded_file_signature"] = None
+if "rules_feedback" not in st.session_state:
+    st.session_state["rules_feedback"] = None
+if "llm_feedback" not in st.session_state:
+    st.session_state["llm_feedback"] = None
+
+uploaded = st.file_uploader(
+    "Upload a .docx, .html or .htm file",
+    type=["docx", "html", "doc"],
+)
 
 tmp_path: Path | None = None
 uploaded_ext: str | None = None
+uploaded_name = ""
+file_signature = None
+input_ready = False
 
 # Handle uploaded file
 if uploaded:
+    uploaded_name = uploaded.name
     uploaded_ext = Path(uploaded.name).suffix.lower()  # ".docx" or ".html"
+    file_signature = f"{uploaded.name}:{len(uploaded.getbuffer())}"
 
     # Doc file -> raise error
     if uploaded_ext == ".doc":
-        st.error("The feedback tool only supports .docx files. Please convert .doc to .docx and re-upload. Or, upload a HTML file.")
+        st.error(
+            "The feedback tool only supports .docx files. Please convert .doc to .docx and re-upload. Or, upload a HTML file."
+        )
 
     # Any other file type uploaded
     elif uploaded_ext not in [".docx", ".html"]:
@@ -69,71 +74,148 @@ if uploaded:
         st.success(f"Uploaded: {uploaded.name}")
         st.caption(f"Temp file: {tmp_path}")
 
-# Generate Feedback button
-run = st.button("Generate Feedback", type="primary", disabled=(tmp_path is None))
+if st.session_state["uploaded_file_signature"] != file_signature:
+    st.session_state["uploaded_file_signature"] = file_signature
+    st.session_state["rules_feedback"] = None
+    st.session_state["llm_feedback"] = None
 
+if uploaded is None:
+    st.info("Upload a file to enable both feedback systems.")
+elif tmp_path is not None:
+    input_ready = True
 
-# Generate Feedback
-if run and tmp_path is not None:
+rules_tab, llm_tab = st.tabs(["Rules-based feedback", "LLM feedback"])
 
-    # Docx/HTML file process
-    if uploaded_ext == ".docx" or uploaded_ext == ".html":
-        pass
+with rules_tab:
+    st.subheader("Rules-based feedback")
+    st.write("Run the deterministic checker suite on the uploaded assessment.")
 
-    #convert to python dict
-    data = parse_docx_to_dict(str(tmp_path))
+    if st.button(
+        "Generate feedback",
+        key="generate_rules_feedback",
+        type="primary",
+        disabled=not input_ready,
+    ):
+        with st.spinner("Generating rules-based feedback..."):
+            assessment = parse_docx_to_dict(str(tmp_path))
+            parser = AssessmentParser()
+            reviewer = IUCNAssessmentReviewer()
+            full_report = parser.parse(assessment)
+            violations = [
+                violation.to_dict()
+                for violation in reviewer.review_full_report(full_report)
+            ]
 
-    # ----------------------------
-    # Rules-based system output
-    # ----------------------------
-    checker = IUCNRuleChecker()
-    report = checker.check_json(data)
+            grouped_violations = defaultdict(list)
+            for violation in violations:
+                section_name = normalize_display_section_name(
+                    violation.get("section_name") or "Whole document"
+                )
+                grouped_violations[section_name].append(violation)
 
-    st.divider()
-    st.subheader("Rules Based System Output")
+            ordered_grouped_violations = {}
+            seen_sections = set()
+            for section_name in full_report:
+                normalized_name = normalize_display_section_name(section_name)
+                if normalized_name in seen_sections:
+                    continue
+                seen_sections.add(normalized_name)
+                if normalized_name in grouped_violations:
+                    ordered_grouped_violations[normalized_name] = grouped_violations[normalized_name]
 
-    # Group violations by assessment_section
-    violations = getattr(report, "violations", None)
-    if violations is None:
-        report_dict = to_dict_safe(report)
-        violations = report_dict.get("violations", [])
+            for section_name, rows in grouped_violations.items():
+                if section_name not in ordered_grouped_violations:
+                    ordered_grouped_violations[section_name] = rows
 
-    grouped = defaultdict(list)
-    for v in violations:
-        vd = to_dict_safe(v)
-        section = vd.get("assessment_section") or "Whole Document"
-        grouped[section].append(vd)
+            st.session_state["rules_feedback"] = {
+                "violations": violations,
+                "grouped_violations": ordered_grouped_violations,
+            }
 
-    st.subheader("Violations by assessment_section")
+    if st.session_state["rules_feedback"] is None:
+        st.info("Click `Generate feedback` in this tab to run the rules-based reviewer.")
+    else:
+        feedback = st.session_state["rules_feedback"]
+        violations = feedback["violations"]
+        grouped_violations = feedback["grouped_violations"]
 
-    # Display grouped sections
-    for section in sorted(grouped.keys(), key=lambda s: (s != "Whole Document", s)):
-        vs = grouped[section]
+        if not violations:
+            st.success("No rules-based violations were found for this document.")
+        else:
+            st.metric("Violations found", len(violations))
 
-        with st.expander(f"{section} ({len(vs)})", expanded=(section == "Whole Document")):
-            rows = []
-            for vd in vs:
-                pos = vd.get("position") or {}
-                rows.append({
-                    "severity": severity_str(vd.get("severity")),
-                    "category": vd.get("category", ""),
-                    "rule_name": vd.get("rule_name", ""),
-                    "message": vd.get("message", ""),
-                    "matched_text": vd.get("matched_text", ""),
-                    "line": pos.get("line", None),
-                    "column": pos.get("column", None),
-                })
+            for section_name, rows in grouped_violations.items():
+                table = pd.DataFrame(
+                    [
+                        {
+                            "Rule": row.get("rule_class", ""),
+                            "Method": row.get("rule_method", ""),
+                            "Matched text": row.get("matched_text", ""),
+                            "Context": row.get("matched_snippet", ""),
+                            "Message": row.get("message", ""),
+                            "Suggested fix": row.get("suggested_fix", ""),
+                        }
+                        for row in rows
+                    ]
+                )
+                table = table[
+                    [
+                        "Rule",
+                        "Method",
+                        "Matched text",
+                        "Context",
+                        "Message",
+                        "Suggested fix",
+                    ]
+                ]
 
-            st.dataframe(rows, use_container_width=True)
+                error_label = "error" if len(rows) == 1 else "errors"
+                with st.expander(f"{section_name} ({len(rows)} {error_label})", expanded=False):
+                    st.dataframe(table, use_container_width=True, hide_index=True)
 
-    # (optional) download the grouped violations as JSON
-    st.subheader("Download violations")
-    grouped_bytes = json.dumps(grouped, indent=2, ensure_ascii=False).encode("utf-8")
-    st.download_button(
-        label="Download Violations (grouped JSON)",
-        data=grouped_bytes,
-        file_name=f"{Path(uploaded.name).stem}_violations_grouped.json",
-        mime="application/json",
-    )
-        
-        
+            st.download_button(
+                label="Download rules feedback (JSON)",
+                data=json.dumps(grouped_violations, indent=2, ensure_ascii=False).encode("utf-8"),
+                file_name=f"{Path(uploaded_name).stem}_rules_feedback.json",
+                mime="application/json",
+            )
+
+with llm_tab:
+    st.subheader("LLM feedback")
+    st.write("Run the language-model review separately from the rules-based checks.")
+
+    if st.button(
+        "Generate feedback",
+        key="generate_llm_feedback",
+        type="primary",
+        disabled=not input_ready,
+    ):
+        with st.spinner("Generating LLM feedback..."):
+            assessment = parse_docx_to_dict(str(tmp_path))
+            st.session_state["llm_feedback"] = {
+                "status": "placeholder",
+                "message": (
+                    "The LLM tab is wired up, but the model feedback pipeline is still "
+                    "a placeholder. Replace the inline block in `app.py` with your "
+                    "Ollama or LangChain call to render real output here."
+                ),
+                "top_level_sections": [
+                    child.get("title")
+                    for child in assessment.get("children", [])
+                    if child.get("title")
+                ],
+            }
+
+    if st.session_state["llm_feedback"] is None:
+        st.info("Click `Generate feedback` in this tab to run the LLM workflow.")
+    else:
+        feedback = st.session_state["llm_feedback"]
+        if feedback.get("status") == "placeholder":
+            st.warning(feedback["message"])
+            if feedback.get("top_level_sections"):
+                st.caption(
+                    "Detected top-level sections: "
+                    + ", ".join(feedback["top_level_sections"])
+                )
+        else:
+            st.write(feedback.get("message", "LLM feedback generated."))

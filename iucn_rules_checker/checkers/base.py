@@ -1,184 +1,154 @@
-"""Base classes for IUCN rule checkers."""
+"""Shared base class for section-level checkers."""
 
-from abc import ABC, abstractmethod
-from typing import List, Optional, Dict, Callable, Union
+import inspect
 import re
+from abc import ABC, abstractmethod
+from typing import List, Optional, Tuple
 
-from ..models import Violation, TextPosition, Severity, RuleDefinition
+from ..violation import Violation
+
+SectionItem = Tuple[str, str]
+
 
 class BaseChecker(ABC):
-    """Abstract base class for all rule checkers."""
+    """Shared checker interface and violation-construction helper."""
 
-    def __init__(
-        self,
-        rule_id: str,
-        rule_name: str,
-        category: str,
-        severity: Severity = Severity.WARNING,
-        assessment_section: str = "Whole Document"
-    ):
-        self.rule_id = rule_id
-        self.rule_name = rule_name
-        self.category = category
-        self.severity = severity
-        self.assessment_section = assessment_section
+    def begin_sweep(self) -> None:
+        """Prepare any temporary state before reviewing a full parsed report."""
 
-    @abstractmethod
-    def check(self, text: str) -> List[Violation]:
-        """Check text and return all violations found."""
-        pass
+    def end_sweep(self) -> None:
+        """Clear any temporary state after reviewing a full parsed report."""
 
-    def _calculate_position(self, text: str, start: int, end: int) -> TextPosition:
-        """Calculate line and column numbers from character offset."""
-        line = text[:start].count('\n') + 1
-        last_newline = text.rfind('\n', 0, start)
-        column = start - last_newline if last_newline >= 0 else start + 1
-        return TextPosition(start=start, end=end, line=line, column=column)
+    def check(self, section_item: SectionItem) -> List[Violation]:
+        """Run this checker against one parsed ``(section_name, text)`` pair."""
+        section_name, text = section_item
+        return self.check_text(section_name, text)
 
-    def _extract_context(self, text: str, start: int, end: int, context_chars: int = 40) -> str:
-        """Extract surrounding text for context."""
-        context_start = max(0, start - context_chars)
-        context_end = min(len(text), end + context_chars)
-
-        prefix = "..." if context_start > 0 else ""
-        suffix = "..." if context_end < len(text) else ""
-
-        return prefix + text[context_start:context_end] + suffix
-
-    def _create_violation(
+    def strip_style_markers(
         self,
         text: str,
-        matched_text: str,
-        start: int,
-        end: int,
-        message: str,
-        suggested_fix: Optional[str] = None,
-        metadata: Optional[dict] = None
-    ) -> Violation:
-        """Helper to create a Violation with position calculation."""
-        position = self._calculate_position(text, start, end)
-        context = self._extract_context(text, start, end)
+        *,
+        italics: bool = True,
+        bold: bool = True,
+        superscript: bool = False,
+        subscript: bool = False,
+    ) -> Tuple[str, List[int]]:
+        """Strip selected inline style tags and map cleaned indexes back.
 
-        return Violation(
-            rule_id=self.rule_id,
-            rule_name=self.rule_name,
-            category=self.category,
-            matched_text=matched_text,
-            position=position,
-            severity=self.severity,
-            message=message,
-            suggested_fix=suggested_fix,
-            context=context,
-            assessment_section=self.assessment_section,
-            metadata=metadata or {}
+        By default this matches the old per-checker helper behavior and strips:
+        - italic tags: ``<i>``, ``</i>``, ``<em>``, ``</em>``
+        - bold tags: ``<b>``, ``</b>``, ``<strong>``, ``</strong>``
+
+        Optional flags also allow stripping:
+        - superscript tags: ``<sup>``, ``</sup>``
+        - subscript tags: ``<sub>``, ``</sub>``
+
+        Returns:
+        - the cleaned text with the selected markers removed
+        - an ``index_map`` where each position in the cleaned text points back
+          to the matching character index in the original text
+        """
+        tag_names = []
+        if italics:
+            tag_names.extend(["i", "em"])
+        if bold:
+            tag_names.extend(["b", "strong"])
+        if superscript:
+            tag_names.append("sup")
+        if subscript:
+            tag_names.append("sub")
+
+        if not tag_names:
+            return text, list(range(len(text)))
+
+        pattern = re.compile(
+            r"</?(?:" + "|".join(re.escape(tag_name) for tag_name in tag_names) + r")>",
+            re.IGNORECASE,
         )
 
+        cleaned_parts: List[str] = []
+        index_map: List[int] = []
+        last_index = 0
 
-class PatternChecker(BaseChecker):
-    """Checker for rules that use regex patterns."""
+        for match in pattern.finditer(text):
+            if match.start() > last_index:
+                chunk = text[last_index:match.start()]
+                cleaned_parts.append(chunk)
+                index_map.extend(range(last_index, match.start()))
+            last_index = match.end()
 
-    def __init__(
+        if last_index < len(text):
+            chunk = text[last_index:]
+            cleaned_parts.append(chunk)
+            index_map.extend(range(last_index, len(text)))
+
+        return "".join(cleaned_parts), index_map
+
+    @abstractmethod
+    def check_text(self, section_name: str, text: str) -> List[Violation]:
+        """Apply this rule to one parsed section."""
+
+    def create_violation(
         self,
-        rule_id: str,
-        rule_name: str,
-        category: str,
-        pattern: str,
-        message_template: str = "Found '{matched}' - violates rule: {rule_name}",
-        fix_map: Optional[Dict[str, str]] = None,
-        fix_function: Optional[Callable[[re.Match], str]] = None,
-        flags: int = re.IGNORECASE,
-        severity: Severity = Severity.WARNING,
-        assessment_section: str = "Whole Document"
-    ):
-        super().__init__(rule_id, rule_name, category, severity, assessment_section)
-        self.compiled_pattern = re.compile(pattern, flags)
-        self.message_template = message_template
-        self.fix_map = fix_map or {}
-        self.fix_function = fix_function
+        section_name: str,
+        text: str,
+        span: Tuple[int, int],
+        message: str,
+        suggested_fix: Optional[str] = None,
+    ) -> Violation:
+        """Build a violation with exact match text plus nearby context snippet."""
+        start, end = span
+        matched_text = text[start:end]
+        tokens = list(re.finditer(r"\S+", text))
 
-    def check(self, text: str) -> List[Violation]:
-        """Check text against the pattern and return violations."""
-        violations = []
+        if not tokens:
+            snippet = matched_text
+        else:
+            overlapping = [
+                index for index, token in enumerate(tokens)
+                if token.start() < end and token.end() > start
+            ]
 
-        for match in self.compiled_pattern.finditer(text):
-            matched_text = match.group(0)
+            if overlapping:
+                first_index = max(0, overlapping[0] - 2)
+                last_index = min(len(tokens) - 1, overlapping[-1] + 2)
+            else:
+                nearest_index = min(
+                    range(len(tokens)),
+                    key=lambda index: min(
+                        abs(tokens[index].start() - start),
+                        abs(tokens[index].end() - end),
+                    ),
+                )
+                first_index = max(0, nearest_index - 2)
+                last_index = min(len(tokens) - 1, nearest_index + 2)
 
-            # Generate suggested fix
-            suggested_fix = None
-            if self.fix_function:
-                suggested_fix = self.fix_function(match)
-            elif matched_text.lower() in self.fix_map:
-                # Preserve case when applying fix
-                fix = self.fix_map[matched_text.lower()]
-                if matched_text[0].isupper() and fix:
-                    fix = fix[0].upper() + fix[1:] if len(fix) > 1 else fix.upper()
-                if matched_text.isupper() and fix:
-                    fix = fix.upper()
-                suggested_fix = fix
+            snippet = text[tokens[first_index].start():tokens[last_index].end()]
 
-            message = self.message_template.format(
-                matched=matched_text,
-                rule_name=self.rule_name,
-                fix=suggested_fix or ""
-            )
+        return Violation(
+            rule_class=type(self).__name__,
+            rule_method=self.get_rule_method_name(),
+            matched_text=matched_text,
+            matched_snippet=snippet,
+            message=message,
+            suggested_fix=suggested_fix,
+            section_name=self.normalize_section_name(section_name),
+        )
 
-            violations.append(self._create_violation(
-                text=text,
-                matched_text=matched_text,
-                start=match.start(),
-                end=match.end(),
-                message=message,
-                suggested_fix=suggested_fix
-            ))
+    def normalize_section_name(self, section_name: str) -> str:
+        """Hide paragraph suffixes in violations while keeping table suffixes."""
+        return re.sub(r"\s+\[paragraph\s+\d+\]$", "", section_name, flags=re.IGNORECASE)
 
-        return violations
+    def get_rule_method_name(self) -> str:
+        """Return the checker method name that directly created the violation."""
+        caller_frame = inspect.currentframe()
+        if (
+            caller_frame is None
+            or caller_frame.f_back is None
+            or caller_frame.f_back.f_back is None
+        ):
+            return "unknown_rule_method"
 
-
-class MultiPatternChecker(BaseChecker):
-    """Checker that applies multiple patterns with individual messages/fixes."""
-
-    def __init__(
-        self,
-        rule_id: str,
-        rule_name: str,
-        category: str,
-        patterns: List[Dict],  # List of {pattern, message, fix, flags}
-        severity: Severity = Severity.WARNING,
-        assessment_section: str = "Whole Document"
-    ):
-        super().__init__(rule_id, rule_name, category, severity, assessment_section)
-        self.patterns = []
-        for p in patterns:
-            flags = p.get('flags', re.IGNORECASE)
-            self.patterns.append({
-                'compiled': re.compile(p['pattern'], flags),
-                'message': p.get('message', f"Violates: {rule_name}"),
-                'fix': p.get('fix'),
-                'fix_function': p.get('fix_function')
-            })
-
-    def check(self, text: str) -> List[Violation]:
-        """Check text against all patterns."""
-        violations = []
-
-        for pattern_def in self.patterns:
-            for match in pattern_def['compiled'].finditer(text):
-                matched_text = match.group(0)
-
-                # Determine fix
-                fix = None
-                if pattern_def['fix_function']:
-                    fix = pattern_def['fix_function'](match)
-                elif pattern_def['fix']:
-                    fix = pattern_def['fix']
-
-                violations.append(self._create_violation(
-                    text=text,
-                    matched_text=matched_text,
-                    start=match.start(),
-                    end=match.end(),
-                    message=pattern_def['message'].format(matched=matched_text, fix=fix or ""),
-                    suggested_fix=fix
-                ))
-
-        return violations
+        caller_name = caller_frame.f_back.f_back.f_code.co_name
+        normalized_name = caller_name[1:] if caller_name.startswith("_") else caller_name
+        return f"{type(self).__name__}.{normalized_name}"

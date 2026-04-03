@@ -3,386 +3,367 @@
 This checker expects text to contain HTML formatting tags:
 - <i>text</i> or <em>text</em> for italics
 - <b>text</b> or <strong>text</strong> for bold
-
-The DOCX-to-JSON conversion should preserve formatting as HTML tags.
 """
 
 import re
-from typing import List, Tuple, Set
+from typing import List, Optional, Set
 
+from ..violation import Violation
 from .base import BaseChecker
-from ..models import Violation, Severity
 
 
 class FormattingChecker(BaseChecker):
-    """Checker for formatting rules (italics for scientific names, et al., etc.)."""
-
-    # Common taxonomic family suffixes (these should NOT be italicized)
-    FAMILY_SUFFIXES = {
-        'aceae',   # Plant families: Rosaceae, Orchidaceae
-        'idae',    # Animal families: Felidae, Canidae
-        'ales',    # Orders: Rosales, Asparagales
-        'ineae',   # Subtribes
-        'inae',    # Subfamilies
-        'eae',     # Tribes
-        'oideae',  # Subfamilies
-    }
-    
-    KNOWN_FAMILIES = {
-        # Major plant families
-        'Orchidaceae', 'Rubiaceae', 'Fabaceae', 'Asteraceae', 'Poaceae',
-        'Rosaceae', 'Euphorbiaceae', 'Lamiaceae', 'Malvaceae', 'Solanaceae',
-        'Brassicaceae', 'Apiaceae', 'Cactaceae', 'Acanthaceae', 'Araceae',
-        
-        # Major animal families
-        'Felidae', 'Canidae', 'Hominidae', 'Bovidae', 'Cervidae',
-        'Accipitridae', 'Columbidae', 'Psittacidae', 'Salamandridae',
-        
-        # Orders
-        'Rosales', 'Fabales', 'Asparagales', 'Lamiales', 'Solanales',
-        'Carnivora', 'Primates', 'Rodentia',
-    }
-
-    # Higher taxonomy ranks that should NOT be italicized
-    HIGHER_RANKS = [
-        'phylum', 'class', 'order', 'family', 'superfamily',
-        'suborder', 'infraorder', 'subclass', 'superorder'
-    ]
+    """Checker for formatting rules such as scientific-name italics."""
 
     def __init__(self):
-        super().__init__(
-            rule_id="formatting_italics",
-            rule_name="Formatting rules (italics)",
-            category="Formatting",
-            severity=Severity.WARNING,
-            assessment_section="Whole Document"
-        )
-        self._html_processor = None
+        super().__init__()
+        self._collected_higher_taxonomy_names: Set[str] = set()
+        self._collected_genus_name: Optional[str] = None
+        self._collected_species_name: Optional[str] = None
 
-    def set_html_processor(self, processor):
-        """Set the HTML processor for checking formatting."""
-        self._html_processor = processor
+    def begin_sweep(self) -> None:
+        """Reset temporary taxonomy names before processing a full report."""
+        self._collected_higher_taxonomy_names.clear()
+        self._collected_genus_name = None
+        self._collected_species_name = None
 
-    def _check_eoo_aoo_capitalization(self, text: str) -> List[Violation]:
-        """Check that EOO/AOO are lowercase when mid-sentence."""
-        violations = []
-    
-        # Terms to check
-        terms = {
-            'Extent of Occurrence': 'extent of occurrence',
-            'Area of Occupancy': 'area of occupancy',
-        }
-    
-        for incorrect, correct in terms.items():
-            # Pattern: Not at start of sentence (after lowercase letter + space)
-            pattern = re.compile(rf'(?<=[a-z]\s){re.escape(incorrect)}\b')
-        
-            for match in pattern.finditer(text):
-                violations.append(self._create_violation(
-                    text=text,
-                    matched_text=match.group(0),
-                    start=match.start(),
-                    end=match.end(),
-                    message=f"Use lowercase mid-sentence: '{correct}' not '{incorrect}'",
-                    suggested_fix=correct
-                ))
-    
-        return violations
+    def end_sweep(self) -> None:
+        """Clear temporary taxonomy names after processing a full report."""
+        self._collected_higher_taxonomy_names.clear()
+        self._collected_genus_name = None
+        self._collected_species_name = None
 
-
-    def check(self, text: str) -> List[Violation]:
+    def check_text(self, section_name: str, text: str) -> List[Violation]:
         """Check for formatting violations."""
         violations = []
-
-        # Check that et al. is italicized
-        violations.extend(self._check_et_al_italics(text))
-
-        # Check that scientific names (binomial) are italicized
-        violations.extend(self._check_scientific_name_italics(text))
-
-        # Check that family/higher taxonomy names are NOT italicized
-        violations.extend(self._check_family_not_italicized(text))
-
-        # Check that spp./sp. after genus are NOT italicized
-        violations.extend(self._check_spp_not_italicized(text))
-        
-        #capitalisation
-        violations.extend(self._check_family_name_capitalization(text))
-
-        #AOO/EOO capitalisation
-        violations.extend(self._check_eoo_aoo_capitalization(text))
-
+        violations.extend(self.check_genus_and_species(section_name, text))
+        violations.extend(self.check_higher_order_taxonomy_formatting(section_name, text))
+        violations.extend(self.check_eoo_aoo_capitalization(section_name, text))
         return violations
 
-    def _check_et_al_italics(self, text: str) -> List[Violation]:
-        """Check that 'et al.' is italicized."""
-        violations = []
+    def check_eoo_aoo_capitalization(self, section_name: str, text: str) -> List[Violation]:
+        """Check capitalization of spelled-out EOO/AOO phrases.
 
-        # Find all occurrences of "et al." not inside italic tags
-        # First, find all et al. that ARE in italics (to exclude them)
-        italicized_etal = set()
-        italic_pattern = re.compile(r'<(?:i|em)>(.*?)</(?:i|em)>', re.IGNORECASE | re.DOTALL)
-        for match in italic_pattern.finditer(text):
-            content = match.group(1)
-            if 'et al' in content.lower():
-                # This et al. is properly italicized
-                italicized_etal.add(match.start())
+        This method strips simple inline style tags first:
+        ``<i>``, ``<em>``, ``<b>``, ``<strong>``, ``<sup>``, and ``<sub>``.
 
-        # Now find all et al. occurrences
-        etal_pattern = re.compile(r'\bet\s+al\.?\b', re.IGNORECASE)
-        for match in etal_pattern.finditer(text):
-            # Check if this position is inside an italic tag
-            is_italicized = self._is_inside_italic(text, match.start(), match.end())
-            if not is_italicized:
-                violations.append(self._create_violation(
-                    text=text,
-                    matched_text=match.group(0),
-                    start=match.start(),
-                    end=match.end(),
-                    message="'et al.' should be italicized: <i>et al.</i>",
-                    suggested_fix=f"<i>{match.group(0)}</i>"
-                ))
+        This method checks the full phrases:
+        - ``extent of occurrence``
+        - ``area of occupancy``
 
-        return violations
+        It treats the fully lowercase form as the default correct form and
+        flags capitalized or partially capitalized variants such as:
+        - ``Extent of Occurrence``
+        - ``Area of Occupancy``
+        - ``Extent of occurrence``
+        - ``Area of occupancy``
+        - ``extent of Occurrence``
 
-    def _check_scientific_name_italics(self, text: str) -> List[Violation]:
-        """Check that scientific names (Genus species) are italicized.
+        It can catch these forms:
+        - mid-sentence, for example ``the Extent of Occurrence was revised``
+        - after punctuation such as ``(``, `:` and `,`
+        - at the start of a text block
+        - after ``?`` and ``!``
 
-        This is conservative to avoid false positives - it only flags patterns
-        that strongly look like scientific names.
+        There is one explicit exception:
+        if the phrase is written with only the first word capitalized and is
+        at the start of a paragraph or immediately preceded by ``. ``, ``? ``,
+        or ``: ``, it is treated as an allowed sentence start.
+        Examples allowed:
+        - ``Extent of occurrence remained restricted.``
+        - ``This was revised. Extent of occurrence remained restricted.``
+        - ``Was this revised? Extent of occurrence was updated.``
+        - ``Summary: Area of occupancy was recalculated.``
+        - ``That was updated. Area of occupancy stayed small.``
+
+        Examples still flagged:
+        - ``The Extent of occurrence was revised.``
+        - ``Summary, Area of occupancy was recalculated.``
+        - ``(Extent of occurrence) was revised.``
+
+        Examples not checked:
+        - ``EOO`` and ``AOO`` abbreviations
+        - misspelled forms such as ``extent of occurence``
+        - reworded phrases such as ``occupied area``
         """
         violations = []
+        cleaned_text, index_map = self.strip_style_markers(
+            text,
+            italics=True,
+            bold=True,
+            superscript=True,
+            subscript=True,
+        )
+        terms = (
+            'extent of occurrence',
+            'area of occupancy',
+        )
 
-        # Pattern for binomial names: Capitalized word + lowercase word
-        # e.g., "Panthera leo", "Quercus robur"
-        binomial_pattern = re.compile(r'\b([A-Z][a-z]+)\s+([a-z]{2,})\b')
+        def is_allowed_sentence_start(index: int) -> bool:
+            if index == 0:
+                return True
+            if index >= 2 and cleaned_text[index - 2:index] in {'. ', '? ', ': '}:
+                return True
+            return False
 
-        # Common English words that start sentences or phrases (skip these as genus)
-        common_first_words = {
-            'The', 'This', 'That', 'These', 'Those', 'Some', 'Many', 'Most',
-            'Each', 'Every', 'Which', 'What', 'Where', 'When', 'While', 'While',
-            'Although', 'Because', 'Since', 'After', 'Before', 'During', 'Until',
-            'According', 'Based', 'Given', 'However', 'Therefore', 'Furthermore',
-            'Moreover', 'Nevertheless', 'Consequently', 'Additionally', 'Finally',
-            'Recent', 'Current', 'Previous', 'Several', 'Various', 'Different',
-            'Similar', 'Other', 'Another', 'Such', 'Only', 'Both', 'Either',
-            'Neither', 'All', 'Any', 'No', 'Not', 'But', 'And', 'Or', 'For',
-            'With', 'From', 'Into', 'Over', 'Under', 'About', 'Between', 'Among',
-            'Through', 'Within', 'Without', 'Along', 'Across', 'Around', 'Against',
-            'Studies', 'Research', 'Data', 'Results', 'Analysis', 'Evidence',
-            'Population', 'Species', 'Habitat', 'Range', 'Distribution', 'Status',
-            'Conservation', 'Threat', 'Decline', 'Increase', 'Change', 'Loss',
-            'Smith', 'Jones', 'Brown', 'Wilson', 'Johnson', 'Williams', 'Taylor',
-            'January', 'February', 'March', 'April', 'May', 'June',
-            'July', 'August', 'September', 'October', 'November', 'December',
-            'Very', 'More', 'Less', 'Blue', 'Red', 'Green', 'Black', 'White',
-            'Past', 'Present', 'Future', 'Long', 'Short', 'High', 'Low',
-            'Large', 'Small', 'Good', 'Bad', 'New', 'Old', 'First', 'Last',
-            'Whole', 'Part', 'Full', 'Empty', 'Wild', 'Domestic', 'Native',
-            'Foreign', 'Local', 'Global', 'National', 'International', 'Regional',
-            'Continued', 'Continuing', 'Systematic', 'Area', 'Invasive', 'Harvest',
-            'Successfully', 'Genome', 'List', 'Endemic', 'Forest', 'Overwinter',
-            'Biological', 'Intentional', 'Named', 'Shifting', 'Republic', 'Please',
-            'Use', 'Geographic', 'Date', 'Map', 'Further', 'Extreme', 'Severely',
-            'Australian', 'Maestra', 'Satellite', 'Jamaican', 'Park', 'High',
-            'Targeted', 'Portland', 'Granma', 'Estimated', 'Lower', 'Mountain',
-            'Is', 'Are', 'Was', 'Were', 'Has', 'Have', 'Had',
-            'Santiago', 'Saint', 'Sierra', 'Monte',  # Place names
-            'Blue', 'Green', 'Red', 'White', 'Black',  # Colors often in place names
-        }
+        for correct in terms:
+            phrase_pattern = re.escape(correct).replace(r'\ ', r'\s+')
+            pattern = re.compile(rf'\b{phrase_pattern}\b', re.IGNORECASE)
+            for match in pattern.finditer(cleaned_text):
+                matched_phrase = match.group(0)
+                normalized_phrase = ' '.join(matched_phrase.split())
+                sentence_start_phrase = correct.capitalize()
 
-        # Common English second words (skip these as species epithet)
-        common_second_words = {
-            'the', 'to', 'of', 'in', 'on', 'at', 'by', 'for', 'with', 'from',
-            'as', 'is', 'are', 'was', 'were', 'be', 'been', 'being', 'have',
-            'has', 'had', 'do', 'does', 'did', 'will', 'would', 'could', 'should',
-            'may', 'might', 'must', 'shall', 'can', 'cannot', 'could', 'need',
-            'that', 'which', 'who', 'whom', 'whose', 'what', 'where', 'when',
-            'how', 'why', 'if', 'then', 'than', 'because', 'although', 'while',
-            'and', 'or', 'but', 'nor', 'so', 'yet', 'both', 'either', 'neither',
-            'not', 'no', 'yes', 'only', 'also', 'just', 'even', 'still', 'already',
-            'et', 'al', 'etal',  # Skip "et al" patterns
-            'studies', 'shows', 'found', 'reported', 'suggests', 'indicates',
-            'between', 'among', 'within', 'across', 'along', 'through', 'under',
-            'restricted', 'available', 'map', 'state', 'range', 'restriction',
-            'created', 'fluctuations', 'fragmented', 'decline', 'mountains',
-            'imagery', 'relative', 'detail', 'harvest', 'road', 'clearance',
-            'tree', 'term', 'mountain', 'due', 'agriculture', 'resource',
-            'use', 'species', 'based', 'plan', 'control', 'management',
-            'reintroduced', 'monitoring', 'change', 'rates', 'establishment',
-            'montane', 'factsheet', 'status', 'threat', 'paper',
-            'surveys', 'parishes', 'provinces', 'area', 'extent', 'estimate',
-            'subpopulation', 'there', 'here',
-        }
-
-        #checking if word looks like it could be latin
-        def looks_like_latin(word):
-            """Simple heuristic: Latin words often have certain endings."""
-            latin_endings = ('us', 'a', 'um', 'is', 'e', 'ensis', 'oides', 'ella', 'ina', 'ana')
-            return word.lower().endswith(latin_endings) and len(word) >= 4
-
-        for match in binomial_pattern.finditer(text):
-            genus = match.group(1)
-            species = match.group(2)
-            full_name = match.group(0)
-
-            # Skip common English patterns
-            if genus in common_first_words:
-                continue
-            if species in common_second_words:
-                continue
-
-            # Skip if genus ends with family suffix
-            if any(genus.lower().endswith(suffix) for suffix in self.FAMILY_SUFFIXES):
-                continue
-
-            # Skip very short species epithets (likely not Latin)
-            if len(species) < 4:
-                continue
-
-            # Additional check: at least one word should look Latin-ish
-            if not (looks_like_latin(genus) or looks_like_latin(species)):
-                # If neither looks Latin, be more cautious
-                # Only flag if both are uncommon words (not in any common word list)
-                if genus.lower() in [w.lower() for w in common_first_words]:
+                if normalized_phrase == correct:
                     continue
-                if species.lower() in common_second_words:
+                if normalized_phrase == sentence_start_phrase and is_allowed_sentence_start(match.start()):
                     continue
 
-            # Check if already italicized
-            if not self._is_inside_italic(text, match.start(), match.end()):
-                # This looks like an un-italicized scientific name
-                violations.append(self._create_violation(
+                original_start = index_map[match.start()]
+                original_end = index_map[match.end() - 1] + 1
+                violations.append(self.create_violation(
+                    section_name=section_name,
                     text=text,
-                    matched_text=full_name,
-                    start=match.start(),
-                    end=match.end(),
-                    message=f"Scientific name should be italicized: <i>{full_name}</i>",
-                    suggested_fix=f"<i>{full_name}</i>"
+                    span=(original_start, original_end),
+                    message=f"Use lowercase: '{correct}' not '{matched_phrase}'",
+                    suggested_fix=correct,
                 ))
 
         return violations
 
-    def _check_family_not_italicized(self, text: str) -> List[Violation]:
-        """Check that family/order/class names are NOT italicized."""
+    def check_higher_order_taxonomy_formatting(self, section_name: str, text: str) -> List[Violation]:
+        """Check harvested higher-order taxonomy names for capitalization/italics.
+
+        This method strips non-italic inline style tags first:
+        ``<b>``, ``<strong>``, ``<sup>``, and ``<sub>``.
+        It preserves ``<i>`` / ``<em>`` because italicization is part of the
+        rule being checked.
+
+        During a full-report sweep, this method first looks for taxonomy-ladder
+        entries such as:
+        ``PLANTAE - TRACHEOPHYTA - MAGNOLIOPSIDA - FABALES - FABACEAE - Acrocarpus - fraxinifolius``.
+        When it finds one, it does not report violations for that value.
+        Instead, it harvests the all-uppercase higher-order taxonomy names,
+        normalizes them to title case (for example ``FABACEAE`` -> ``Fabaceae``),
+        stores them temporarily, and uses them while checking the remaining
+        sections in the same sweep. The temporary list is cleared when the
+        sweep ends.
+
+        It then checks two things at once for those harvested names:
+        - whether the name starts with a capital letter
+        - whether the name is free of surrounding ``<i>...</i>`` or
+          ``<em>...</em>`` markup
+
+        Examples flagged:
+        - after harvesting taxonomy names from a ladder entry:
+          ``plantae`` -> suggests ``Plantae``
+        - after harvesting taxonomy names from a ladder entry:
+          ``<i>Magnoliopsida</i>`` -> suggests ``Magnoliopsida``
+        - after harvesting taxonomy names from a ladder entry:
+          ``<i>Fabaceae</i>`` -> suggests ``Fabaceae``
+
+        Examples not flagged:
+        - the taxonomy ladder entry that supplied the harvested names
+        - harvested names already written in correct title case without italics
+        - ``orchidaceae`` or ``Felidae`` before any ladder harvest
+        - non-harvested taxonomy-like words, because this method no longer
+          infers names from suffixes alone
+        """
+        cleaned_text, index_map = self.strip_style_markers(
+            text,
+            italics=False,
+            bold=True,
+            superscript=True,
+            subscript=True,
+        )
+
+        if self.collect_taxonomy_names_from_ladder(cleaned_text):
+            return []
+
         violations = []
+        seen_matches = set()
 
-        # Find italicized text
-        italic_pattern = re.compile(r'<(?:i|em)>(.*?)</(?:i|em)>', re.IGNORECASE | re.DOTALL)
-
-        for match in italic_pattern.finditer(text):
-            content = match.group(1).strip()
-
-            # Check if content looks like a family/order name
-            for suffix in self.FAMILY_SUFFIXES:
-                if content.lower().endswith(suffix) and content[0].isupper():
-                    # This looks like a family name that shouldn't be italicized
-                    violations.append(self._create_violation(
-                        text=text,
-                        matched_text=match.group(0),
-                        start=match.start(),
-                        end=match.end(),
-                        message=f"Family/order names should not be italicized: {content}",
-                        suggested_fix=content
-                    ))
-                    break
+        for proper_name in sorted(self._collected_higher_taxonomy_names, key=len, reverse=True):
+            for cleaned_span, message, suggested_fix in self.find_taxonomy_name_violations(cleaned_text, proper_name):
+                original_span = (
+                    index_map[cleaned_span[0]],
+                    index_map[cleaned_span[1] - 1] + 1,
+                )
+                match_key = (original_span, suggested_fix)
+                if match_key in seen_matches:
+                    continue
+                seen_matches.add(match_key)
+                violations.append(self.create_violation(
+                    section_name=section_name,
+                    text=text,
+                    span=original_span,
+                    message=message,
+                    suggested_fix=suggested_fix,
+                ))
 
         return violations
-    
-    def _check_family_name_capitalization(self, text: str) -> List[Violation]:
-        """Check that family/higher taxonomy names are properly capitalized."""
+
+    def check_genus_and_species(self, section_name: str, text: str) -> List[Violation]:
+        """Check harvested genus/species names for italics and casing.
+
+        This method strips non-italic inline style tags first:
+        ``<b>``, ``<strong>``, ``<sup>``, and ``<sub>``.
+        It preserves ``<i>`` / ``<em>`` because italicization is part of the
+        rule being checked.
+
+        During a full-report sweep, this method looks for taxonomy-ladder
+        entries such as:
+        ``PLANTAE - TRACHEOPHYTA - MAGNOLIOPSIDA - FABALES - FABACEAE - Acrocarpus - fraxinifolius``.
+        From that ladder, it harvests:
+        - the second-to-last segment as the genus
+        - the last segment as the species
+
+        The ladder entry itself is not checked for violations by this method.
+        Instead, the harvested genus and species are stored temporarily and
+        checked against the remaining sections in the same sweep.
+
+        The applied rules are:
+        - occurrences of the genus must be italicized
+        - occurrences of the species must be italicized
+        - the genus must start with a capital letter
+        - the species must start with a lowercase letter
+
+        Examples flagged after harvesting ``Acrocarpus`` / ``fraxinifolius``:
+        - ``Acrocarpus`` -> suggests ``<i>Acrocarpus</i>``
+        - ``acrocarpus`` -> suggests ``<i>Acrocarpus</i>``
+        - ``fraxinifolius`` -> suggests ``<i>fraxinifolius</i>``
+        - ``Fraxinifolius`` -> suggests ``<i>fraxinifolius</i>``
+        - ``<i>Fraxinifolius</i>`` -> suggests ``<i>fraxinifolius</i>``
+
+        Examples not flagged:
+        - the taxonomy ladder entry that provided the genus/species names
+        - ``<i>Acrocarpus</i>``
+        - ``<i>fraxinifolius</i>``
+        - names before any taxonomy ladder has been harvested in the current sweep
+        """
+        cleaned_text, index_map = self.strip_style_markers(
+            text,
+            italics=False,
+            bold=True,
+            superscript=True,
+            subscript=True,
+        )
+
+        if self.collect_taxonomy_names_from_ladder(cleaned_text):
+            return []
+
         violations = []
+        name_rules = (
+            (self._collected_genus_name, True),
+            (self._collected_species_name, False),
+        )
 
-        # Pattern: find words ending in family suffixes
-        suffix_pattern = '|'.join(re.escape(s) for s in self.FAMILY_SUFFIXES)
-        pattern = rf'\b([a-z][a-z]+)({suffix_pattern})\b'
+        for proper_name, should_be_capitalized in name_rules:
+            if not proper_name:
+                continue
 
-        for match in re.finditer(pattern, text, re.IGNORECASE):
-            full_name = match.group(0)
-            stem = match.group(1)
-            suffix = match.group(2)
-    
-            # Check if it's lowercase (incorrect)
-            if full_name[0].islower():
-                proper_name = stem.capitalize() + suffix
-            
-                # Only flag if it's a known family or clearly looks like one
-                if proper_name in self.KNOWN_FAMILIES or len(stem) >= 4:
-                    violations.append(self._create_violation(
-                        text=text,
-                        matched_text=full_name,
-                        start=match.start(),
-                        end=match.end(),
-                        message=f"Family/taxonomy names should be capitalized: '{proper_name}'",
-                        suggested_fix=proper_name
-                    ))
+            name_pattern = re.escape(proper_name).replace(r'\ ', r'\s+')
+            pattern = re.compile(
+                rf'(?P<markup><(?:i|em)>)?(?P<name>\b{name_pattern}\b)(?(markup)</(?:i|em)>)',
+                re.IGNORECASE,
+            )
 
-        # Check for italicized family names (should NOT be italicized)
-        italic_pattern = rf'<(?:i|em)>([A-Z][a-z]+(?:{suffix_pattern}))</(?:i|em)>'
+            for match in pattern.finditer(cleaned_text):
+                matched_name = match.group('name')
+                normalized_name = (
+                    proper_name if should_be_capitalized else proper_name.lower()
+                )
+                is_italicized = (
+                    match.group('markup') is not None
+                    or self.is_inside_italic(cleaned_text, match.start(), match.end())
+                )
+                has_expected_case = matched_name == normalized_name
 
-        for match in re.finditer(italic_pattern, text):
-            family_name = match.group(1)
-    
-            violations.append(self._create_violation(
-                text=text,
-                matched_text=match.group(0),
-                start=match.start(),
-                end=match.end(),
-                message=f"Family names should NOT be italicized: '{family_name}'",
-                suggested_fix=family_name
-            ))
+                if is_italicized and has_expected_case:
+                    continue
+
+                message = (
+                    f"Scientific names should be italicized and use correct case: "
+                    f"'<i>{normalized_name}</i>'"
+                )
+                original_span = (
+                    index_map[match.start()],
+                    index_map[match.end() - 1] + 1,
+                )
+                violations.append(self.create_violation(
+                    section_name=section_name,
+                    text=text,
+                    span=original_span,
+                    message=message,
+                    suggested_fix=f"<i>{normalized_name}</i>",
+                ))
 
         return violations
-    
-    def _check_spp_not_italicized(self, text: str) -> List[Violation]:
-        """Check that spp./sp. after genus are NOT italicized (only genus is)."""
-        violations = []
 
-        # Pattern: <i>Genus spp.</i> or <i>Genus sp.</i>
-        # The spp./sp. should be outside the italic tags
-        pattern = re.compile(r'<(?:i|em)>([A-Z][a-z]+)\s+(spp?\.?)</(?:i|em)>', re.IGNORECASE)
+    def collect_taxonomy_names_from_ladder(self, text: str) -> bool:
+        """Harvest higher taxonomy names plus genus/species from a ladder entry."""
+        segments = [segment.strip() for segment in text.split(' - ') if segment.strip()]
+        if len(segments) < 6:
+            return False
+
+        uppercase_segments = [
+            segment for segment in segments
+            if re.fullmatch(r'[A-Z][A-Z]+', segment)
+        ]
+        if len(uppercase_segments) < 4:
+            return False
+
+        genus_segment = segments[-2]
+        species_segment = segments[-1]
+        if not re.fullmatch(r'[A-Za-z][A-Za-z-]*', genus_segment):
+            return False
+        if not re.fullmatch(r'[A-Za-z][A-Za-z-]*', species_segment):
+            return False
+
+        for segment in uppercase_segments:
+            self._collected_higher_taxonomy_names.add(segment.title())
+        self._collected_genus_name = genus_segment.capitalize()
+        self._collected_species_name = species_segment.lower()
+        return True
+
+    def find_taxonomy_name_violations(self, text: str, proper_name: str) -> List[tuple]:
+        """Return violations for a harvested higher-order taxonomy name."""
+        violations = []
+        name_pattern = re.escape(proper_name).replace(r'\ ', r'\s+')
+        pattern = re.compile(
+            rf'(?P<markup><(?:i|em)>)?(?P<name>\b{name_pattern}\b)(?(markup)</(?:i|em)>)',
+            re.IGNORECASE,
+        )
 
         for match in pattern.finditer(text):
-            genus = match.group(1)
-            spp = match.group(2)
-            violations.append(self._create_violation(
-                text=text,
-                matched_text=match.group(0),
-                start=match.start(),
-                end=match.end(),
-                message=f"'{spp}' should not be italicized; only the genus: <i>{genus}</i> {spp}",
-                suggested_fix=f"<i>{genus}</i> {spp}"
+            matched_name = match.group('name')
+            is_italicized = match.group('markup') is not None
+            if matched_name == proper_name and not is_italicized:
+                continue
+
+            violations.append((
+                match.span(),
+                f"Family/taxonomy names should be capitalized and not italicized: '{proper_name}'",
+                proper_name,
             ))
 
         return violations
-
-    def _is_inside_italic(self, text: str, start: int, end: int) -> bool:
+    def is_inside_italic(self, text: str, start: int, end: int) -> bool:
         """Check if a position is inside italic tags."""
-
-        # Use HTML processor if available
-        if self._html_processor:
-            return self._html_processor.is_italicized(start, end)
-
-        # Look backwards for opening tag
         before = text[:start]
         after = text[end:]
 
-        # Find the last opening italic tag before this position
         open_i = before.rfind('<i>')
         open_em = before.rfind('<em>')
         last_open = max(open_i, open_em)
-
         if last_open == -1:
             return False
 
-        # Find the closing tag after the opening
         close_i = before.rfind('</i>')
         close_em = before.rfind('</em>')
         last_close = max(close_i, close_em)
 
-        # If the last opening is after the last closing, we're inside italic
         if last_open > last_close:
-            # Verify there's a closing tag after our position
             close_after_i = after.find('</i>')
             close_after_em = after.find('</em>')
             if close_after_i != -1 or close_after_em != -1:
