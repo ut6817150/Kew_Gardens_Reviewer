@@ -16,6 +16,7 @@ try:
     from .checkers.references import ReferenceChecker
     from .checkers.scientific import ScientificNameChecker
     from .checkers.spelling import SpellingChecker
+    from .checkers.symbols import SymbolChecker
     from .violation import Violation
 except ImportError:  # pragma: no cover - direct script execution fallback
     from checkers.abbreviations import AbbreviationChecker
@@ -30,6 +31,7 @@ except ImportError:  # pragma: no cover - direct script execution fallback
     from checkers.references import ReferenceChecker
     from checkers.scientific import ScientificNameChecker
     from checkers.spelling import SpellingChecker
+    from checkers.symbols import SymbolChecker
     from violation import Violation
 
 
@@ -49,6 +51,7 @@ class IUCNAssessmentReviewer:
             ReferenceChecker(),
             ScientificNameChecker(),
             SpellingChecker(),
+            SymbolChecker(),
         ]
 
     def is_table_section(self, section_name: str) -> bool:

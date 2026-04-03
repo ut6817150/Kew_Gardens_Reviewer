@@ -15,7 +15,7 @@ The package currently has three main responsibilities:
 - `violation.py`
   Defines the `Violation` dataclass used as the shared output format.
 
-The checker implementations live in `checkers/`, and their regression tests live in `tests/`.
+The checker implementations live in `checkers/`, and their regression tests live in `unittests/`.
 
 ## Requirements
 
@@ -126,6 +126,7 @@ Normal non-bibliography sections are checked by `self.checkers`:
 - `ReferenceChecker`
 - `ScientificNameChecker`
 - `SpellingChecker`
+- `SymbolChecker`
 
 Bibliography sections are routed to `self.bibliography_checker` only:
 
@@ -140,7 +141,6 @@ Current `BibliographyChecker` behavior combines:
 
 Not included in the normal reviewer flow:
 
-- `SymbolChecker`
 - `LanguageChecker`
 
 Example:
@@ -263,26 +263,26 @@ Checker modules currently present in `checkers/`:
 
 See `checkers/README.md` for the method-by-method rule documentation.
 
-## Tests
+## Unit Tests
 
-The regression suite uses the standard library `unittest` runner.
+The unit test suite uses the standard library `unittest` runner.
 
 Tests are designed to be run from the repository root, because they import modules using package paths such as `iucn_rules_checker.assessment_reviewer`.
 
 Run the full suite:
 
 ```bash
-python -m unittest discover -s iucn_rules_checker/tests -p "test_*.py"
+python -m unittest discover -s iucn_rules_checker/unittests -p "test_*.py"
 ```
 
 Run one test module:
 
 ```bash
-python -m unittest iucn_rules_checker.tests.test_assessment_parser
-python -m unittest iucn_rules_checker.tests.test_assessment_reviewer
+python -m unittest iucn_rules_checker.unittests.test_assessment_parser
+python -m unittest iucn_rules_checker.unittests.test_assessment_reviewer
 ```
 
-## Sample Assets
+## Test JSON File
 
 Sample files used for testing and notebook-based inspection now live in `test_json_file/`:
 
@@ -295,6 +295,51 @@ The notebook is used for:
 - parser checks
 - reviewer checks
 - JSON-style printing of parsed output and violations
+
+### Running Your Own JSON File
+
+You can run the parser and reviewer on any assessment JSON file that follows the
+same tree structure expected by `AssessmentParser`.
+
+#### From A Python Script
+
+```python
+import json
+from pathlib import Path
+
+from iucn_rules_checker.assessment_parser import AssessmentParser
+from iucn_rules_checker.assessment_reviewer import IUCNAssessmentReviewer
+
+json_path = Path(r"PATH\\TO\\YOUR\\ASSESSMENT.json")
+
+with json_path.open(encoding="utf-8") as handle:
+    assessment = json.load(handle)
+
+parser = AssessmentParser()
+full_report = parser.parse(assessment)
+
+reviewer = IUCNAssessmentReviewer()
+violations = reviewer.review_full_report(full_report)
+
+for violation in violations:
+    print(violation.to_dict())
+```
+
+#### From The Test Notebook
+
+Open `test_json_file/test.ipynb` and edit the JSON path cell:
+
+- leave `CUSTOM_JSON_PATH = None` to use the bundled sample JSON
+- set `CUSTOM_JSON_PATH` to your own file path to run a different assessment
+
+Example:
+
+```python
+CUSTOM_JSON_PATH = r"G:\\path\\to\\your_assessment.json"
+```
+
+The rest of the notebook will then load that file, parse it, and run the
+reviewer against the resulting `full_report`.
 
 ## Project Structure
 
@@ -318,7 +363,7 @@ iucn_rules_checker/
 |- test_json_file/
 |  |- Acianthera odontotepala_draft_status_Jun2025 (1).json
 |  `- test.ipynb
-|- tests/
+|- unittests/
 |  |- test_abbreviations.py
 |  |- test_bibliography.py
 |  |- test_assessment_parser.py
@@ -348,7 +393,7 @@ iucn_rules_checker/
 1. Open the relevant checker module under `checkers/`.
 2. Add the logic inside `check_text(...)` or a helper method it calls.
 3. Create violations with `self.create_violation(...)`.
-4. Add regression coverage in the matching file under `tests/`.
+4. Add regression coverage in the matching file under `unittests/`.
 
 Example:
 
@@ -370,7 +415,7 @@ violations.append(
 2. Implement `check_text(...)`.
 3. Wire it into `IUCNAssessmentReviewer.__init__`:
    add it to `self.checkers` for normal sections, or compose it into `self.bibliography_checker` if it should only run on bibliography content.
-4. Add tests under `tests/`.
+4. Add tests under `unittests/`.
 
 Minimal skeleton:
 

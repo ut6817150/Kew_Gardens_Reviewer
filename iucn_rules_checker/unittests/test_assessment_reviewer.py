@@ -8,7 +8,7 @@ from iucn_rules_checker.assessment_reviewer import IUCNAssessmentReviewer
 class AssessmentReviewerTests(unittest.TestCase):
     """Check which checker classes the reviewer wires in."""
 
-    def test_reviewer_includes_all_checkers_except_symbols(self) -> None:
+    def test_reviewer_includes_all_checkers_except_language(self) -> None:
         reviewer = IUCNAssessmentReviewer()
         configured_checkers = [type(checker).__name__ for checker in reviewer.checkers]
 
@@ -25,10 +25,10 @@ class AssessmentReviewerTests(unittest.TestCase):
                 "ReferenceChecker",
                 "ScientificNameChecker",
                 "SpellingChecker",
+                "SymbolChecker",
             ],
         )
         self.assertEqual(type(reviewer.bibliography_checker).__name__, "BibliographyChecker")
-        self.assertNotIn("SymbolChecker", configured_checkers)
         self.assertNotIn("LanguageChecker", configured_checkers)
         self.assertFalse(hasattr(reviewer, "assessment_parser"))
         self.assertFalse(hasattr(reviewer, "review_assessment"))

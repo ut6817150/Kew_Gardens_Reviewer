@@ -908,8 +908,9 @@ Aggregated misses for `SpellingChecker`:
 Category: `Symbols`
 
 Current default reviewer:
-not included in `IUCNAssessmentReviewer`, but the checker still exists and can
-be run directly.
+included in the standard non-bibliography `IUCNAssessmentReviewer` flow.
+Bibliography sections still do not use `SymbolChecker`, because those sections
+are routed to `BibliographyChecker` only.
 
 Aggregated method list:
 - `check_area_units(...)`
