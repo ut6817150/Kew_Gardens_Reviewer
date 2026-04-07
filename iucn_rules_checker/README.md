@@ -61,11 +61,11 @@ Current parser behavior:
   - `Title [paragraph 1]`
   - `Title > Section > Subsection [paragraph 2]`
   - `Title > Section [table 1] [row 3]`
-- prefers `text_rich` over `text` for paragraph blocks
-- prefers `rows_rich` over `rows` for table blocks
+- uses `text_rich` only for paragraph blocks
+- uses `rows_rich` only for table blocks
 - emits one output entry per table row, not one per table
-- preserves Unicode characters as-is
-- applies style blocks to entries already collected in the same node
+- preserves Unicode characters and normalizes non-breaking spaces to regular spaces
+- ignores `style` blocks entirely
 
 Parser input:
 
@@ -85,7 +85,7 @@ from pathlib import Path
 
 from iucn_rules_checker.assessment_parser import AssessmentParser
 
-json_path = Path("iucn_rules_checker/test_json_file/Acianthera odontotepala_draft_status_Jun2025 (1).json")
+json_path = Path("iucn_rules_checker/test_json_file/Myrcia neosmithii_draft_status_Apr2022_v2_parse_dict (1).json")
 
 with json_path.open(encoding="utf-8") as handle:
     assessment = json.load(handle)
@@ -153,7 +153,7 @@ from pathlib import Path
 from iucn_rules_checker.assessment_parser import AssessmentParser
 from iucn_rules_checker.assessment_reviewer import IUCNAssessmentReviewer
 
-json_path = Path("iucn_rules_checker/test_json_file/Acianthera odontotepala_draft_status_Jun2025 (1).json")
+json_path = Path("iucn_rules_checker/test_json_file/Myrcia neosmithii_draft_status_Apr2022_v2_parse_dict (1).json")
 
 with json_path.open(encoding="utf-8") as handle:
     assessment = json.load(handle)
@@ -287,7 +287,7 @@ python -m unittest iucn_rules_checker.unittests.test_assessment_reviewer
 
 Sample files used for testing and notebook-based inspection now live in `test_json_file/`:
 
-- `test_json_file/Acianthera odontotepala_draft_status_Jun2025 (1).json`
+- `test_json_file/Myrcia neosmithii_draft_status_Apr2022_v2_parse_dict (1).json`
 - `test_json_file/test.ipynb`
 
 The notebook is used for:
@@ -330,7 +330,7 @@ for violation in violations:
 
 Open `test_json_file/test.ipynb` and edit the JSON path cell:
 
-- leave `CUSTOM_JSON_PATH = None` to use the bundled sample JSON
+- leave `CUSTOM_JSON_PATH = None` to use the bundled `Myrcia neosmithii...` sample JSON
 - set `CUSTOM_JSON_PATH` to your own file path to run a different assessment
 
 Example:
@@ -362,7 +362,7 @@ iucn_rules_checker/
 |  |- spelling.py
 |  `- symbols.py
 |- test_json_file/
-|  |- Acianthera odontotepala_draft_status_Jun2025 (1).json
+|  |- Myrcia neosmithii_draft_status_Apr2022_v2_parse_dict (1).json
 |  `- test.ipynb
 |- unittests/
 |  |- test_abbreviations.py

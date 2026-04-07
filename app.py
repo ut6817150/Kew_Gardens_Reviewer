@@ -9,7 +9,7 @@ import streamlit as st
 
 from iucn_rules_checker.assessment_parser import AssessmentParser
 from iucn_rules_checker.assessment_reviewer import IUCNAssessmentReviewer
-from preprocessing.assessment_processor import parse_docx_to_dict
+from preprocessing.assessment_processor import parse_dict
 
 
 st.set_page_config(page_title="IUCN Assessment Feedback Tool", layout="wide")
@@ -97,7 +97,7 @@ with rules_tab:
         disabled=not input_ready,
     ):
         with st.spinner("Generating rules-based feedback..."):
-            assessment = parse_docx_to_dict(str(tmp_path))
+            assessment = parse_dict(str(tmp_path))
             parser = AssessmentParser()
             reviewer = IUCNAssessmentReviewer()
             full_report = parser.parse(assessment)
@@ -128,6 +128,8 @@ with rules_tab:
                     ordered_grouped_violations[section_name] = rows
 
             st.session_state["rules_feedback"] = {
+                "assessment": assessment,
+                "full_report": full_report,
                 "violations": violations,
                 "grouped_violations": ordered_grouped_violations,
             }
@@ -136,8 +138,26 @@ with rules_tab:
         st.info("Click `Generate feedback` in this tab to run the rules-based reviewer.")
     else:
         feedback = st.session_state["rules_feedback"]
+        assessment = feedback["assessment"]
+        full_report = feedback["full_report"]
         violations = feedback["violations"]
         grouped_violations = feedback["grouped_violations"]
+
+        download_col_1, download_col_2 = st.columns(2)
+        with download_col_1:
+            st.download_button(
+                label="Download parse_dict output",
+                data=json.dumps(assessment, indent=2, ensure_ascii=False).encode("utf-8"),
+                file_name=f"{Path(uploaded_name).stem}_parse_dict.json",
+                mime="application/json",
+            )
+        with download_col_2:
+            st.download_button(
+                label="Download assessment parser output",
+                data=json.dumps(full_report, indent=2, ensure_ascii=False).encode("utf-8"),
+                file_name=f"{Path(uploaded_name).stem}_assessment_parser.json",
+                mime="application/json",
+            )
 
         if not violations:
             st.success("No rules-based violations were found for this document.")
@@ -191,7 +211,7 @@ with llm_tab:
         disabled=not input_ready,
     ):
         with st.spinner("Generating LLM feedback..."):
-            assessment = parse_docx_to_dict(str(tmp_path))
+            assessment = parse_dict(str(tmp_path))
             st.session_state["llm_feedback"] = {
                 "status": "placeholder",
                 "message": (

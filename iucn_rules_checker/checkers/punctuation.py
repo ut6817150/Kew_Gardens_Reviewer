@@ -183,7 +183,12 @@ class PunctuationChecker(BaseChecker):
             original_start = index_map[start]
             original_end = index_map[end - 1] + 1
 
-            if start == 0 or cleaned_text[start - 1] in ".!?":
+            if (
+                start == 0
+                or cleaned_text[:start].endswith(". ")
+                or cleaned_text[:start].endswith("! ")
+                or cleaned_text[:start].endswith("? ")
+            ):
                 continue
 
             if not before.strip().endswith(","):

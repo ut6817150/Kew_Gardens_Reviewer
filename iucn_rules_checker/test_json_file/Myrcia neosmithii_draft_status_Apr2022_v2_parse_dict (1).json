@@ -1,0 +1,1115 @@
+{
+  "title": "Myrcia neosmithii_draft_status_Apr2022_v2",
+  "level": 0,
+  "path": [],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "Draft",
+      "text_rich": "<b>Draft</b>"
+    },
+    {
+      "type": "paragraph",
+      "text": "Myrcia neosmithii - K.Campbell & K.Samra",
+      "text_rich": "<b><i>Myrcia neosmithii</i></b><b> - K.Campbell & K.Samra</b>"
+    },
+    {
+      "type": "paragraph",
+      "text": "PLANTAE - TRACHEOPHYTA - MAGNOLIOPSIDA - MYRTALES - MYRTACEAE - Myrcia - neosmithii",
+      "text_rich": "PLANTAE - TRACHEOPHYTA - MAGNOLIOPSIDA - MYRTALES - MYRTACEAE - Myrcia - neosmithii"
+    },
+    {
+      "type": "paragraph",
+      "text": "Common Names: No Common Names\nSynonyms: Calyptranthes smithii McVaugh",
+      "text_rich": "<b>Common Names: </b>No Common Names\n<b>Synonyms: </b>Calyptranthes smithii McVaugh"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Red List Status"
+        ],
+        [
+          "VU - Vulnerable, D2 (IUCN version 3.1)"
+        ]
+      ],
+      "rows_rich": [
+        [
+          "<b>Red List Status</b>"
+        ],
+        [
+          "VU - Vulnerable, D2 (IUCN version 3.1)"
+        ]
+      ]
+    },
+    {
+      "type": "style",
+      "data": {
+        "bold": [
+          "Draft",
+          "Myrcia neosmithii",
+          "- K.Campbell & K.Samra",
+          "Common Names:",
+          "Synonyms:"
+        ],
+        "italic": [
+          "Myrcia neosmithii"
+        ]
+      }
+    }
+  ],
+  "children": [
+    {
+      "title": "Red List Assessment",
+      "level": 1,
+      "path": [
+        "Red List Assessment"
+      ],
+      "blocks": [],
+      "children": [
+        {
+          "title": "Assessment Information",
+          "level": 2,
+          "path": [
+            "Red List Assessment",
+            "Assessment Information"
+          ],
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Date of Assessment: 2021-06-29",
+              "text_rich": "<b>Date of Assessment: </b>2021-06-29"
+            },
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Reviewed?",
+                  "Date of Review:",
+                  "Status:",
+                  "Reasons for Rejection:",
+                  "Improvements Needed:"
+                ],
+                [
+                  "true",
+                  "2021-08-17",
+                  "Passed",
+                  "-",
+                  "-"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "<b>Reviewed?</b>",
+                  "<b>Date of Review:</b>",
+                  "<b>Status:</b>",
+                  "<b>Reasons for Rejection:</b>",
+                  "<b>Improvements Needed:</b>"
+                ],
+                [
+                  "true",
+                  "2021-08-17",
+                  "Passed",
+                  "-",
+                  "-"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "text": "Assessor(s): Grice, H., Lucas, E. & Burton, G.",
+              "text_rich": "<b>Assessor(s): </b>Grice, H., Lucas, E. & Burton, G."
+            },
+            {
+              "type": "paragraph",
+              "text": "Reviewer(s): Clarke, H.D.",
+              "text_rich": "<b>Reviewer(s): </b>Clarke, H.D."
+            },
+            {
+              "type": "paragraph",
+              "text": "Facilitators/Compilers: Plummer, J.",
+              "text_rich": "<b>Facilitators/Compilers: </b>Plummer, J."
+            },
+            {
+              "type": "paragraph",
+              "text": "Institution(s): Royal Botanic Gardens, Kew",
+              "text_rich": "<b>Institution(s): </b>Royal Botanic Gardens, Kew"
+            },
+            {
+              "type": "paragraph",
+              "text": "Regions: Global",
+              "text_rich": "<b>Regions: </b>Global"
+            },
+            {
+              "type": "style",
+              "data": {
+                "bold": [
+                  "Date of Assessment:",
+                  "Assessor(s):",
+                  "Reviewer(s):",
+                  "Facilitators/Compilers:",
+                  "Institution(s):",
+                  "Regions:"
+                ],
+                "italic": []
+              }
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Assessment Rationale",
+          "level": 2,
+          "path": [
+            "Red List Assessment",
+            "Assessment Rationale"
+          ],
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "This species is known from just two collections in the Essequibo river basin, Guyana. There is insufficient data to confidently estimate area of occupancy (AOO) and its extent of occurrence (EOO) is highly uncertain but has been estimated to lie between 8–6,000 km2, with the lower bound based on specimen information only, and the upper bound based on the extent of the Kanashen Amerindian Protected Area in which both collections were made. No information on population was found and, due to the inaccessibility of the area, it is unknown whether this species is as rare as the herbarium record suggests. The collection area has recently been declared an IUCN Management Category VI protected area (Kanashen Amerindian Protected Area), however, the most recent collection of the species dates to 1989, thus pre-dating this. The Kanashen Amerindian Protected Area consists of largely inaccessible, near-pristine forest, and has an extremely low population density, therefore the impacts of human activity are mostly negligible. However, increasing accessibility to Guyana via the Takutu bridge and a new road infrastructure system will facilitate access to currently remote areas, which could lead to increased deforestation within the protected area if illegal mining and logging become prevalent, a trend observed throughout Guyana. Considering this threat, the species is estimated to occur in just two locations and is consequently assessed as Vulnerable D2; despite the currently negligible threats within the Kanashen Amerindian Protected Area, the potential for illegal extractive activity could rapidly drive this species to extinction. Research is needed to establish the current population size and trend, as well as monitoring habitat trends.",
+              "text_rich": "This species is known from just two collections in the Essequibo river basin, Guyana. There is insufficient data to confidently estimate area of occupancy (AOO) and its extent of occurrence (EOO) is highly uncertain but has been estimated to lie between 8–6,000 km<sup>2</sup>, with the lower bound based on specimen information only, and the upper bound based on the extent of the Kanashen Amerindian Protected Area in which both collections were made. No information on population was found and, due to the inaccessibility of the area, it is unknown whether this species is as rare as the herbarium record suggests. The collection area has recently been declared an IUCN Management Category VI protected area (Kanashen Amerindian Protected Area), however, the most recent collection of the species dates to 1989, thus pre-dating this. The Kanashen Amerindian Protected Area consists of largely inaccessible, near-pristine forest, and has an extremely low population density, therefore the impacts of human activity are mostly negligible. However, increasing accessibility to Guyana via the Takutu bridge and a new road infrastructure system will facilitate access to currently remote areas, which could lead to increased deforestation within the protected area if illegal mining and logging become prevalent, a trend observed throughout Guyana. Considering this threat, the species is estimated to occur in just two locations and is consequently assessed as Vulnerable D2; despite the currently negligible threats within the Kanashen Amerindian Protected Area, the potential for illegal extractive activity could rapidly drive this species to extinction. Research is needed to establish the current population size and trend, as well as monitoring habitat trends."
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "Distribution",
+      "level": 1,
+      "path": [
+        "Distribution"
+      ],
+      "blocks": [],
+      "children": [
+        {
+          "title": "Geographic Range",
+          "level": 2,
+          "path": [
+            "Distribution",
+            "Geographic Range"
+          ],
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "This species is known from just two collections in the Essequibo river basin, Guyana, at elevations of 240–260 m asl. There is insufficient data to estimate area of occupancy (AOO), and the extent of occurrence (EOO) is also highly uncertain, estimated to lie between 8–6,000 km2.",
+              "text_rich": "This species is known from just two collections in the Essequibo river basin, Guyana, at elevations of 240–260 m asl. There is insufficient data to estimate area of occupancy (AOO), and the extent of occurrence (EOO) is also highly uncertain, estimated to lie between 8–6,000 km<sup>2</sup>."
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Extent of Occurrence (EOO)",
+          "level": 2,
+          "path": [
+            "Distribution",
+            "Extent of Occurrence (EOO)"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Estimated extent of occurrence (EOO)- in km2",
+                  "EOO estimate calculated from Minimum Convex Polygon",
+                  "Justification"
+                ],
+                [
+                  "8-6000",
+                  "-",
+                  "The EOO is highly uncertain. Lower bound based on minimal AOO for two collections. Upper bound based on approximate MCP for the Kanashen Amerindian Protected Area."
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "<b>Estimated extent of occurrence (EOO)- in km2</b>",
+                  "<b>EOO estimate calculated from Minimum Convex Polygon</b>",
+                  "<b>Justification</b>"
+                ],
+                [
+                  "8-6000",
+                  "-",
+                  "The EOO is highly uncertain. Lower bound based on minimal AOO for two collections. Upper bound based on approximate MCP for the Kanashen Amerindian Protected Area."
+                ]
+              ]
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Locations Information",
+          "level": 2,
+          "path": [
+            "Distribution",
+            "Locations Information"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Number of Locations",
+                  "Justification"
+                ],
+                [
+                  "2",
+                  "The species is known from just two locations, and the plausible threat of illegal mining could drive it to extinction over a short period."
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "<b>Number of Locations</b>",
+                  "<b>Justification</b>"
+                ],
+                [
+                  "2",
+                  "The species is known from just two locations, and the plausible threat of illegal mining could drive it to extinction over a short period."
+                ]
+              ]
+            },
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Continuing decline in number of locations",
+                  "Qualifier",
+                  "Justification"
+                ],
+                [
+                  "Unknown",
+                  "-",
+                  "-"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "<b>Continuing decline in number of locations</b>",
+                  "<b>Qualifier</b>",
+                  "<b>Justification</b>"
+                ],
+                [
+                  "Unknown",
+                  "-",
+                  "-"
+                ]
+              ]
+            },
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Extreme fluctuations in the number of locations",
+                  "Justification"
+                ],
+                [
+                  "Unknown",
+                  "-"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "<b>Extreme fluctuations in the number of locations</b>",
+                  "<b>Justification</b>"
+                ],
+                [
+                  "Unknown",
+                  "-"
+                ]
+              ]
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Very restricted AOO or number of locations (triggers VU D2)",
+          "level": 2,
+          "path": [
+            "Distribution",
+            "Very restricted AOO or number of locations (triggers VU D2)"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Very restricted in area of occupancy (AOO) and/or # of locations",
+                  "Justification"
+                ],
+                [
+                  "Yes",
+                  "The species is known from just two locations, and the plausible threat of illegal mining could drive it to extinction over a short period."
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "<b>Very restricted in area of occupancy (AOO) and/or # of locations</b>",
+                  "<b>Justification</b>"
+                ],
+                [
+                  "Yes",
+                  "The species is known from just two locations, and the plausible threat of illegal mining could drive it to extinction over a short period."
+                ]
+              ]
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Elevation / Depth / Depth Zones",
+          "level": 2,
+          "path": [
+            "Distribution",
+            "Elevation / Depth / Depth Zones"
+          ],
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Elevation Lower Limit (in metres above sea level): 240",
+              "text_rich": "<b>Elevation Lower Limit (in metres above sea level): </b>240"
+            },
+            {
+              "type": "paragraph",
+              "text": "Elevation Upper Limit (in metres above sea level): 260",
+              "text_rich": "<b>Elevation Upper Limit (in metres above sea level): </b>260"
+            },
+            {
+              "type": "style",
+              "data": {
+                "bold": [
+                  "Elevation Lower Limit (in metres above sea level):",
+                  "Elevation Upper Limit (in metres above sea level):"
+                ],
+                "italic": []
+              }
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Map Status",
+          "level": 2,
+          "path": [
+            "Distribution",
+            "Map Status"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Map Status",
+                  "Use map from previous assessment",
+                  "How the map was created, including data sources/methods used:",
+                  "Please state reason for map not available:",
+                  "Data Sensitive?",
+                  "Justification",
+                  "Geographic range this applies to:",
+                  "Date restriction imposed:"
+                ],
+                [
+                  "Done",
+                  "-",
+                  "Map created using all available georeferenced herbarium specimens. Distributions confirmed with species experts from Royal Botanic Gardens, Kew.",
+                  "-",
+                  "true",
+                  "Data is only permitted for use in creating assessments. It is not permitted to be shared or made available for any other purpose.",
+                  "Global",
+                  "2021-03-23"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "<b>Map Status</b>",
+                  "<b>Use map from previous assessment</b>",
+                  "<b>How the map was created, including data sources/methods used:</b>",
+                  "<b>Please state reason for map not available:</b>",
+                  "<b>Data Sensitive?</b>",
+                  "<b>Justification</b>",
+                  "<b>Geographic range this applies to:</b>",
+                  "<b>Date restriction imposed:</b>"
+                ],
+                [
+                  "Done",
+                  "-",
+                  "Map created using all available georeferenced herbarium specimens. Distributions confirmed with species experts from Royal Botanic Gardens, Kew.",
+                  "-",
+                  "true",
+                  "Data is only permitted for use in creating assessments. It is not permitted to be shared or made available for any other purpose.",
+                  "Global",
+                  "2021-03-23"
+                ]
+              ]
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Biogeographic Realms",
+          "level": 2,
+          "path": [
+            "Distribution",
+            "Biogeographic Realms"
+          ],
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Biogeographic Realm: Neotropical",
+              "text_rich": "<b>Biogeographic Realm: </b>Neotropical"
+            },
+            {
+              "type": "style",
+              "data": {
+                "bold": [
+                  "Biogeographic Realm:"
+                ],
+                "italic": []
+              }
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "Occurrence",
+      "level": 1,
+      "path": [
+        "Occurrence"
+      ],
+      "blocks": [],
+      "children": [
+        {
+          "title": "Countries of Occurrence",
+          "level": 2,
+          "path": [
+            "Occurrence",
+            "Countries of Occurrence"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Country",
+                  "Presence",
+                  "Origin",
+                  "Formerly Bred",
+                  "Seasonality"
+                ],
+                [
+                  "Guyana",
+                  "Extant",
+                  "Native",
+                  "-",
+                  "Resident"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "<b>Country</b>",
+                  "<b>Presence</b>",
+                  "<b>Origin</b>",
+                  "<b>Formerly Bred</b>",
+                  "<b>Seasonality</b>"
+                ],
+                [
+                  "Guyana",
+                  "Extant",
+                  "Native",
+                  "-",
+                  "Resident"
+                ]
+              ]
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "Population",
+      "level": 1,
+      "path": [
+        "Population"
+      ],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The population size of this species is unknown, however, due to the paucity of herbarium records, it is thought to be rare. The Kanashen Amerindian Protected Area consists of 625,000 ha of near-pristine forest that is relatively inaccessible (Alonso et al. 2008), therefore it is possible that this species is more abundant than the herbarium record suggests.",
+          "text_rich": "The population size of this species is unknown, however, due to the paucity of herbarium records, it is thought to be rare. The Kanashen Amerindian Protected Area consists of 625,000 ha of near-pristine forest that is relatively inaccessible (Alonso <i>et al. </i>2008), therefore it is possible that this species is more abundant than the herbarium record suggests."
+        },
+        {
+          "type": "style",
+          "data": {
+            "bold": [],
+            "italic": [
+              "et al."
+            ]
+          }
+        }
+      ],
+      "children": [
+        {
+          "title": "Population Information",
+          "level": 2,
+          "path": [
+            "Population",
+            "Population Information"
+          ],
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Current Population Trend: Unknown",
+              "text_rich": "<b>Current Population Trend: </b>Unknown"
+            },
+            {
+              "type": "style",
+              "data": {
+                "bold": [
+                  "Current Population Trend:"
+                ],
+                "italic": []
+              }
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "Habitats and Ecology",
+      "level": 1,
+      "path": [
+        "Habitats and Ecology"
+      ],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "This tree is recorded from lowland forest in the Guiana shield, reaching 5–20 m in height. There is no specific information on how this species is dispersed, and knowledge of dispersal within Myrtaceae is largely limited to deductions made from fruit morphology (Nic Lughadha and Proença 1996), but a study on Myrtaceae in the Atlantic Forest showed that species from this genus are dispersed by birds and mammals (Pizo 2000, E. Lucas pers. comm. 2020).",
+          "text_rich": "This tree is recorded from lowland forest in the Guiana shield, reaching 5–20 m in height. There is no specific information on how this species is dispersed, and knowledge of dispersal within Myrtaceae is largely limited to deductions made from fruit morphology (Nic Lughadha and Proença 1996), but a study on Myrtaceae in the Atlantic Forest showed that species from this genus are dispersed by birds and mammals (Pizo 2000, E. Lucas pers. comm. 2020)."
+        }
+      ],
+      "children": [
+        {
+          "title": "IUCN Habitats Classification Scheme",
+          "level": 2,
+          "path": [
+            "Habitats and Ecology",
+            "IUCN Habitats Classification Scheme"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Habitat",
+                  "Season",
+                  "Suitability",
+                  "Major Importance?"
+                ],
+                [
+                  "1.6. Forest -> Forest - Subtropical/Tropical Moist Lowland",
+                  "Resident",
+                  "Suitable",
+                  "-"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "<b>Habitat</b>",
+                  "<b>Season</b>",
+                  "<b>Suitability</b>",
+                  "<b>Major Importance?</b>"
+                ],
+                [
+                  "1.6. Forest -> Forest - Subtropical/Tropical Moist Lowland",
+                  "Resident",
+                  "Suitable",
+                  "-"
+                ]
+              ]
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Systems",
+          "level": 2,
+          "path": [
+            "Habitats and Ecology",
+            "Systems"
+          ],
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "System: Terrestrial",
+              "text_rich": "<b>System: </b>Terrestrial"
+            },
+            {
+              "type": "style",
+              "data": {
+                "bold": [
+                  "System:"
+                ],
+                "italic": []
+              }
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Plant Specific",
+          "level": 2,
+          "path": [
+            "Habitats and Ecology",
+            "Plant Specific"
+          ],
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Wild relative of a crop? No",
+              "text_rich": "<b>Wild relative of a crop? </b>No"
+            },
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Plant Growth Forms"
+                ],
+                [
+                  "Tree - large"
+                ],
+                [
+                  "Tree - small"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "<b>Plant Growth Forms</b>"
+                ],
+                [
+                  "Tree - large"
+                ],
+                [
+                  "Tree - small"
+                ]
+              ]
+            },
+            {
+              "type": "style",
+              "data": {
+                "bold": [
+                  "Wild relative of a crop?"
+                ],
+                "italic": []
+              }
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "Use and Trade",
+      "level": 1,
+      "path": [
+        "Use and Trade"
+      ],
+      "blocks": [],
+      "children": [
+        {
+          "title": "General Use and Trade Information",
+          "level": 2,
+          "path": [
+            "Use and Trade",
+            "General Use and Trade Information"
+          ],
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Species not utilized: true",
+              "text_rich": "<b>Species not utilized: </b>true"
+            },
+            {
+              "type": "paragraph",
+              "text": "There are no known uses for this species.",
+              "text_rich": "There are no known uses for this species."
+            },
+            {
+              "type": "style",
+              "data": {
+                "bold": [
+                  "Species not utilized:"
+                ],
+                "italic": []
+              }
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "Threats",
+      "level": 1,
+      "path": [
+        "Threats"
+      ],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Forest cover in the Guianas is among the highest in the world, with 77–93% remaining in Guyana, most likely due to protected areas and lack of infrastructure (Plouvier et al. 2012). Despite this, deforestation is becoming an increasing concern in this area, with gold mining being the primary driver; in 2007, 62,970 ha of forest area was cleared for gold mining activities in the Guianas (Plouvier et al. 2012). Many protected areas overlap with gold reserves, putting these areas at risk of illegal mining (Plouvier et al. 2012). In addition to deforestation associated with gold mining, the process of extracting gold can have significant environmental impacts, including pollution of freshwater systems, which has already impacted the Essequibo river (Plouvier et al. 2012). The Konashen Amerindian Protected Area is inhabited by the Wai-Wai indigenous group, however the population density within the protected area is extremely low and most activity is small-scale (Alonso et al. 2008). Some deforestation for pasture has been observed the along Essequibo river (Wassenaar et al. 2007) and there are reports of extractive activities such as mining occurring within the park in the past (Alonso et al. 2008). Despite this, human impacts appear to be minimal as a result of its protection status and inaccessibility of much of the interior (Alonso et al. 2008). Potential plans to build a new road infrastructure system between Brazil and Guyana will facilitate access to currently remote areas, which could lead to an increase of the deforestation rates in future (Plouvier et al. 2012).",
+          "text_rich": "Forest cover in the Guianas is among the highest in the world, with 77–93% remaining in Guyana, most likely due to protected areas and lack of infrastructure (Plouvier <i>et al.</i> 2012). Despite this, deforestation is becoming an increasing concern in this area, with gold mining being the primary driver; in 2007, 62,970 ha of forest area was cleared for gold mining activities in the Guianas (Plouvier <i>et al.</i> 2012). Many protected areas overlap with gold reserves, putting these areas at risk of illegal mining (Plouvier <i>et al.</i> 2012). In addition to deforestation associated with gold mining, the process of extracting gold can have significant environmental impacts, including pollution of freshwater systems, which has already impacted the Essequibo river (Plouvier <i>et al.</i> 2012). The Konashen Amerindian Protected Area is inhabited by the Wai-Wai indigenous group, however the population density within the protected area is extremely low and most activity is small-scale (Alonso<i> et al. </i>2008). Some deforestation for pasture has been observed the along Essequibo river (Wassenaar <i>et al. </i>2007) and there are reports of extractive activities such as mining occurring within the park in the past (Alonso <i>et al.</i> 2008). Despite this, human impacts appear to be minimal as a result of its protection status and inaccessibility of much of the interior (Alonso<i> et al.</i> 2008). Potential plans to build a new road infrastructure system between Brazil and Guyana will facilitate access to currently remote areas, which could lead to an increase of the deforestation rates in future (Plouvier <i>et al.</i> 2012)."
+        },
+        {
+          "type": "style",
+          "data": {
+            "bold": [],
+            "italic": [
+              "et al."
+            ]
+          }
+        }
+      ],
+      "children": [
+        {
+          "title": "Threats Classification Scheme",
+          "level": 2,
+          "path": [
+            "Threats",
+            "Threats Classification Scheme"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Threat",
+                  "Timing",
+                  "Scope",
+                  "Severity",
+                  "Impact Score"
+                ],
+                [
+                  "2.3.2. Agriculture & aquaculture -> Livestock farming & ranching -> Small-holder grazing, ranching or farming",
+                  "Future",
+                  "Unknown",
+                  "Unknown",
+                  "Unknown"
+                ],
+                [
+                  "3.2. Energy production & mining -> Mining & quarrying",
+                  "Future",
+                  "Unknown",
+                  "Unknown",
+                  "Unknown"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "<b>Threat</b>",
+                  "<b>Timing</b>",
+                  "<b>Scope</b>",
+                  "<b>Severity</b>",
+                  "<b>Impact Score</b>"
+                ],
+                [
+                  "2.3.2. Agriculture & aquaculture -> Livestock farming & ranching -> Small-holder grazing, ranching or farming",
+                  "Future",
+                  "Unknown",
+                  "Unknown",
+                  "Unknown"
+                ],
+                [
+                  "3.2. Energy production & mining -> Mining & quarrying",
+                  "Future",
+                  "Unknown",
+                  "Unknown",
+                  "Unknown"
+                ]
+              ]
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "Conservation",
+      "level": 1,
+      "path": [
+        "Conservation"
+      ],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The two known collections were recorded within an area which has recently been declared the Kanashen Amerindian Protected Area, however the most recent collection of this species was in 1989. There is no information on ex situ conservation measures for this species at present (BGCI 2021).",
+          "text_rich": "The two known collections were recorded within an area which has recently been declared the Kanashen Amerindian Protected Area, however the most recent collection of this species was in 1989. There is no information on <i>ex situ </i>conservation measures for this species at present (BGCI 2021)."
+        },
+        {
+          "type": "style",
+          "data": {
+            "bold": [],
+            "italic": [
+              "ex situ"
+            ]
+          }
+        }
+      ],
+      "children": [
+        {
+          "title": "Conservation Actions In- Place",
+          "level": 2,
+          "path": [
+            "Conservation",
+            "Conservation Actions In- Place"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Occur in at least one PA",
+                  "Note"
+                ],
+                [
+                  "Yes",
+                  "The two known collections were recorded within an area which has recently been declared the Kanashen Amerindian Protected Area."
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "<b>Occur in at least one PA</b>",
+                  "<b>Note</b>"
+                ],
+                [
+                  "Yes",
+                  "The two known collections were recorded within an area which has recently been declared the Kanashen Amerindian Protected Area."
+                ]
+              ]
+            },
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Subject to ex-situ conservation",
+                  "Note"
+                ],
+                [
+                  "No",
+                  "-"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "<b>Subject to ex-situ conservation</b>",
+                  "<b>Note</b>"
+                ],
+                [
+                  "No",
+                  "-"
+                ]
+              ]
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Important Conservation Actions Needed",
+          "level": 2,
+          "path": [
+            "Conservation",
+            "Important Conservation Actions Needed"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Conservation Actions",
+                  "Note"
+                ],
+                [
+                  "3.4.1. Species management -> Ex-situ conservation -> Captive breeding/artificial propagation",
+                  "-"
+                ],
+                [
+                  "3.4.2. Species management -> Ex-situ conservation -> Genome resource bank",
+                  "-"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "<b>Conservation Actions</b>",
+                  "<b>Note</b>"
+                ],
+                [
+                  "3.4.1. Species management -> Ex-situ conservation -> Captive breeding/artificial propagation",
+                  "-"
+                ],
+                [
+                  "3.4.2. Species management -> Ex-situ conservation -> Genome resource bank",
+                  "-"
+                ]
+              ]
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Research Needed",
+          "level": 2,
+          "path": [
+            "Conservation",
+            "Research Needed"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Research",
+                  "Note"
+                ],
+                [
+                  "1.2. Research -> Population size, distribution & trends",
+                  "-"
+                ],
+                [
+                  "1.5. Research -> Threats",
+                  "-"
+                ],
+                [
+                  "3.4. Monitoring -> Habitat trends",
+                  "-"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "<b>Research</b>",
+                  "<b>Note</b>"
+                ],
+                [
+                  "1.2. Research -> Population size, distribution & trends",
+                  "-"
+                ],
+                [
+                  "1.5. Research -> Threats",
+                  "-"
+                ],
+                [
+                  "3.4. Monitoring -> Habitat trends",
+                  "-"
+                ]
+              ]
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "Ecosystem Services",
+      "level": 1,
+      "path": [
+        "Ecosystem Services"
+      ],
+      "blocks": [],
+      "children": [
+        {
+          "title": "Ecosystem Services Provided by the Species",
+          "level": 2,
+          "path": [
+            "Ecosystem Services",
+            "Ecosystem Services Provided by the Species"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Insufficient Information Available",
+                  "All coded services should have an importance score of 5 - Not Known."
+                ],
+                [
+                  "true",
+                  "-"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "<b>Insufficient Information Available</b>",
+                  "<b>All coded services should have an importance score of 5 - Not Known.</b>"
+                ],
+                [
+                  "true",
+                  "-"
+                ]
+              ]
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "Bibliography",
+      "level": 1,
+      "path": [
+        "Bibliography"
+      ],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Alonso, L.E., J. McCullough, P. Naskrecki, E. Alexander and H.E. Wright. 2008. A rapid biological assessment of the Konashen Community Owned Conservation Area, Southern Guyana. RAP Bulletin of Biological Assessment 51. Conservation International, Arlington, VA, USA.",
+          "text_rich": "Alonso, L.E., J. McCullough, P. Naskrecki, E. Alexander and H.E. Wright. 2008. A rapid biological assessment of the Konashen Community Owned Conservation Area, Southern Guyana. RAP Bulletin of Biological Assessment 51. Conservation International, Arlington, VA, USA."
+        },
+        {
+          "type": "paragraph",
+          "text": "BGCI. 2021. Botanic Gardens Conservation International (BGCI) - PlantSearch. Available at: https://tools.bgci.org/plant_search.php.",
+          "text_rich": "BGCI. 2021. Botanic Gardens Conservation International (BGCI) - PlantSearch. Available at: ."
+        },
+        {
+          "type": "paragraph",
+          "text": "Nic Lughadha, E. and Proença, C. 1996. A survey of the reproductive biology of the Myrtoideae (Myrtaceae). Annals of the Missouri Botanical Garden 83: 480-503.",
+          "text_rich": "Nic Lughadha, E. and Proença, C. 1996. A survey of the reproductive biology of the Myrtoideae (Myrtaceae). <i>Annals of the Missouri Botanical Garden</i> 83: 480-503."
+        },
+        {
+          "type": "paragraph",
+          "text": "Pizo, M.A. 2000. The Seed-dispersers and Fruit Syndromes of Myrtaceae in the Brazilian Atlantic Forest. In: D.J. Levey, W.R. Silva and M. Galetti (eds), Seed Dispersal and Frugivory: Ecology, Evolution and Conservation, pp. 129-143. CABI Publishing, Oxon, UK.",
+          "text_rich": "Pizo, M.A. 2000. The Seed-dispersers and Fruit Syndromes of <i>Myrtaceae</i> in the Brazilian Atlantic Forest. In: D.J. Levey, W.R. Silva and M. Galetti (eds), <i>Seed Dispersal and Frugivory: Ecology, Evolution and Conservation</i>, pp. 129-143. CABI Publishing, Oxon, UK."
+        },
+        {
+          "type": "paragraph",
+          "text": "Plouvier, D., Gomes, L., Verweij, P. and Verlinden, N. 2012. Living Guianas Report 2012. WWF and Copernicus Institute.",
+          "text_rich": "Plouvier, D., Gomes, L., Verweij, P. and Verlinden, N. 2012. Living Guianas Report 2012. WWF and Copernicus Institute."
+        },
+        {
+          "type": "paragraph",
+          "text": "UNEP-WCMC and IUCN. 2021. Protected Planet: The World Database on Protected Areas (WDPA) / The Global Database on Protected Areas Management Effectiveness (GD-PAME)] [On-line]. Cambridge, UK: UNEP-WCMC and IUCN. Available at: https://www.protectedplanet.net/.",
+          "text_rich": "UNEP-WCMC and IUCN. 2021. Protected Planet: The World Database on Protected Areas (WDPA) / The Global Database on Protected Areas Management Effectiveness (GD-PAME)] [On-line]. Cambridge, UK: UNEP-WCMC and IUCN. Available at: ."
+        },
+        {
+          "type": "paragraph",
+          "text": "Wassenaar, T., Gerber, P., Verburg, P.H., Rosales, M., Ibrahim, M. and Steinfeld, H. 2007. Projecting land use changes in the Neotropics: The geography of pasture expansion into forest. Global Environmental Change 17(1): 86-104.",
+          "text_rich": "Wassenaar, T., Gerber, P., Verburg, P.H., Rosales, M., Ibrahim, M. and Steinfeld, H. 2007. Projecting land use changes in the Neotropics: The geography of pasture expansion into forest. <i>Global Environmental Change</i> 17(1): 86-104."
+        },
+        {
+          "type": "style",
+          "data": {
+            "bold": [],
+            "italic": [
+              "Annals of the Missouri Botanical Garden",
+              "Myrtaceae",
+              "Seed Dispersal and Frugivory: Ecology, Evolution and Conservation",
+              "Global Environmental Change"
+            ]
+          }
+        }
+      ],
+      "children": []
+    }
+  ],
+  "comments": []
+}

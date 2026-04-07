@@ -145,6 +145,17 @@ class PunctuationCheckerTests(unittest.TestCase):
         self.assertIn("Do not put a space before a colon", messages)
         self.assertIn("Do not put a space before a semicolon", messages)
 
+    def test_for_example_ignores_sentence_start_after_sentence_ending_punctuation(self) -> None:
+        text = (
+            "This changed. For example, the species occurs in cloud forest. "
+            "Was it revised? For example, another site was added. "
+            "This surprised us! For example, a third site appeared."
+        )
+
+        violations = PunctuationChecker().check_for_example_commas("Test Section", text)
+
+        self.assertEqual(violations, [])
+
 
 if __name__ == "__main__":
     unittest.main()

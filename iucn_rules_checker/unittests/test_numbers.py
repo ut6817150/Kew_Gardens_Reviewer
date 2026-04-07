@@ -183,6 +183,41 @@ class NumberCheckerTests(unittest.TestCase):
         self.assertFalse(any("'1,234' should be" in message for message in large_number_messages))
         self.assertFalse(any("'1,234.56' should be" in message for message in large_number_messages))
 
+    def test_large_numbers_ignore_doi_and_url_numbers(self) -> None:
+        text = (
+            "The DOI is https://doi.org/10.1038/s41598-020-64668-z. "
+            "Another DOI appears as doi:10.1000/182. "
+            "A plain large number 1234 still appears in prose."
+        )
+
+        violations = NumberChecker().check(("Test Section", text))
+        large_number_messages = [
+            violation.message for violation in violations
+            if violation.message.startswith("Use standard comma placement for numbers:")
+        ]
+
+        self.assertIn(
+            "Use standard comma placement for numbers: '1234' should be '1,234'",
+            large_number_messages,
+        )
+        self.assertFalse(any("64668" in message for message in large_number_messages))
+        self.assertFalse(any("1000" in message and "/182" in text for message in large_number_messages))
+
+    def test_large_numbers_ignore_hash_prefixed_identifiers(self) -> None:
+        text = "Ticket #2916 was resolved, while 1234 records still need grouping."
+
+        violations = NumberChecker().check(("Test Section", text))
+        large_number_messages = [
+            violation.message for violation in violations
+            if violation.message.startswith("Use standard comma placement for numbers:")
+        ]
+
+        self.assertIn(
+            "Use standard comma placement for numbers: '1234' should be '1,234'",
+            large_number_messages,
+        )
+        self.assertFalse(any("2916" in message for message in large_number_messages))
+
     def test_sentence_start_strips_simple_style_markers_before_matching(self) -> None:
         text = (
             "<b>3</b> sites were surveyed. "
@@ -211,6 +246,34 @@ class NumberCheckerTests(unittest.TestCase):
         ]
 
         self.assertEqual(matched_texts, ["3"])
+
+    def test_sentence_start_ignores_c_prefix_with_one_or_two_spaces(self) -> None:
+        text = (
+            "Approximate counts include c. 800 individuals and c.  900 seedlings. "
+            "4 surveys were completed later."
+        )
+
+        violations = NumberChecker().check(("Test Section", text))
+        matched_texts = [
+            violation.matched_text for violation in violations
+            if violation.message == "Do not start sentences with numerals; write the number out or rephrase"
+        ]
+
+        self.assertEqual(matched_texts, ["4"])
+
+    def test_sentence_start_ignores_comm_prefix_before_year(self) -> None:
+        text = (
+            "This was noted in pers. comm. 2020 and pers. comm.  2021. "
+            "5 records were added later."
+        )
+
+        violations = NumberChecker().check(("Test Section", text))
+        matched_texts = [
+            violation.matched_text for violation in violations
+            if violation.message == "Do not start sentences with numerals; write the number out or rephrase"
+        ]
+
+        self.assertEqual(matched_texts, ["5"])
 
     def test_sentence_start_still_works_when_called_directly_on_bibliography_sections(self) -> None:
         text = "3 entries were reviewed. Martinez et al. 2006 described the site."

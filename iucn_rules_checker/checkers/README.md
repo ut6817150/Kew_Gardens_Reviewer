@@ -71,7 +71,7 @@ Aggregated method list:
 - `check_latin_terms_without_period(...)`
   Checks a fixed list of Latin expressions that must be italicized and should not contain periods.
 - `check_et_al(...)`
-  Checks that `et al.` is written in its preferred italicized form.
+  Checks that `et al.` uses the canonical wording and italicizes the letters `et al`.
 - `check_title_abbreviations(...)`
   Flags selected courtesy titles that use a trailing period when the checker expects the UK-style form without one.
 
@@ -141,7 +141,7 @@ Detailed coverage:
 
 - `check_et_al(...)`
   How it works:
-  strips non-italic style markers, preserves `<i>` / `<em>`, then requires the exact italicized form `et al.`.
+  strips all simple style markers for matching, then checks whether the letters `et al` are italicized in the original text. It requires the wording `et al.` but does not require the trailing period itself to sit inside italics.
   Hard-coded scope:
   this method is only about the literal citation term `et al.`.
 
@@ -156,6 +156,7 @@ Detailed coverage:
   - Misses:
     - correct `<i>et al.</i>`
     - correct `<em>et al.</em>`
+    - correct `<i>et al</i>.`
     - `et-al`
     - `etal`
     - `ibid.`
@@ -454,8 +455,10 @@ Aggregated method list:
   Flags `the IUCN` and suggests `IUCN`.
 - `check_CE_abbreviation(...)`
   Flags the incorrect Red List abbreviation `CE` and suggests `CR`.
-- `check_category_capitalization(...)`
-  Enforces canonical case for full category names and abbreviations such as `Critically Endangered` and `CR`.
+- `check_category_full_name_capitalization(...)`
+  Enforces canonical case for full category names such as `Critically Endangered`.
+- `check_category_abbreviation_capitalization(...)`
+  Enforces canonical case for category abbreviations such as `CR`.
 - `check_threatened_case(...)`
   Lowercases mid-sentence `Threatened` when it is being used collectively for CR/EN/VU species.
 
@@ -492,32 +495,46 @@ Detailed coverage:
     - larger words that merely contain `ce`
     - wrong abbreviations other than `CE`
 
-- `check_category_capitalization(...)`
+- `check_category_full_name_capitalization(...)`
   How it works:
-  strips all simple style markers, then loops through the hardcoded `(full_name, abbreviation)` pairs in `CATEGORIES` and checks both the full phrase and abbreviation for exact canonical case. Abbreviation matching rejects letters, digits, and hyphens on either side.
+  strips all simple style markers, then loops through the hardcoded full category names in `CATEGORIES` and checks each full phrase for exact canonical case.
   Hard-coded list dependency:
-  this method only knows the category names and abbreviations present in the `CATEGORIES` list.
+  this method only knows the full category names present in the `CATEGORIES` list.
 
   - Catches:
     - `critically endangered`
     - `Near threatened`
     - `extinct in the wild`
+
+  - Misses:
+    - correctly cased `Critically Endangered`, `Near Threatened`, `Extinct in the Wild`
+    - misspellings that no longer match the category phrase
+    - substantive correctness of the chosen Red List category
+    - category names not present in the hard-coded `CATEGORIES` list
+
+- `check_category_abbreviation_capitalization(...)`
+  How it works:
+  strips all simple style markers, then loops through the hardcoded category abbreviations in `CATEGORIES` and checks each abbreviation for exact canonical case. Matching rejects letters, digits, and hyphens on either side, and it also skips the Latin phrase `ex situ`.
+  Hard-coded list dependency:
+  this method only knows the category abbreviations present in the `CATEGORIES` list.
+
+  - Catches:
     - `cr`
     - `Vu`
     - `ew`
 
   - Misses:
-    - correctly cased `Critically Endangered`, `Near Threatened`, `CR`, `VU`, `EW`
+    - correctly cased `CR`, `VU`, `EW`
+    - the Latin phrase `ex situ`
     - hyphenated compounds such as `Ex-situ`
-    - misspellings that no longer match the category phrase
-    - substantive correctness of the chosen Red List category
-    - categories or abbreviations not present in the hard-coded `CATEGORIES` list
+    - abbreviations embedded inside larger words
+    - category abbreviations not present in the hard-coded `CATEGORIES` list
 
 - `check_threatened_case(...)`
   How it works:
-  strips all simple style markers, then looks for capitalized `Threatened` when it appears after a lowercase letter and a space, suggesting lowercase `threatened`.
+  strips all simple style markers, then looks for capitalized `Threatened` when it appears after a lowercase letter and a space, suggesting lowercase `threatened`. It skips the category phrase `Near Threatened`.
   Hard-coded scope:
-  this method only checks the literal word `Threatened` in that narrow regex context.
+  this method only checks the literal word `Threatened` in that narrow regex context, with a specific exception for `Near Threatened`.
 
   - Catches:
     - `many Threatened species`
@@ -526,8 +543,8 @@ Detailed coverage:
   - Misses:
     - sentence-start `Threatened`
     - already-lowercase `threatened`
+    - the category phrase `Near Threatened`
     - context-aware exceptions beyond the regex
-    - one known edge case is that it can also catch the `Threatened` part of `Near Threatened` mid-sentence
 
 Aggregated misses for `IUCNTermsChecker`:
 - it does not validate whether the chosen Red List category is substantively correct
@@ -570,9 +587,9 @@ Detailed coverage:
 
 - `check_large_numbers(...)`
   How it works:
-  strips all simple style markers, then scans number-like tokens for missing commas, incorrect comma grouping, or decimal forms whose integer part should be grouped. It intentionally skips likely years from `1800` to `2100` and plain rounded million/billion candidates that are handed off to `check_very_large_numbers(...)`.
+  strips all simple style markers, then scans number-like tokens for missing commas, incorrect comma grouping, or decimal forms whose integer part should be grouped. It intentionally skips likely years from `1800` to `2100`, plain rounded million/billion candidates that are handed off to `check_very_large_numbers(...)`, numbers that fall inside DOI or URL spans, and numbers immediately preceded by `#`.
   Hard-coded threshold dependency:
-  the likely-year exclusion is hard-coded to the range `1800` through `2100`.
+  the likely-year exclusion is hard-coded to the range `1800` through `2100`, DOI/URL exclusion depends on fixed DOI/URL-style regex patterns, and hash-prefixed exclusion is a literal `#` check.
 
   - Catches:
     - `1000` -> `1,000`
@@ -585,12 +602,14 @@ Detailed coverage:
     - already-correct `1,000` and `1,234.56`
     - plain rounded million/billion values such as `1500000`
     - non-year numbers that still fall inside the hard-coded year range
+    - DOI and URL numbers such as `https://doi.org/10.1038/s41598-020-64668-z`
+    - hash-prefixed identifiers such as `#2916`
 
 - `check_sentence_start(...)`
   How it works:
-  strips all simple style markers, then looks for digit strings at the start of the text or immediately after `. `, `! `, or `? `. It also skips numeral starts immediately preceded by `et al. `.
+  strips all simple style markers, then looks for digit strings at the start of the text or immediately after `. `, `! `, or `? `. It also skips numeral starts immediately preceded by `et al. `, by `c.` plus spaces, or by `comm.` plus spaces.
   Hard-coded scope:
-  this method only treats `. `, `! `, and `? ` as sentence-start triggers, and only uses the literal exclusion `et al. `.
+  this method only treats `. `, `! `, and `? ` as sentence-start triggers, and only uses the literal exclusions `et al. `, `c.` plus spaces, and `comm.` plus spaces.
 
   - Catches:
     - `3 sites were surveyed.`
@@ -602,6 +621,8 @@ Detailed coverage:
     - mid-sentence numbers
     - written-out starts such as `Three sites were surveyed.`
     - bibliography-style `et al. 2006`
+    - approximate forms such as `c. 800` and `c.  800`
+    - communication-style references such as `pers. comm. 2020`
     - starts after punctuation not covered by the regex
 
 - `check_very_large_numbers(...)`

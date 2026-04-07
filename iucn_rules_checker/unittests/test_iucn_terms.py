@@ -111,8 +111,11 @@ class IUCNTermsCheckerTests(unittest.TestCase):
             messages,
         )
 
-    def test_category_capitalization_ignores_hyphenated_non_category_terms(self) -> None:
-        text = "Ex-situ conservation and neotropical habitat notes should not trigger category abbreviation matches."
+    def test_category_capitalization_ignores_non_category_ex_situ_and_hyphenated_terms(self) -> None:
+        text = (
+            "Ex-situ conservation, ex situ propagation, and neotropical habitat "
+            "notes should not trigger category abbreviation matches."
+        )
 
         violations = IUCNTermsChecker().check(("Test Section", text))
         messages = [violation.message for violation in violations]
@@ -130,6 +133,22 @@ class IUCNTermsCheckerTests(unittest.TestCase):
         text = (
             "many <i>Threat</i><b>ened</b> species remain. "
             "Threatened species were also reviewed at sentence start."
+        )
+
+        violations = IUCNTermsChecker().check(("Test Section", text))
+        messages = [violation.message for violation in violations]
+
+        self.assertEqual(
+            messages.count(
+                "Use lowercase 'threatened' when referring to CR/EN/VU species collectively"
+            ),
+            1,
+        )
+
+    def test_threatened_case_ignores_near_threatened(self) -> None:
+        text = (
+            "many Near Threatened species remain. "
+            "many Threatened species also remain."
         )
 
         violations = IUCNTermsChecker().check(("Test Section", text))

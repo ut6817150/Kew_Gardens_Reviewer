@@ -29,6 +29,11 @@ class NumberChecker(BaseChecker):
         "m asl", "m bsl", "°", "%",
     )
 
+    DOI_OR_URL_PATTERN = re.compile(
+        r'(?:https?://\S+|doi:\s*10\.\d{4,9}/\S+|10\.\d{4,9}/\S+)',
+        re.IGNORECASE,
+    )
+
     def __init__(self):
         super().__init__()
 
@@ -154,6 +159,8 @@ class NumberChecker(BaseChecker):
         - likely years from `1800` to `2100`
         - plain rounded million/billion candidates such as `1500000`, which
           are handled by `check_very_large_numbers(...)`
+        - numbers that appear inside DOI or URL spans
+        - numbers immediately preceded by `#`, such as issue or identifier forms
 
         Examples flagged:
         `1000`
@@ -167,6 +174,8 @@ class NumberChecker(BaseChecker):
         `1,000`
         `1,234.56`
         `1500000`
+        `https://doi.org/10.1038/s41598-020-64668-z`
+        `#2916`
         """
         violations = []
         cleaned_text, index_map = self.strip_style_markers(
@@ -176,9 +185,15 @@ class NumberChecker(BaseChecker):
             superscript=True,
             subscript=True,
         )
+        excluded_spans = self.find_doi_or_url_spans(cleaned_text)
         pattern = re.compile(r"(?<!\w)(\d(?:[\d,]*\d)?(?:\.\d+)?)(?!\w)")
 
         for match in pattern.finditer(cleaned_text):
+            if self.is_within_spans(match.start(), match.end(), excluded_spans):
+                continue
+            if match.start() > 0 and cleaned_text[match.start() - 1] == "#":
+                continue
+
             num_str = match.group(1)
             integer_part, decimal_point, decimal_part = num_str.partition(".")
             integer_digits = integer_part.replace(",", "")
@@ -221,6 +236,14 @@ class NumberChecker(BaseChecker):
 
         return violations
 
+    def find_doi_or_url_spans(self, text: str) -> List[tuple[int, int]]:
+        """Return spans for DOI and URL substrings that should be ignored."""
+        return [(match.start(), match.end()) for match in self.DOI_OR_URL_PATTERN.finditer(text)]
+
+    def is_within_spans(self, start: int, end: int, spans: List[tuple[int, int]]) -> bool:
+        """Return True when a candidate match falls fully inside an excluded span."""
+        return any(span_start <= start and end <= span_end for span_start, span_end in spans)
+
     def check_sentence_start(self, section_name: str, text: str) -> List[Violation]:
         """Check that sentences do not start with numerals.
 
@@ -240,6 +263,8 @@ class NumberChecker(BaseChecker):
         numbers that occur mid-sentence
         already written-out sentence starts such as `Three sites were surveyed.`
         bibliography-style years immediately following `et al. `
+        approximate forms such as `c. 800` or `c.  800`
+        communication-style years such as `pers. comm. 2020`
         sentence-like starts after punctuation not covered by the regex
 
         This rule does not try to generate an automatic rewrite. It only
@@ -256,7 +281,12 @@ class NumberChecker(BaseChecker):
         pattern = re.compile(r"(?:^|[.!?]\s+)(\d+)\b")
 
         for match in pattern.finditer(cleaned_text):
-            if cleaned_text[max(0, match.start(1) - 16):match.start(1)].lower().endswith("et al. "):
+            preceding_text = cleaned_text[max(0, match.start(1) - 16):match.start(1)].lower()
+            if preceding_text.endswith("et al. "):
+                continue
+            if re.search(r"c\.\s+$", preceding_text):
+                continue
+            if re.search(r"comm\.\s+$", preceding_text):
                 continue
             original_start = index_map[match.start(1)]
             original_end = index_map[match.end(1) - 1] + 1

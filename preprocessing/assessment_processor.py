@@ -143,7 +143,7 @@ class AssessmentParser:
         return rows
 
     def _table_to_rows_rich(self, tbl: Table) -> List[List[str]]:
-        """Extract table into 2D list of cell text preserving super/sub script markup."""
+        """Extract table into 2D list of cell text preserving inline rich-text markup."""
         rows: List[List[str]] = []
         for row in tbl.rows:
             out_row: List[str] = []
@@ -191,44 +191,123 @@ class AssessmentParser:
 
         return None
 
+    def _effective_run_bool(self, p: Paragraph, run, prop_name: str) -> bool:
+        """Resolve a run boolean format, inheriting from run and paragraph styles."""
+        def tri_to_bool(x):
+            return None if x is None else bool(x)
+
+        direct = tri_to_bool(getattr(run, prop_name))
+        if direct is not None:
+            return direct
+
+        try:
+            if run.style and run.style.font:
+                v = tri_to_bool(getattr(run.style.font, prop_name))
+                if v is not None:
+                    return v
+        except Exception:
+            pass
+
+        try:
+            if p.style and p.style.font:
+                v = tri_to_bool(getattr(p.style.font, prop_name))
+                if v is not None:
+                    return v
+        except Exception:
+            pass
+
+        return False
+
+    def _wrap_rich_text(self, text: str, *, bold: bool = False, italic: bool = False, vertical: Optional[str] = None) -> str:
+        """Wrap a text chunk with inline rich-text tags in a stable order."""
+        rendered = text
+
+        if vertical == "superscript":
+            rendered = f"<sup>{rendered}</sup>"
+        elif vertical == "subscript":
+            rendered = f"<sub>{rendered}</sub>"
+
+        if italic:
+            rendered = f"<i>{rendered}</i>"
+        if bold:
+            rendered = f"<b>{rendered}</b>"
+
+        return rendered
+
     def _paragraph_text_with_scripts(self, p: Paragraph) -> str:
         """
-        Return paragraph text while preserving superscript/subscript using inline
-        HTML-like markup, e.g. km<sup>2</sup> or CO<sub>2</sub>.
+        Return paragraph text while preserving bold/italic and superscript/
+        subscript using inline HTML-like markup.
         """
         parts: List[str] = []
+        cur_fmt: Optional[Tuple[bool, bool, Optional[str]]] = None
+        buf: List[str] = []
+
+        def flush() -> None:
+            nonlocal buf, cur_fmt
+            if cur_fmt is None or not buf:
+                return
+            text = "".join(buf)
+            parts.append(
+                self._wrap_rich_text(
+                    text,
+                    bold=cur_fmt[0],
+                    italic=cur_fmt[1],
+                    vertical=cur_fmt[2],
+                )
+            )
+            buf = []
+
         for run in getattr(p, "runs", []):
             if not run.text:
                 continue
 
-            text = run.text
-            vert = self._run_vertical_align(run)
-            if vert == "superscript":
-                parts.append(f"<sup>{text}</sup>")
-            elif vert == "subscript":
-                parts.append(f"<sub>{text}</sub>")
-            else:
-                parts.append(text)
+            fmt = (
+                self._effective_run_bool(p, run, "bold"),
+                self._effective_run_bool(p, run, "italic"),
+                self._run_vertical_align(run),
+            )
+            if cur_fmt is None:
+                cur_fmt = fmt
+            if fmt != cur_fmt:
+                flush()
+                cur_fmt = fmt
+
+            buf.append(run.text)
+
+        flush()
 
         return "".join(parts).strip()
 
+    def _xml_run_bool(self, run_el: ET.Element, prop_name: str) -> bool:
+        """Read a direct boolean run property from raw WordprocessingML."""
+        prop = run_el.find(f"./w:rPr/w:{prop_name}", self.NS)
+        if prop is None:
+            return False
+
+        val = prop.get(f"{{{self.W_NS}}}val")
+        if val is None:
+            return True
+        return val.lower() not in {"0", "false", "off"}
+
     def _xml_run_text_with_scripts(self, run_el: ET.Element) -> str:
-        """Render a raw WordprocessingML <w:r> element with super/sub script markup."""
+        """Render a raw WordprocessingML <w:r> element with inline rich-text markup."""
         texts = [t.text for t in run_el.findall(".//w:t", self.NS) if t.text]
         if not texts:
             return ""
 
         text = "".join(texts)
         vert = run_el.find(".//w:vertAlign", self.NS)
-        if vert is None:
-            return text
+        vert_val = vert.get(f"{{{self.W_NS}}}val") if vert is not None else None
+        if vert_val not in {"superscript", "subscript"}:
+            vert_val = None
 
-        val = vert.get(f"{{{self.W_NS}}}val")
-        if val == "superscript":
-            return f"<sup>{text}</sup>"
-        if val == "subscript":
-            return f"<sub>{text}</sub>"
-        return text
+        return self._wrap_rich_text(
+            text,
+            bold=self._xml_run_bool(run_el, "b"),
+            italic=self._xml_run_bool(run_el, "i"),
+            vertical=vert_val,
+        )
 
     def _merge_style_bucket(self, target: Dict[str, List[str]], src: Dict[str, List[str]]) -> None:
         # Preserve order and avoid duplicates.
@@ -251,36 +330,6 @@ class AssessmentParser:
         """
         out = self._empty_style_bucket()
 
-        def tri_to_bool(x):
-            # python-docx uses True / False / None
-            return None if x is None else bool(x)
-
-        def eff(prop_name: str, run) -> bool:
-            # 1) direct run property
-            direct = tri_to_bool(getattr(run, prop_name))
-            if direct is not None:
-                return direct
-
-            # 2) run character style
-            try:
-                if run.style and run.style.font:
-                    v = tri_to_bool(getattr(run.style.font, prop_name))
-                    if v is not None:
-                        return v
-            except Exception:
-                pass
-
-            # 3) paragraph style
-            try:
-                if p.style and p.style.font:
-                    v = tri_to_bool(getattr(p.style.font, prop_name))
-                    if v is not None:
-                        return v
-            except Exception:
-                pass
-
-            return False
-
         def flush(flags, buf):
             txt = "".join(buf).replace("\xa0", " ").strip()
             if not txt:
@@ -300,7 +349,10 @@ class AssessmentParser:
             if not t:
                 continue
 
-            flags = (eff("bold", run), eff("italic", run))
+            flags = (
+                self._effective_run_bool(p, run, "bold"),
+                self._effective_run_bool(p, run, "italic"),
+            )
 
             if cur_flags is None:
                 cur_flags = flags
@@ -878,9 +930,13 @@ def run_batch_default(parser: AssessmentParser) -> int:
     return 0
 
 
-def parse_docx_to_dict(docx_path: str) -> Dict[str, Any]:
+def parse_dict(docx_path: str) -> Dict[str, Any]:
     parser = AssessmentParser()
     return parser.parse_file(docx_path)
+
+
+def parse_to_dict(docx_path: str) -> Dict[str, Any]:
+    return parse_dict(docx_path)
 
 
 def main() -> int:

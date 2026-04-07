@@ -80,7 +80,8 @@ class AbbreviationCheckerTests(unittest.TestCase):
             "Plain-text usage such as et al. is still wrong here. "
             "Others write <i>et al</i> without the final period. "
             "Some also write <i>et. al.</i> with the wrong internal period. "
-            "Correct italicized usage appears as <i>et al.</i>."
+            "Correct italicized usage appears as <i>et al.</i>. "
+            "A period outside italics such as <i>et al</i>. is also correct."
         )
 
         violations = AbbreviationChecker().check(("Test Section", text))
@@ -90,11 +91,20 @@ class AbbreviationCheckerTests(unittest.TestCase):
 
         self.assertEqual(messages.count(combined_et_al), 4)
 
+    def test_et_al_checks_italicization_on_letters_only_not_trailing_period(self) -> None:
+        text = "This citation uses <i>et al</i>. correctly."
+
+        violations = AbbreviationChecker().check(("Test Section", text))
+        messages = [violation.message for violation in violations]
+
+        self.assertNotIn("Use italicized 'et al.'", messages)
+
     def test_latin_terms_strip_non_italic_style_markers_but_preserve_italics(self) -> None:
         text = (
             "Field notes mention <b>in situ</b> in bold plain text. "
             "One citation uses <b><i>et al</i></b> without the final period. "
-            "Correct usage appears as <b><i>et al.</i></b>."
+            "Correct usage appears as <b><i>et al.</i></b>. "
+            "A period outside italics also appears as <b><i>et al</i></b>."
         )
 
         violations = AbbreviationChecker().check(("Test Section", text))

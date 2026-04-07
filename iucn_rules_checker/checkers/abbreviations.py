@@ -291,13 +291,16 @@ class AbbreviationChecker(BaseChecker):
     def check_et_al(self, section_name: str, text: str) -> List[Violation]:
         """Check that ``et al.`` is italicized and uses the canonical punctuation.
 
-        This method checks only ``et al`` / ``et al.`` and enforces one
-        preferred form:
-        - ``<i>et al.</i>`` or ``<em>et al.</em>``
+        This method checks only ``et al`` / ``et al.`` and enforces the
+        canonical wording ``et al.`` while checking italics on the letters
+        ``et al`` only, not on the trailing period. That means both of these
+        are accepted:
+        - ``<i>et al.</i>``
+        - ``<i>et al</i>.``
 
-        It strips non-italic style tags such as bold, superscript, and
-        subscript tags while preserving ``<i>...</i>`` / ``<em>...</em>`` so
-        it can still detect whether the term is italicized.
+        It strips all simple style tags for matching, then maps the matched
+        text back to the original rich text and checks whether the ``et al``
+        portion sits inside ``<i>...</i>`` / ``<em>...</em>``.
 
         The rule flags:
         - missing final periods, such as ``et al``
@@ -312,14 +315,15 @@ class AbbreviationChecker(BaseChecker):
         - ``<i>et al</i>``
 
         Examples not caught:
-        - ``<i>et al.</i>`` because it is already in the preferred italicized form
-        - ``<em>et al.</em>`` because it is already in the preferred italicized form
+        - ``<i>et al.</i>`` because it is already in the expected form
+        - ``<em>et al.</em>`` because it is already in the expected form
+        - ``<i>et al</i>.`` because only ``et al`` needs to be italicized
         - unrelated abbreviations because this method only checks ``et al``
         """
         violations = []
         cleaned_text, index_map = self.strip_style_markers(
             text,
-            italics=False,
+            italics=True,
             bold=True,
             superscript=True,
             subscript=True,
@@ -330,18 +334,21 @@ class AbbreviationChecker(BaseChecker):
             re.IGNORECASE,
         )
         for match in etal_pattern.finditer(cleaned_text):
-            original_start = index_map[match.start('term')]
-            original_end = index_map[match.end() - 1] + 1
+            original_term_start = index_map[match.start('term')]
+            original_term_end = index_map[match.end('term') - 1] + 1
+            original_match_start = index_map[match.start()]
+            original_match_end = index_map[match.end() - 1] + 1
 
-            is_italicized = self.is_inside_italic(text, original_start, original_end)
-            matched_term_text = text[original_start:original_end].strip()
-            if (not is_italicized) or not re.fullmatch(r'et\s+al\.', matched_term_text, re.IGNORECASE):
+            is_italicized = self.is_inside_italic(text, original_term_start, original_term_end)
+            has_canonical_term = re.fullmatch(r'et\s+al', match.group('term'), re.IGNORECASE) is not None
+            has_final_period = match.group('trailing') == "."
+            if (not is_italicized) or (not has_canonical_term) or (not has_final_period):
                 violations.append(self.create_violation(
                     section_name=section_name,
                     text=text,
-                    span=(original_start, original_end),
+                    span=(original_match_start, original_match_end),
                     message="Use italicized 'et al.'",
-                    suggested_fix="<i>et al.</i>",
+                    suggested_fix="<i>et al</i>.",
                 ))
 
         return violations

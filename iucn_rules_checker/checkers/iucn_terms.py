@@ -30,7 +30,8 @@ class IUCNTermsChecker(BaseChecker):
         violations = []
         violations.extend(self.check_the_iucn(section_name, text))
         violations.extend(self.check_CE_abbreviation(section_name, text))
-        violations.extend(self.check_category_capitalization(section_name, text))
+        violations.extend(self.check_category_full_name_capitalization(section_name, text))
+        violations.extend(self.check_category_abbreviation_capitalization(section_name, text))
         violations.extend(self.check_threatened_case(section_name, text))
         return violations
 
@@ -122,46 +123,91 @@ class IUCNTermsChecker(BaseChecker):
             ))
         return violations
 
-    def check_category_capitalization(self, section_name: str, text: str) -> List[Violation]:
-        """Check canonical case for Red List category names and abbreviations.
+    def check_category_full_name_capitalization(self, section_name: str, text: str) -> List[Violation]:
+        """Check canonical case for Red List category full names.
 
         This method first strips simple inline style markers such as italics,
         bold, superscript, and subscript tags, then checks the cleaned text
-        against the canonical case defined in `CATEGORIES` and maps any match
-        span back to the original rich-text input.
+        against the canonical full-name case defined in `CATEGORIES` and maps
+        any match span back to the original rich-text input.
 
-        This method loops through every `(full_name, abbreviation)` pair in
-        `CATEGORIES` and checks both parts separately.
-
-        For the full category name, it flags any case-insensitive whole-phrase
-        match that is not written exactly in the canonical case from the list.
+        This method loops through every full category name in `CATEGORIES`.
+        It flags any case-insensitive whole-phrase match that is not written
+        exactly in the canonical case from the list.
         Examples flagged:
         `critically endangered`
         `Near threatened`
         `extinct in the wild`
 
-        For the abbreviation, it flags any case-insensitive standalone match
-        that is not written exactly in the canonical case from the list.
+        Examples not flagged:
+        `Critically Endangered`
+        `Near Threatened`
+        `Extinct in the Wild`
+        `critically endangered status` only if the category phrase itself is
+        already correctly cased
+        text that does not contain a full category phrase
+
+        The rule does not treat simple HTML bold or italics as an exception.
+        Examples:
+        `<i>critically</i> <b>endangered</b>` is still flagged
+        `<i>Critically</i> <b>Endangered</b>` is not flagged
+        """
+        violations = []
+        cleaned_text, index_map = self.strip_style_markers(
+            text,
+            italics=True,
+            bold=True,
+            superscript=True,
+            subscript=True,
+        )
+
+        for category, _ in self.CATEGORIES:
+            category_pattern = re.compile(rf'\b{re.escape(category)}\b', re.IGNORECASE)
+            for match in category_pattern.finditer(cleaned_text):
+                if match.group(0) != category:
+                    original_start = index_map[match.start()]
+                    original_end = index_map[match.end() - 1] + 1
+                    violations.append(self.create_violation(
+                        section_name=section_name,
+                        text=text,
+                        span=(original_start, original_end),
+                        message=f"Red List category should be capitalized: '{category}'",
+                        suggested_fix=category,
+                    ))
+
+        return violations
+
+    def check_category_abbreviation_capitalization(self, section_name: str, text: str) -> List[Violation]:
+        """Check canonical case for Red List category abbreviations.
+
+        This method first strips simple inline style markers such as italics,
+        bold, superscript, and subscript tags, then checks the cleaned text
+        against the canonical abbreviation case defined in `CATEGORIES` and
+        maps any match span back to the original rich-text input.
+
+        This method loops through every category abbreviation in `CATEGORIES`.
+        It flags any case-insensitive standalone match that is not written
+        exactly in the canonical case from the list.
         Examples flagged:
         `cr`
         `Vu`
         `ew`
 
         Examples not flagged:
-        `Critically Endangered`
-        `Near Threatened`
-        `Extinct in the Wild`
         `CR`
         `VU`
         `EW`
+        `ex situ conservation`
         `Ex-situ conservation`
 
         The abbreviation check rejects matches that touch letters, digits, or
-        hyphens, so it should not catch letter sequences inside larger words or
-        hyphenated compounds such as:
+        hyphens, and it also skips the Latin phrase `ex situ`, so it should not
+        catch letter sequences inside larger words or hyphenated compounds such
+        as:
         `crab`
         `species`
         `newt`
+        `ex situ`
         `Ex-situ`
 
         The rule does not treat simple HTML bold or italics as an exception.
@@ -179,25 +225,15 @@ class IUCNTermsChecker(BaseChecker):
             subscript=True,
         )
 
-        for category, abbrev in self.CATEGORIES:
-            category_pattern = re.compile(rf'\b{re.escape(category)}\b', re.IGNORECASE)
-            for match in category_pattern.finditer(cleaned_text):
-                if match.group(0) != category:
-                    original_start = index_map[match.start()]
-                    original_end = index_map[match.end() - 1] + 1
-                    violations.append(self.create_violation(
-                        section_name=section_name,
-                        text=text,
-                        span=(original_start, original_end),
-                        message=f"Red List category should be capitalized: '{category}'",
-                        suggested_fix=category,
-                    ))
-
+        for _, abbrev in self.CATEGORIES:
             abbrev_pattern = re.compile(
                 rf'(?<![\w-]){re.escape(abbrev)}(?![\w-])',
                 re.IGNORECASE,
             )
             for match in abbrev_pattern.finditer(cleaned_text):
+                if abbrev == "EX" and re.match(r'\s+situ\b', cleaned_text[match.end():], re.IGNORECASE):
+                    continue
+
                 if match.group(0) != abbrev:
                     original_start = index_map[match.start()]
                     original_end = index_map[match.end() - 1] + 1
@@ -231,11 +267,11 @@ class IUCNTermsChecker(BaseChecker):
         Examples not flagged:
         `Threatened species were reviewed.` at sentence start
         `many threatened species`
+        `many Near Threatened species`
         larger words that merely contain the same letters
 
         This is a narrow regex rule rather than a context-aware parser.
-        One limitation is that it can also match the `Threatened` part of
-        `Near Threatened` when that phrase appears mid-sentence.
+        It skips the `Threatened` part of the category phrase `Near Threatened`.
         """
         violations = []
         cleaned_text, index_map = self.strip_style_markers(
@@ -247,6 +283,9 @@ class IUCNTermsChecker(BaseChecker):
         )
         pattern = re.compile(r'(?<=[a-z]\s)Threatened\b')
         for match in pattern.finditer(cleaned_text):
+            if cleaned_text[max(0, match.start() - 5):match.start()].lower() == "near ":
+                continue
+
             original_start = index_map[match.start()]
             original_end = index_map[match.end() - 1] + 1
             violations.append(self.create_violation(
