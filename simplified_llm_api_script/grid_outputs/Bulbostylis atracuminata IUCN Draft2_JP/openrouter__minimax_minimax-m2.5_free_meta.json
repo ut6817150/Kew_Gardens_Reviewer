@@ -1,0 +1,8 @@
+{
+  "provider": "openrouter",
+  "model": "minimax/minimax-m2.5:free",
+  "document": "Bulbostylis atracuminata IUCN Draft2_JP",
+  "started_at": "2026-04-04T19:15:52.503479+00:00",
+  "error": "Client error '404 Not Found' for url 'https://openrouter.ai/api/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404",
+  "completed_at": "2026-04-04T19:15:52.748678+00:00"
+}

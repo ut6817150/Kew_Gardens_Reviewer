@@ -1,0 +1,133 @@
+{
+  "provider": "openrouter",
+  "model": "mistralai/ministral-14b-2512",
+  "document": "Test1_Bulbostylis atracuminata IUCN Draft2_JP",
+  "started_at": "2026-04-07T12:31:20.160320+00:00",
+  "error": "Invalid control character at: line 8 column 176 (char 653)",
+  "completed_at": "2026-04-07T12:31:38.729287+00:00",
+  "status": "error",
+  "rules_evaluated": 11,
+  "rule_metrics": [
+    {
+      "rule_name": "rule_01_consistency_threats",
+      "duration_seconds": 15.337461691990029,
+      "input_tokens": 4560,
+      "output_tokens": 1163,
+      "total_tokens": 5723,
+      "token_source": "provider",
+      "status": "error",
+      "error": "Invalid control character at: line 8 column 176 (char 653)"
+    },
+    {
+      "rule_name": "rule_02_consistency_habitats",
+      "duration_seconds": 10.059211988991592,
+      "input_tokens": 5209,
+      "output_tokens": 898,
+      "total_tokens": 6107,
+      "token_source": "provider",
+      "status": "error",
+      "error": "Invalid control character at: line 19 column 163 (char 1426)"
+    },
+    {
+      "rule_name": "Bibliography Consistency",
+      "duration_seconds": 12.246805554954335,
+      "input_tokens": 11709,
+      "output_tokens": 1045,
+      "total_tokens": 12754,
+      "token_source": "provider",
+      "status": "success",
+      "error": null
+    },
+    {
+      "rule_name": "Geographic Range / Occurrences Consistency",
+      "duration_seconds": 13.297868122986984,
+      "input_tokens": 5004,
+      "output_tokens": 1282,
+      "total_tokens": 6286,
+      "token_source": "provider",
+      "status": "success",
+      "error": null
+    },
+    {
+      "rule_name": "rule_05_consistency_population",
+      "duration_seconds": 11.332619883003645,
+      "input_tokens": 2367,
+      "output_tokens": 1027,
+      "total_tokens": 3394,
+      "token_source": "provider",
+      "status": "error",
+      "error": "Invalid control character at: line 8 column 22 (char 681)"
+    },
+    {
+      "rule_name": "rule_06_consistency_conservation",
+      "duration_seconds": 12.267587025999092,
+      "input_tokens": 5314,
+      "output_tokens": 1172,
+      "total_tokens": 6486,
+      "token_source": "provider",
+      "status": "error",
+      "error": "Invalid control character at: line 14 column 66 (char 1780)"
+    },
+    {
+      "rule_name": "Category Justification",
+      "duration_seconds": 12.621282756968867,
+      "input_tokens": 15740,
+      "output_tokens": 845,
+      "total_tokens": 16585,
+      "token_source": "provider",
+      "status": "success",
+      "error": null
+    },
+    {
+      "rule_name": "References Formatting",
+      "duration_seconds": 18.38489916000981,
+      "input_tokens": 14209,
+      "output_tokens": 1998,
+      "total_tokens": 16207,
+      "token_source": "provider",
+      "status": "success",
+      "error": null
+    },
+    {
+      "rule_name": "Formatting of Scientific/Common Name",
+      "duration_seconds": 12.694631929975003,
+      "input_tokens": 12758,
+      "output_tokens": 914,
+      "total_tokens": 13672,
+      "token_source": "provider",
+      "status": "success",
+      "error": null
+    },
+    {
+      "rule_name": "Check for Acronym Explanation",
+      "duration_seconds": 11.962434169021435,
+      "input_tokens": 12068,
+      "output_tokens": 849,
+      "total_tokens": 12917,
+      "token_source": "provider",
+      "status": "success",
+      "error": null
+    },
+    {
+      "rule_name": "Check for Timeline and Argument Coherence",
+      "duration_seconds": 13.733547652023844,
+      "input_tokens": 11712,
+      "output_tokens": 1445,
+      "total_tokens": 13157,
+      "token_source": "provider",
+      "status": "success",
+      "error": null
+    }
+  ],
+  "overall": {
+    "rules_attempted": 11,
+    "rules_succeeded": 7,
+    "rules_failed": 4,
+    "run_duration_seconds": 18.569,
+    "total_findings": 63,
+    "total_input_tokens": 100650,
+    "total_output_tokens": 12638,
+    "total_tokens": 113288,
+    "token_estimation_used": false
+  }
+}

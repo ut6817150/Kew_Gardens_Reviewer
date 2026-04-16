@@ -17,6 +17,7 @@ try:
     from .checkers.scientific import ScientificNameChecker
     from .checkers.spelling import SpellingChecker
     from .checkers.symbols import SymbolChecker
+    from .checkers.tables import TableChecker
     from .violation import Violation
 except ImportError:  # pragma: no cover - direct script execution fallback
     from checkers.abbreviations import AbbreviationChecker
@@ -32,13 +33,33 @@ except ImportError:  # pragma: no cover - direct script execution fallback
     from checkers.scientific import ScientificNameChecker
     from checkers.spelling import SpellingChecker
     from checkers.symbols import SymbolChecker
+    from checkers.tables import TableChecker
     from violation import Violation
 
 
 class IUCNAssessmentReviewer:
-    """Review parsed assessment sections and return rule violations."""
+    """
+    Review parsed assessment sections and return rule violations.
+
+    Purpose:
+        This class coordinates the configured checker pipeline across a parsed assessment report.
+    """
 
     def __init__(self):
+        """
+        Initialise the table-only checker, bibliography-only checker, and standard checker pipeline.
+
+        Args:
+            None.
+
+        Returns:
+            None (mutates ``self.bibliography_checker`` and ``self.checkers``).
+
+        Notes:
+            Table and bibliography sections are reviewed separately so they can
+            run smaller, section-specific rule sets than the rest of the report.
+        """
+        self.table_checker = TableChecker()
         self.bibliography_checker = BibliographyChecker()
         self.checkers: List[BaseChecker] = [
             AbbreviationChecker(),
@@ -55,19 +76,44 @@ class IUCNAssessmentReviewer:
         ]
 
     def is_table_section(self, section_name: str) -> bool:
-        """Return True when a parsed section key represents table-derived content."""
+        """
+        Return True when a parsed section key represents table-derived content.
+
+        Args:
+            section_name (str): Parsed section key supplied by the caller.
+
+        Returns:
+            bool: Boolean result described by the summary line above.
+        """
         return re.search(r"\[table\s+\d+\]", section_name, re.IGNORECASE) is not None
 
     def is_bibliography_section(self, section_name: str) -> bool:
-        """Return True when a parsed section key represents bibliography content."""
+        """
+        Return True when a parsed section key represents bibliography content.
+
+        Args:
+            section_name (str): Parsed section key supplied by the caller.
+
+        Returns:
+            bool: Boolean result described by the summary line above.
+        """
         return "bibliography" in section_name.lower()
 
     def review_full_report(self, full_report: Dict[str, str]) -> List[Violation]:
-        """Apply each rule to each ``section -> text`` pair in the parsed report."""
+        """
+        Apply each rule to each ``section -> text`` pair in the parsed report.
+
+        Args:
+            full_report (Dict[str, str]): Parsed ``section -> text`` mapping supplied by the caller.
+
+        Returns:
+            List[Violation]: Violations produced by this method.
+        """
         if not isinstance(full_report, dict):
             raise TypeError("review_full_report() expects a dict of section paths to text.")
 
         violations: List[Violation] = []
+        self.table_checker.begin_sweep()
         self.bibliography_checker.begin_sweep()
         for checker in self.checkers:
             checker.begin_sweep()
@@ -76,20 +122,44 @@ class IUCNAssessmentReviewer:
             for section_name, section_text in full_report.items():
                 if not section_text.strip():
                     continue
-                if self.is_table_section(section_name):
-                    continue
-
                 section_item = (section_name, section_text)
 
+                if self.is_table_section(section_name):
+                    violations.extend(self.table_checker.check_text(*section_item))
+                    continue
+
                 if self.is_bibliography_section(section_name):
-                    violations.extend(self.bibliography_checker.check(section_item))
+                    violations.extend(self.bibliography_checker.check_text(*section_item))
                     continue
 
                 for checker in self.checkers:
-                    violations.extend(checker.check(section_item))
+                    violations.extend(checker.check_text(*section_item))
         finally:
+            self.table_checker.end_sweep()
             self.bibliography_checker.end_sweep()
             for checker in self.checkers:
                 checker.end_sweep()
+
+        return violations
+
+    def clean_up_violations(self, violations: List[Violation]) -> List[Violation]:
+        """
+        Strip simple inline style tags from violation text fields.
+
+        Args:
+            violations (List[Violation]): Violation list supplied by the caller.
+
+        Returns:
+            List[Violation]: Violations produced by this method.
+        """
+        style_pattern = re.compile(
+            r"</?(?:i|em|b|strong|sup|sub)>",
+            re.IGNORECASE,
+        )
+
+        for violation in violations:
+            violation.matched_text = style_pattern.sub("", violation.matched_text)
+            violation.matched_snippet = style_pattern.sub("", violation.matched_snippet)
+            violation.message = style_pattern.sub("", violation.message)
 
         return violations

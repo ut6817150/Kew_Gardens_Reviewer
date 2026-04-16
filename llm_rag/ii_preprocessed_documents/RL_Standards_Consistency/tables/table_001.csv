@@ -1,0 +1,9 @@
+column_1,column_2,column_3,column_4,Assessor,column_6,column_7,Contributor,column_9,column_10,Facilitator/Compiler,column_12,column_13,Reviewer,column_15
+,,,,,,N,,,Y (for Compiler only),,,N,,
+,Assessor,,,,,,,,,,,,,
+,,,N,,,,,,Y,,,N,,
+,Contributor,,,,,,,,,,,,,
+,,,Y (for Compiler only),,,Y,,,,,,Y (for Facilitator only),,
+,Facilitator/Compiler,,,,,,,,,,,,,
+,,,N,,,N,,,Y (for Facilitator only),,,,,
+,Reviewer,,,,,,,,,,,,,

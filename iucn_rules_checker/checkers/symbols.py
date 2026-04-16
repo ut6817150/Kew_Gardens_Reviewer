@@ -8,18 +8,51 @@ from .base import BaseChecker
 
 
 class SymbolChecker(BaseChecker):
-    """Checker for symbol and unit formatting rules."""
+    """
+    Checker for symbol and unit formatting rules.
+
+    Purpose:
+        This class groups related rules within the rules-based assessment workflow.
+    """
 
     def __init__(self):
+        """
+        Initialise the symbol and unit-formatting checker.
+
+        Args:
+            None.
+
+        Returns:
+            None.
+        """
         super().__init__()
 
     def is_preceded_by_range(self, cleaned_text: str, match_start: int) -> bool:
-        """Return True when a match starts at the second value in a numeric range."""
+        """
+        Return True when a match starts at the second value in a numeric range.
+
+        Args:
+            cleaned_text (str): Cleaned text value supplied by the caller.
+            match_start (int): Start index of the candidate match.
+
+        Returns:
+            bool: Boolean result described by the summary line above.
+        """
         return bool(re.search(r'\d+(?:\.\d+)?\s*[-–—]\s*$', cleaned_text[:match_start]))
 
     def check_text(self, section_name: str, text: str) -> List[Violation]:
-        """Check for symbol and unit formatting violations."""
+        """
+        Check for symbol and unit formatting violations.
+
+        Args:
+            section_name (str): Parsed section key supplied by the caller.
+            text (str): Parsed section text supplied by the caller.
+
+        Returns:
+            List[Violation]: Violations produced by this method.
+        """
         violations = []
+        violations.extend(self.check_ampersand_usage(section_name, text))
         violations.extend(self.check_area_units(section_name, text))
         violations.extend(self.check_degree_text(section_name, text))
         violations.extend(self.check_degree_symbol_spacing(section_name, text))
@@ -27,8 +60,60 @@ class SymbolChecker(BaseChecker):
         violations.extend(self.check_percentage_symbol_spacing(section_name, text))
         return violations
 
+    def check_ampersand_usage(self, section_name: str, text: str) -> List[Violation]:
+        """
+        Flag literal `&` characters and suggest `and`.
+
+        This rule strips all simple style markers, then flags each literal
+        ampersand character in the cleaned text.
+
+        The rule is intentionally skipped for section names containing
+        `Assessment Information`.
+
+        Examples flagged:
+        `forest & woodland`
+        `grassland & wetland`
+        `<i>forest</i> <b>&</b> woodland`
+
+        Examples not flagged:
+        `forest and woodland`
+        text with no literal ampersand character
+
+        Args:
+            section_name (str): Parsed section key supplied by the caller.
+            text (str): Parsed section text supplied by the caller.
+
+        Returns:
+            List[Violation]: Violations produced by this method.
+        """
+        if "assessment information" in section_name.lower():
+            return []
+
+        violations = []
+        cleaned_text, index_map = self.strip_style_markers(
+            text,
+            italics=True,
+            bold=True,
+            superscript=True,
+            subscript=True,
+        )
+
+        for match in re.finditer(r"&", cleaned_text):
+            start = index_map[match.start()]
+            end = index_map[match.end() - 1] + 1
+            violations.append(self.create_violation(
+                section_name=section_name,
+                text=text,
+                span=(start, end),
+                message="Use 'and' not '&'",
+                suggested_fix="and",
+            ))
+
+        return violations
+
     def check_area_units(self, section_name: str, text: str) -> List[Violation]:
-        """Check area unit formatting after removing simple style tags.
+        """
+        Check area unit formatting after removing simple style tags.
 
         This method strips simple inline bold/italic HTML tags first:
         `<i>`, `<em>`, `<b>`, and `<strong>`.
@@ -62,6 +147,13 @@ class SymbolChecker(BaseChecker):
         markup.
         It only checks the hardcoded forms above, so other area-unit variants
         are ignored.
+
+        Args:
+            section_name (str): Parsed section key supplied by the caller.
+            text (str): Parsed section text supplied by the caller.
+
+        Returns:
+            List[Violation]: Violations produced by this method.
         """
         violations = []
         cleaned_text, index_map = self.strip_style_markers(
@@ -135,7 +227,8 @@ class SymbolChecker(BaseChecker):
         return violations
 
     def check_degree_text(self, section_name: str, text: str) -> List[Violation]:
-        """Check written-out degree forms and suggest `°` notation.
+        """
+        Check written-out degree forms and suggest `°` notation.
 
         This method strips simple inline bold/italic HTML tags first:
         `<i>`, `<em>`, `<b>`, and `<strong>`.
@@ -168,6 +261,13 @@ class SymbolChecker(BaseChecker):
         / `Celsius`).
         It does not handle Fahrenheit or more complex coordinate formats.
         It only strips the simple style tags listed above.
+
+        Args:
+            section_name (str): Parsed section key supplied by the caller.
+            text (str): Parsed section text supplied by the caller.
+
+        Returns:
+            List[Violation]: Violations produced by this method.
         """
         violations = []
         cleaned_text, index_map = self.strip_style_markers(
@@ -207,7 +307,8 @@ class SymbolChecker(BaseChecker):
         return violations
 
     def check_degree_symbol_spacing(self, section_name: str, text: str) -> List[Violation]:
-        """Check spacing around an existing degree symbol.
+        """
+        Check spacing around an existing degree symbol.
 
         This method strips simple inline bold/italic HTML tags first:
         `<i>`, `<em>`, `<b>`, and `<strong>`.
@@ -236,6 +337,13 @@ class SymbolChecker(BaseChecker):
         It does not handle Fahrenheit or more complex coordinate formats.
         Shared-unit ranges are intentionally skipped.
         It only strips the simple style tags listed above.
+
+        Args:
+            section_name (str): Parsed section key supplied by the caller.
+            text (str): Parsed section text supplied by the caller.
+
+        Returns:
+            List[Violation]: Violations produced by this method.
         """
         violations = []
         cleaned_text, index_map = self.strip_style_markers(
@@ -268,7 +376,8 @@ class SymbolChecker(BaseChecker):
         return violations
 
     def check_percentage(self, section_name: str, text: str) -> List[Violation]:
-        """Check written-out percentage forms after removing simple style tags.
+        """
+        Check written-out percentage forms after removing simple style tags.
 
         This method strips simple inline bold/italic HTML tags first:
         `<i>`, `<em>`, `<b>`, and `<strong>`.
@@ -299,6 +408,13 @@ class SymbolChecker(BaseChecker):
         `percentage`.
         Spacing around an existing `%` symbol is handled separately by
         `check_percentage_symbol_spacing(...)`.
+
+        Args:
+            section_name (str): Parsed section key supplied by the caller.
+            text (str): Parsed section text supplied by the caller.
+
+        Returns:
+            List[Violation]: Violations produced by this method.
         """
         violations = []
         cleaned_text, index_map = self.strip_style_markers(
@@ -338,7 +454,8 @@ class SymbolChecker(BaseChecker):
         return violations
 
     def check_percentage_symbol_spacing(self, section_name: str, text: str) -> List[Violation]:
-        """Check spacing around `%` and simple units after removing style tags.
+        """
+        Check spacing around `%` and simple units after removing style tags.
 
         This method strips simple inline bold/italic HTML tags first:
         `<i>`, `<em>`, `<b>`, and `<strong>`.
@@ -356,6 +473,13 @@ class SymbolChecker(BaseChecker):
         it does not check range-preceded spacing cases.
         It only checks the hard-coded unit list `km`, `ha`, `kg`, `m`, `cm`,
         `mm`, `ml`, and `l`.
+
+        Args:
+            section_name (str): Parsed section key supplied by the caller.
+            text (str): Parsed section text supplied by the caller.
+
+        Returns:
+            List[Violation]: Violations produced by this method.
         """
         violations = []
         cleaned_text, index_map = self.strip_style_markers(

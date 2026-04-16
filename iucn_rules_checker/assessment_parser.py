@@ -4,10 +4,23 @@ from typing import Any, Dict, List, Optional
 
 
 class AssessmentParser:
-    """Convert an assessment tree dict into a block-level full report mapping."""
+    """
+    Convert an assessment tree dict into a block-level full report mapping.
+
+    Purpose:
+        This class converts assessment-tree dictionaries into the block-level report mapping used by the reviewer.
+    """
 
     def parse(self, assessment: Dict[str, Any]) -> Dict[str, str]:
-        """Return a dict mapping block paths to paragraph and table-row rich text."""
+        """
+        Return a dict mapping block paths to paragraph and table-row rich text.
+
+        Args:
+            assessment (Dict[str, Any]): Input value used by this method.
+
+        Returns:
+            Dict[str, str]: Dictionary value produced by this method.
+        """
         if not isinstance(assessment, dict):
             raise TypeError("AssessmentParser.parse() expects a Python dictionary.")
 
@@ -21,7 +34,17 @@ class AssessmentParser:
         full_report: Dict[str, str],
         path: Optional[List[str]] = None,
     ) -> None:
-        """Walk the known tree structure and collect rich text by block path."""
+        """
+        Walk the known tree structure and collect rich text by block path.
+
+        Args:
+            node (Dict[str, Any]): Assessment tree node supplied to the parser.
+            full_report (Dict[str, str]): Parsed ``section -> text`` mapping supplied by the caller.
+            path (Optional[List[str]]): Input value used by this method.
+
+        Returns:
+            None: Value produced by this method.
+        """
         if path is None:
             path = []
 
@@ -57,7 +80,17 @@ class AssessmentParser:
         block: Dict[str, Any],
         block_counts: Dict[str, int],
     ) -> str:
-        """Build a unique key for one block under a section path."""
+        """
+        Build a unique key for one block under a section path.
+
+        Args:
+            path (List[str]): Input value used by this method.
+            block (Dict[str, Any]): Single block dictionary extracted from the assessment tree.
+            block_counts (Dict[str, int]): Input value used by this method.
+
+        Returns:
+            str: String value produced by this method.
+        """
         section_key = " > ".join(path)
         block_type = str(block.get("type", "block")).strip().lower() or "block"
 
@@ -65,7 +98,15 @@ class AssessmentParser:
         return f"{section_key} [{block_type} {block_counts[block_type]}]"
 
     def extract_block_text(self, block: Dict[str, Any]) -> str:
-        """Extract one paragraph block from `text_rich` only."""
+        """
+        Extract one paragraph block from `text_rich` only.
+
+        Args:
+            block (Dict[str, Any]): Single block dictionary extracted from the assessment tree.
+
+        Returns:
+            str: String value produced by this method.
+        """
         block_type = block.get("type")
 
         if block_type == "paragraph":
@@ -74,7 +115,15 @@ class AssessmentParser:
         return ""
 
     def coerce_text(self, value: Any) -> str:
-        """Convert parser input values to text while normalizing non-breaking spaces."""
+        """
+        Convert parser input values to text while normalizing non-breaking spaces.
+
+        Args:
+            value (Any): Input value consumed by this helper.
+
+        Returns:
+            str: String value produced by this method.
+        """
         if value is None:
             return ""
         if isinstance(value, bytes):
@@ -84,7 +133,15 @@ class AssessmentParser:
         return str(value).replace("\u00A0", " ")
 
     def extract_table_rows(self, block: Dict[str, Any]) -> List[str]:
-        """Render one table block from `rows_rich` only as per-row strings."""
+        """
+        Render one table block from `rows_rich` only as per-row strings.
+
+        Args:
+            block (Dict[str, Any]): Single block dictionary extracted from the assessment tree.
+
+        Returns:
+            List[str]: List value produced by this method.
+        """
         rows = block.get("rows_rich", [])
         formatted_rows: List[str] = []
 
@@ -103,7 +160,15 @@ class AssessmentParser:
         return formatted_rows
 
     def stringify_cell(self, cell: Any) -> str:
-        """Convert one table cell into text."""
+        """
+        Convert one table cell into text.
+
+        Args:
+            cell (Any): Single table cell supplied by the caller.
+
+        Returns:
+            str: String value produced by this method.
+        """
         if cell is None:
             return ""
 

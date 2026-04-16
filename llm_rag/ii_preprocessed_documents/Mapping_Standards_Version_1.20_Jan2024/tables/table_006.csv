@@ -1,0 +1,6 @@
+column_1,CODE,column_3,column_4,SEASONALITY,column_6,column_7,DEFINITION,column_9
+1,,,Resident,,,The species is/was known or thought very likely to be resident throughout the year.,,
+2,,,Breeding Season,,,The species is/was known or thought very likely to occur regularly during the breeding season and to breed or capable of breeding.,,
+3,,,Non-breeding Season,,,"The species is/was known or thought very likely to occur regularly during the non-breeding season. In the Eurasian and North American contexts, this encompasses ‘winter’.",,
+4,,,Passage,,,The species is/was known or thought very likely to occur regularly during a relatively short period(s) of the year on migration between breeding and non-breeding ranges.,,
+5,,,Seasonal Occurrence Uncertain,,,"The species is/was present, but it is not known if it is present during part or all of the year.",,

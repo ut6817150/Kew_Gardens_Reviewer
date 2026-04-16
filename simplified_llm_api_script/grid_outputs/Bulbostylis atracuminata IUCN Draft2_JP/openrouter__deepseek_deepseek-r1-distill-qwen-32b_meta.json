@@ -1,0 +1,8 @@
+{
+  "provider": "openrouter",
+  "model": "deepseek/deepseek-r1-distill-qwen-32b",
+  "document": "Bulbostylis atracuminata IUCN Draft2_JP",
+  "started_at": "2026-04-04T20:18:29.270509+00:00",
+  "error": "peer closed connection without sending complete message body (incomplete chunked read)",
+  "completed_at": "2026-04-04T20:19:54.155600+00:00"
+}

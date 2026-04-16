@@ -1,0 +1,16 @@
+{
+  "processed_dir": "G:\\My Drive\\Documents\\3. Education\\7. Imperial\\Modules\\SWE Group Project\\RAG\\llm_rag\\ii_preprocessed_documents",
+  "persist_dir": "G:\\My Drive\\Documents\\3. Education\\7. Imperial\\Modules\\SWE Group Project\\RAG\\llm_rag\\iii_vector_db\\chroma_db\\reference_docs",
+  "corpus_path": "G:\\My Drive\\Documents\\3. Education\\7. Imperial\\Modules\\SWE Group Project\\RAG\\llm_rag\\iii_vector_db\\reference_corpus.jsonl",
+  "parent_contexts_path": "G:\\My Drive\\Documents\\3. Education\\7. Imperial\\Modules\\SWE Group Project\\RAG\\llm_rag\\iii_vector_db\\parent_contexts.jsonl",
+  "collection_name": "iucn_reference_docs",
+  "embedding_model": "BAAI/bge-m3",
+  "raw_record_count": 1170,
+  "chunk_count": 1743,
+  "chunk_size": 800,
+  "chunk_overlap": 100,
+  "chroma_built": true,
+  "table_row_count": 265,
+  "fallback_table_row_count": 38,
+  "synthetic_parent_count": 3
+}

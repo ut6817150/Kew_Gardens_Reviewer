@@ -8,7 +8,12 @@ from .base import BaseChecker
 
 
 class GeographyChecker(BaseChecker):
-    """Checker for geographic naming conventions (ISO 3166)."""
+    """
+    Checker for geographic naming conventions (ISO 3166).
+
+    Purpose:
+        This class groups related rules within the rules-based assessment workflow.
+    """
 
     ISO_3166_COUNTRIES = {
         'Afghanistan', 'Albania', 'Algeria', 'Andorra', 'Angola', 'Antigua and Barbuda',
@@ -91,17 +96,37 @@ class GeographyChecker(BaseChecker):
     }
 
     RECOGNISED_REGIONS = {
+        # Countries and sovereign states.
+        'East Timor',
+        'Western Sahara',
+        'Equatorial Guinea',
+        'Central African Republic',
+        'Northern Ireland',
+
+        # Continents and major world regions.
         'Africa',
         'North Africa',
+        'East Africa',
+        'West Africa',
+        'Southern Africa',
+        'Central Africa',
         'Sub-Saharan Africa',
         'Antarctica',
         'Antarctic',
         'Asia',
         'East Asia',
+        'Southeast Asia',
+        'South Asia',
+        'West Asia',
         'North Asia',
         'South & Southeast Asia',
         'West & Central Asia',
         'Europe',
+        'Eastern Europe',
+        'Western Europe',
+        'Northern Europe',
+        'Southern Europe',
+        'Middle East',
         'Americas',
         'North America',
         'Mesoamerica',
@@ -109,21 +134,98 @@ class GeographyChecker(BaseChecker):
         'Caribbean Islands',
         'South America',
         'Oceania',
+
+        # Oceans, seas, and major water bodies.
+        'North Sea',
+        'South China Sea',
+        'East China Sea',
+        'North Atlantic',
+        'South Atlantic',
+        'North Pacific',
+        'South Pacific',
+        'Southern Ocean',
+
+        # US states and territories.
+        'North Carolina',
+        'South Carolina',
+        'North Dakota',
+        'South Dakota',
+        'West Virginia',
+
+        # Australian states and territories.
+        'New South Wales',
+        'Northern Territory',
+        'South Australia',
+        'Western Australia',
+
+        # Canadian provinces and territories.
+        'Northwest Territories',
+
+        # UK and Ireland regions.
+        'East Anglia',
+        'North Yorkshire',
+        'South Yorkshire',
+        'West Yorkshire',
+        'East Yorkshire',
+        'West Midlands',
+        'East Midlands',
+        'Western Isles',
+
+        # Other notable named regions and territories.
+        'North Caucasus',
+        'South Georgia',
+        'South Sandwich Islands',
+        'Northern Mariana Islands',
+        'Southwest Pacific',
+        'Eastern Cape',
+        'Eastern Cape (South Africa)',
+        'Western Cape',
+        'Western Cape (South Africa)',
+        'Northern Cape',
+        'Northern Cape (South Africa)',
+        'North Island',
+        'North Island (New Zealand)',
+        'South Island',
+        'South Island (New Zealand)',
+        'South Downs',
+        'North Downs',
+        'West Country',
+        'North Andaman',
+        'South Andaman',
     }
 
     def __init__(self):
+        """
+        Initialise the geography checker.
+
+        Args:
+            None.
+
+        Returns:
+            None (mutates the recognised-name cache in place).
+        """
         super().__init__()
         self._proper_country_or_region_names = self.ISO_3166_COUNTRIES | self.RECOGNISED_REGIONS
 
     def check_text(self, section_name: str, text: str) -> List[Violation]:
-        """Check for geographic naming violations."""
+        """
+        Check for geographic naming violations.
+
+        Args:
+            section_name (str): Parsed section key supplied by the caller.
+            text (str): Parsed section text supplied by the caller.
+
+        Returns:
+            List[Violation]: Violations produced by this method.
+        """
         violations = []
         violations.extend(self.check_country_names(section_name, text))
         violations.extend(self.check_directional_capitalization(section_name, text))
         return violations
 
     def check_country_names(self, section_name: str, text: str) -> List[Violation]:
-        """Check country names against an explicit correction map.
+        """
+        Check country names against an explicit correction map.
 
         This method first strips simple inline style markers such as italics,
         bold, superscript, and subscript tags, then applies the explicit
@@ -152,6 +254,13 @@ class GeographyChecker(BaseChecker):
         exact ISO-style names such as `Viet Nam`, `Myanmar`, `Philippines`
         unknown typos that are not yet present in `COUNTRY_CORRECTIONS`
         arbitrary capitalized phrases that are not in the correction map
+
+        Args:
+            section_name (str): Parsed section key supplied by the caller.
+            text (str): Parsed section text supplied by the caller.
+
+        Returns:
+            List[Violation]: Violations produced by this method.
         """
         violations = []
         cleaned_text, index_map = self.strip_style_markers(
@@ -183,7 +292,16 @@ class GeographyChecker(BaseChecker):
         return violations
 
     def is_within_known_country_or_region(self, text: str, span: tuple[int, int]) -> bool:
-        """Return True when a match sits inside a known ISO country or region name."""
+        """
+        Return True when a match sits inside a known ISO country or region name.
+
+        Args:
+            text (str): Parsed section text supplied by the caller.
+            span (tuple[int, int]): Span tuple supplied by the caller.
+
+        Returns:
+            bool: Boolean result described by the summary line above.
+        """
         start, end = span
         for proper_name in self._proper_country_or_region_names:
             pattern = re.compile(rf'\b{re.escape(proper_name)}\b', re.IGNORECASE)
@@ -195,7 +313,8 @@ class GeographyChecker(BaseChecker):
         return False
 
     def check_directional_capitalization(self, section_name: str, text: str) -> List[Violation]:
-        """Check capitalization of direction-led geographic phrases.
+        """
+        Check capitalization of direction-led geographic phrases.
 
         This method first strips simple inline style markers such as italics,
         bold, superscript, and subscript tags, then applies the directional
@@ -217,24 +336,39 @@ class GeographyChecker(BaseChecker):
         If the phrase is not one of those allowed names, the method assumes
         the direction should be lowercase and suggests that form.
 
+        There are two explicit sentence-position exceptions:
+        - if the matched phrase appears at the start of the paragraph
+        - if the cleaned text immediately before it ends with ``. ``
+
         Examples flagged:
         `Eastern Ecuador` -> suggests `eastern Ecuador`
         `Northern Peru` -> suggests `northern Peru`
         `Western Colombia` -> suggests `western Colombia`
 
         Examples not flagged:
+        paragraph-start `Eastern Ecuador contains...`
+        `This changed. Eastern Ecuador contains...`
         `North Korea`
         `South Africa`
         `North America`
         `East Asia`
         `South & Southeast Asia`
         `West & Central Asia`
+        direction-led subphrases inside a larger proper name such as
+        `South Wales` within `New South Wales`
 
         Examples not checked:
         already-lowercase forms such as `eastern Ecuador`
         direction words that are not followed by a capitalized geographic phrase
         proper region names not present in `ISO_3166_COUNTRIES`,
         `RECOGNISED_REGIONS`, or the correction-key list
+
+        Args:
+            section_name (str): Parsed section key supplied by the caller.
+            text (str): Parsed section text supplied by the caller.
+
+        Returns:
+            List[Violation]: Violations produced by this method.
         """
         violations = []
         cleaned_text, index_map = self.strip_style_markers(
@@ -257,7 +391,11 @@ class GeographyChecker(BaseChecker):
 
         for match in pattern.finditer(cleaned_text):
             matched_phrase = match.group(0)
+            if match.start() == 0 or cleaned_text[:match.start()].endswith(". "):
+                continue
             if matched_phrase.lower() in allowed_phrases:
+                continue
+            if self.is_within_known_country_or_region(cleaned_text, match.span()):
                 continue
 
             corrected = f"{match.group('direction').lower()}{match.group('rest')}"

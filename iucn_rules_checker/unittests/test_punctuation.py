@@ -6,12 +6,26 @@ from iucn_rules_checker.checkers.punctuation import PunctuationChecker
 
 
 class PunctuationCheckerTests(unittest.TestCase):
-    """Check the current punctuation rules."""
+    """
+    Check the current punctuation rules.
+
+    Purpose:
+        This test case groups regression checks for the current behavior covered by the enclosed tests.
+    """
 
     def test_range_dashes_use_real_en_dash_in_message_and_fix(self) -> None:
+        """
+        Test that range dashes use real en dash in message and fix.
+
+        Args:
+            None.
+
+        Returns:
+            None. The assertions inside the test body enforce the expected behavior.
+        """
         text = "The assessment covered elevations from 10-20."
 
-        violations = PunctuationChecker().check(("Test Section", text))
+        violations = PunctuationChecker().check_text("Test Section", text)
         range_violations = [
             violation for violation in violations
             if "numeric ranges" in violation.message
@@ -22,6 +36,15 @@ class PunctuationCheckerTests(unittest.TestCase):
         self.assertEqual(range_violations[0].suggested_fix, "10\u201320")
 
     def test_range_dashes_flag_plain_numeric_ranges_only(self) -> None:
+        """
+        Test that range dashes flag plain numeric ranges only.
+
+        Args:
+            None.
+
+        Returns:
+            None. The assertions inside the test body enforce the expected behavior.
+        """
         checker = PunctuationChecker()
 
         cases = {
@@ -32,7 +55,7 @@ class PunctuationCheckerTests(unittest.TestCase):
 
         for text, expected_fix in cases.items():
             with self.subTest(text=text):
-                violations = checker.check(("Test Section", text))
+                violations = checker.check_text("Test Section", text)
                 range_violations = [
                     violation for violation in violations
                     if "numeric ranges" in violation.message
@@ -42,6 +65,15 @@ class PunctuationCheckerTests(unittest.TestCase):
                 self.assertEqual(range_violations[0].suggested_fix, expected_fix)
 
     def test_range_dashes_skip_already_correct_unspaced_en_dash(self) -> None:
+        """
+        Test that range dashes skip already correct unspaced en dash.
+
+        Args:
+            None.
+
+        Returns:
+            None. The assertions inside the test body enforce the expected behavior.
+        """
         checker = PunctuationChecker()
         texts = [
             "The assessment covered plots 10\u201320.",
@@ -51,7 +83,7 @@ class PunctuationCheckerTests(unittest.TestCase):
 
         for text in texts:
             with self.subTest(text=text):
-                violations = checker.check(("Test Section", text))
+                violations = checker.check_text("Test Section", text)
                 range_violations = [
                     violation for violation in violations
                     if "numeric ranges" in violation.message
@@ -59,9 +91,18 @@ class PunctuationCheckerTests(unittest.TestCase):
                 self.assertEqual(range_violations, [])
 
     def test_range_dashes_strip_bold_and_italic_markers_before_matching(self) -> None:
+        """
+        Test that range dashes strip bold and italic markers before matching.
+
+        Args:
+            None.
+
+        Returns:
+            None. The assertions inside the test body enforce the expected behavior.
+        """
         text = "The transect covered plots <b>10</b> - <i>20</i>."
 
-        violations = PunctuationChecker().check(("Test Section", text))
+        violations = PunctuationChecker().check_text("Test Section", text)
         range_violations = [
             violation for violation in violations
             if "numeric ranges" in violation.message
@@ -71,6 +112,15 @@ class PunctuationCheckerTests(unittest.TestCase):
         self.assertEqual(range_violations[0].suggested_fix, "10\u201320")
 
     def test_range_dashes_flag_shared_unit_ranges(self) -> None:
+        """
+        Test that range dashes flag shared unit ranges.
+
+        Args:
+            None.
+
+        Returns:
+            None. The assertions inside the test body enforce the expected behavior.
+        """
         checker = PunctuationChecker()
         cases = {
             "The transect was 10 - 20 km long.": "10\u201320",
@@ -82,7 +132,7 @@ class PunctuationCheckerTests(unittest.TestCase):
 
         for text, expected_fix in cases.items():
             with self.subTest(text=text):
-                violations = checker.check(("Test Section", text))
+                violations = checker.check_text("Test Section", text)
                 range_violations = [
                     violation for violation in violations
                     if "numeric ranges" in violation.message
@@ -91,6 +141,15 @@ class PunctuationCheckerTests(unittest.TestCase):
                 self.assertEqual(range_violations[0].suggested_fix, expected_fix)
 
     def test_range_dashes_ignore_repeated_unit_ranges(self) -> None:
+        """
+        Test that range dashes ignore repeated unit ranges.
+
+        Args:
+            None.
+
+        Returns:
+            None. The assertions inside the test body enforce the expected behavior.
+        """
         checker = PunctuationChecker()
         texts = [
             "The transect was 10km - 20 km long.",
@@ -109,7 +168,7 @@ class PunctuationCheckerTests(unittest.TestCase):
 
         for text in texts:
             with self.subTest(text=text):
-                violations = checker.check(("Test Section", text))
+                violations = checker.check_text("Test Section", text)
                 range_violations = [
                     violation for violation in violations
                     if "numeric ranges" in violation.message
@@ -117,12 +176,21 @@ class PunctuationCheckerTests(unittest.TestCase):
                 self.assertEqual(range_violations, [])
 
     def test_range_dashes_do_not_flag_hyphenated_dates(self) -> None:
+        """
+        Test that range dashes do not flag hyphenated dates.
+
+        Args:
+            None.
+
+        Returns:
+            None. The assertions inside the test body enforce the expected behavior.
+        """
         text = (
             "Assessment dates included 2022-08-01, 08-01-2022, and 08-2022-01. "
             "None of these should be treated as numeric ranges."
         )
 
-        violations = PunctuationChecker().check(("Test Section", text))
+        violations = PunctuationChecker().check_text("Test Section", text)
         range_violations = [
             violation for violation in violations
             if "numeric ranges" in violation.message
@@ -131,21 +199,41 @@ class PunctuationCheckerTests(unittest.TestCase):
         self.assertEqual(range_violations, [])
 
     def test_other_punctuation_rules_strip_style_markers_before_matching(self) -> None:
+        """
+        Test that other punctuation rules strip style markers before matching.
+
+        Args:
+            None.
+
+        Returns:
+            None. The assertions inside the test body enforce the expected behavior.
+        """
         text = (
             "The species <i>for</i> <b>example</b> occurs in cloud forest. "
             "Altitude <b>:</b> 200 m. "
             "Peru <i>;</i> Ecuador."
         )
 
-        violations = PunctuationChecker().check(("Test Section", text))
+        violations = PunctuationChecker().check_text("Test Section", text)
         messages = [violation.message for violation in violations]
 
-        self.assertIn("'for example' should be preceded by a comma", messages)
-        self.assertIn("'for example' should be followed by a comma", messages)
+        self.assertIn(
+            "'for example' should be enclosed by commas, no preceeding comma if sentence or paragraph start",
+            messages,
+        )
         self.assertIn("Do not put a space before a colon", messages)
         self.assertIn("Do not put a space before a semicolon", messages)
 
     def test_for_example_ignores_sentence_start_after_sentence_ending_punctuation(self) -> None:
+        """
+        Test that for example ignores sentence start after sentence ending punctuation.
+
+        Args:
+            None.
+
+        Returns:
+            None. The assertions inside the test body enforce the expected behavior.
+        """
         text = (
             "This changed. For example, the species occurs in cloud forest. "
             "Was it revised? For example, another site was added. "
@@ -155,6 +243,86 @@ class PunctuationCheckerTests(unittest.TestCase):
         violations = PunctuationChecker().check_for_example_commas("Test Section", text)
 
         self.assertEqual(violations, [])
+
+    def test_for_example_at_sentence_start_only_checks_following_comma(self) -> None:
+        """
+        Test that for example at sentence start only checks following comma.
+
+        Args:
+            None.
+
+        Returns:
+            None. The assertions inside the test body enforce the expected behavior.
+        """
+        text = (
+            "For example the species occurs in cloud forest. "
+            "This changed. For example another site was added."
+        )
+
+        violations = PunctuationChecker().check_for_example_commas("Test Section", text)
+        messages = [violation.message for violation in violations]
+
+        self.assertEqual(
+            messages,
+            [
+                "'for example' should be followed by a comma",
+                "'for example' should be followed by a comma",
+            ],
+        )
+
+    def test_for_example_missing_both_commas_uses_combined_message(self) -> None:
+        """
+        Test that for example missing both commas uses combined message.
+
+        Args:
+            None.
+
+        Returns:
+            None. The assertions inside the test body enforce the expected behavior.
+        """
+        text = "The species for example occurs in cloud forest."
+
+        violations = PunctuationChecker().check_for_example_commas("Test Section", text)
+        messages = [violation.message for violation in violations]
+
+        self.assertEqual(
+            messages,
+            ["'for example' should be enclosed by commas, no preceeding comma if sentence or paragraph start"],
+        )
+
+    def test_for_example_missing_only_preceding_comma_uses_preceding_message(self) -> None:
+        """
+        Test that for example missing only preceding comma uses preceding message.
+
+        Args:
+            None.
+
+        Returns:
+            None. The assertions inside the test body enforce the expected behavior.
+        """
+        text = "The species for example, occurs in cloud forest."
+
+        violations = PunctuationChecker().check_for_example_commas("Test Section", text)
+        messages = [violation.message for violation in violations]
+
+        self.assertEqual(messages, ["'for example' should be preceded by a comma"])
+
+    def test_for_example_missing_only_following_comma_uses_following_message(self) -> None:
+        """
+        Test that for example missing only following comma uses following message.
+
+        Args:
+            None.
+
+        Returns:
+            None. The assertions inside the test body enforce the expected behavior.
+        """
+        text = "The species, for example occurs in cloud forest."
+
+        violations = PunctuationChecker().check_for_example_commas("Test Section", text)
+        messages = [violation.message for violation in violations]
+
+        self.assertEqual(messages, ["'for example' should be followed by a comma"])
 
 
 if __name__ == "__main__":

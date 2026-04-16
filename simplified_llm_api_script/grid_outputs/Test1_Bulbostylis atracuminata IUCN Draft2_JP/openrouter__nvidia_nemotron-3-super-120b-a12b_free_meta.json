@@ -1,0 +1,53 @@
+{
+  "provider": "openrouter",
+  "model": "nvidia/nemotron-3-super-120b-a12b:free",
+  "document": "Test1_Bulbostylis atracuminata IUCN Draft2_JP",
+  "started_at": "2026-04-07T12:35:10.665247+00:00",
+  "error": "OpenRouter error: {'message': 'Internal Server Error', 'code': 500}",
+  "completed_at": "2026-04-07T12:39:12.803787+00:00",
+  "status": "error",
+  "rules_evaluated": 3,
+  "rule_metrics": [
+    {
+      "rule_name": "Threats Consistency",
+      "duration_seconds": 56.69567394204205,
+      "input_tokens": 4571,
+      "output_tokens": 1150,
+      "total_tokens": 5721,
+      "token_source": "provider",
+      "status": "success",
+      "error": null
+    },
+    {
+      "rule_name": "Habitats Consistency",
+      "duration_seconds": 64.90265402296791,
+      "input_tokens": 5220,
+      "output_tokens": 2257,
+      "total_tokens": 7477,
+      "token_source": "provider",
+      "status": "success",
+      "error": null
+    },
+    {
+      "rule_name": "rule_03_consistency_bibliography",
+      "duration_seconds": 120.39185311301844,
+      "input_tokens": 13476,
+      "output_tokens": 0,
+      "total_tokens": 13476,
+      "token_source": "estimated",
+      "status": "error",
+      "error": "OpenRouter error: {'message': 'Internal Server Error', 'code': 500}"
+    }
+  ],
+  "overall": {
+    "rules_attempted": 3,
+    "rules_succeeded": 2,
+    "rules_failed": 1,
+    "run_duration_seconds": 242.138,
+    "total_findings": 6,
+    "total_input_tokens": 23267,
+    "total_output_tokens": 3407,
+    "total_tokens": 26674,
+    "token_estimation_used": true
+  }
+}

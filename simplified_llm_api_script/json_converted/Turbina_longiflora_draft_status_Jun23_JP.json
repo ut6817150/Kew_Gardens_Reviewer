@@ -1,0 +1,1323 @@
+{
+  "title": "Turbina_longiflora_draft_status_Jun23_JP",
+  "level": 0,
+  "path": [],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "Draft",
+      "text_rich": "Draft"
+    },
+    {
+      "type": "paragraph",
+      "text": "Turbina longiflora - Verdc.",
+      "text_rich": "Turbina longiflora - Verdc."
+    },
+    {
+      "type": "paragraph",
+      "text": "PLANTAE - TRACHEOPHYTA - MAGNOLIOPSIDA - SOLANALES - CONVOLVULACEAE - Turbina - longiflora",
+      "text_rich": "PLANTAE - TRACHEOPHYTA - MAGNOLIOPSIDA - SOLANALES - CONVOLVULACEAE - Turbina - longiflora"
+    },
+    {
+      "type": "paragraph",
+      "text": "Common Names: No Common Names\nSynonyms: Ipomoea mozambicensis J.R.I. Wood & Scotland",
+      "text_rich": "Common Names: No Common Names\nSynonyms: Ipomoea mozambicensis J.R.I. Wood & Scotland"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Red List Status"
+        ],
+        [
+          "NT, D2 (IUCN version 3.1)"
+        ]
+      ],
+      "rows_rich": [
+        [
+          "Red List Status"
+        ],
+        [
+          "NT, D2 (IUCN version 3.1)"
+        ]
+      ]
+    },
+    {
+      "type": "style",
+      "data": {
+        "bold": [
+          "Draft",
+          "Turbina longiflora",
+          "- Verdc.",
+          "Common Names:",
+          "Synonyms:"
+        ],
+        "italic": [
+          "Turbina longiflora"
+        ]
+      }
+    }
+  ],
+  "children": [
+    {
+      "title": "Red List Assessment",
+      "level": 1,
+      "path": [
+        "Red List Assessment"
+      ],
+      "blocks": [],
+      "children": [
+        {
+          "title": "Assessment Information",
+          "level": 2,
+          "path": [
+            "Red List Assessment",
+            "Assessment Information"
+          ],
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Date of Assessment: 2021-02-02",
+              "text_rich": "Date of Assessment: 2021-02-02"
+            },
+            {
+              "type": "paragraph",
+              "text": "Assessor(s): Rokni, S.",
+              "text_rich": "Assessor(s): Rokni, S."
+            },
+            {
+              "type": "paragraph",
+              "text": "Institution(s): IUCN SSC Southern African Plant Specialist Group & Royal Botanic Gardens, Kew",
+              "text_rich": "Institution(s): IUCN SSC Southern African Plant Specialist Group & Royal Botanic Gardens, Kew"
+            },
+            {
+              "type": "paragraph",
+              "text": "Regions: Global",
+              "text_rich": "Regions: Global"
+            },
+            {
+              "type": "style",
+              "data": {
+                "bold": [
+                  "Date of Assessment:",
+                  "Assessor(s):",
+                  "Institution(s):",
+                  "Regions:"
+                ],
+                "italic": []
+              }
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Assessment Rationale",
+          "level": 2,
+          "path": [
+            "Red List Assessment",
+            "Assessment Rationale"
+          ],
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "There is no information on population size or trend for this plant; it is known from only three herbarium specimen collections dating from 1958 to 1974, corresponding to three widely separated localities stretching from southern to northern Mozambique. It is recorded from lowland woodland and forest habitats including Brachystegia (Miombo) woodland. At an estimated 48,214 km2 the extent of occurrence (EOO) is well above the threshold for a threatened category, and the actual area of occupancy (AOO) is likely to be much higher than the minimum (12 km2) currently estimated based on known records, given the large EOO and the large areas of Miombo woodland habitat remaining in Mozambique.\n\nThe main threat to this species is habitat loss and degradation, due to demand for natural resources such as charcoal and timber, expansion of agricultural land and settlements, cattle grazing and potentially invasive plant species. Although there is an observed continuing decline in the area and quality of habitat, particularly gallery forest and Mecrusse forest, currently only one of the three recorded locations - Goba - appears to face any significant threats. It is plausible that in the future similar threats could also significantly impact the locations in Inhambane Province (Mabote District, 27 km west of lake Banamana) and Cabo Delgado Province (30 km north of Nantulo). These impacts are unlikely to drive this species to quickly become Critically Endangered or Extinct, especially as is suspected that the species may occur at additional sites, but such threats could result in the species qualifying as Endangered. Therefore, this species is assessed as Near Threatened under criterion D2.\n\n\nResearch is needed on its current population size, distribution and trends, and on threats to any additional areas where it occurs.",
+              "text_rich": "There is no information on population size or trend for this plant; it is known from only three herbarium specimen collections dating from 1958 to 1974, corresponding to three widely separated localities stretching from southern to northern Mozambique. It is recorded from lowland woodland and forest habitats including Brachystegia (Miombo) woodland. At an estimated 48,214 km<sup>2 </sup>the extent of occurrence (EOO) is well above the threshold for a threatened category, and the actual area of occupancy (AOO) is likely to be much higher than the minimum (12 km<sup>2</sup>) currently estimated based on known records, given the large EOO and the large areas of Miombo woodland habitat remaining in Mozambique.\n\nThe main threat to this species is habitat loss and degradation, due to demand for natural resources such as charcoal and timber, expansion of agricultural land and settlements, cattle grazing and potentially invasive plant species. Although there is an observed continuing decline in the area and quality of habitat, particularly gallery forest and Mecrusse forest, currently only one of the three recorded locations - Goba - appears to face any significant threats. It is plausible that in the future similar threats could also significantly impact the locations in Inhambane Province (Mabote District, 27 km west of lake Banamana) and Cabo Delgado Province (30 km north of Nantulo). These impacts are unlikely to drive this species to quickly become Critically Endangered or Extinct, especially as is suspected that the species may occur at additional sites, but such threats could result in the species qualifying as Endangered. Therefore, this species is assessed as Near Threatened under criterion D2.\n\n\nResearch is needed on its current population size, distribution and trends, and on threats to any additional areas where it occurs."
+            },
+            {
+              "type": "style",
+              "data": {
+                "bold": [],
+                "italic": [
+                  "Brachystegia"
+                ]
+              }
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "Distribution",
+      "level": 1,
+      "path": [
+        "Distribution"
+      ],
+      "blocks": [],
+      "children": [
+        {
+          "title": "Geographic Range",
+          "level": 2,
+          "path": [
+            "Distribution",
+            "Geographic Range"
+          ],
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "This plant has only been recorded in Mozambique, where it is known from three widely separated localities stretching from southern to northern Mozambique: Goba in the Lebombo Mountains in Maputo Province; Mabote District in Inhambane Province; and Montepuez District in Cabo Delgado Province. It has an estimated extent of occurrence (EOO) of 48,214 km2. The minimum area of occupancy (AOO) based on known records is 12 km2 - the actual AOO is likely to be much higher given the large EOO and the large areas of Miombo woodland habitat remaining in Mozambique. It is recorded from three different habitats in inland areas of Mozambique, at about 100–400 m asl.",
+              "text_rich": "This plant has only been recorded in Mozambique, where it is known from three widely separated localities stretching from southern to northern Mozambique: Goba in the Lebombo Mountains in Maputo Province; Mabote District in Inhambane Province; and Montepuez District in Cabo Delgado Province. It has an estimated extent of occurrence (EOO) of 48,214 km<sup>2</sup>. The minimum area of occupancy (AOO) based on known records is 12 km<sup>2 </sup>- the actual AOO is likely to be much higher given the large EOO and the large areas of Miombo woodland habitat remaining in Mozambique. It is recorded from three different habitats in inland areas of Mozambique, at about 100–400 m asl."
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Area of Occupancy (AOO)",
+          "level": 2,
+          "path": [
+            "Distribution",
+            "Area of Occupancy (AOO)"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Estimated area of occupancy (AOO) - in km2",
+                  "Justification"
+                ],
+                [
+                  "12",
+                  "Calculated using GeoCAT (Bachman et al. 2011); standard 2x2 km grid cell applied, 3 grid cells. This is the minimum area of occupancy based on known records but the actual AOO is likely to be higher."
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Estimated area of occupancy (AOO) - in km2",
+                  "Justification"
+                ],
+                [
+                  "12",
+                  "Calculated using GeoCAT (Bachman et al. 2011); standard 2x2 km grid cell applied, 3 grid cells. This is the minimum area of occupancy based on known records but the actual AOO is likely to be higher."
+                ]
+              ]
+            },
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Continuing decline in area of occupancy (AOO)",
+                  "Qualifier",
+                  "Justification"
+                ],
+                [
+                  "Unknown",
+                  "-",
+                  "-"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Continuing decline in area of occupancy (AOO)",
+                  "Qualifier",
+                  "Justification"
+                ],
+                [
+                  "Unknown",
+                  "-",
+                  "-"
+                ]
+              ]
+            },
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Extreme fluctuations in area of occupancy (AOO)",
+                  "Justification"
+                ],
+                [
+                  "No",
+                  "-"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Extreme fluctuations in area of occupancy (AOO)",
+                  "Justification"
+                ],
+                [
+                  "No",
+                  "-"
+                ]
+              ]
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Extent of Occurrence (EOO)",
+          "level": 2,
+          "path": [
+            "Distribution",
+            "Extent of Occurrence (EOO)"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Estimated extent of occurrence (EOO)- in km2",
+                  "EOO estimate calculated from Minimum Convex Polygon",
+                  "Justification"
+                ],
+                [
+                  "48214",
+                  "true",
+                  "Calculated using GeoCAT (Bachman et al. 2011)."
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Estimated extent of occurrence (EOO)- in km2",
+                  "EOO estimate calculated from Minimum Convex Polygon",
+                  "Justification"
+                ],
+                [
+                  "48214",
+                  "true",
+                  "Calculated using GeoCAT (Bachman et al. 2011)."
+                ]
+              ]
+            },
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Continuing decline in extent of occurrence (EOO)",
+                  "Qualifier",
+                  "Justification"
+                ],
+                [
+                  "Unknown",
+                  "-",
+                  "-"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Continuing decline in extent of occurrence (EOO)",
+                  "Qualifier",
+                  "Justification"
+                ],
+                [
+                  "Unknown",
+                  "-",
+                  "-"
+                ]
+              ]
+            },
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Extreme fluctuations in extent of occurrence (EOO)",
+                  "Justification"
+                ],
+                [
+                  "No",
+                  "-"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Extreme fluctuations in extent of occurrence (EOO)",
+                  "Justification"
+                ],
+                [
+                  "No",
+                  "-"
+                ]
+              ]
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Locations Information",
+          "level": 2,
+          "path": [
+            "Distribution",
+            "Locations Information"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Number of Locations",
+                  "Justification"
+                ],
+                [
+                  "3",
+                  "1) Goba 2)27 km from Banamana towards Machaila (Mabote District) 3)30 km from Nantulo towards Mueda (Montepuez District). Only the location at Goba is currently threatened. The sites in Mabote and Montepuez are not currently thought to be under threat, though plausible future threats are presented by mining concessions."
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Number of Locations",
+                  "Justification"
+                ],
+                [
+                  "3",
+                  "1) Goba 2)27 km from Banamana towards Machaila (Mabote District) 3)30 km from Nantulo towards Mueda (Montepuez District). Only the location at Goba is currently threatened. The sites in Mabote and Montepuez are not currently thought to be under threat, though plausible future threats are presented by mining concessions."
+                ]
+              ]
+            },
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Continuing decline in number of locations",
+                  "Qualifier",
+                  "Justification"
+                ],
+                [
+                  "Unknown",
+                  "-",
+                  "-"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Continuing decline in number of locations",
+                  "Qualifier",
+                  "Justification"
+                ],
+                [
+                  "Unknown",
+                  "-",
+                  "-"
+                ]
+              ]
+            },
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Extreme fluctuations in the number of locations",
+                  "Justification"
+                ],
+                [
+                  "No",
+                  "-"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Extreme fluctuations in the number of locations",
+                  "Justification"
+                ],
+                [
+                  "No",
+                  "-"
+                ]
+              ]
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Very restricted AOO or number of locations (triggers VU D2)",
+          "level": 2,
+          "path": [
+            "Distribution",
+            "Very restricted AOO or number of locations (triggers VU D2)"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Very restricted in area of occupancy (AOO) and/or # of locations",
+                  "Justification"
+                ],
+                [
+                  "Yes",
+                  "Only three locations currently known"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Very restricted in area of occupancy (AOO) and/or # of locations",
+                  "Justification"
+                ],
+                [
+                  "Yes",
+                  "Only three locations currently known"
+                ]
+              ]
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Elevation / Depth / Depth Zones",
+          "level": 2,
+          "path": [
+            "Distribution",
+            "Elevation / Depth / Depth Zones"
+          ],
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Elevation Lower Limit (in metres above sea level): 100",
+              "text_rich": "Elevation Lower Limit (in metres above sea level): 100"
+            },
+            {
+              "type": "paragraph",
+              "text": "Elevation Upper Limit (in metres above sea level): 400",
+              "text_rich": "Elevation Upper Limit (in metres above sea level): 400"
+            },
+            {
+              "type": "style",
+              "data": {
+                "bold": [
+                  "Elevation Lower Limit (in metres above sea level):",
+                  "Elevation Upper Limit (in metres above sea level):"
+                ],
+                "italic": []
+              }
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Map Status",
+          "level": 2,
+          "path": [
+            "Distribution",
+            "Map Status"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Map Status",
+                  "Use map from previous assessment",
+                  "How the map was created, including data sources/methods used:",
+                  "Please state reason for map not available:",
+                  "Data Sensitive?",
+                  "Justification",
+                  "Geographic range this applies to:",
+                  "Date restriction imposed:"
+                ],
+                [
+                  "Done",
+                  "-",
+                  "Map created using geo-referenced point localities. File imported into GeoCAT. Geo-references estimated from locality and altitude information provided on herbarium specimen collection labels.",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Map Status",
+                  "Use map from previous assessment",
+                  "How the map was created, including data sources/methods used:",
+                  "Please state reason for map not available:",
+                  "Data Sensitive?",
+                  "Justification",
+                  "Geographic range this applies to:",
+                  "Date restriction imposed:"
+                ],
+                [
+                  "Done",
+                  "-",
+                  "Map created using geo-referenced point localities. File imported into GeoCAT. Geo-references estimated from locality and altitude information provided on herbarium specimen collection labels.",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-"
+                ]
+              ]
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Biogeographic Realms",
+          "level": 2,
+          "path": [
+            "Distribution",
+            "Biogeographic Realms"
+          ],
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Biogeographic Realm: Afrotropical",
+              "text_rich": "Biogeographic Realm: Afrotropical"
+            },
+            {
+              "type": "style",
+              "data": {
+                "bold": [
+                  "Biogeographic Realm:"
+                ],
+                "italic": []
+              }
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "Occurrence",
+      "level": 1,
+      "path": [
+        "Occurrence"
+      ],
+      "blocks": [],
+      "children": [
+        {
+          "title": "Countries of Occurrence",
+          "level": 2,
+          "path": [
+            "Occurrence",
+            "Countries of Occurrence"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Country",
+                  "Presence",
+                  "Origin",
+                  "Formerly Bred",
+                  "Seasonality"
+                ],
+                [
+                  "Mozambique",
+                  "Extant",
+                  "Native",
+                  "-",
+                  "Resident"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Country",
+                  "Presence",
+                  "Origin",
+                  "Formerly Bred",
+                  "Seasonality"
+                ],
+                [
+                  "Mozambique",
+                  "Extant",
+                  "Native",
+                  "-",
+                  "Resident"
+                ]
+              ]
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "Population",
+      "level": 1,
+      "path": [
+        "Population"
+      ],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "No population data are available for this species and the current population trend is unknown. It is known from only three herbarium specimen collections dating from 1958 to 1974. A reconnaissance expedition to the Lebombo Mountains in March 2018 (Osborne 2018) did not find this species near Goba, although survey work and collecting was very limited on this short trip. Field work in Mabote District in February 2019 (Osborne et al. 2019) also did not locate this species in Miombo woodland or Mecrusse forest, although the survey did not extend as far west as this species was recorded.",
+          "text_rich": "No population data are available for this species and the current population trend is unknown. It is known from only three herbarium specimen collections dating from 1958 to 1974. A reconnaissance expedition to the Lebombo Mountains in March 2018 (Osborne 2018) did not find this species near Goba, although survey work and collecting was very limited on this short trip. Field work in Mabote District in February 2019 (Osborne et al. 2019) also did not locate this species in Miombo woodland or Mecrusse forest, although the survey did not extend as far west as this species was recorded."
+        },
+        {
+          "type": "style",
+          "data": {
+            "bold": [],
+            "italic": [
+              "et al."
+            ]
+          }
+        }
+      ],
+      "children": [
+        {
+          "title": "Population Information",
+          "level": 2,
+          "path": [
+            "Population",
+            "Population Information"
+          ],
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Current Population Trend: Unknown",
+              "text_rich": "Current Population Trend: Unknown"
+            },
+            {
+              "type": "paragraph",
+              "text": "All individuals in one subpopulation: No",
+              "text_rich": "All individuals in one subpopulation: No"
+            },
+            {
+              "type": "style",
+              "data": {
+                "bold": [
+                  "Current Population Trend:",
+                  "All individuals in one subpopulation:"
+                ],
+                "italic": []
+              }
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "Habitats and Ecology",
+      "level": 1,
+      "path": [
+        "Habitats and Ecology"
+      ],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "This member of the sweet potato family is a twining or climbing herb or liana with white flowers. It is recorded from three different habitats in inland areas of Mozambique: Androstachys johnsonii (Mecrusse or Lebombo-ironwood) forest near Goba in the Lebombo mountains; Brachystegia (Miombo) woodland on sandy soil in Inhambane Province, and in dense gallery forest on reddish sandy-clay soil in Cabo Delgado Province.",
+          "text_rich": "This member of the sweet potato family is a twining or climbing herb or liana with white flowers. It is recorded from three different habitats in inland areas of Mozambique: Androstachys johnsonii (Mecrusse or Lebombo-ironwood) forest near Goba in the Lebombo mountains; Brachystegia (Miombo) woodland on sandy soil in Inhambane Province, and in dense gallery forest on reddish sandy-clay soil in Cabo Delgado Province."
+        },
+        {
+          "type": "style",
+          "data": {
+            "bold": [],
+            "italic": [
+              "Androstachys johnsonii",
+              "Brachystegia"
+            ]
+          }
+        }
+      ],
+      "children": [
+        {
+          "title": "IUCN Habitats Classification Scheme",
+          "level": 2,
+          "path": [
+            "Habitats and Ecology",
+            "IUCN Habitats Classification Scheme"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Habitat",
+                  "Season",
+                  "Suitability",
+                  "Major Importance?"
+                ],
+                [
+                  "1.5. Forest -> Forest - Subtropical/Tropical Dry",
+                  "Resident",
+                  "Suitable",
+                  "Yes"
+                ],
+                [
+                  "1.6. Forest -> Forest - Subtropical/Tropical Moist Lowland",
+                  "Resident",
+                  "Suitable",
+                  "Yes"
+                ],
+                [
+                  "2.1. Savanna -> Savanna - Dry",
+                  "Resident",
+                  "Suitable",
+                  "Yes"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Habitat",
+                  "Season",
+                  "Suitability",
+                  "Major Importance?"
+                ],
+                [
+                  "1.5. Forest -> Forest - Subtropical/Tropical Dry",
+                  "Resident",
+                  "Suitable",
+                  "Yes"
+                ],
+                [
+                  "1.6. Forest -> Forest - Subtropical/Tropical Moist Lowland",
+                  "Resident",
+                  "Suitable",
+                  "Yes"
+                ],
+                [
+                  "2.1. Savanna -> Savanna - Dry",
+                  "Resident",
+                  "Suitable",
+                  "Yes"
+                ]
+              ]
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Continuing Decline in Habitat",
+          "level": 2,
+          "path": [
+            "Habitats and Ecology",
+            "Continuing Decline in Habitat"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Continuing decline in area, extent and/or quality of habitat?",
+                  "Qualifier",
+                  "Justification"
+                ],
+                [
+                  "Yes",
+                  "Observed",
+                  "Continuing decline in area and quality of habitat, particularly gallery forest and Mecrusse forest, observed in Mozambique."
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Continuing decline in area, extent and/or quality of habitat?",
+                  "Qualifier",
+                  "Justification"
+                ],
+                [
+                  "Yes",
+                  "Observed",
+                  "Continuing decline in area and quality of habitat, particularly gallery forest and Mecrusse forest, observed in Mozambique."
+                ]
+              ]
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Systems",
+          "level": 2,
+          "path": [
+            "Habitats and Ecology",
+            "Systems"
+          ],
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "System: Terrestrial",
+              "text_rich": "System: Terrestrial"
+            },
+            {
+              "type": "style",
+              "data": {
+                "bold": [
+                  "System:"
+                ],
+                "italic": []
+              }
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Plant / Fungi Specific",
+          "level": 2,
+          "path": [
+            "Habitats and Ecology",
+            "Plant / Fungi Specific"
+          ],
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Wild relative of a crop? Yes",
+              "text_rich": "Wild relative of a crop? Yes"
+            },
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Plant and Fungal Growth Forms"
+                ],
+                [
+                  "Forb or Herb"
+                ],
+                [
+                  "Vines"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Plant and Fungal Growth Forms"
+                ],
+                [
+                  "Forb or Herb"
+                ],
+                [
+                  "Vines"
+                ]
+              ]
+            },
+            {
+              "type": "style",
+              "data": {
+                "bold": [
+                  "Wild relative of a crop?"
+                ],
+                "italic": []
+              }
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "Use and Trade",
+      "level": 1,
+      "path": [
+        "Use and Trade"
+      ],
+      "blocks": [],
+      "children": [
+        {
+          "title": "General Use and Trade Information",
+          "level": 2,
+          "path": [
+            "Use and Trade",
+            "General Use and Trade Information"
+          ],
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Species not utilized: true",
+              "text_rich": "Species not utilized: true"
+            },
+            {
+              "type": "paragraph",
+              "text": "There is no use/trade information for this species.",
+              "text_rich": "There is no use/trade information for this species."
+            },
+            {
+              "type": "style",
+              "data": {
+                "bold": [
+                  "Species not utilized:"
+                ],
+                "italic": []
+              }
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "Threats",
+      "level": 1,
+      "path": [
+        "Threats"
+      ],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The main threat to this species is habitat loss and degradation. In the Goba area, Mecrusse forest is threatened by logging for timber and charcoal, and the need for land for subsistence agriculture (machamba agriculture including maize and cassava) driven by population growth and the spread of rural communities. Several non-native and potentially invasive species were recorded during the 2018 survey (Osborne 2018), including Lantana camara, Agave sisalana, Opuntia ficus-indica, and Zinnia peruviana. Cattle grazing poses an additional threat to vegetation.\n\nCurrently, the locations in Inhambane Province (Mabote District, 27 km west of lake Banamana) and Cabo Delgado Province (30 km north of Nantulo) look relatively unimpacted, particularly the latter location, where settlement and habitat clearance for agriculture is limited and there are extensive areas of intact gallery forest and woodland (Google Earth 2021). \nIn Mabote District, Mecrusse forest is under threat from logging for timber and charcoal and clearance for agriculture, and Androstachys seedlings and regeneration were not seen in cleared areas (Osborne et al. 2019). Miombo woodland is threatened by agricultural and settlement expansion, but is more extensive and does seem to regenerate (Osborne et al. 2019).\n\nThe location west of lake Banamana falls within a Sasol gas exploration concession, and the area north of Nantulo is covered by several mining exploration concessions for gemstones, gold, graphite and stone for construction (MIREM and Trimble Land Administration 2021). In the longer term, it is possible that these industries and related infrastructure development coupled with ongoing population growth will lead to migration of people into these areas, increasing impacts on the forest and woodland habitats due to increased demand for natural resources such as charcoal and timber, and expansion of settlements and agricultural land.",
+          "text_rich": "The main threat to this species is habitat loss and degradation. In the Goba area, Mecrusse forest is threatened by logging for timber and charcoal, and the need for land for subsistence agriculture (machamba agriculture including maize and cassava) driven by population growth and the spread of rural communities. Several non-native and potentially invasive species were recorded during the 2018 survey (Osborne 2018), including Lantana camara, Agave sisalana, Opuntia ficus-indica, and Zinnia peruviana. Cattle grazing poses an additional threat to vegetation.\n\nCurrently, the locations in Inhambane Province (Mabote District, 27 km west of lake Banamana) and Cabo Delgado Province (30 km north of Nantulo) look relatively unimpacted, particularly the latter location, where settlement and habitat clearance for agriculture is limited and there are extensive areas of intact gallery forest and woodland (Google Earth 2021). \nIn Mabote District, Mecrusse forest is under threat from logging for timber and charcoal and clearance for agriculture, and Androstachys seedlings and regeneration were not seen in cleared areas (Osborne et al. 2019). Miombo woodland is threatened by agricultural and settlement expansion, but is more extensive and does seem to regenerate (Osborne et al. 2019).\n\nThe location west of lake Banamana falls within a Sasol gas exploration concession, and the area north of Nantulo is covered by several mining exploration concessions for gemstones, gold, graphite and stone for construction (MIREM and Trimble Land Administration 2021). In the longer term, it is possible that these industries and related infrastructure development coupled with ongoing population growth will lead to migration of people into these areas, increasing impacts on the forest and woodland habitats due to increased demand for natural resources such as charcoal and timber, and expansion of settlements and agricultural land."
+        },
+        {
+          "type": "style",
+          "data": {
+            "bold": [],
+            "italic": [
+              "Lantana camara, Agave sisalana, Opuntia ficus-indica,",
+              "Zinnia peruviana.",
+              "Androstachys",
+              "et al."
+            ]
+          }
+        }
+      ],
+      "children": [
+        {
+          "title": "Threats Classification Scheme",
+          "level": 2,
+          "path": [
+            "Threats",
+            "Threats Classification Scheme"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Threat",
+                  "Timing",
+                  "Scope",
+                  "Severity"
+                ],
+                [
+                  "2.1.1. Agriculture & aquaculture -> Annual & perennial non-timber crops -> Shifting agriculture",
+                  "Ongoing",
+                  "Minority (<50%)",
+                  "Slow, Significant Declines"
+                ],
+                [
+                  "3.1. Energy production & mining -> Oil & gas drilling",
+                  "Future",
+                  "Minority (<50%)",
+                  "Rapid Declines"
+                ],
+                [
+                  "3.2. Energy production & mining -> Mining & quarrying",
+                  "Future",
+                  "Minority (<50%)",
+                  "Rapid Declines"
+                ],
+                [
+                  "5.3.3. Biological resource use -> Logging & wood harvesting -> Unintentional effects: (subsistence/small scale) [harvest]",
+                  "Ongoing",
+                  "Minority (<50%)",
+                  "Slow, Significant Declines"
+                ],
+                [
+                  "5.3.4. Biological resource use -> Logging & wood harvesting -> Unintentional effects: (large scale) [harvest]",
+                  "Ongoing",
+                  "Minority (<50%)",
+                  "Slow, Significant Declines"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Threat",
+                  "Timing",
+                  "Scope",
+                  "Severity"
+                ],
+                [
+                  "2.1.1. Agriculture & aquaculture -> Annual & perennial non-timber crops -> Shifting agriculture",
+                  "Ongoing",
+                  "Minority (<50%)",
+                  "Slow, Significant Declines"
+                ],
+                [
+                  "3.1. Energy production & mining -> Oil & gas drilling",
+                  "Future",
+                  "Minority (<50%)",
+                  "Rapid Declines"
+                ],
+                [
+                  "3.2. Energy production & mining -> Mining & quarrying",
+                  "Future",
+                  "Minority (<50%)",
+                  "Rapid Declines"
+                ],
+                [
+                  "5.3.3. Biological resource use -> Logging & wood harvesting -> Unintentional effects: (subsistence/small scale) [harvest]",
+                  "Ongoing",
+                  "Minority (<50%)",
+                  "Slow, Significant Declines"
+                ],
+                [
+                  "5.3.4. Biological resource use -> Logging & wood harvesting -> Unintentional effects: (large scale) [harvest]",
+                  "Ongoing",
+                  "Minority (<50%)",
+                  "Slow, Significant Declines"
+                ]
+              ]
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "Conservation",
+      "level": 1,
+      "path": [
+        "Conservation"
+      ],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "No specific conservation measures or management plan are in place for this species. It is not recorded from any protected areas and is not known to be represented in any ex situ collections (BGCI 2021). A section of the Mozambique part of the Lebombo Mountains is being considered as a Tropical Important Plant Area (Darbyshire et al. 2019). \n\nResearch is needed on its current population size, distribution and trends, and on threats to the areas where it occurs.",
+          "text_rich": "No specific conservation measures or management plan are in place for this species. It is not recorded from any protected areas and is not known to be represented in any ex situ collections (BGCI 2021). A section of the Mozambique part of the Lebombo Mountains is being considered as a Tropical Important Plant Area (Darbyshire et al. 2019). \n\nResearch is needed on its current population size, distribution and trends, and on threats to the areas where it occurs."
+        },
+        {
+          "type": "style",
+          "data": {
+            "bold": [],
+            "italic": [
+              "ex situ",
+              "et al."
+            ]
+          }
+        }
+      ],
+      "children": [
+        {
+          "title": "Conservation Actions In- Place",
+          "level": 2,
+          "path": [
+            "Conservation",
+            "Conservation Actions In- Place"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Occur in at least one PA",
+                  "Note"
+                ],
+                [
+                  "No",
+                  "-"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Occur in at least one PA",
+                  "Note"
+                ],
+                [
+                  "No",
+                  "-"
+                ]
+              ]
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Important Conservation Actions Needed",
+          "level": 2,
+          "path": [
+            "Conservation",
+            "Important Conservation Actions Needed"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Conservation Actions",
+                  "Note"
+                ],
+                [
+                  "1.1. Land/water protection -> Site/area protection",
+                  "-"
+                ],
+                [
+                  "1.2. Land/water protection -> Resource & habitat protection",
+                  "-"
+                ],
+                [
+                  "2.1. Land/water management -> Site/area management",
+                  "-"
+                ],
+                [
+                  "2.2. Land/water management -> Invasive/problematic species control",
+                  "-"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Conservation Actions",
+                  "Note"
+                ],
+                [
+                  "1.1. Land/water protection -> Site/area protection",
+                  "-"
+                ],
+                [
+                  "1.2. Land/water protection -> Resource & habitat protection",
+                  "-"
+                ],
+                [
+                  "2.1. Land/water management -> Site/area management",
+                  "-"
+                ],
+                [
+                  "2.2. Land/water management -> Invasive/problematic species control",
+                  "-"
+                ]
+              ]
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Research Needed",
+          "level": 2,
+          "path": [
+            "Conservation",
+            "Research Needed"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Research",
+                  "Note"
+                ],
+                [
+                  "1.2. Research -> Population size, distribution & trends",
+                  "-"
+                ],
+                [
+                  "1.5. Research -> Threats",
+                  "-"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Research",
+                  "Note"
+                ],
+                [
+                  "1.2. Research -> Population size, distribution & trends",
+                  "-"
+                ],
+                [
+                  "1.5. Research -> Threats",
+                  "-"
+                ]
+              ]
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "Ecosystem Services",
+      "level": 1,
+      "path": [
+        "Ecosystem Services"
+      ],
+      "blocks": [],
+      "children": [
+        {
+          "title": "Ecosystem Services Provided by the Species",
+          "level": 2,
+          "path": [
+            "Ecosystem Services",
+            "Ecosystem Services Provided by the Species"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Insufficient Information Available",
+                  "All coded services should have an importance score of 5 - Not Known."
+                ],
+                [
+                  "true",
+                  "-"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Insufficient Information Available",
+                  "All coded services should have an importance score of 5 - Not Known."
+                ],
+                [
+                  "true",
+                  "-"
+                ]
+              ]
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "Bibliography",
+      "level": 1,
+      "path": [
+        "Bibliography"
+      ],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Bachman, S., Moat, J., Hill, A.W., de la Torre, J. and Scott, B. 2011. Supporting Red List threat assessments with GeoCAT: geospatial conservation assessment tool. ZooKeys 150: 117-126.",
+          "text_rich": "Bachman, S., Moat, J., Hill, A.W., de la Torre, J. and Scott, B. 2011. Supporting Red List threat assessments with GeoCAT: geospatial conservation assessment tool. ZooKeys 150: 117-126."
+        },
+        {
+          "type": "paragraph",
+          "text": "Botanic Gardens Conservation International (BGCI). 2021. PlantSearch. Available at: http://www.bgci.org/plant_search.php/. (Accessed: 25 January 2021).",
+          "text_rich": "Botanic Gardens Conservation International (BGCI). 2021. PlantSearch. Available at: . (Accessed: 25 January 2021)."
+        },
+        {
+          "type": "paragraph",
+          "text": "Darbyshire, I., Timberlake, J., Osborne, J., Rokni, S., Matimele, H., Langa, C., Datizua, C., de Sousa, C., Alves, T., Massingue, A., Hadj-Hammou, J., Dhanda, S., Shah, T. and Wursten, B. 2019. The endemic plants of Mozambique: diversity and conservation status. PhytoKeys 136: 45-96.",
+          "text_rich": "Darbyshire, I., Timberlake, J., Osborne, J., Rokni, S., Matimele, H., Langa, C., Datizua, C., de Sousa, C., Alves, T., Massingue, A., Hadj-Hammou, J., Dhanda, S., Shah, T. and Wursten, B. 2019. The endemic plants of Mozambique: diversity and conservation status. PhytoKeys 136: 45-96."
+        },
+        {
+          "type": "paragraph",
+          "text": "Goncalves, M.L. 1987. Convolvulaceae. In: E. Launert (ed.), Flora Zambesiaca, Vol. 8 Part 1, Royal Botanic Gardens, Kew.",
+          "text_rich": "Goncalves, M.L. 1987. Convolvulaceae. In: E. Launert (ed.), Flora Zambesiaca, Vol. 8 Part 1, Royal Botanic Gardens, Kew."
+        },
+        {
+          "type": "paragraph",
+          "text": "Google Earth. 2021. Satellite Imagery. Available at: https://earth.google.com/web/.",
+          "text_rich": "Google Earth. 2021. Satellite Imagery. Available at: ."
+        },
+        {
+          "type": "paragraph",
+          "text": "J. Osborne, C. Langa, C. Datizua & I. Darbyshire. 2019. Mozambique TIPAs Fieldwork Report: Inhambane Province – Panda, Mabote and Lagoa Poelela, Jan-Feb 2019 .",
+          "text_rich": "J. Osborne, C. Langa, C. Datizua & I. Darbyshire. 2019. Mozambique TIPAs Fieldwork Report: Inhambane Province – Panda, Mabote and Lagoa Poelela, Jan-Feb 2019 ."
+        },
+        {
+          "type": "paragraph",
+          "text": "Mozambique Ministry of Mineral Resources and Energy (MIREM) and Trimble Land Administration. 2021. Mozambique Mining Cadastre Portal. Available at: http://portals.flexicadastre.com/mozambique/.",
+          "text_rich": "Mozambique Ministry of Mineral Resources and Energy (MIREM) and Trimble Land Administration. 2021. Mozambique Mining Cadastre Portal. Available at: ."
+        },
+        {
+          "type": "paragraph",
+          "text": "Osborne, J. 2018. Summary Report: Lebombo Mountains reconnaissance expedition, 8-15 March 2018. Unpublished.",
+          "text_rich": "Osborne, J. 2018. Summary Report: Lebombo Mountains reconnaissance expedition, 8-15 March 2018. Unpublished."
+        },
+        {
+          "type": "paragraph",
+          "text": "UNEP-WCMC and IUCN. 2021. Protected Planet: The World Database on Protected Areas (WDPA) / The Global Database on Protected Areas Management Effectiveness (GD-PAME)] [On-line]. Cambridge, UK: UNEP-WCMC and IUCN. Available at: https://www.protectedplanet.net/.",
+          "text_rich": "UNEP-WCMC and IUCN. 2021. Protected Planet: The World Database on Protected Areas (WDPA) / The Global Database on Protected Areas Management Effectiveness (GD-PAME)] [On-line]. Cambridge, UK: UNEP-WCMC and IUCN. Available at: ."
+        },
+        {
+          "type": "paragraph",
+          "text": "Verdcourt, B. 1967. New Convolvulaceae from the Flora Zambesiaca area-II. Kirkia 6(1): 121.",
+          "text_rich": "Verdcourt, B. 1967. New Convolvulaceae from the Flora Zambesiaca area-II. Kirkia 6(1): 121."
+        },
+        {
+          "type": "style",
+          "data": {
+            "bold": [],
+            "italic": [
+              "ZooKeys",
+              "PhytoKeys",
+              "Flora Zambesiaca, Vol. 8 Part 1",
+              "Kirkia"
+            ]
+          }
+        }
+      ],
+      "children": []
+    }
+  ],
+  "comments": []
+}

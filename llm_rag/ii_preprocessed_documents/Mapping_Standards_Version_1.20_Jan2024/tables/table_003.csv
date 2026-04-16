@@ -1,0 +1,10 @@
+Field,Description,Notes,column_4,Polygons/,column_6,Points
+,,,,Basins,,
+event_year,The four-digit year in which the Event (object or observation) occurred,"For example, 2008.",,,,✔
+source,Source of the distribution range / point data,"Relates to the primary source used to compile each polygon or point, especially in a recently published range map, or a set of point data. References should be in the format “AuthorX and AuthorY, date” and the reference should be in the corresponding IUCN Red List assessment. [Max. 254 characters]",✔,,,✔
+basisofrec,The specific nature of the data record. (reference valid Feb2021: https://dwc.tdwg.org/list/ #dwc_basisOfRecord),"Options: “PreservedSpecimen”, “FossilSpecimen”, “LivingSpecimen”, “HumanObservation”, “MachineObservation”, “StillImage”, “MovingImage”, “SoundRecording”",,,,✔
+catalog_no,An identifier (preferably unique) for the record within the data set or collection,Name of the museum or herbarium and the specimen number.,,,,✔
+dist_comm,Distribution comments that refer directly to the polygon or point,"Examples include whether the polygon represents the type locality, names of protected areas or geographical features, and so forth. May also include specific notes on presence, origin or seasonality. [Max. 254 characters]",✔,,,✔
+island,Name of the island on which the polygon or point is located,"This relates mainly to very small islands or atolls (e.g., “Midway Atoll”; “Meemu Atoll”; “Bohol”)",✔,,,✔
+tax_comm,Taxonomic comments that refer directly to the polygon,"Includes notes on polygons pertaining to subspecies, varieties or subpopulations. [Max. 254 characters]",✔,,,✔
+generalisd,Flag to indicate whether the polygon is generalised,True or false field: 1 or 0. Set to 1 if the polygon shows a generalised distribution. Default is 0 for false/no.,✔,,,

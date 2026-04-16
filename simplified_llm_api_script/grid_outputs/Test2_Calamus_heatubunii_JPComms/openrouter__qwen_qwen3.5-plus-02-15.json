@@ -1,0 +1,339 @@
+[
+  {
+    "rule_name": "Threats Consistency",
+    "findings": [
+      {
+        "section_path": "Threats/Threats Classification Scheme",
+        "issue": "The narrative states 'Fire may also represent a serious threat in some parts of the range', but Category 7.1 (Fire & Fire Suppression) is not included in the classification scheme table.",
+        "severity": "high",
+        "suggestion": "Add threat code 7.1 (Fire & Fire Suppression) to the classification scheme table with appropriate timing and impact details based on the narrative."
+      },
+      {
+        "section_path": "Threats/Threats Classification Scheme",
+        "issue": "The narrative mentions 'road building associated with expanding tourism infrastructure', but Category 4.1 (Roads & Railroads) is not listed in the classification scheme table.",
+        "severity": "high",
+        "suggestion": "Add threat code 4.1 (Roads & Railroads) to the classification scheme table to reflect the road building threat mentioned in the text."
+      },
+      {
+        "section_path": "Threats/Threats Classification Scheme",
+        "issue": "The narrative mentions 'expanding tourism infrastructure', but Category 1.3 (Tourism & Recreation Areas) is not listed in the classification scheme table (only 1.1 Housing & Urban Areas is present).",
+        "severity": "high",
+        "suggestion": "Add threat code 1.3 (Tourism & Recreation Areas) to the classification scheme table to accurately reflect the tourism infrastructure threat."
+      },
+      {
+        "section_path": "Threats/Threats Classification Scheme",
+        "issue": "The narrative distinguishes between active concessions (Ongoing) and inactive concessions on Waigeo (Future), but the classification scheme table only lists 'Ongoing' timing for Agriculture threats.",
+        "severity": "medium",
+        "suggestion": "Update the Timing column for the Agriculture threat to include 'Future' or add a separate row to reflect the projected threat from the inactive Waigeo concession."
+      }
+    ]
+  },
+  {
+    "rule_name": "Habitats Consistency",
+    "findings": [
+      {
+        "section_path": "Habitats and Ecology > IUCN Habitats Classification Scheme",
+        "issue": "Invalid habitat code '1.99. Montane -> inland' is used. The IUCN Habitats Classification Scheme (Version 3.1) only lists codes 1.1 through 1.9 for Forest habitats. Additionally, the narrative does not explicitly mention montane forest, only 'hill' forest.",
+        "severity": "high",
+        "suggestion": "Replace '1.99. Montane -> inland' with the correct standard code from the provided hierarchy (e.g., 1.9 Forest – Subtropical/tropical moist montane) if supported by the narrative, or remove it if not applicable. Ensure all codes match the Version 3.1 list."
+      },
+      {
+        "section_path": "Habitats and Ecology > IUCN Habitats Classification Scheme",
+        "issue": "Inconsistency between narrative and classification scheme. The narrative mentions 'swamp forest' and 'limestone karst outcrops', but these habitats are not listed in the Classification Scheme table.",
+        "severity": "high",
+        "suggestion": "Add '1.8. Forest – Subtropical/tropical swamp' and '6. Rocky Areas' (or appropriate Karst habitat code like 5.18 if aquatic/subterranean hydrology is implied) to the Classification Scheme table to match the narrative description."
+      },
+      {
+        "section_path": "Habitats and Ecology > IUCN Habitats Classification Scheme",
+        "issue": "Missing 'Major Importance' designation. The rule states that if a Habitat is recorded as 'Suitable', the Major Importance field must be marked as 'Yes' or 'No'. The table currently shows '-' for all entries.",
+        "severity": "medium",
+        "suggestion": "Update the 'Major Importance?' column to 'Yes' or 'No' for all habitats marked as 'Suitable', based on whether the habitat is critical for survival or primary for the species."
+      }
+    ]
+  },
+  {
+    "rule_name": "Bibliography Consistency [Red List Standards Consistency (Section 5.1)]",
+    "findings": [
+      {
+        "section_path": "Distribution > Geographic Range",
+        "issue": "The text cites 'Khalid and Brandon 2021', but this reference is not included in the Bibliography section.",
+        "severity": "high",
+        "suggestion": "Add the full bibliographic entry for Khalid and Brandon 2021 to the Bibliography section."
+      },
+      {
+        "section_path": "Threats",
+        "issue": "The text cites 'Global Forest Watch 2022', but this reference is not included in the Bibliography section.",
+        "severity": "high",
+        "suggestion": "Add the full bibliographic entry for Global Forest Watch 2022 to the Bibliography section."
+      },
+      {
+        "section_path": "Bibliography",
+        "issue": "The bibliography includes 'Henderson, A. 2020', which is not cited anywhere in the assessment text.",
+        "severity": "high",
+        "suggestion": "Remove the uncited reference from the Bibliography or add citations in the text where this source was used."
+      },
+      {
+        "section_path": "Bibliography",
+        "issue": "The bibliography includes 'Dilip et al. 2026', which is not cited anywhere in the assessment text.",
+        "severity": "high",
+        "suggestion": "Remove the uncited reference from the Bibliography or add citations in the text where this source was used."
+      },
+      {
+        "section_path": "Bibliography",
+        "issue": "The bibliography includes 'Bachman S, et al. 2011', but the text only mentions 'GeoCAT' without an explicit author-year citation.",
+        "severity": "medium",
+        "suggestion": "Add an explicit in-text citation (e.g., Bachman et al. 2011) where GeoCAT is mentioned."
+      },
+      {
+        "section_path": "Bibliography",
+        "issue": "There are duplicate entries for Baker and Dransfield 2017 (one standard, one prefixed with brackets).",
+        "severity": "medium",
+        "suggestion": "Remove the duplicate or malformed entry and ensure only one correct citation exists."
+      }
+    ]
+  },
+  {
+    "rule_name": "Geographic Range / Occurrences Consistency",
+    "findings": [
+      {
+        "section_path": "Occurrence / Countries of Occurrence",
+        "issue": "Invalid Presence code 'Just Ok' used in the second row. This is not a standard IUCN Presence code (valid codes include Extant, Possibly Extant, Possibly Extinct, Extinct, Presence Uncertain).",
+        "severity": "high",
+        "suggestion": "Replace 'Just Ok' with the appropriate standard code, likely 'Extant' given the context of the assessment and the first row."
+      },
+      {
+        "section_path": "Occurrence / Countries of Occurrence",
+        "issue": "Inconsistent Origin coding. The country 'Indonesia' is coded as 'Native', but the subnational entry 'Indonesia -> Papua' is coded as 'Introduced'. This contradicts the Geographic Range narrative which describes the species as recorded from localities in West Papua and Raja Ampat as part of its natural range.",
+        "severity": "high",
+        "suggestion": "Change the Origin for the Papua entry to 'Native' to align with the country-level coding and the Geographic Range narrative."
+      },
+      {
+        "section_path": "Occurrence / Countries of Occurrence",
+        "issue": "Non-standard formatting in the Country column ('Indonesia -> Papua'). Country fields should contain standard country names or codes; subnational regions should typically be recorded in a designated subnational field.",
+        "severity": "medium",
+        "suggestion": "Use the standard country name 'Indonesia' in the Country column and record 'Papua' or 'West Papua' in the appropriate subnational region field if available."
+      },
+      {
+        "section_path": "Distribution / Geographic Range",
+        "issue": "The Geographic Range text does not explicitly state the qualifiers (e.g., estimated, projected) for the continuing decline or range metrics, while the Assessment Rationale cites Criterion B with 'projected continuing decline'. While separate tables exist, consistency in the narrative regarding the status of the data (observed vs projected) is recommended for clarity.",
+        "severity": "low",
+        "suggestion": "Consider adding a sentence to the Geographic Range text summarizing the decline qualifiers (e.g., 'projected decline') to ensure consistency with the Assessment Rationale and Criterion B requirements."
+      }
+    ]
+  },
+  {
+    "rule_name": "Population Consistency",
+    "findings": [
+      {
+        "section_path": "Population",
+        "issue": "The text states 'No detailed population information is available' but fails to indicate why this is the case, as required by the rule (e.g., no surveys carried out, unsafe area, no research undertaken).",
+        "severity": "medium",
+        "suggestion": "Add an explanation for the lack of data, such as 'due to lack of recent surveys in the region' or 'because the area is inaccessible'."
+      },
+      {
+        "section_path": "Population",
+        "issue": "The population narrative states the trend is 'suspected to be decreasing' but does not include clear justification for this trend within the Population section, as required by the Current Population Trend standards.",
+        "severity": "medium",
+        "suggestion": "Include the reasoning for the suspected decline within this section (e.g., link to habitat loss from deforestation and palm oil concessions mentioned in the Assessment Rationale)."
+      },
+      {
+        "section_path": "Population",
+        "issue": "Where quantitative information is unavailable, the rule recommends recording whether the species is common, abundant, or rare. This qualitative assessment is missing.",
+        "severity": "low",
+        "suggestion": "Include a qualitative description of the population status (e.g., 'appears rare based on limited sightings') to provide context despite the lack of quantitative data."
+      }
+    ]
+  },
+  {
+    "rule_name": "Conservation Consistency",
+    "findings": [
+      {
+        "section_path": "Conservation -> blocks -> paragraph",
+        "issue": "Contradictory statements regarding Protected Area occurrence. The text definitively states the species 'is not found in any protected areas' but later states it 'may occur in the Waigeo Nature Reserve'. This conflicts with the 'Conservation Actions In-Place' table which lists occurrence as 'Unknown'.",
+        "severity": "high",
+        "suggestion": "Revise the text to reflect the uncertainty consistently, e.g., 'There are no confirmed records from protected areas, though it may occur within the Waigeo Nature Reserve.' Ensure the table and text match."
+      },
+      {
+        "section_path": "Conservation -> blocks -> paragraph",
+        "issue": "Inconsistency with Assessment Rationale regarding species security. The Conservation text claims the species 'may remain secure across much of its range,' while the Assessment Rationale cites a 'projected continuing decline' and lists the species as Vulnerable. This undermines the justification for conservation actions.",
+        "severity": "high",
+        "suggestion": "Align the Conservation text with the Rationale. If the species is Vulnerable due to decline, avoid stating it is 'secure' unless qualified (e.g., 'may remain secure only if current threats are mitigated')."
+      },
+      {
+        "section_path": "Conservation -> blocks -> paragraph",
+        "issue": "The Conservation narrative text does not explicitly describe 'realistically achievable actions needed' as required by the Section Requirements. It only describes the current status (actions in place/absent).",
+        "severity": "medium",
+        "suggestion": "Update the Conservation text to include a summary of needed actions (e.g., 'Protection of lowland habitat is required to mitigate urban and agricultural expansion') in addition to the coded table."
+      },
+      {
+        "section_path": "Conservation -> blocks -> paragraph",
+        "issue": "Taxonomic inconsistency in species naming. The name is spelled as 'Calamus heatubuni' and 'Calamus heatubunii' within the same section.",
+        "severity": "medium",
+        "suggestion": "Standardize the species name spelling throughout the assessment to ensure taxonomic consistency."
+      },
+      {
+        "section_path": "Conservation -> Important Conservation Actions Needed",
+        "issue": "Incomplete alignment with identified Threats. The Threats section identifies 'Fire' as a serious threat, but no corresponding management actions (e.g., 2.1 Site/area management or 2.3 Habitat restoration) are included in Conservation Actions Needed.",
+        "severity": "low",
+        "suggestion": "Review if fire management actions are needed and code them if appropriate, or justify their exclusion in the notes."
+      }
+    ]
+  },
+  {
+    "rule_name": "Category Justification",
+    "findings": [
+      {
+        "section_path": "Root > Red List Status Table",
+        "issue": "Contradiction between the Red List Status table and the Assessment Rationale. The Status table designates the species as 'EN - Endangered', while the Assessment Rationale explicitly states 'This species is therefore listed as Vulnerable'.",
+        "severity": "high",
+        "suggestion": "Ensure consistency across the assessment. Since the data (EOO 645.6 km², AOO 16 km², 4 locations) meets the thresholds for Endangered (EOO < 5,000 km², AOO < 500 km², Locations ≤ 5) and the rationale acknowledges this, the Rationale should be corrected to state 'Endangered' to match the Status table."
+      },
+      {
+        "section_path": "Red List Assessment > Assessment Rationale",
+        "issue": "Logical inconsistency in the justification reasoning. The text states that the AOO and EOO 'fall below the respective thresholds for the Endangered category' but concludes the listing as Vulnerable. Under IUCN guidelines, the highest threat category met must be applied.",
+        "severity": "high",
+        "suggestion": "Revise the rationale to conclude 'Endangered' if the thresholds are indeed met, or provide a specific justification for why the lower category (Vulnerable) is applied despite meeting Endangered thresholds (e.g., if data quality warrants downgrading, though this must be explicitly stated)."
+      },
+      {
+        "section_path": "Occurrence > Countries of Occurrence",
+        "issue": "Non-standard value used in the 'Presence' data field. The entry for 'Indonesia -> Papua' records Presence as 'Just Ok', which is not a valid IUCN Presence term (e.g., Extant, Possibly Extant, Extinct).",
+        "severity": "medium",
+        "suggestion": "Update the Presence field to use standard IUCN terminology (e.g., 'Extant') to ensure data consistency and compliance with Red List standards."
+      }
+    ]
+  },
+  {
+    "rule_name": "References Formatting",
+    "findings": [
+      {
+        "section_path": "Distribution > Geographic Range",
+        "issue": "In-text citation 'Khalid and Brandon 2021' does not follow Rule 3.11.1.1. When the author's name is an integral part of the sentence, the publication date must be in brackets.",
+        "severity": "high",
+        "suggestion": "Change to 'Khalid and Brandon (2021)' or move the citation to the end of the sentence as '(Khalid and Brandon 2021)'."
+      },
+      {
+        "section_path": "Bibliography",
+        "issue": "Bibliography entry 'Bachman S, Moat J...' violates Rule 3.11.2.1.a and 3.11.2.1.c. Author names must be formatted as 'Surname, Initial.' (e.g., 'Bachman, S.'), initials must have full stops, and 'and' must be used before the last author instead of a comma.",
+        "severity": "high",
+        "suggestion": "Reformat to 'Bachman, S., Moat, J., Hill, A.W., de la Torre, J. and Scott, B.' ensuring initials have full stops and no comma precedes 'and'."
+      },
+      {
+        "section_path": "Bibliography",
+        "issue": "Bibliography entry 'Baker, W.J. & Dransfield, J.' violates Rule 3.11.2.1.c. An ampersand ('&') is used instead of 'and' to link co-authors.",
+        "severity": "high",
+        "suggestion": "Replace '&' with 'and', resulting in 'Baker, W.J. and Dransfield, J.'."
+      },
+      {
+        "section_path": "Bibliography",
+        "issue": "Bibliography entry '[Baker and Dransfield 2017]...' is malformed. It resembles an in-text citation key rather than a standard bibliographic reference as required by Rule 3.11.2.",
+        "severity": "high",
+        "suggestion": "Remove this duplicate entry or format it as a standard reference (Author. Year. Title. Journal. Pages)."
+      },
+      {
+        "section_path": "Bibliography",
+        "issue": "Bibliography entry 'Dilip et al. 2026.' violates Rule 3.11.2.1. 'et al.' should generally be used for in-text citations (Rule 3.11.1.6); bibliography entries should list author names in 'Surname, Initial.' format.",
+        "severity": "medium",
+        "suggestion": "Replace 'Dilip et al.' with the full list of authors formatted as 'Surname, Initial.'."
+      }
+    ]
+  },
+  {
+    "rule_name": "Formatting of Scientific/Common Name",
+    "findings": [
+      {
+        "section_path": "Red List Assessment > Assessment Rationale",
+        "issue": "The common name 'Sorong rattan' is used on first mention without the scientific name in brackets and italics. Additionally, the common name is not fully capitalized and is incorrectly italicized in the style metadata.",
+        "severity": "high",
+        "suggestion": "Format the first mention as 'Sorong Rattan (*Calamus heatubunii*)'. Ensure common names are capitalized (e.g., Rattan) and remove italicization from the common name."
+      },
+      {
+        "section_path": "Habitats and Ecology",
+        "issue": "A different common name 'Waigeo cane palm' is used, which conflicts with 'Sorong rattan' used in the Rationale. It is also not fully capitalized and is incorrectly italicized.",
+        "severity": "high",
+        "suggestion": "Select one primary common name to use consistently throughout the text (e.g., Sorong Rattan). Ensure it is capitalized and not italicized."
+      },
+      {
+        "section_path": "Distribution > Geographic Range",
+        "issue": "The scientific name 'Calamus heatubunii' is used here after common names were established in previous sections, violating the rule to use only the common name after the first mention. Additionally, the style metadata indicates the entire sentence is italicized rather than just the scientific name.",
+        "severity": "medium",
+        "suggestion": "Use the chosen common name instead of the scientific name. Ensure only the scientific name is italicized if it must be used."
+      },
+      {
+        "section_path": "Conservation",
+        "issue": "The scientific name spelling is inconsistent ('Calamus heatubuni' vs 'Calamus heatubunii'). The section also reverts to using scientific names instead of the established common name.",
+        "severity": "high",
+        "suggestion": "Correct the spelling to 'Calamus heatubunii' consistently. Use the common name if one has been established, or use the scientific name convention consistently throughout if no common name is recognized."
+      },
+      {
+        "section_path": "Test2_Calamus_heatubunii_JPComms",
+        "issue": "The header metadata states 'Common Names: No Common Names', but the text utilizes common names ('Sorong rattan', 'Waigeo cane palm').",
+        "severity": "high",
+        "suggestion": "Update the header to reflect the recognized common name or remove common names from the text and follow the scientific name abbreviation convention (e.g., *Calamus heatubunii* then *C. heatubunii*)."
+      }
+    ]
+  },
+  {
+    "rule_name": "Check for Acronym Explanation",
+    "findings": [
+      {
+        "section_path": "Document Root (Red List Status Table)",
+        "issue": "The acronym 'IUCN' is used in '(IUCN version 3.1)' without being defined in full first.",
+        "severity": "medium",
+        "suggestion": "Define as 'International Union for Conservation of Nature (IUCN)' on first use."
+      },
+      {
+        "section_path": "Red List Assessment > Assessment Rationale",
+        "issue": "The acronyms 'KBA', 'RLI', and 'PA' are used ('KBAs', 'RLI', 'PAs') without being defined in full first.",
+        "severity": "high",
+        "suggestion": "Define as 'Key Biodiversity Areas (KBAs)', 'Red List Index (RLI)', and 'Protected Areas (PAs)' on first use."
+      },
+      {
+        "section_path": "Distribution > Geographic Range",
+        "issue": "The abbreviation 'asl' is used ('180 m asl') without being defined in full first. It is defined later in the Elevation section, but the first instance must contain the definition.",
+        "severity": "low",
+        "suggestion": "Define as 'metres above sea level (asl)' or write out 'metres above sea level' on first use."
+      },
+      {
+        "section_path": "Distribution > Area of Occupancy (AOO)",
+        "issue": "The acronym 'GeoCAT' is used in the table justification without being defined in the main text. It is only defined in the Bibliography.",
+        "severity": "medium",
+        "suggestion": "Define as 'Geospatial Conservation Assessment Tool (GeoCAT)' on first use in the main text."
+      },
+      {
+        "section_path": "Conservation",
+        "issue": "The acronym 'BGCI' is used in the text ('BGCI 2022') without being defined in the main text. It is only defined in the Bibliography.",
+        "severity": "medium",
+        "suggestion": "Define as 'Botanic Gardens Conservation International (BGCI)' on first use in the main text."
+      }
+    ]
+  },
+  {
+    "rule_name": "Check for Timeline and Argument Coherence",
+    "findings": [
+      {
+        "section_path": "Red List Assessment > Assessment Rationale",
+        "issue": "Critical narrative incoherence: The Assessment Rationale concludes the species should be listed as 'Vulnerable', but the Red List Status table at the root level lists it as 'Endangered (EN)'. The rationale explicitly states criteria thresholds for Endangered are met but then assigns Vulnerable status without justification.",
+        "severity": "high",
+        "suggestion": "Align the Red List Status category with the Assessment Rationale. If the species meets Endangered thresholds, the status should be Endangered. If it is Vulnerable, the rationale must explain why it does not qualify for Endangered despite the stated thresholds."
+      },
+      {
+        "section_path": "Bibliography",
+        "issue": "Timeline inconsistency: The bibliography contains a citation dated '2026' ('Dilip et al. 2026'), which is a future date relative to the other references (2011-2022) and the current assessment context.",
+        "severity": "medium",
+        "suggestion": "Verify the publication date of the citation and correct it to the actual year of publication or remove if it is a placeholder."
+      },
+      {
+        "section_path": "Habitats and Ecology > IUCN Habitats Classification Scheme",
+        "issue": "Factual incoherence: The Habitat table includes '1.99. Montane -> inland', but the Elevation section specifies a range of 45 to 180 m asl, which is lowland, not montane.",
+        "severity": "medium",
+        "suggestion": "Remove the 'Montane' habitat classification to ensure consistency with the documented elevation range."
+      },
+      {
+        "section_path": "Occurrence > Countries of Occurrence",
+        "issue": "Data incoherence: The table lists 'Indonesia -> Papua' as 'Introduced' with Presence 'Just Ok'. This contradicts the 'Native' status for Indonesia and uses non-standard terminology ('Just Ok' is not a valid IUCN presence term).",
+        "severity": "medium",
+        "suggestion": "Correct the Presence field to standard IUCN terms (e.g., 'Extant') and ensure the Origin status is consistent with the species' native range in New Guinea."
+      }
+    ]
+  }
+]

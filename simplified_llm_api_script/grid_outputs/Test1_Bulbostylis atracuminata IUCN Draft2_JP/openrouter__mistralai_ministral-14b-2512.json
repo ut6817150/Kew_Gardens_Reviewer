@@ -1,0 +1,431 @@
+[
+  {
+    "rule_name": "rule_01_consistency_threats",
+    "findings": []
+  },
+  {
+    "rule_name": "rule_02_consistency_habitats",
+    "findings": []
+  },
+  {
+    "rule_name": "Bibliography Consistency",
+    "findings": [
+      {
+        "section_path": "Distribution > Geographic Range",
+        "issue": "The text cites 'Roalson et al. 2019' and 'Hoenselaar et al. 2010' but these entries are not present in the bibliography. Additionally, 'Khalid et al. 2026' is cited but does not appear in the bibliography.",
+        "severity": "high",
+        "suggestion": "Add the missing references to the bibliography. Ensure all cited sources are included and formatted correctly. Verify the year for 'Khalid et al. 2026' as it appears to be a future date."
+      },
+      {
+        "section_path": "Distribution > Area of Occupancy (AOO)",
+        "issue": "The text cites 'Moat et al. 2023' in the justification, but the bibliography entry for 'Moat, J., Bachman, S., & Walker, B. 2023' is incomplete (missing publication details like journal or platform).",
+        "severity": "medium",
+        "suggestion": "Complete the bibliography entry for 'Moat et al. 2023' by adding full publication details (e.g., journal, platform, or URL if applicable)."
+      },
+      {
+        "section_path": "Distribution > Map Status",
+        "issue": "The text cites 'Global Biodiversity Information Facility 2023' but the bibliography entry for 'GBIF: the Global Biodiversity Information Facility' is incorrectly labeled as '2022' and cites 'Bulbostylis microelegans' instead of 'Bulbostylis atracuminata'.",
+        "severity": "high",
+        "suggestion": "Correct the bibliography entry to reflect the correct species ('Bulbostylis atracuminata') and update the year to '2023'. Ensure the citation matches the text."
+      },
+      {
+        "section_path": "Habitats and Ecology",
+        "issue": "The text cites 'Global Biodiversity Information Facility, 2023' but the bibliography entry for 'GBIF' is incorrect as noted above.",
+        "severity": "high",
+        "suggestion": "Update the bibliography entry for 'GBIF' to correctly reference 'Bulbostylis atracuminata' and the year '2023'."
+      },
+      {
+        "section_path": "Threats",
+        "issue": "The text cites 'Global Forest Watch 2023' and 'Google Earth Pro 2023' but the bibliography entries for these sources are incomplete (missing URLs or full details).",
+        "severity": "high",
+        "suggestion": "Complete the bibliography entries for 'Global Forest Watch 2023' and 'Google Earth Pro 2023' by including full URLs or publication details."
+      },
+      {
+        "section_path": "Conservation",
+        "issue": "The text cites 'IUCN and UNEP-WCMC 2023' but this entry is missing from the bibliography. Additionally, the entry for 'BGCI 2023' is incomplete (missing full details).",
+        "severity": "high",
+        "suggestion": "Add the missing 'IUCN and UNEP-WCMC 2023' entry to the bibliography and complete the 'BGCI 2023' entry with full publication details."
+      },
+      {
+        "section_path": "Bibliography",
+        "issue": "The bibliography includes an entry '[Roalson 2019]' which is incomplete and lacks full details. Additionally, the entry for 'Utsav, Tandon. 2024. SWE project. Vol. 20.' is unclear and lacks publication details.",
+        "severity": "high",
+        "suggestion": "Replace '[Roalson 2019]' with the full citation for 'Roalson et al. 2019' already present in the bibliography. Remove or clarify the 'Utsav, Tandon. 2024' entry if it is not relevant or provide full publication details."
+      },
+      {
+        "section_path": "Bibliography",
+        "issue": "The bibliography includes entries for '2023. Botanic Gardens Conservation Internationala', '2023. Google Earth Pro', '2023. Virunga National Park', and '2023. World Database on Protected Areas' without full URLs or publication details.",
+        "severity": "high",
+        "suggestion": "Complete these entries by including full URLs or publication details for each source."
+      }
+    ]
+  },
+  {
+    "rule_name": "Geographic Range / Occurrences Consistency",
+    "findings": [
+      {
+        "section_path": "Distribution > Geographic Range",
+        "issue": "The geographic range description is inconsistent with the assessment rationale and occurrences section. The rationale states the species ranges from **southern DRC to northern Zambia**, but the geographic range section mentions **northern Zambia to southeastern DRC, Katanga, and eastern Angola**. This discrepancy must be resolved. Additionally, the geographic range is overly vague (e.g., 'northern parts of Zambia' and 'southeastern regions of DRC') and does not align with the preferred style of specificity (e.g., 'Serra de Baturité' example).",
+        "severity": "high",
+        "suggestion": "Clarify and standardize the geographic range description to match the assessment rationale (southern DRC to northern Zambia) and provide precise locations (e.g., specific regions, protected areas, or coordinates). Avoid vague terms like 'northern parts' or 'southeastern regions.' Ensure consistency with the occurrences section (Angola is not listed in the Occurrences table)."
+      },
+      {
+        "section_path": "Distribution > Geographic Range",
+        "issue": "The geographic range section does not explicitly state the **extent of occurrence (EOO)** or **qualifiers** (e.g., observed, estimated, inferred) as required for taxa assessed under criteria B. The EOO (114,000 km²) is mentioned in the assessment rationale but not in the geographic range section, violating the rule's requirement for clarity and completeness.",
+        "severity": "high",
+        "suggestion": "Explicitly include the EOO (114,000 km²) and qualifiers (e.g., 'estimated based on herbarium records and range interpolation') in the geographic range section. Follow the preferred style for clarity (e.g., 'The species’ extent of occurrence (EOO) is estimated at 114,000 km²...')."
+      },
+      {
+        "section_path": "Distribution > Geographic Range",
+        "issue": "The geographic range section mentions **Angola**, but Angola is not listed in the **Occurrences** section (Countries of Occurrence). This inconsistency violates the rule requiring alignment between geographic range and occurrences coding.",
+        "severity": "high",
+        "suggestion": "Remove Angola from the geographic range section or add it to the Occurrences table with appropriate coding (Presence, Origin, etc.). Ensure all countries mentioned in the geographic range are reflected in the occurrences data."
+      },
+      {
+        "section_path": "Occurrence > Countries of Occurrence",
+        "issue": "Zambia is coded as **Possibly Extant** in the occurrences table, but the assessment rationale and geographic range section imply the species is **confirmed or likely extant** in Zambia (e.g., '11 locations in Zambia and DRC'). This discrepancy violates the rule requiring consistency between narrative and coded data.",
+        "severity": "high",
+        "suggestion": "Change Zambia’s presence status from **Possibly Extant** to **Extant** (or justify why 'Possibly Extant' is appropriate) to align with the assessment rationale and geographic range description. Ensure the justification for 'Possibly Extant' is provided if retained."
+      },
+      {
+        "section_path": "Distribution > Geographic Range",
+        "issue": "The geographic range section lacks **justification for severe fragmentation** (if applicable) or **continuing decline in EOO/AOO/habitat quality**, as required for taxa assessed under criteria B. These justifications are critical for transparency and reproducibility.",
+        "severity": "medium",
+        "suggestion": "Add a sentence or two explaining why the species is **severely fragmented** (if applicable) and how **continuing decline** in EOO/AOO/habitat quality is inferred (e.g., 'Habitat loss due to mining and agriculture is projected to reduce EOO by X% over Y years'). Reference threats mentioned in the assessment rationale."
+      },
+      {
+        "section_path": "Distribution > Geographic Range",
+        "issue": "The geographic range section does not specify **how the EOO was estimated** (e.g., minimum convex polygon, range interpolation). This violates the rule requiring clarity on estimation methods for EOO/AOO.",
+        "severity": "medium",
+        "suggestion": "Explicitly state the method used to estimate EOO (e.g., 'EOO estimated using a minimum convex polygon around all known occurrences')."
+      },
+      {
+        "section_path": "Distribution > Locations Information",
+        "issue": "The justification for the number of locations (11) does not explicitly link to **major threats** or explain **how threats affect the taxon’s persistence**, as required for criteria B assessments. The threats are mentioned but not tied to the location-based analysis.",
+        "severity": "medium",
+        "suggestion": "Revise the justification to explicitly state how threats (mining, agriculture, dam development) **impact the 11 locations** (e.g., 'Of the 11 locations, 7 are directly threatened by mining, while 4 face agricultural encroachment...')."
+      },
+      {
+        "section_path": "Distribution > Geographic Range",
+        "issue": "The phrase 'Several records occur close to KBAs' is vague and does not clarify whether these KBAs (Key Biodiversity Areas) are **included in the EOO/AOO calculations** or how they contribute to the species’ persistence. This lacks precision.",
+        "severity": "low",
+        "suggestion": "Clarify the role of KBAs (e.g., 'Several populations occur within or adjacent to KBAs, which may provide some habitat protection...'). If KBAs are critical to the assessment, quantify their contribution to EOO/AOO."
+      }
+    ]
+  },
+  {
+    "rule_name": "rule_05_consistency_population",
+    "findings": []
+  },
+  {
+    "rule_name": "rule_06_consistency_conservation",
+    "findings": []
+  },
+  {
+    "rule_name": "Category Justification",
+    "findings": [
+      {
+        "section_path": "Red List Assessment > Assessment Rationale",
+        "issue": "The assessment states that the species is assessed as Endangered (EN) under criterion B2ab(iii) due to an area of occupancy (AOO) of 44 km² and a continuing decline in habitat quality. However, the number of locations (11) marginally exceeds the threshold for Endangered under criterion B2 (which requires ≤5 locations for EN). The rationale also states that the existence of some high-quality habitat may enable the species to persist without being globally threatened in the near future, which contradicts the justification for an Endangered status.",
+        "severity": "high",
+        "suggestion": "Clarify the justification for the Endangered status under criterion B2ab(iii) by ensuring the number of locations (11) meets the threshold for Endangered (≤5 locations). If the number of locations exceeds the threshold, reconsider the category or provide stronger evidence for the decline in habitat quality and fragmentation to justify the Endangered status. Alternatively, if the number of locations is accurate, revise the category to Near Threatened (NT) or Least Concern (LC) if the species does not meet the criteria for Endangered."
+      },
+      {
+        "section_path": "Red List Assessment > Assessment Rationale",
+        "issue": "The rationale mentions that the species is unlikely to face major threats in the near future, which contradicts the assessment of Endangered (EN) and the documented threats (mining, agricultural land conversion, etc.). This inconsistency weakens the justification for the chosen category.",
+        "severity": "medium",
+        "suggestion": "Remove or revise the statement that the species is unlikely to face major threats in the near future, or provide stronger evidence to support the Endangered status if threats are indeed significant."
+      },
+      {
+        "section_path": "Distribution > Locations Information",
+        "issue": "The justification for the number of locations (11) states that each location faces different threats, but the assessment does not explicitly clarify whether these threats are severe enough to justify the Endangered status under criterion B2ab(iii). The rationale should explicitly link the threats to the decline in habitat quality and fragmentation.",
+        "severity": "medium",
+        "suggestion": "Explicitly state how the threats (mining, agricultural land conversion, etc.) contribute to the continuing decline in habitat quality and fragmentation, and ensure this aligns with the criteria for Endangered status."
+      },
+      {
+        "section_path": "Occurrence > Countries of Occurrence",
+        "issue": "The presence of the species in Zambia is marked as 'Possibly Extant,' which introduces uncertainty. This should be clarified to ensure consistency with the assessment rationale and category justification.",
+        "severity": "medium",
+        "suggestion": "Update the presence status in Zambia to 'Extant' if confirmed, or provide justification for the 'Possibly Extant' status and explain how this uncertainty affects the overall assessment."
+      },
+      {
+        "section_path": "Red List Assessment > Assessment Rationale",
+        "issue": "The rationale states that the extent of occurrence (EOO) of 114,000 km² exceeds the threshold for threatened categories, but the assessment is based on the area of occupancy (AOO) of 44 km². While this is correct, the rationale should explicitly clarify why the AOO is the primary metric for assessing the species' status, especially given the EOO exceeds thresholds for threatened categories.",
+        "severity": "low",
+        "suggestion": "Explicitly state that the AOO is the primary metric for assessing the species' status due to the restricted suitable habitat within the larger EOO."
+      }
+    ]
+  },
+  {
+    "rule_name": "References Formatting",
+    "findings": [
+      {
+        "section_path": "Bibliography",
+        "issue": "Incorrect citation format in the text body: 'Browning et al., 2020' uses a comma between author and year, which violates rule 3.11.1.2.",
+        "severity": "high",
+        "suggestion": "Change to 'Browning et al. 2020' (remove the comma)."
+      },
+      {
+        "section_path": "Distribution > Geographic Range",
+        "issue": "Incorrect citation format in the text body: 'Roalson et al. XXXX' uses 'et al.' without a year, violating rule 3.11.1.6 (missing year). Additionally, 'et al' is italicized incorrectly in the style block.",
+        "severity": "high",
+        "suggestion": "Replace 'Roalson et al. XXXX' with the correct citation (e.g., 'Roalson et al. 2019') and ensure 'et al.' is not italicized in the text body."
+      },
+      {
+        "section_path": "Distribution > Geographic Range",
+        "issue": "Incorrect citation format in the text body: 'Hoenselaar et al. 2010' is italicized incorrectly in the style block.",
+        "severity": "medium",
+        "suggestion": "Remove italicization from 'et al.' in the text body."
+      },
+      {
+        "section_path": "Distribution > Geographic Range",
+        "issue": "Incorrect citation format in the text body: 'Khalid et al. 2026' is not listed in the bibliography, violating rule 3.11.1.6 (missing reference).",
+        "severity": "high",
+        "suggestion": "Add the missing reference to the bibliography or remove the citation from the text."
+      },
+      {
+        "section_path": "Habitats and Ecology",
+        "issue": "Incorrect citation format in the text body: 'Global Biodiversity Information Facility, 2023' uses a comma between author and year, violating rule 3.11.1.2.",
+        "severity": "high",
+        "suggestion": "Change to 'Global Biodiversity Information Facility 2023' (remove the comma)."
+      },
+      {
+        "section_path": "Threats",
+        "issue": "Incorrect citation format in the text body: 'Global Forest Watch 2023' and 'Google Earth Pro 2023' use no comma or space between author and year, but the rule does not explicitly forbid this. However, the bibliography entries for these sources lack proper formatting (e.g., missing author names, titles, and URLs).",
+        "severity": "high",
+        "suggestion": "Ensure all entries in the bibliography follow the required format (e.g., include author names, publication year, title, and URL)."
+      },
+      {
+        "section_path": "Threats",
+        "issue": "Incorrect citation format in the text body: 'Virunga National Park 2023' is not properly formatted as a citation (missing author or organization name).",
+        "severity": "high",
+        "suggestion": "Replace with a properly formatted citation (e.g., 'Virunga National Park 2023' should be 'Virunga National Park (2023)' or include the organization name)."
+      },
+      {
+        "section_path": "Conservation",
+        "issue": "Incorrect citation format in the text body: 'IUCN and UNEP-WCMC 2023' uses no comma or space between authors and year, violating rule 3.11.1.2.",
+        "severity": "high",
+        "suggestion": "Change to 'IUCN and UNEP-WCMC 2023' (no comma needed, but ensure consistency with other citations)."
+      },
+      {
+        "section_path": "Conservation",
+        "issue": "Incorrect citation format in the text body: 'BGCI 2023' is not properly formatted as a citation (missing full organization name).",
+        "severity": "high",
+        "suggestion": "Replace with a properly formatted citation (e.g., 'Botanic Gardens Conservation International 2023')."
+      },
+      {
+        "section_path": "Bibliography",
+        "issue": "Incorrect formatting in bibliography entries: '2023. Botanic Gardens Conservation Internationa' and similar entries lack proper author names, titles, and URLs.",
+        "severity": "high",
+        "suggestion": "Ensure all entries follow the required format (e.g., include author names, publication year, title, and URL)."
+      },
+      {
+        "section_path": "Bibliography",
+        "issue": "Incorrect formatting in bibliography entries: 'Utsav, Tandon. 2024. SWE project. Vol. 20.' lacks proper citation details (e.g., title, publisher, or URL).",
+        "severity": "high",
+        "suggestion": "Provide complete citation details or remove the entry if it is not a valid source."
+      },
+      {
+        "section_path": "Bibliography",
+        "issue": "Incorrect formatting in bibliography entries: '[Roalson 2019]' is not a valid citation format and lacks details.",
+        "severity": "high",
+        "suggestion": "Replace with a properly formatted citation (e.g., 'Roalson et al. 2019. A broader circumscription of Bulbostylis...')."
+      },
+      {
+        "section_path": "Bibliography",
+        "issue": "Incorrect formatting in bibliography entries: 'GBIF: the Global Biodiversity Information Facility. 2022.' uses the wrong year (2022 instead of 2023) and lacks proper citation details for the species.",
+        "severity": "high",
+        "suggestion": "Correct the year to 2023 and ensure the citation matches the text (e.g., 'Global Biodiversity Information Facility 2023. Bulbostylis atracuminata...')."
+      },
+      {
+        "section_path": "Bibliography",
+        "issue": "Incorrect formatting in bibliography entries: 'Hoenselaar.K, Verdcourt.B & Beentje.H.J. 2010.' uses incorrect spacing and punctuation in author names.",
+        "severity": "medium",
+        "suggestion": "Correct to 'Hoenselaar, K., Verdcourt, B. & Beentje, H.J. 2010.' (add commas and spaces)."
+      },
+      {
+        "section_path": "Bibliography",
+        "issue": "Incorrect formatting in bibliography entries: 'Larridon, Reynders & Goetghebeur. 2008.' uses incorrect spacing and punctuation in author names.",
+        "severity": "medium",
+        "suggestion": "Correct to 'Larridon, Reynders & Goetghebeur 2008.' (remove the period after 'Goetghebeur')."
+      },
+      {
+        "section_path": "Bibliography",
+        "issue": "Incorrect formatting in bibliography entries: 'Moat, J., Bachman, S., & Walker, B. 2023.' uses an ampersand (&) instead of 'and' between authors.",
+        "severity": "medium",
+        "suggestion": "Correct to 'Moat, J., Bachman, S. and Walker, B. 2023.'"
+      },
+      {
+        "section_path": "Bibliography",
+        "issue": "Incorrect formatting in bibliography entries: 'Roalson et al. 2019.' is missing the full title and journal details.",
+        "severity": "high",
+        "suggestion": "Include the full title and journal details (e.g., 'Roalson et al. 2019. A broader circumscription of Bulbostylis... Phytotaxa Vol. 395 (3): 119-208.')."
+      },
+      {
+        "section_path": "Bibliography",
+        "issue": "Incorrect formatting in bibliography entries: 'Browning, Jane, Lock. M, John Michael, Beentje, Henk Jaap, Vollesen, Kaj, Larridon, Isabel, Xanthos, Martin Cheek, Martin Darbyshire, IainGoyder, D. J. 2020.' has inconsistent spacing and punctuation in author names.",
+        "severity": "high",
+        "suggestion": "Correct to 'Browning, J., Lock, M., Michael, J., Beentje, H.J., Vollesen, K., Larridon, I., Xanthos, M., Cheek, M., Darbyshire, I. and Goyder, D.J. 2020.'"
+      }
+    ]
+  },
+  {
+    "rule_name": "Formatting of Scientific/Common Name",
+    "findings": [
+      {
+        "section_path": "Threats",
+        "issue": "The text refers to 'copper bog sedge' as the common name of *Bulbostylis atracuminata* without prior mention of the scientific name or any indication that this is the chosen common name. Additionally, the common name is not consistently used throughout the document (e.g., 'Katanga hairsedge' is used in the 'Habitats and Ecology' section).",
+        "severity": "high",
+        "suggestion": "Ensure consistency in naming by either (1) using the scientific name *Bulbostylis atracuminata* throughout the document (with the first mention in full and subsequent mentions abbreviated to *B. atracuminata*), or (2) selecting one common name (e.g., 'copper bog sedge' or 'Katanga hairsedge') and using it consistently after the first mention of the scientific name. If 'copper bog sedge' is chosen as the common name, ensure it is capitalized and used consistently (e.g., 'Copper bog sedge')."
+      },
+      {
+        "section_path": "Habitats and Ecology",
+        "issue": "The text uses 'Katanga hairsedge' as the common name for *Bulbostylis atracuminata* without prior mention of the scientific name or any indication that this is the chosen common name. This is inconsistent with the naming used in the 'Threats' section ('copper bog sedge').",
+        "severity": "medium",
+        "suggestion": "Choose one common name for *Bulbostylis atracuminata* and use it consistently throughout the document. If 'Katanga hairsedge' is the preferred common name, ensure it is capitalized (e.g., 'Katanga hairsedge') and used consistently after the first mention of the scientific name."
+      },
+      {
+        "section_path": "Habitats and Ecology",
+        "issue": "The text includes the phrase 'Katanga hairsedge native habitat' without introducing the scientific name first. This violates the rule of introducing the scientific name before using a common name.",
+        "severity": "medium",
+        "suggestion": "Introduce the scientific name *Bulbostylis atracuminata* before using the common name 'Katanga hairsedge' (e.g., '*Bulbostylis atracuminata* (Katanga hairsedge) native habitat...')."
+      },
+      {
+        "section_path": "Distribution > Geographic Range",
+        "issue": "The text includes the scientific name *Bulbostylis atracuminata* in parentheses with an incomplete author citation ('Larridon et al. XXXX'). This is inconsistent with the formatting rules for scientific names.",
+        "severity": "medium",
+        "suggestion": "Correct the author citation to the full and accurate form (e.g., '*Bulbostylis atracuminata* (Larridon, Reynders & Goetgh.) Larridon & Roalson')."
+      },
+      {
+        "section_path": "Habitats and Ecology",
+        "issue": "The text includes 'Bulbostylis atracuminata' in full repeatedly without abbreviating it after the first mention, which is inconsistent with the rule for taxa without universally recognized common names.",
+        "severity": "low",
+        "suggestion": "After the first mention of *Bulbostylis atracuminata*, abbreviate it to *B. atracuminata* for consistency."
+      },
+      {
+        "section_path": "Conservation",
+        "issue": "The text mentions 'ex situ' without italicizing it, which is inconsistent with the rule for taxonomic levels higher than genus (though 'ex situ' is not a taxonomic level, it should be treated as a technical term and italicized for consistency).",
+        "severity": "low",
+        "suggestion": "Italicize 'ex situ' for consistency with technical terms."
+      }
+    ]
+  },
+  {
+    "rule_name": "Check for Acronym Explanation",
+    "findings": [
+      {
+        "section_path": "Red List Assessment > Assessment Rationale",
+        "issue": "The acronym 'AOO' (Area of Occupancy) is used without an initial explanation in full.",
+        "severity": "high",
+        "suggestion": "Add the full term 'area of occupancy' in the first instance with the acronym in brackets (e.g., 'area of occupancy (AOO)')."
+      },
+      {
+        "section_path": "Distribution > Geographic Range",
+        "issue": "The acronyms 'KBA' (Key Biodiversity Area) and 'RLI' (Red List Index) are used without an initial explanation in full.",
+        "severity": "high",
+        "suggestion": "Add the full terms 'Key Biodiversity Area (KBA)' and 'Red List Index (RLI)' in the first instance with the acronyms in brackets."
+      },
+      {
+        "section_path": "Distribution > Area of Occupancy (AOO)",
+        "issue": "The acronym 'GeoCat' is used without an initial explanation in full.",
+        "severity": "high",
+        "suggestion": "Add the full term 'Geospatial Conservation Assessment Tool (GeoCat)' in the first instance with the acronym in brackets."
+      },
+      {
+        "section_path": "Distribution > Map Status",
+        "issue": "The acronym 'GeoCat' is used without an initial explanation in full.",
+        "severity": "high",
+        "suggestion": "Add the full term 'Geospatial Conservation Assessment Tool (GeoCat)' in the first instance with the acronym in brackets."
+      },
+      {
+        "section_path": "Distribution > Map Status",
+        "issue": "The acronym 'GBIF' (Global Biodiversity Information Facility) is used without an initial explanation in full.",
+        "severity": "high",
+        "suggestion": "Add the full term 'Global Biodiversity Information Facility (GBIF)' in the first instance with the acronym in brackets."
+      },
+      {
+        "section_path": "Habitats and Ecology",
+        "issue": "The acronym 'ex situ' is used without an initial explanation in full.",
+        "severity": "high",
+        "suggestion": "Add the full term 'ex situ conservation (ex situ)' in the first instance with the acronym in brackets."
+      },
+      {
+        "section_path": "Threats",
+        "issue": "The acronyms 'IUCN' and 'UNEP-WCMC' are used without an initial explanation in full.",
+        "severity": "high",
+        "suggestion": "Add the full terms 'International Union for Conservation of Nature (IUCN)' and 'United Nations Environment Programme World Conservation Monitoring Centre (UNEP-WCMC)' in the first instance with the acronyms in brackets."
+      },
+      {
+        "section_path": "Conservation",
+        "issue": "The acronym 'BGCI' (Botanic Gardens Conservation International) is used without an initial explanation in full.",
+        "severity": "high",
+        "suggestion": "Add the full term 'Botanic Gardens Conservation International (BGCI)' in the first instance with the acronym in brackets."
+      },
+      {
+        "section_path": "Conservation > Conservation Actions In-Place",
+        "issue": "The acronym 'PA' (Protected Area) is used without an initial explanation in full.",
+        "severity": "high",
+        "suggestion": "Add the full term 'Protected Area (PA)' in the first instance with the acronym in brackets."
+      }
+    ]
+  },
+  {
+    "rule_name": "Check for Timeline and Argument Coherence",
+    "findings": [
+      {
+        "section_path": "Red List Assessment > Assessment Rationale",
+        "issue": "The timeline and argument coherence are inconsistent regarding the species' threat status and future outlook. The text states that the species is assessed as **Endangered (B2ab(iii))** due to a restricted area of occupancy (AOO) and continuing habitat decline, but then claims that the species is **unlikely to face major threats in the near future** and may persist without being globally threatened. This creates a contradictory narrative between the current assessment and future projections.",
+        "severity": "high",
+        "suggestion": "Clarify the reasoning for the Endangered status while ensuring the future outlook aligns logically with the current threats. If the species is assessed as Endangered, the justification should consistently reflect ongoing and severe threats rather than downplaying future risks. For example, explicitly state whether the 'high-quality habitat' is sufficient to offset current threats or if the assessment assumes a short-term buffer effect."
+      },
+      {
+        "section_path": "Distribution > Geographic Range",
+        "issue": "The geographic range description mentions **eastern Angola**, but this is not reflected in the **Countries of Occurrence** section, where only **DRC and Zambia** are listed. This inconsistency creates confusion about the species' actual distribution.",
+        "severity": "medium",
+        "suggestion": "Update either the **Geographic Range** section to remove Angola (if not confirmed) or add Angola to the **Countries of Occurrence** table with appropriate justification (e.g., 'Extant' or 'Possibly Extant'). Ensure consistency across sections."
+      },
+      {
+        "section_path": "Distribution > Locations Information",
+        "issue": "The **Locations Information** table states that the species occupies **11 locations in DRC and Zambia**, but the **Assessment Rationale** mentions **11 locations in Zambia and DRC**, which is redundant. Additionally, the **Threats** section specifies that **five locations are on mining sites in Zambia and DRC**, but the **Locations Information** justification does not explicitly link threats to specific locations, creating a gap in coherence.",
+        "severity": "medium",
+        "suggestion": "Clarify the distribution of threats across the 11 locations (e.g., specify how many locations in each country are affected by mining/agriculture) to strengthen the logical flow between habitat threats and location-specific risks. Ensure the **Locations Information** justification aligns with threat data."
+      },
+      {
+        "section_path": "Threats > Threats Classification Scheme",
+        "issue": "The **Threats Classification Scheme** table lists **'The threats to this species are unknown. true'** as a statement, which contradicts the detailed threat descriptions in the **Threats** section (e.g., mining, agriculture, dams). This inconsistency undermines the coherence of the argument.",
+        "severity": "high",
+        "suggestion": "Remove the contradictory statement and ensure all threats are systematically classified in the table. If threats are known, justify their inclusion with evidence (e.g., scope, severity, timing) as described in the **Threats** section."
+      },
+      {
+        "section_path": "Habitats and Ecology > Continuing Decline in Habitat",
+        "issue": "The justification for habitat decline mentions **frequent burning**, but this threat is not explicitly listed or classified in the **Threats** section. This omission weakens the coherence between habitat ecology and threat analysis.",
+        "severity": "medium",
+        "suggestion": "Add 'frequent burning' as a classified threat in the **Threats Classification Scheme** table (e.g., under **Natural system modifications -> Fire and fire suppression**) and reference it in the **Threats** section for consistency."
+      },
+      {
+        "section_path": "Conservation > Conservation Actions In-Place",
+        "issue": "The **Conservation Actions In-Place** table states that the species occurs in **at least one Protected Area (PA)**, but the **Threats** section notes that **national parks are weakly managed** and open to activities like hiking/camping. This creates a contradiction between the assumed protection and the actual management effectiveness.",
+        "severity": "medium",
+        "suggestion": "Clarify the level of protection in the **Conservation Actions In-Place** section. If PAs are weakly managed, specify this in the justification (e.g., 'Occurs in PAs, but management is inadequate to mitigate threats'). Alternatively, reclassify the protection status if it does not meet IUCN criteria for effective conservation."
+      },
+      {
+        "section_path": "Population",
+        "issue": "The **Population** section states that the **population trend is 'Unknown'**, but the **Assessment Rationale** infers a **suspected decline** based on habitat loss. This creates ambiguity about whether the population trend is directly assessed or inferred from indirect evidence.",
+        "severity": "medium",
+        "suggestion": "Explicitly state whether the population trend is inferred (e.g., 'Inferred decline based on habitat loss') or if direct data exists but is insufficient. Align the **Population Information** section with the **Assessment Rationale** to avoid conflicting interpretations."
+      },
+      {
+        "section_path": "Bibliography",
+        "issue": "Several bibliography entries (e.g., **Google Earth Pro 2023**, **Global Forest Watch 2023**) lack specific citations or URLs, which weakens the coherence of evidence supporting threats and distribution. The comment by **Jack Plummer** highlights missing links, further undermining credibility.",
+        "severity": "high",
+        "suggestion": "Provide complete citations with accessible URLs for all sources, especially those used to justify threats (e.g., mining, agriculture). Ensure all references are verifiable to support the assessment's arguments."
+      },
+      {
+        "section_path": "Distribution > Geographic Range",
+        "issue": "The citation **Larridon et al. XXXX** is incomplete (year missing), which disrupts the timeline of evidence and weakens the coherence of the geographic range description.",
+        "severity": "medium",
+        "suggestion": "Correct the citation to include the full publication year (e.g., **Larridon et al. 2019**) or replace it with the correct reference from the bibliography (e.g., **Roalson et al. 2019**)."
+      }
+    ]
+  }
+]

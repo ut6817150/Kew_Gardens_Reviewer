@@ -6,7 +6,12 @@ from typing import Optional
 
 @dataclass
 class Violation:
-    """Represents a single rule violation found in text."""
+    """
+    Represents a single rule violation found in text.
+
+    Purpose:
+        This data container stores the fields returned for one rules-based finding.
+    """
     rule_class: str
     rule_method: str
     matched_text: str
@@ -16,7 +21,15 @@ class Violation:
     section_name: Optional[str] = None
 
     def to_dict(self) -> dict:
-        """Serialize violation to dictionary for JSON export."""
+        """
+        Serialize violation to dictionary for JSON export.
+
+        Args:
+            None.
+
+        Returns:
+            dict: Derived value produced by this helper.
+        """
         data = {
             "rule_class": self.rule_class,
             "rule_method": self.rule_method,

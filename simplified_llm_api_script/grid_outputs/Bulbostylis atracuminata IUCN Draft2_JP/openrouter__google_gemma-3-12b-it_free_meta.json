@@ -1,0 +1,8 @@
+{
+  "provider": "openrouter",
+  "model": "google/gemma-3-12b-it:free",
+  "document": "Bulbostylis atracuminata IUCN Draft2_JP",
+  "started_at": "2026-04-04T20:15:53.376206+00:00",
+  "error": "OpenRouter request failed (400) for google/gemma-3-12b-it:free: Provider returned error",
+  "completed_at": "2026-04-04T20:16:00.452534+00:00"
+}

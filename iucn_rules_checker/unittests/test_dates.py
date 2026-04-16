@@ -6,9 +6,23 @@ from iucn_rules_checker.checkers.dates import DateChecker
 
 
 class DateCheckerTests(unittest.TestCase):
-    """Check the current ordinal-date matching rules."""
+    """
+    Check the current ordinal-date matching rules.
+
+    Purpose:
+        This test case groups regression checks for the current behavior covered by the enclosed tests.
+    """
 
     def test_ordinal_dates_match_full_and_abbreviated_months(self) -> None:
+        """
+        Test that ordinal dates match full and abbreviated months.
+
+        Args:
+            None.
+
+        Returns:
+            None. The assertions inside the test body enforce the expected behavior.
+        """
         text = (
             "The review was completed on 11th January. "
             "Another draft was dated 3rd of May. "
@@ -16,7 +30,7 @@ class DateCheckerTests(unittest.TestCase):
             "A final update cites 4th Sept. and 5th Dec."
         )
 
-        violations = DateChecker().check(("Test Section", text))
+        violations = DateChecker().check_text("Test Section", text)
         messages = [violation.message for violation in violations]
 
         self.assertEqual(len(violations), 6)
@@ -28,6 +42,15 @@ class DateCheckerTests(unittest.TestCase):
         self.assertTrue(any("5 Dec." in message for message in messages))
 
     def test_invalid_ordinal_dates_are_flagged_as_invalid_dates(self) -> None:
+        """
+        Test that invalid ordinal dates are flagged as invalid dates.
+
+        Args:
+            None.
+
+        Returns:
+            None. The assertions inside the test body enforce the expected behavior.
+        """
         text = (
             "An impossible draft date was 31st April. "
             "Another record mentioned 30th Feb. "
@@ -35,7 +58,7 @@ class DateCheckerTests(unittest.TestCase):
             "A malformed note even said 0th January."
         )
 
-        violations = DateChecker().check(("Test Section", text))
+        violations = DateChecker().check_text("Test Section", text)
         messages = [violation.message for violation in violations]
 
         self.assertEqual(len(violations), 4)
@@ -46,25 +69,43 @@ class DateCheckerTests(unittest.TestCase):
         self.assertFalse(any("Avoid ordinal dates; use '31 April'" in message for message in messages))
 
     def test_century_format_matches_hyphenated_and_unhyphenated_forms(self) -> None:
+        """
+        Test that century format matches hyphenated and unhyphenated forms.
+
+        Args:
+            None.
+
+        Returns:
+            None. The assertions inside the test body enforce the expected behavior.
+        """
         text = (
             "The record spans the twenty-first century. "
             "A second note refers to the twenty first century."
         )
 
-        violations = DateChecker().check(("Test Section", text))
+        violations = DateChecker().check_text("Test Section", text)
         messages = [violation.message for violation in violations]
 
         self.assertEqual(len(violations), 2)
         self.assertTrue(all("21st century" in message for message in messages))
 
     def test_date_rules_ignore_simple_style_tags(self) -> None:
+        """
+        Test that date rules ignore simple style tags.
+
+        Args:
+            None.
+
+        Returns:
+            None. The assertions inside the test body enforce the expected behavior.
+        """
         text = (
             "The review was completed on <i>11th</i> <b>January</b>. "
             "A note refers to the <i>twenty-first</i> <b>century</b>. "
             "Another draft mentions <i>1980</i><b>'s</b> records."
         )
 
-        violations = DateChecker().check(("Test Section", text))
+        violations = DateChecker().check_text("Test Section", text)
         messages = [violation.message for violation in violations]
 
         self.assertTrue(any("11 January" in message for message in messages))

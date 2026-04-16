@@ -8,7 +8,12 @@ from .base import BaseChecker
 
 
 class NumberChecker(BaseChecker):
-    """Checker for number formatting rules."""
+    """
+    Checker for number formatting rules.
+
+    Purpose:
+        This class groups related rules within the rules-based assessment workflow.
+    """
 
     NUMBER_WORDS = {
         1: "one", 2: "two", 3: "three", 4: "four", 5: "five",
@@ -35,10 +40,28 @@ class NumberChecker(BaseChecker):
     )
 
     def __init__(self):
+        """
+        Initialise the numeric formatting checker.
+
+        Args:
+            None.
+
+        Returns:
+            None.
+        """
         super().__init__()
 
     def check_text(self, section_name: str, text: str) -> List[Violation]:
-        """Check for number formatting violations."""
+        """
+        Check for number formatting violations.
+
+        Args:
+            section_name (str): Parsed section key supplied by the caller.
+            text (str): Parsed section text supplied by the caller.
+
+        Returns:
+            List[Violation]: Violations produced by this method.
+        """
         violations = []
         violations.extend(self.check_small_numbers(section_name, text))
         violations.extend(self.check_large_numbers(section_name, text))
@@ -47,7 +70,8 @@ class NumberChecker(BaseChecker):
         return violations
 
     def check_small_numbers(self, section_name: str, text: str) -> List[Violation]:
-        """Check that standalone numerals 1-9 are written as words.
+        """
+        Check that standalone numerals 1-9 are written as words.
 
         This method first strips simple inline style markers such as italics,
         bold, superscript, and subscript tags, then checks the cleaned text
@@ -82,6 +106,13 @@ class NumberChecker(BaseChecker):
         `1.5`
         `4-5`
         `2 – 3`
+
+        Args:
+            section_name (str): Parsed section key supplied by the caller.
+            text (str): Parsed section text supplied by the caller.
+
+        Returns:
+            List[Violation]: Violations produced by this method.
         """
         violations = []
         cleaned_text, index_map = self.strip_style_markers(
@@ -113,7 +144,17 @@ class NumberChecker(BaseChecker):
         return violations
 
     def should_exclude_small_number(self, text: str, start: int, end: int) -> bool:
-        """Return True when a small numeral appears in an excluded context."""
+        """
+        Return True when a small numeral appears in an excluded context.
+
+        Args:
+            text (str): Parsed section text supplied by the caller.
+            start (int): Input value used by this method.
+            end (int): Input value used by this method.
+
+        Returns:
+            bool: Boolean result described by the summary line above.
+        """
         before_char = text[start - 1] if start > 0 else ""
         after_char = text[end] if end < len(text) else ""
         before_text = text[max(0, start - 10):start]
@@ -145,7 +186,8 @@ class NumberChecker(BaseChecker):
         return False
 
     def check_large_numbers(self, section_name: str, text: str) -> List[Violation]:
-        """Check large numbers for standard comma placement.
+        """
+        Check large numbers for standard comma placement.
 
         This method first strips simple inline style markers such as italics,
         bold, superscript, and subscript tags, then checks cleaned numeric
@@ -176,6 +218,13 @@ class NumberChecker(BaseChecker):
         `1500000`
         `https://doi.org/10.1038/s41598-020-64668-z`
         `#2916`
+
+        Args:
+            section_name (str): Parsed section key supplied by the caller.
+            text (str): Parsed section text supplied by the caller.
+
+        Returns:
+            List[Violation]: Violations produced by this method.
         """
         violations = []
         cleaned_text, index_map = self.strip_style_markers(
@@ -237,15 +286,34 @@ class NumberChecker(BaseChecker):
         return violations
 
     def find_doi_or_url_spans(self, text: str) -> List[tuple[int, int]]:
-        """Return spans for DOI and URL substrings that should be ignored."""
+        """
+        Return spans for DOI and URL substrings that should be ignored.
+
+        Args:
+            text (str): Parsed section text supplied by the caller.
+
+        Returns:
+            List[tuple[int, int]]: List value produced by this method.
+        """
         return [(match.start(), match.end()) for match in self.DOI_OR_URL_PATTERN.finditer(text)]
 
     def is_within_spans(self, start: int, end: int, spans: List[tuple[int, int]]) -> bool:
-        """Return True when a candidate match falls fully inside an excluded span."""
+        """
+        Return True when a candidate match falls fully inside an excluded span.
+
+        Args:
+            start (int): Input value used by this method.
+            end (int): Input value used by this method.
+            spans (List[tuple[int, int]]): Input value used by this method.
+
+        Returns:
+            bool: Boolean result described by the summary line above.
+        """
         return any(span_start <= start and end <= span_end for span_start, span_end in spans)
 
     def check_sentence_start(self, section_name: str, text: str) -> List[Violation]:
-        """Check that sentences do not start with numerals.
+        """
+        Check that sentences do not start with numerals.
 
         This method first strips simple inline style markers such as italics,
         bold, superscript, and subscript tags, then looks for digit strings
@@ -269,6 +337,13 @@ class NumberChecker(BaseChecker):
 
         This rule does not try to generate an automatic rewrite. It only
         reports that the sentence should be rephrased or the number written out.
+
+        Args:
+            section_name (str): Parsed section key supplied by the caller.
+            text (str): Parsed section text supplied by the caller.
+
+        Returns:
+            List[Violation]: Violations produced by this method.
         """
         violations = []
         cleaned_text, index_map = self.strip_style_markers(
@@ -301,7 +376,8 @@ class NumberChecker(BaseChecker):
         return violations
 
     def check_very_large_numbers(self, section_name: str, text: str) -> List[Violation]:
-        """Check rounded very large numbers for ``million``/``billion`` style.
+        """
+        Check rounded very large numbers for ``million``/``billion`` style.
 
         This method first strips simple inline style markers such as italics,
         bold, superscript, and subscript tags, then checks the cleaned text
@@ -337,6 +413,13 @@ class NumberChecker(BaseChecker):
 
         This keeps the rule limited to clearly rounded large counts and avoids
         rewriting precise values into approximate `million`/`billion` wording.
+
+        Args:
+            section_name (str): Parsed section key supplied by the caller.
+            text (str): Parsed section text supplied by the caller.
+
+        Returns:
+            List[Violation]: Violations produced by this method.
         """
         violations = []
         cleaned_text, index_map = self.strip_style_markers(
@@ -375,14 +458,32 @@ class NumberChecker(BaseChecker):
         return violations
 
     def is_very_large_number_candidate(self, num: int) -> bool:
-        """Return True when a plain integer is handled by the million/billion rule."""
+        """
+        Return True when a plain integer is handled by the million/billion rule.
+
+        Args:
+            num (int): Input value used by this method.
+
+        Returns:
+            bool: Boolean result described by the summary line above.
+        """
         return (
             (num >= 1_000_000_000 and num % 10_000_000 == 0)
             or (num >= 1_000_000 and num % 10_000 == 0)
         )
 
     def format_large_number(self, num: int, scale: int, unit: str) -> str:
-        """Format a rounded large number with up to two decimal places."""
+        """
+        Format a rounded large number with up to two decimal places.
+
+        Args:
+            num (int): Input value used by this method.
+            scale (int): Input value used by this method.
+            unit (str): Input value used by this method.
+
+        Returns:
+            str: String value produced by this method.
+        """
         scaled = num / scale
         if scaled.is_integer():
             scaled_str = str(int(scaled))

@@ -8,19 +8,43 @@ from .base import BaseChecker
 
 
 class ScientificNameChecker(BaseChecker):
-    """Checker for scientific name formatting rules."""
+    """
+    Checker for scientific name formatting rules.
+
+    Purpose:
+        This class groups related rules within the rules-based assessment workflow.
+    """
 
     def __init__(self):
+        """
+        Initialise the scientific-name checker.
+
+        Args:
+            None.
+
+        Returns:
+            None.
+        """
         super().__init__()
 
     def check_text(self, section_name: str, text: str) -> List[Violation]:
-        """Check for scientific name formatting violations."""
+        """
+        Check for scientific name formatting violations.
+
+        Args:
+            section_name (str): Parsed section key supplied by the caller.
+            text (str): Parsed section text supplied by the caller.
+
+        Returns:
+            List[Violation]: Violations produced by this method.
+        """
         violations = []
         violations.extend(self.check_species_abbreviations(section_name, text))
         return violations
 
     def check_species_abbreviations(self, section_name: str, text: str) -> List[Violation]:
-        """Check `sp` / `spp` abbreviations after removing simple style tags.
+        """
+        Check `sp` / `spp` abbreviations after removing simple style tags.
 
         This method strips simple inline style tags first:
         `<i>`, `<em>`, `<b>`, `<strong>`, `<sup>`, and `<sub>`.
@@ -51,6 +75,13 @@ class ScientificNameChecker(BaseChecker):
         It only checks the abbreviations `sp` and `spp`.
         It does not validate whether the surrounding scientific-name usage is
         correct beyond the missing-period rule.
+
+        Args:
+            section_name (str): Parsed section key supplied by the caller.
+            text (str): Parsed section text supplied by the caller.
+
+        Returns:
+            List[Violation]: Violations produced by this method.
         """
         violations = []
         cleaned_text, index_map = self.strip_style_markers(

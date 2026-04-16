@@ -1,0 +1,276 @@
+[
+  {
+    "rule_name": "Threats Consistency",
+    "findings": [
+      {
+        "section_path": "Threats",
+        "issue": "The threats described in the narrative (urban expansion and palm oil concessions, road building for tourism, and fire) are not fully reflected in the 'Threats Classification Scheme' section. Specifically, 'Biological Resource Use -> Logging & Wood Harvesting' and 'Invasive & Other Problematic Species, Genes & Diseases' (related to fire as a threat) are missing.",
+        "severity": "medium",
+        "suggestion": "Ensure all threats mentioned in the narrative are also listed and classified in the 'Threats Classification Scheme'. The narrative mentions 'forest loss' due to 'urban expansion' and 'active palm oil concession', which corresponds to '1.1. Housing & urban areas' (already entered) and '2.1.3. Agro-industry farming' (already entered), but also implies logging/harvesting for these concessions, which should be classified under '5.3 Logging & Wood Harvesting'. Additionally, 'fire' is mentioned as a potential threat and should be classified under '7.1 Fire & Fire Suppression'."
+      },
+      {
+        "section_path": "Threats -> Threats Classification Scheme",
+        "issue": "The 'Scope' and 'Severity' columns in the Threats Classification Scheme table are left blank ('-') for all listed threats. This information is crucial for understanding the extent and intensity of the threats.",
+        "severity": "medium",
+        "suggestion": "Populate the 'Scope' and 'Severity' columns in the 'Threats Classification Scheme' table with relevant details based on the narrative and any other available information. For example, 'Scope' could indicate whether the threat affects the entire range or specific parts, and 'Severity' could describe the intensity of the impact."
+      },
+      {
+        "section_path": "Threats",
+        "issue": "The narrative mentions 'road building associated with expanding tourism infrastructure' as a threat. This threat is not explicitly captured in the 'Threats Classification Scheme'.",
+        "severity": "low",
+        "suggestion": "Add '4. Transport & service corridors -> 4.1 Roads & railroads' to the 'Threats Classification Scheme' to account for the threat posed by road building for tourism infrastructure."
+      },
+      {
+        "section_path": "Threats",
+        "issue": "The narrative states that 'fire may also represent a serious threat in some parts of the range', but this is not included in the 'Threats Classification Scheme'.",
+        "severity": "low",
+        "suggestion": "Add '7.1. Fire & Fire Suppression' to the 'Threats Classification Scheme' to reflect the potential threat of fire."
+      }
+    ]
+  },
+  {
+    "rule_name": "Habitats Consistency",
+    "findings": [
+      {
+        "section_path": "Habitats and Ecology -> IUCN Habitats Classification Scheme",
+        "issue": "The habitat '1.99. Montane -> inland' is not a recognized habitat in the provided IUCN Habitats Classification Scheme (Version 3.1). There is no 'Montane' category at the first level, and 'inland' is not a distinct category but rather a prefix for Wetlands. This suggests a potential error in classification or a misunderstanding of the scheme.",
+        "severity": "high",
+        "suggestion": "Review the '1.99. Montane -> inland' entry. If 'Montane' refers to a type of forest, it should be classified under the appropriate 'Forest' sub-category (e.g., 1.9. Forest – Subtropical/tropical moist montane). If it refers to a non-forest montane habitat, it should be found under another relevant category like 'Shrubland' (e.g., 3.7. Shrubland – Subtropical/tropical high altitude) or 'Grassland' (e.g., 4.7. Grassland – Subtropical/tropical high altitude), or a general rocky/mountain category if applicable. If it is indeed a montane inland wetland, the 'inland' prefix should be applied correctly to a wetland category. Correct the classification to match the provided scheme."
+      },
+      {
+        "section_path": "Habitats and Ecology",
+        "issue": "The narrative description of habitats mentions \"lowland forest, including secondary, hill and swamp forest\" and \"limestone karst outcrops\". However, the 'IUCN Habitats Classification Scheme' only lists '1.6. Forest - Subtropical/Tropical Moist Lowland'. The 'hill forest' and 'swamp forest' mentioned in the narrative are not explicitly represented as distinct classifications in the table, nor is 'limestone karst outcrops'.",
+        "severity": "medium",
+        "suggestion": "Ensure that all habitat types mentioned in the narrative description are accurately reflected in the 'IUCN Habitats Classification Scheme' table. Specifically, consider if 'hill forest' could be mapped to '1.9. Forest – Subtropical/tropical moist montane' and if 'swamp forest' maps to '1.8. Forest – Subtropical/tropical swamp'. Also, investigate if 'limestone karst outcrops' can be represented by an existing category, such as a specific type of 'Rocky Areas' or a cave/subterranean habitat if appropriate, or if a new category or clarification is needed."
+      }
+    ]
+  },
+  {
+    "rule_name": "Bibliography Consistency [Red List Standards Consistency (Section 5.1)]",
+    "findings": [
+      {
+        "section_path": "Red List Assessment -> Assessment Rationale",
+        "issue": "The citation 'Khalid and Brandon 2021' is present in the text but not in the bibliography.",
+        "severity": "low",
+        "suggestion": "Add the full reference for 'Khalid and Brandon 2021' to the bibliography."
+      },
+      {
+        "section_path": "Red List Assessment -> Assessment Rationale",
+        "issue": "The citation '[Baker and Dransfield 2017]' is present in the text but the bibliography has a separate entry with the same content and authors, which is redundant and does not follow a consistent citation style for this entry.",
+        "severity": "medium",
+        "suggestion": "Remove the duplicate entry '[Baker and Dransfield 2017] More new rattans from New Guinea and the Solomon Islands (Calamus, Arecaceae).' from the bibliography and ensure the primary entry 'Baker, W.J. & Dransfield, J. 2017. More new rattans from New Guinea and the Solomon Islands (Calamus, Arecaceae). Phytotaxa 305(2): 61-86.' is used consistently."
+      },
+      {
+        "section_path": "Distribution -> Geographic Range",
+        "issue": "The citation 'Khalid and Brandon 2021' is present in the text but not in the bibliography.",
+        "severity": "low",
+        "suggestion": "Add the full reference for 'Khalid and Brandon 2021' to the bibliography."
+      },
+      {
+        "section_path": "Habitats and Ecology",
+        "issue": "The citation '(Baker and Dransfield 2017)' is present in the text but the bibliography has a separate entry with the same content and authors, which is redundant and does not follow a consistent citation style for this entry.",
+        "severity": "medium",
+        "suggestion": "Remove the duplicate entry '[Baker and Dransfield 2017] More new rattans from New Guinea and the Solomon Islands (Calamus, Arecaceae).' from the bibliography and ensure the primary entry 'Baker, W.J. & Dransfield, J. 2017. More new rattans from New Guinea and the Solomon Islands (Calamus, Arecaceae). Phytotaxa 305(2): 61-86.' is used consistently."
+      },
+      {
+        "section_path": "Threats",
+        "issue": "The citation '(Global Forest Watch 2022)' is present in the text but not in the bibliography.",
+        "severity": "low",
+        "suggestion": "Add the full reference for 'Global Forest Watch 2022' to the bibliography."
+      },
+      {
+        "section_path": "Threats",
+        "issue": "The citation '(Baker and Dransfield 2017)' is present in the text but the bibliography has a separate entry with the same content and authors, which is redundant and does not follow a consistent citation style for this entry.",
+        "severity": "medium",
+        "suggestion": "Remove the duplicate entry '[Baker and Dransfield 2017] More new rattans from New Guinea and the Solomon Islands (Calamus, Arecaceae).' from the bibliography and ensure the primary entry 'Baker, W.J. & Dransfield, J. 2017. More new rattans from New Guinea and the Solomon Islands (Calamus, Arecaceae). Phytotaxa 305(2): 61-86.' is used consistently."
+      },
+      {
+        "section_path": "Conservation",
+        "issue": "The citation '(BGCI 2022)' is present in the text but not in the bibliography.",
+        "severity": "low",
+        "suggestion": "Add the full reference for 'BGCI 2022' to the bibliography. The current entry 'BGCI. 2022. Botanic Gardens Conservation International (BGCI) - PlantSearch. Available at: . (Accessed: 2022).' seems to be incomplete as the URL is missing."
+      },
+      {
+        "section_path": "Bibliography",
+        "issue": "The reference 'Dilip et al. 2026. Kew Gardens Red List.' is present in the bibliography but not cited anywhere in the text.",
+        "severity": "low",
+        "suggestion": "Remove 'Dilip et al. 2026. Kew Gardens Red List.' from the bibliography as it is not cited."
+      },
+      {
+        "section_path": "Bibliography",
+        "issue": "The reference '[Baker and Dransfield 2017] More new rattans from New Guinea and the Solomon Islands (Calamus, Arecaceae).' is a duplicate and is already cited in the text as '(Baker and Dransfield 2017)' and has a full bibliographical entry. This entry itself is not cited.",
+        "severity": "medium",
+        "suggestion": "Remove the redundant entry '[Baker and Dransfield 2017] More new rattans from New Guinea and the Solomon Islands (Calamus, Arecaceae).' from the bibliography."
+      }
+    ]
+  },
+  {
+    "rule_name": "Geographic Range / Occurrences Consistency",
+    "findings": [
+      {
+        "section_path": "Distribution -> Geographic Range",
+        "issue": "The geographic range narrative mentions \"New Guinea\", \"West Papua province\", \"Raja Ampat Islands\". However, the 'Countries of Occurrence' table only lists \"Indonesia\" and \"Indonesia -> Papua\" which is not specific enough to cover all mentioned areas.",
+        "severity": "medium",
+        "suggestion": "The 'Countries of Occurrence' table should be updated to more accurately reflect the geographic range mentioned in the narrative, potentially listing specific islands or regions within Indonesia if applicable and supported by data, or ensuring 'Indonesia -> Papua' adequately covers the stated locations. For example, if Raja Ampat is a distinct administrative unit that should be listed, it should be added. Otherwise, ensure the existing entries are sufficient."
+      },
+      {
+        "section_path": "Occurrence -> Countries of Occurrence",
+        "issue": "The 'Presence' field for 'Indonesia -> Papua' is listed as 'Just Ok', which is not a valid option according to the IUCN Red List Standards. Valid options include Extant, Possibly Extant, Possibly Extinct, Extinct, and Presence Uncertain.",
+        "severity": "high",
+        "suggestion": "Replace 'Just Ok' with a valid 'Presence' status such as 'Extant' or 'Extinct' based on the species' current status in that region. If it is indeed 'Extant', then 'Extant' should be used. If there is uncertainty, 'Presence Uncertain' could be considered, but it's crucial to use one of the defined categories."
+      }
+    ]
+  },
+  {
+    "rule_name": "Population Consistency",
+    "findings": [
+      {
+        "section_path": "Population",
+        "issue": "The Population section states 'No detailed population information is available', which contradicts the 'Assessment Rationale' section that mentions a 'projected continuing decline in the area and extent of its habitat' and 'projected decline in the AOO, EOO and number of locations'. This suggests some level of population trend inference has been made.",
+        "severity": "medium",
+        "suggestion": "Clarify the extent of population information available. If population trends are inferred from habitat changes or AOO/EOO declines, this should be explicitly stated in the Population section. The current statement suggests a complete lack of information, which is inconsistent with the rationale."
+      },
+      {
+        "section_path": "Population",
+        "issue": "The rule requires a summary of currently available population information, including global population size and trends, especially for taxa not assessed as Least Concern. The Population section simply states 'No detailed population information is available', which does not fulfill this requirement.",
+        "severity": "high",
+        "suggestion": "Even if quantitative data is lacking, provide any qualitative information or inferred trends about the population size and trend. Based on the Assessment Rationale, it's inferred that the population is decreasing due to habitat loss. This inference should be presented in the Population section."
+      },
+      {
+        "section_path": "Population",
+        "issue": "The rule recommends recording the qualifier for the current population trend. The Population section states the population 'is suspected to be decreasing', which includes a qualifier ('suspected'). However, without providing any supporting information, this statement lacks the detail required by the rule.",
+        "severity": "low",
+        "suggestion": "Expand on the justification for the 'suspected' decreasing trend. Link it to the factors mentioned in the Assessment Rationale (e.g., deforestation, urban expansion, palm oil concessions) to provide a more complete picture."
+      }
+    ]
+  },
+  {
+    "rule_name": "rule_06_consistency_conservation",
+    "findings": []
+  },
+  {
+    "rule_name": "rule_07_justification_category",
+    "findings": []
+  },
+  {
+    "rule_name": "rule_08_formatting_references",
+    "findings": []
+  },
+  {
+    "rule_name": "Formatting of Scientific/Common Name",
+    "findings": [
+      {
+        "section_path": "Red List Assessment -> Assessment Rationale",
+        "issue": "The common name 'Sorong rattan' is used without its scientific name in parentheses or italics, and then the scientific name *Calamus heatubunii* is mentioned later. According to rule 2, if a common name exists, it should be used in place of the scientific name throughout the text after the first mention, which should be in the format 'Common Name (*Scientific Name*)'. Rule 4 also states that the scientific name should be mentioned once only and thereafter only the common name should be used.",
+        "severity": "high",
+        "suggestion": "The first mention of the species should be 'Sorong rattan (*Calamus heatubunii*)'. Subsequently, only 'Sorong rattan' should be used. If 'Sorong rattan' is not the primary common name, it should be replaced with the primary common name. If no common name is preferred, the scientific name should be used consistently, with the genus abbreviated after the first full mention as per rule 4 exception."
+      },
+      {
+        "section_path": "Distribution -> Geographic Range",
+        "issue": "The scientific name *Calamus heatubunii* is italicized in the text, but it appears to be part of a sentence rather than an in-text citation or a name introduction. Rule 2 suggests italicizing the scientific name only when it follows the common name in parentheses. Additionally, the phrase 'Calamus heatubunii has been recorded...' deviates from the preferred style where the common name should be used after the initial introduction.",
+        "severity": "medium",
+        "suggestion": "Following the first mention of 'Sorong rattan (*Calamus heatubunii*)', the text should continue referring to the species as 'Sorong rattan'. Or, if a common name is not to be used, *Calamus heatubunii* should be used consistently and the genus abbreviated after the first mention (e.g., *C. heatubunii*)."
+      },
+      {
+        "section_path": "Habitats and Ecology",
+        "issue": "The common name 'Waigeo cane palm' is used without its scientific name in parentheses or italics. According to rule 2, this should be presented as 'Waigeo cane palm (*Calamus heatubunii*)' on its first mention.",
+        "severity": "low",
+        "suggestion": "On its first mention, the common name 'Waigeo cane palm' should be followed by its scientific name in parentheses and italics: 'Waigeo cane palm (*Calamus heatubunii*)'."
+      },
+      {
+        "section_path": "Conservation",
+        "issue": "The scientific name 'Calamus heatubuni' and 'Calamus heatubunii' are italicized without their common names present, and they appear to be singular mentions rather than consistent usage or introduction of scientific names. According to rule 2, the scientific name should generally be introduced with the common name, and if a common name is not preferred, the genus should be abbreviated after the first full mention.",
+        "severity": "low",
+        "suggestion": "If a common name is not being used consistently, the scientific name should be introduced fully on first mention (e.g., '*Calamus heatubunii*') and then abbreviated to the genus initial for subsequent mentions (e.g., '*C. heatubunii*'). This would make the usage of 'Calamus heatubuni' (without the correct spelling from the title) and 'Calamus heatubunii' consistent with potential future abbreviations."
+      }
+    ]
+  },
+  {
+    "rule_name": "Check for Acronym Explanation",
+    "findings": [
+      {
+        "section_path": "Red List Assessment > Assessment Rationale",
+        "issue": "Acronym 'AOO' is used without prior explanation.",
+        "severity": "low",
+        "suggestion": "Explain 'AOO' on first use, e.g., 'area of occupancy (AOO)'."
+      },
+      {
+        "section_path": "Red List Assessment > Assessment Rationale",
+        "issue": "Acronym 'EOO' is used without prior explanation.",
+        "severity": "low",
+        "suggestion": "Explain 'EOO' on first use, e.g., 'extent of occurrence (EOO)'."
+      },
+      {
+        "section_path": "Red List Assessment > Assessment Rationale",
+        "issue": "Acronym 'AOO' is used without prior explanation.",
+        "severity": "low",
+        "suggestion": "Explain 'AOO' on first use, e.g., 'area of occupancy (AOO)'."
+      },
+      {
+        "section_path": "Red List Assessment > Assessment Rationale",
+        "issue": "Acronym 'EOO' is used without prior explanation.",
+        "severity": "low",
+        "suggestion": "Explain 'EOO' on first use, e.g., 'extent of occurrence (EOO)'."
+      },
+      {
+        "section_path": "Red List Assessment > Assessment Rationale",
+        "issue": "Acronym 'AOO' is used without prior explanation.",
+        "severity": "low",
+        "suggestion": "Explain 'AOO' on first use, e.g., 'area of occupancy (AOO)'."
+      },
+      {
+        "section_path": "Red List Assessment > Assessment Rationale",
+        "issue": "Acronym 'EOO' is used without prior explanation.",
+        "severity": "low",
+        "suggestion": "Explain 'EOO' on first use, e.g., 'extent of occurrence (EOO)'."
+      },
+      {
+        "section_path": "Distribution > Area of Occupancy (AOO)",
+        "issue": "Acronym 'AOO' is used without prior explanation.",
+        "severity": "low",
+        "suggestion": "Explain 'AOO' on first use, e.g., 'area of occupancy (AOO)'."
+      },
+      {
+        "section_path": "Distribution > Extent of Occurrence (EOO)",
+        "issue": "Acronym 'EOO' is used without prior explanation.",
+        "severity": "low",
+        "suggestion": "Explain 'EOO' on first use, e.g., 'extent of occurrence (EOO)'."
+      },
+      {
+        "section_path": "Distribution > Elevation / Depth / Depth Zones",
+        "issue": "Abbreviation 'm asl' is used without prior explanation.",
+        "severity": "low",
+        "suggestion": "Explain 'm asl' on first use, e.g., 'metres above sea level (m asl)'."
+      },
+      {
+        "section_path": "Bibliography",
+        "issue": "Acronym 'BGCI' is used without prior explanation.",
+        "severity": "low",
+        "suggestion": "Explain 'BGCI' on first use, e.g., 'Botanic Gardens Conservation International (BGCI)'."
+      }
+    ]
+  },
+  {
+    "rule_name": "Check for Timeline and Argument Coherence",
+    "findings": [
+      {
+        "section_path": "Red List Assessment > Assessment Rationale",
+        "issue": "The rationale states the species is listed as 'Vulnerable B1ab(i,ii,iii,iv)+2ab(i,ii,iii,iv)' due to its AOO and EOO falling below thresholds, and projected declines. However, the Red List Status at the top of the document states 'EN - Endangered, B1ab(i,ii,iii,iv)+2ab(i,ii,iii,iv)'. There is a contradiction between the stated Red List status and the justification provided in the rationale, specifically regarding whether the species is Vulnerable or Endangered.",
+        "severity": "high",
+        "suggestion": "Clarify whether the species is assessed as Vulnerable or Endangered. Ensure the rationale accurately reflects the final Red List status and that the criterion B justification supports the chosen category (Endangered or Vulnerable)."
+      },
+      {
+        "section_path": "Red List Assessment > Assessment Rationale",
+        "issue": "The rationale mentions a projected decline in AOO, EOO, and number of locations, and lists the species as Vulnerable B1ab(i,ii,iii,iv)+2ab(i,ii,iii,iv). This suggests Criterion B is applied, but the rationale also mentions 'fall below the respective thresholds for the Endangered category under Criterion B', which is contradictory if the final assessment is Vulnerable.",
+        "severity": "medium",
+        "suggestion": "Rephrase the rationale to clearly explain how the criteria are met for the assessed category. If the species is Endangered, explain why the AOO/EOO and projected declines meet the Endangered thresholds. If it is Vulnerable, ensure the explanation clearly distinguishes between the thresholds for Vulnerable and Endangered categories."
+      },
+      {
+        "section_path": "Bibliography",
+        "issue": "The bibliography includes a reference 'Dilip et al. 2026. Kew Gardens Red List.'. The year 2026 is in the future, which is an unusual date for a published work that would be used in a current assessment. This suggests a potential error or a placeholder that has not been corrected.",
+        "severity": "low",
+        "suggestion": "Verify the publication year for 'Dilip et al. 2026. Kew Gardens Red List.' and correct it if it is incorrect. If it is a future publication, consider whether it should be included in the current assessment's bibliography."
+      }
+    ]
+  }
+]

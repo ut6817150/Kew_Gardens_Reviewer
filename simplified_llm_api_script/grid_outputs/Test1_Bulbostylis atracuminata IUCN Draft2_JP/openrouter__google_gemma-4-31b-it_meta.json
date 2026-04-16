@@ -1,0 +1,133 @@
+{
+  "provider": "openrouter",
+  "model": "google/gemma-4-31b-it",
+  "document": "Test1_Bulbostylis atracuminata IUCN Draft2_JP",
+  "started_at": "2026-04-07T12:24:03.434990+00:00",
+  "error": null,
+  "completed_at": "2026-04-07T12:28:52.706425+00:00",
+  "status": "success",
+  "rules_evaluated": 11,
+  "rule_metrics": [
+    {
+      "rule_name": "Threats Consistency",
+      "duration_seconds": 32.38300654303748,
+      "input_tokens": 4612,
+      "output_tokens": 571,
+      "total_tokens": 5183,
+      "token_source": "provider",
+      "status": "success",
+      "error": null
+    },
+    {
+      "rule_name": "Habitats Consistency",
+      "duration_seconds": 54.23100746201817,
+      "input_tokens": 5361,
+      "output_tokens": 365,
+      "total_tokens": 5726,
+      "token_source": "provider",
+      "status": "success",
+      "error": null
+    },
+    {
+      "rule_name": "Bibliography Consistency [Red List Standards Consistency (Section 5.1)]",
+      "duration_seconds": 282.6755464539747,
+      "input_tokens": 12758,
+      "output_tokens": 745,
+      "total_tokens": 13503,
+      "token_source": "provider",
+      "status": "success",
+      "error": null
+    },
+    {
+      "rule_name": "Geographic Range / Occurrences Consistency",
+      "duration_seconds": 10.80833559401799,
+      "input_tokens": 5354,
+      "output_tokens": 456,
+      "total_tokens": 5810,
+      "token_source": "provider",
+      "status": "success",
+      "error": null
+    },
+    {
+      "rule_name": "Population Consistency",
+      "duration_seconds": 42.29784897196805,
+      "input_tokens": 2523,
+      "output_tokens": 286,
+      "total_tokens": 2809,
+      "token_source": "provider",
+      "status": "success",
+      "error": null
+    },
+    {
+      "rule_name": "Conservation Consistency",
+      "duration_seconds": 11.394074961019214,
+      "input_tokens": 5809,
+      "output_tokens": 477,
+      "total_tokens": 6286,
+      "token_source": "provider",
+      "status": "success",
+      "error": null
+    },
+    {
+      "rule_name": "Category Justification",
+      "duration_seconds": 150.49121678998927,
+      "input_tokens": 16874,
+      "output_tokens": 345,
+      "total_tokens": 17219,
+      "token_source": "provider",
+      "status": "success",
+      "error": null
+    },
+    {
+      "rule_name": "References Formatting",
+      "duration_seconds": 97.71990059304517,
+      "input_tokens": 15281,
+      "output_tokens": 572,
+      "total_tokens": 15853,
+      "token_source": "provider",
+      "status": "success",
+      "error": null
+    },
+    {
+      "rule_name": "Formatting of Scientific/Common Name",
+      "duration_seconds": 288.325653175998,
+      "input_tokens": 13804,
+      "output_tokens": 516,
+      "total_tokens": 14320,
+      "token_source": "provider",
+      "status": "success",
+      "error": null
+    },
+    {
+      "rule_name": "Check for Acronym Explanation",
+      "duration_seconds": 150.70156151300762,
+      "input_tokens": 13109,
+      "output_tokens": 341,
+      "total_tokens": 13450,
+      "token_source": "provider",
+      "status": "success",
+      "error": null
+    },
+    {
+      "rule_name": "Check for Timeline and Argument Coherence",
+      "duration_seconds": 286.1507734739571,
+      "input_tokens": 12764,
+      "output_tokens": 515,
+      "total_tokens": 13279,
+      "token_source": "provider",
+      "status": "success",
+      "error": null
+    }
+  ],
+  "overall": {
+    "rules_attempted": 11,
+    "rules_succeeded": 11,
+    "rules_failed": 0,
+    "run_duration_seconds": 289.271,
+    "total_findings": 47,
+    "total_input_tokens": 108249,
+    "total_output_tokens": 5189,
+    "total_tokens": 113438,
+    "token_estimation_used": false
+  }
+}

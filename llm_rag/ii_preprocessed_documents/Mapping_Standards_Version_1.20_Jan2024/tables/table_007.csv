@@ -1,0 +1,8 @@
+column_1,Code,column_3,column_4,Presence,column_6,column_7,Origin,column_9,column_10,Seasonality,column_12
+,1,,Extant,,,Native,,,Resident,,
+,2,,Probably Extant,,,Reintroduced,,,Breeding season,,
+,3,,Possibly Extant,,,Introduced,,,Non-breeding season,,
+,4,,Possibly Extinct,,,Vagrant,,,Passage,,
+,5,,Extinct (post 1500),,,Origin uncertain,,,Seasonal Occurrence Uncertain,,
+,6,,Presence uncertain,,,Assisted Colonisation,,,,,
+,7,,Expected Additional Range,,,,,,,,

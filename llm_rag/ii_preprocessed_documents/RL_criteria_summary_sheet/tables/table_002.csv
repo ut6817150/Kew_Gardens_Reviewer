@@ -1,0 +1,8 @@
+B. Geographic range in the form of either B1 (extent of occurrence) AND/OR B2 (area of occupancy),column_2,column_3,column_4,column_5
+,,Critically Endangered,Endangered,Vulnerable
+B1. Extent of occurrence (EOO),,< 100 km²,"< 5,000 km²","< 20,000 km²"
+B2. Area of occupancy (AOO),,< 10 km²,< 500 km²,"< 2,000 km²"
+"AND at least 2 of the following 3 conditions: (a) Severely fragmented OR Number of locations = 1 ≤ 5 ≤ 10 (b) Continuing decline observed, estimated, inferred or projected in any of: (i) extent of occurrence; (ii) area of occupancy; (iii) area, extent and/or quality of habitat; (iv) number of locations or subpopulations; (v) number of mature individuals (c) Extreme fluctuations in any of: (i) extent of occurrence; (ii) area of occupancy; (iii) number of locations or subpopulations; (iv) number of mature individuals",,,,
+,(a) Severely fragmented OR Number of locations,= 1,≤ 5,≤ 10
+,"(b) Continuing decline observed, estimated, inferred or projected in any of: (i) extent of occurrence; (ii) area of occupancy; (iii) area, extent and/or quality of habitat; (iv) number of locations or subpopulations; (v) number of mature individuals",,,
+,(c) Extreme fluctuations in any of: (i) extent of occurrence; (ii) area of occupancy; (iii) number of locations or subpopulations; (iv) number of mature individuals,,,

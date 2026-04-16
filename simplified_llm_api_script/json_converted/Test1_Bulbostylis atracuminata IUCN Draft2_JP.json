@@ -1,0 +1,1410 @@
+{
+  "title": "Test1_Bulbostylis atracuminata IUCN Draft2_JP",
+  "level": 0,
+  "path": [],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "Draft",
+      "text_rich": "Draft"
+    },
+    {
+      "type": "paragraph",
+      "text": "Bulbostylis atracuminata - (Larridon, Reynders & Goetgh.) Larridon & Roalson",
+      "text_rich": "Bulbostylis atracuminata - (Larridon, Reynders & Goetgh.) Larridon & Roalson"
+    },
+    {
+      "type": "paragraph",
+      "text": "PLANTAE - TRACHEOPHYTA - LILIOPSIDA - POALES - CYPERACEAE - Bulbostylis - atracuminata",
+      "text_rich": "PLANTAE - TRACHEOPHYTA - LILIOPSIDA - POALES - CYPERACEAE - Bulbostylis - atracuminata"
+    },
+    {
+      "type": "paragraph",
+      "text": "Common Names: No Common Names\nSynonyms: Nemum atracuminatum Larridon, Reynders & Goetgh.",
+      "text_rich": "Common Names: No Common Names\nSynonyms: Nemum atracuminatum Larridon, Reynders & Goetgh."
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Red List Status"
+        ],
+        [
+          "EN, B2ab(iii) (IUCN version 3.1)"
+        ]
+      ],
+      "rows_rich": [
+        [
+          "Red List Status"
+        ],
+        [
+          "EN, B2ab(iii) (IUCN version 3.1)"
+        ]
+      ]
+    },
+    {
+      "type": "style",
+      "data": {
+        "bold": [
+          "Draft",
+          "Bulbostylis atracuminata",
+          "- (Larridon, Reynders & Goetgh.) Larridon & Roalson",
+          "Common Names:",
+          "Synonyms:"
+        ],
+        "italic": [
+          "Bulbostylis atracuminata"
+        ]
+      }
+    }
+  ],
+  "children": [
+    {
+      "title": "Red List Assessment",
+      "level": 1,
+      "path": [
+        "Red List Assessment"
+      ],
+      "blocks": [],
+      "children": [
+        {
+          "title": "Assessment Information",
+          "level": 2,
+          "path": [
+            "Red List Assessment",
+            "Assessment Information"
+          ],
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Assessor(s): Lemboye, B. & Lyu, E",
+              "text_rich": "Assessor(s): Lemboye, B. & Lyu, E"
+            },
+            {
+              "type": "paragraph",
+              "text": "Institution(s): Royal Botanic Gardens, Kew",
+              "text_rich": "Institution(s): Royal Botanic Gardens, Kew"
+            },
+            {
+              "type": "paragraph",
+              "text": "Regions: Global",
+              "text_rich": "Regions: Global"
+            },
+            {
+              "type": "style",
+              "data": {
+                "bold": [
+                  "Assessor(s):",
+                  "Institution(s):",
+                  "Regions:"
+                ],
+                "italic": []
+              }
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Assessment Rationale",
+          "level": 2,
+          "path": [
+            "Red List Assessment",
+            "Assessment Rationale"
+          ],
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Bulbostylis atracuminata occurs in a restricted area ranging from southern DRC to northern Zambia. Its extent of occurrence of about 114,000 km2, exceeds the threshold value for threatened categories. However, its actual suitable habitat within this range is considered to be smaller because its habitat is restricted to riverbanks and wetlands. This is reflected in the area of occupancy (44 km2), which falls within the threshold values for the Endangered category under criterion B2. There are an estimated 11 locations for this species in Zambia and DRC, with some locations found in natural environments with low human disturbance levels. However, the majority of its habitat is threatened by mining activity and agricultural land conversion, resulting in an overall continuing deterioration of habitat quality..\nThough this species has a restricted AOO and is experiencing a continuing decline in habitat quality, the total number of locations marginally exceeds the threshold value for threatened categories under criterion B, and the existence of some high-quality habitat may enable the species to persist without being globally threatened in the near future. Therefore, this species is assessed as Endangered B2ab(iii). Despite these pressures, the species is unlikely to face major threats in the near future.",
+              "text_rich": "Bulbostylis atracuminata occurs in a restricted area ranging from southern DRC to northern Zambia. Its extent of occurrence of about 114,000 km2, exceeds the threshold value for threatened categories. However, its actual suitable habitat within this range is considered to be smaller because its habitat is restricted to riverbanks and wetlands. This is reflected in the area of occupancy (44 km2), which falls within the threshold values for the Endangered category under criterion B2. There are an estimated 11 locations for this species in Zambia and DRC, with some locations found in natural environments with low human disturbance levels. However, the majority of its habitat is threatened by mining activity and agricultural land conversion, resulting in an overall continuing deterioration of habitat quality..\nThough this species has a restricted AOO and is experiencing a continuing decline in habitat quality, the total number of locations marginally exceeds the threshold value for threatened categories under criterion B, and the existence of some high-quality habitat may enable the species to persist without being globally threatened in the near future. Therefore, this species is assessed as Endangered B2ab(iii). Despite these pressures, the species is unlikely to face major threats in the near future."
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "Distribution",
+      "level": 1,
+      "path": [
+        "Distribution"
+      ],
+      "blocks": [],
+      "children": [
+        {
+          "title": "Geographic Range",
+          "level": 2,
+          "path": [
+            "Distribution",
+            "Geographic Range"
+          ],
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Bulbostylis atracuminata (Larridon et al. XXXX) occupies a distribution ranging from the northern parts of Zambia ... to the southeastern regions of Democratic Republic of the Congo (DRC), Katanga, and extending into eastern Angola (Roalson et al. 2019). It is normally found at high elevations from 1,260 m to 1,800 m asl (Hoenselaar et al. 2010). Several records occur close to KBAs, although this has not been reflected in the RLI and some PAs remain weakly managed, as also noted by Khalid et al. 2026.",
+              "text_rich": "Bulbostylis atracuminata (Larridon et al. XXXX) occupies a distribution ranging from the northern parts of Zambia ... to the southeastern regions of Democratic Republic of the Congo (DRC), Katanga, and extending into eastern Angola (Roalson et al. 2019). It is normally found at high elevations from 1,260 m to 1,800 m asl (Hoenselaar et al. 2010). Several records occur close to KBAs, although this has not been reflected in the RLI and some PAs remain weakly managed, as also noted by Khalid et al. 2026."
+            },
+            {
+              "type": "style",
+              "data": {
+                "bold": [],
+                "italic": [
+                  "Bulbostylis atracuminata (Larridon et al. XXXX) occupies a distribution ranging from the northern parts of Zambia ... to the southeastern regions of Democratic Republic of the Congo (DRC), Katanga, and extending into eastern Angola (Roalson et al. 2019).",
+                  "et al"
+                ]
+              }
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Area of Occupancy (AOO)",
+          "level": 2,
+          "path": [
+            "Distribution",
+            "Area of Occupancy (AOO)"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Estimated area of occupancy (AOO) - in km2",
+                  "Justification"
+                ],
+                [
+                  "44",
+                  "Calculated in GeoCat (Moat et al. 2023) based on 11 georeferenced herbarium specimens including all available specimen data in online herbarium catalogues."
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Estimated area of occupancy (AOO) - in km2",
+                  "Justification"
+                ],
+                [
+                  "44",
+                  "Calculated in GeoCat (Moat et al. 2023) based on 11 georeferenced herbarium specimens including all available specimen data in online herbarium catalogues."
+                ]
+              ]
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Locations Information",
+          "level": 2,
+          "path": [
+            "Distribution",
+            "Locations Information"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Number of Locations",
+                  "Justification"
+                ],
+                [
+                  "11",
+                  "It occupies total 11 locations in DRC and Zambia. The specimens have been collected from 11 locations and each of them face different threats ranging from mining, agricultural land-use to dam development."
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Number of Locations",
+                  "Justification"
+                ],
+                [
+                  "11",
+                  "It occupies total 11 locations in DRC and Zambia. The specimens have been collected from 11 locations and each of them face different threats ranging from mining, agricultural land-use to dam development."
+                ]
+              ]
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Very restricted AOO or number of locations (triggers VU D2)",
+          "level": 2,
+          "path": [
+            "Distribution",
+            "Very restricted AOO or number of locations (triggers VU D2)"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Very restricted in area of occupancy (AOO) and/or # of locations",
+                  "Justification"
+                ],
+                [
+                  "No",
+                  "The species is found at multiple locations in Zambia and DRC."
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Very restricted in area of occupancy (AOO) and/or # of locations",
+                  "Justification"
+                ],
+                [
+                  "No",
+                  "The species is found at multiple locations in Zambia and DRC."
+                ]
+              ]
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Elevation / Depth / Depth Zones",
+          "level": 2,
+          "path": [
+            "Distribution",
+            "Elevation / Depth / Depth Zones"
+          ],
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Elevation Lower Limit (in metres above sea level): 1260",
+              "text_rich": "Elevation Lower Limit (in metres above sea level): 1260"
+            },
+            {
+              "type": "paragraph",
+              "text": "Elevation Upper Limit (in metres above sea level): 1800",
+              "text_rich": "Elevation Upper Limit (in metres above sea level): 1800"
+            },
+            {
+              "type": "style",
+              "data": {
+                "bold": [
+                  "Elevation Lower Limit (in metres above sea level):",
+                  "Elevation Upper Limit (in metres above sea level):"
+                ],
+                "italic": []
+              }
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Map Status",
+          "level": 2,
+          "path": [
+            "Distribution",
+            "Map Status"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Map Status",
+                  "Use map from previous assessment",
+                  "How the map was created, including data sources/methods used:",
+                  "Please state reason for map not available:",
+                  "Data Sensitive?",
+                  "Justification",
+                  "Geographic range this applies to:",
+                  "Date restriction imposed:"
+                ],
+                [
+                  "Done",
+                  "-",
+                  "Prepared in GeoCat (Moat et al. 2023) based on 11 georeferenced herbarium specimens (Global Biodiversity Information Facility 2023)",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Map Status",
+                  "Use map from previous assessment",
+                  "How the map was created, including data sources/methods used:",
+                  "Please state reason for map not available:",
+                  "Data Sensitive?",
+                  "Justification",
+                  "Geographic range this applies to:",
+                  "Date restriction imposed:"
+                ],
+                [
+                  "Done",
+                  "-",
+                  "Prepared in GeoCat (Moat et al. 2023) based on 11 georeferenced herbarium specimens (Global Biodiversity Information Facility 2023)",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-"
+                ]
+              ]
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Biogeographic Realms",
+          "level": 2,
+          "path": [
+            "Distribution",
+            "Biogeographic Realms"
+          ],
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Biogeographic Realm: Afrotropical",
+              "text_rich": "Biogeographic Realm: Afrotropical"
+            },
+            {
+              "type": "style",
+              "data": {
+                "bold": [
+                  "Biogeographic Realm:"
+                ],
+                "italic": []
+              }
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "Occurrence",
+      "level": 1,
+      "path": [
+        "Occurrence"
+      ],
+      "blocks": [],
+      "children": [
+        {
+          "title": "Countries of Occurrence",
+          "level": 2,
+          "path": [
+            "Occurrence",
+            "Countries of Occurrence"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Country",
+                  "Presence",
+                  "Origin",
+                  "Formerly Bred",
+                  "Seasonality"
+                ],
+                [
+                  "Congo, The Democratic Republic of the",
+                  "Extant",
+                  "Native",
+                  "Unknown",
+                  "Resident"
+                ],
+                [
+                  "Zambia",
+                  "Possibly Extant",
+                  "Native",
+                  "Unknown",
+                  "Resident"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Country",
+                  "Presence",
+                  "Origin",
+                  "Formerly Bred",
+                  "Seasonality"
+                ],
+                [
+                  "Congo, The Democratic Republic of the",
+                  "Extant",
+                  "Native",
+                  "Unknown",
+                  "Resident"
+                ],
+                [
+                  "Zambia",
+                  "Possibly Extant",
+                  "Native",
+                  "Unknown",
+                  "Resident"
+                ]
+              ]
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "Population",
+      "level": 1,
+      "path": [
+        "Population"
+      ],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "There is little direct population information for this species, but the population is suspected to be decreasing.",
+          "text_rich": "There is little direct population information for this species, but the population is suspected to be decreasing."
+        }
+      ],
+      "children": [
+        {
+          "title": "Population Information",
+          "level": 2,
+          "path": [
+            "Population",
+            "Population Information"
+          ],
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Current Population Trend: Unknown",
+              "text_rich": "Current Population Trend: Unknown"
+            },
+            {
+              "type": "style",
+              "data": {
+                "bold": [
+                  "Current Population Trend:"
+                ],
+                "italic": []
+              }
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "Habitats and Ecology",
+      "level": 1,
+      "path": [
+        "Habitats and Ecology"
+      ],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Bulbostylis atracuminata is an annual sedge (Browning et al. 2020), commonly found in the seasonally dry tropical ecosystem with a predominantly warm and temperate climate (Larridon et al. 2008). Katanga hairsedge native habitat includes shallow wetlands near rivers in Zambia, and temporarily wet areas (marshes, riverbanks) and shallow soil from humid woodland to edge of open forest in Congo (Browning et al., 2020).  Collections have mainly been made in seasonal bogs and ponds in the DRC and Zambia, and in dams in Zambia (Global Biodiversity Information Facility, 2023). It is also regularly encountered in rocky grassland seepage zones on lateritic slopes.",
+          "text_rich": "Bulbostylis atracuminata is an annual sedge (Browning et al. 2020), commonly found in the seasonally dry tropical ecosystem with a predominantly warm and temperate climate (Larridon et al. 2008). Katanga hairsedge native habitat includes shallow wetlands near rivers in Zambia, and temporarily wet areas (marshes, riverbanks) and shallow soil from humid woodland to edge of open forest in Congo (Browning et al., 2020).  Collections have mainly been made in seasonal bogs and ponds in the DRC and Zambia, and in dams in Zambia (Global Biodiversity Information Facility, 2023). It is also regularly encountered in rocky grassland seepage zones on lateritic slopes."
+        },
+        {
+          "type": "style",
+          "data": {
+            "bold": [],
+            "italic": [
+              "et al."
+            ]
+          }
+        }
+      ],
+      "children": [
+        {
+          "title": "IUCN Habitats Classification Scheme",
+          "level": 2,
+          "path": [
+            "Habitats and Ecology",
+            "IUCN Habitats Classification Scheme"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Habitat",
+                  "Season",
+                  "Suitability",
+                  "Major Importance?"
+                ],
+                [
+                  "5.2. Wetlands (inland) -> Wetlands (inland) - Seasonal/Intermittent/Irregular Rivers/Streams/Creeks",
+                  "Resident",
+                  "Suitable",
+                  "-"
+                ],
+                [
+                  "5.8. Wetlands (inland) -> Wetlands (inland) - Seasonal/Intermittent Freshwater Marshes/Pools (under 8ha)",
+                  "Resident",
+                  "Suitable",
+                  "-"
+                ],
+                [
+                  "5.2. woodland (inland) -> woodland (inland) –",
+                  "Resident",
+                  "Suitable",
+                  "-"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Habitat",
+                  "Season",
+                  "Suitability",
+                  "Major Importance?"
+                ],
+                [
+                  "5.2. Wetlands (inland) -> Wetlands (inland) - Seasonal/Intermittent/Irregular Rivers/Streams/Creeks",
+                  "Resident",
+                  "Suitable",
+                  "-"
+                ],
+                [
+                  "5.8. Wetlands (inland) -> Wetlands (inland) - Seasonal/Intermittent Freshwater Marshes/Pools (under 8ha)",
+                  "Resident",
+                  "Suitable",
+                  "-"
+                ],
+                [
+                  "5.2. woodland (inland) -> woodland (inland) –",
+                  "Resident",
+                  "Suitable",
+                  "-"
+                ]
+              ]
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Continuing Decline in Habitat",
+          "level": 2,
+          "path": [
+            "Habitats and Ecology",
+            "Continuing Decline in Habitat"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Continuing decline in area, extent and/or quality of habitat?",
+                  "Qualifier",
+                  "Justification"
+                ],
+                [
+                  "Yes",
+                  "Inferred",
+                  "The majority of the sites occupied by this species are threatened by mining and agricultural land conversion. These threats are affecting the quality of its habitat and this deterioriation trend is likely to continue in the future. Frequent burning may also contribute to ongoing habitat deterioration."
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Continuing decline in area, extent and/or quality of habitat?",
+                  "Qualifier",
+                  "Justification"
+                ],
+                [
+                  "Yes",
+                  "Inferred",
+                  "The majority of the sites occupied by this species are threatened by mining and agricultural land conversion. These threats are affecting the quality of its habitat and this deterioriation trend is likely to continue in the future. Frequent burning may also contribute to ongoing habitat deterioration."
+                ]
+              ]
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Systems",
+          "level": 2,
+          "path": [
+            "Habitats and Ecology",
+            "Systems"
+          ],
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "System: Terrestrial",
+              "text_rich": "System: Terrestrial"
+            },
+            {
+              "type": "style",
+              "data": {
+                "bold": [
+                  "System:"
+                ],
+                "italic": []
+              }
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Plant / Fungi Specific",
+          "level": 2,
+          "path": [
+            "Habitats and Ecology",
+            "Plant / Fungi Specific"
+          ],
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Wild relative of a crop? No",
+              "text_rich": "Wild relative of a crop? No"
+            },
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Plant and Fungal Growth Forms"
+                ],
+                [
+                  "Graminoid"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Plant and Fungal Growth Forms"
+                ],
+                [
+                  "Graminoid"
+                ]
+              ]
+            },
+            {
+              "type": "style",
+              "data": {
+                "bold": [
+                  "Wild relative of a crop?"
+                ],
+                "italic": []
+              }
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "Use and Trade",
+      "level": 1,
+      "path": [
+        "Use and Trade"
+      ],
+      "blocks": [],
+      "children": [
+        {
+          "title": "General Use and Trade Information",
+          "level": 2,
+          "path": [
+            "Use and Trade",
+            "General Use and Trade Information"
+          ],
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Species not utilized: true",
+              "text_rich": "Species not utilized: true"
+            },
+            {
+              "type": "paragraph",
+              "text": "This species is not known to be utilised.",
+              "text_rich": "This species is not known to be utilised."
+            },
+            {
+              "type": "style",
+              "data": {
+                "bold": [
+                  "Species not utilized:"
+                ],
+                "italic": []
+              }
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "Threats",
+      "level": 1,
+      "path": [
+        "Threats"
+      ],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The habitats of copper bog sedge are predominantly threatened by mining activity and agricultural land conversion (Global Forest Watch 2023, Google Earth Pro 2023). Five out of the total eleven locations are situated on mining sites managed by different mining companies in both Zambia and the DRC (Global Forest Watch 2023). Four locations in the DRC are currently experiencing the threat of agricultural land conversion (Google Earth Pro 2023), with three of these locations affected by both mining and agricultural land use simultaneously. Agricultural land conversion is likely to continue affecting these local subpopulations in the future. Additionally, a dam has been identified near one location in the DRC (Google Earth Pro 2023). This could affect the soil moisture content, subsequently impacting the habitat suitability for this species. Three locations in the DRC are situated within two national parks (IUCN and UNEP-WCMC 2023). While national parks can provide some protection from human disturbance, it's important to note that these parks are not strictly managed and remain open to activities such as bird watching, hiking, walking, and camping (Virunga National Park 2023). Currently, the habitats within the national parks are not threatened. Several sites are also increasingly affected by road construction and urban expansion. Unregulated fire is also a serious threat in some areas.",
+          "text_rich": "The habitats of copper bog sedge are predominantly threatened by mining activity and agricultural land conversion (Global Forest Watch 2023, Google Earth Pro 2023). Five out of the total eleven locations are situated on mining sites managed by different mining companies in both Zambia and the DRC (Global Forest Watch 2023). Four locations in the DRC are currently experiencing the threat of agricultural land conversion (Google Earth Pro 2023), with three of these locations affected by both mining and agricultural land use simultaneously. Agricultural land conversion is likely to continue affecting these local subpopulations in the future. Additionally, a dam has been identified near one location in the DRC (Google Earth Pro 2023). This could affect the soil moisture content, subsequently impacting the habitat suitability for this species. Three locations in the DRC are situated within two national parks (IUCN and UNEP-WCMC 2023). While national parks can provide some protection from human disturbance, it's important to note that these parks are not strictly managed and remain open to activities such as bird watching, hiking, walking, and camping (Virunga National Park 2023). Currently, the habitats within the national parks are not threatened. Several sites are also increasingly affected by road construction and urban expansion. Unregulated fire is also a serious threat in some areas."
+        }
+      ],
+      "children": [
+        {
+          "title": "Threats Classification Scheme",
+          "level": 2,
+          "path": [
+            "Threats",
+            "Threats Classification Scheme"
+          ],
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The threats to this species are unknown. true",
+              "text_rich": "The threats to this species are unknown. true"
+            },
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Threat",
+                  "Timing",
+                  "Scope",
+                  "Severity"
+                ],
+                [
+                  "2.1.2. Agriculture & aquaculture -> Annual & perennial non-timber crops -> Small-holder farming",
+                  "Ongoing",
+                  "Minority (<50%)",
+                  "Unknown"
+                ],
+                [
+                  "3.2. Energy production & mining -> Mining & quarrying",
+                  "Ongoing",
+                  "Majority (50-90%)",
+                  "Very Rapid Declines"
+                ],
+                [
+                  "7.2.3. Natural system modifications -> Dams & water management/use -> Abstraction of surface water (agricultural use)",
+                  "Ongoing",
+                  "Minority (<50%)",
+                  "Unknown"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Threat",
+                  "Timing",
+                  "Scope",
+                  "Severity"
+                ],
+                [
+                  "2.1.2. Agriculture & aquaculture -> Annual & perennial non-timber crops -> Small-holder farming",
+                  "Ongoing",
+                  "Minority (<50%)",
+                  "Unknown"
+                ],
+                [
+                  "3.2. Energy production & mining -> Mining & quarrying",
+                  "Ongoing",
+                  "Majority (50-90%)",
+                  "Very Rapid Declines"
+                ],
+                [
+                  "7.2.3. Natural system modifications -> Dams & water management/use -> Abstraction of surface water (agricultural use)",
+                  "Ongoing",
+                  "Minority (<50%)",
+                  "Unknown"
+                ]
+              ]
+            },
+            {
+              "type": "style",
+              "data": {
+                "bold": [
+                  "The threats to this species are unknown."
+                ],
+                "italic": []
+              }
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "Conservation",
+      "level": 1,
+      "path": [
+        "Conservation"
+      ],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The species has been recorded from Upemba National Park and Kundelungu national park in the DRC (IUCN and UNEP-WCMC 2023). This species isnot known to be represented in ex situ conservation (BGCI 2023). The species may already receive adequate protection across much of its range through existing site management.",
+          "text_rich": "The species has been recorded from Upemba National Park and Kundelungu national park in the DRC (IUCN and UNEP-WCMC 2023). This species isnot known to be represented in ex situ conservation (BGCI 2023). The species may already receive adequate protection across much of its range through existing site management."
+        },
+        {
+          "type": "style",
+          "data": {
+            "bold": [],
+            "italic": [
+              "ex situ"
+            ]
+          }
+        }
+      ],
+      "children": [
+        {
+          "title": "Conservation Actions In- Place",
+          "level": 2,
+          "path": [
+            "Conservation",
+            "Conservation Actions In- Place"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Action Recovery Plan",
+                  "Note"
+                ],
+                [
+                  "Unknown",
+                  "-"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Action Recovery Plan",
+                  "Note"
+                ],
+                [
+                  "Unknown",
+                  "-"
+                ]
+              ]
+            },
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Systematic monitoring scheme",
+                  "Note"
+                ],
+                [
+                  "Unknown",
+                  "-"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Systematic monitoring scheme",
+                  "Note"
+                ],
+                [
+                  "Unknown",
+                  "-"
+                ]
+              ]
+            },
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Conservation sites identified",
+                  "Note"
+                ],
+                [
+                  "Unknown",
+                  "-"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Conservation sites identified",
+                  "Note"
+                ],
+                [
+                  "Unknown",
+                  "-"
+                ]
+              ]
+            },
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Occur in at least one PA",
+                  "Note"
+                ],
+                [
+                  "Yes",
+                  "Some specimens have been collected from within the national parks in the DRC."
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Occur in at least one PA",
+                  "Note"
+                ],
+                [
+                  "Yes",
+                  "Some specimens have been collected from within the national parks in the DRC."
+                ]
+              ]
+            },
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Area based regional management plan",
+                  "Note"
+                ],
+                [
+                  "Unknown",
+                  "-"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Area based regional management plan",
+                  "Note"
+                ],
+                [
+                  "Unknown",
+                  "-"
+                ]
+              ]
+            },
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Invasive species control or prevention",
+                  "Note"
+                ],
+                [
+                  "Unknown",
+                  "-"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Invasive species control or prevention",
+                  "Note"
+                ],
+                [
+                  "Unknown",
+                  "-"
+                ]
+              ]
+            },
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Harvest management plan",
+                  "Note"
+                ],
+                [
+                  "Unknown",
+                  "-"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Harvest management plan",
+                  "Note"
+                ],
+                [
+                  "Unknown",
+                  "-"
+                ]
+              ]
+            },
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Successfully reintroduced or introduced benignly",
+                  "Note"
+                ],
+                [
+                  "Unknown",
+                  "-"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Successfully reintroduced or introduced benignly",
+                  "Note"
+                ],
+                [
+                  "Unknown",
+                  "-"
+                ]
+              ]
+            },
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Subject to ex-situ conservation",
+                  "Note"
+                ],
+                [
+                  "No",
+                  "Not conserved in any botanic garden or seed bank over the world"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Subject to ex-situ conservation",
+                  "Note"
+                ],
+                [
+                  "No",
+                  "Not conserved in any botanic garden or seed bank over the world"
+                ]
+              ]
+            },
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Subject to recent education and awareness programmes",
+                  "Note"
+                ],
+                [
+                  "Unknown",
+                  "-"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Subject to recent education and awareness programmes",
+                  "Note"
+                ],
+                [
+                  "Unknown",
+                  "-"
+                ]
+              ]
+            },
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Included in international legislation",
+                  "Note"
+                ],
+                [
+                  "Unknown",
+                  "-"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Included in international legislation",
+                  "Note"
+                ],
+                [
+                  "Unknown",
+                  "-"
+                ]
+              ]
+            },
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Subject to any international management/trade controls",
+                  "Note"
+                ],
+                [
+                  "Unknown",
+                  "-"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Subject to any international management/trade controls",
+                  "Note"
+                ],
+                [
+                  "Unknown",
+                  "-"
+                ]
+              ]
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Important Conservation Actions Needed",
+          "level": 2,
+          "path": [
+            "Conservation",
+            "Important Conservation Actions Needed"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Conservation Actions",
+                  "Note"
+                ],
+                [
+                  "1.1. Land/water protection -> Site/area protection",
+                  "-"
+                ],
+                [
+                  "1.2. Land/water protection -> Resource & habitat protection",
+                  "-"
+                ],
+                [
+                  "3.4.2. Species management -> Ex-situ conservation -> Genome resource bank",
+                  "-"
+                ],
+                [
+                  "5.4.2. Law & policy -> Compliance and enforcement -> National level",
+                  "-"
+                ],
+                [
+                  "3.4.2. Species management -> Invasive species control",
+                  "-"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Conservation Actions",
+                  "Note"
+                ],
+                [
+                  "1.1. Land/water protection -> Site/area protection",
+                  "-"
+                ],
+                [
+                  "1.2. Land/water protection -> Resource & habitat protection",
+                  "-"
+                ],
+                [
+                  "3.4.2. Species management -> Ex-situ conservation -> Genome resource bank",
+                  "-"
+                ],
+                [
+                  "5.4.2. Law & policy -> Compliance and enforcement -> National level",
+                  "-"
+                ],
+                [
+                  "3.4.2. Species management -> Invasive species control",
+                  "-"
+                ]
+              ]
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Research Needed",
+          "level": 2,
+          "path": [
+            "Conservation",
+            "Research Needed"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Research",
+                  "Note"
+                ],
+                [
+                  "1.2. Research -> Population size, distribution & trends",
+                  "-"
+                ],
+                [
+                  "2.2. Conservation Planning -> Area-based Management Plan",
+                  "-"
+                ],
+                [
+                  "3.4. Monitoring -> Habitat trends",
+                  "-"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Research",
+                  "Note"
+                ],
+                [
+                  "1.2. Research -> Population size, distribution & trends",
+                  "-"
+                ],
+                [
+                  "2.2. Conservation Planning -> Area-based Management Plan",
+                  "-"
+                ],
+                [
+                  "3.4. Monitoring -> Habitat trends",
+                  "-"
+                ]
+              ]
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "Ecosystem Services",
+      "level": 1,
+      "path": [
+        "Ecosystem Services"
+      ],
+      "blocks": [],
+      "children": [
+        {
+          "title": "Ecosystem Services Provided by the Species",
+          "level": 2,
+          "path": [
+            "Ecosystem Services",
+            "Ecosystem Services Provided by the Species"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Insufficient Information Available",
+                  "All coded services should have an importance score of 5 - Not Known."
+                ],
+                [
+                  "true",
+                  "-"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Insufficient Information Available",
+                  "All coded services should have an importance score of 5 - Not Known."
+                ],
+                [
+                  "true",
+                  "-"
+                ]
+              ]
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "Bibliography",
+      "level": 1,
+      "path": [
+        "Bibliography"
+      ],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2023. Botanic Gardens Conservation Internationa. Available at: https://tools.bgci.org/plant_search.php?action=Find&lang=eng&ftrGenus=Bulbostylis&ftrSpecies=atracuminata&ftrEpithet=&ftrRedList=&ftrCWR=&ftrRedList1997=&x=0&y=0#results. (Accessed: Sept 4, 2023).",
+          "text_rich": "2023. Botanic Gardens Conservation Internationa. Available at: . (Accessed: Sept 4, 2023)."
+        },
+        {
+          "type": "paragraph",
+          "text": "2023. Google Earth Pro. (Accessed: Sept 4, 2023).",
+          "text_rich": "2023. Google Earth Pro. (Accessed: Sept 4, 2023)."
+        },
+        {
+          "type": "paragraph",
+          "text": "2023. Virunga National Park. Available at: https://www.virungaparkcongo.com/congo-tour-destinations/upemba-national-park/. (Accessed: Sept 4, 2023).",
+          "text_rich": "2023. Virunga National Park. Available at: . (Accessed: Sept 4, 2023)."
+        },
+        {
+          "type": "paragraph",
+          "text": "2023. World Database on Protected Areas. Available at: https://www.protectedplanet.net/en/thematic-areas/wdpa?tab=WDPA. (Accessed: Sept 4, 2023).",
+          "text_rich": "2023. World Database on Protected Areas. Available at: . (Accessed: Sept 4, 2023)."
+        },
+        {
+          "type": "paragraph",
+          "text": "GBIF: the Global Biodiversity Information Facility. 2022. Bulbostylis microelegans. Occurance data for Bulbostylis microelegans. GBIF. Available at: https://www.gbif.org/occurrence/search?taxon_key=10914374. (Accessed: Sept 4, 2023).",
+          "text_rich": "GBIF: the Global Biodiversity Information Facility. 2022. Bulbostylis microelegans. Occurance data for Bulbostylis microelegans. GBIF. Available at: . (Accessed: Sept 4, 2023)."
+        },
+        {
+          "type": "paragraph",
+          "text": "Global Forest Watch. Available at: https://www.globalforestwatch.org. (Accessed: Sept 4, 2023).",
+          "text_rich": "Global Forest Watch. Available at: . (Accessed: Sept 4, 2023)."
+        },
+        {
+          "type": "paragraph",
+          "text": "Browning, Jane, Lock. M, John Michael, Beentje, Henk Jaap, Vollesen, Kaj, Larridon, Isabel, Xanthos, Martin Cheek, Martin Darbyshire, IainGoyder, D. J. 2020. Flora Zambesiaca. Royal Botanic Gardens, Kew London.",
+          "text_rich": "Browning, Jane, Lock. M, John Michael, Beentje, Henk Jaap, Vollesen, Kaj, Larridon, Isabel, Xanthos, Martin Cheek, Martin Darbyshire, IainGoyder, D. J. 2020. Flora Zambesiaca. Royal Botanic Gardens, Kew London."
+        },
+        {
+          "type": "paragraph",
+          "text": "Hoenselaar.K, Verdcourt.B & Beentje.H.J. 2010. Flora of Tropical East Africa. Royal Botanic Gardens Kew, London.",
+          "text_rich": "Hoenselaar.K, Verdcourt.B & Beentje.H.J. 2010. Flora of Tropical East Africa. Royal Botanic Gardens Kew, London."
+        },
+        {
+          "type": "paragraph",
+          "text": "Larridon, Reynders & Goetghebeur. 2008. Novelties in Nemum (Cyperaceae). Belgian Journal of Botany 141(2): 157-177.",
+          "text_rich": "Larridon, Reynders & Goetghebeur. 2008. Novelties in Nemum (Cyperaceae). Belgian Journal of Botany 141(2): 157-177."
+        },
+        {
+          "type": "paragraph",
+          "text": "Moat, J., Bachman, S., & Walker, B. 2023. ShinyGeoCAT - Geospatial Conservation Assessment Tools (BETA).",
+          "text_rich": "Moat, J., Bachman, S., & Walker, B. 2023. ShinyGeoCAT - Geospatial Conservation Assessment Tools (BETA)."
+        },
+        {
+          "type": "paragraph",
+          "text": "Roalson et al. 2019. A broader circumscription of Bulbostylis including Nemum (Abildgaardieae: Cyperaceae). Phytotaxa Vol. 395 (3): 119-208.",
+          "text_rich": "Roalson et al. 2019. A broader circumscription of Bulbostylis including Nemum (Abildgaardieae: Cyperaceae). Phytotaxa Vol. 395 (3): 119-208."
+        },
+        {
+          "type": "paragraph",
+          "text": "Utsav, Tandon. 2024. SWE project. Vol. 20.",
+          "text_rich": "Utsav, Tandon. 2024. SWE project. Vol. 20."
+        },
+        {
+          "type": "paragraph",
+          "text": "[Roalson 2019]",
+          "text_rich": "[Roalson 2019]"
+        },
+        {
+          "type": "style",
+          "data": {
+            "bold": [],
+            "italic": [
+              "Royal Botanic Gardens, Kew",
+              "Flora of Tropical East Africa",
+              "Belgian Journal of Botany",
+              "Phytotaxa"
+            ]
+          }
+        }
+      ],
+      "children": []
+    }
+  ],
+  "comments": [
+    {
+      "id": "0",
+      "author": "Jack Plummer",
+      "date": "2023-09-05T10:27:00Z",
+      "text": "??",
+      "anchor_heading_path": [
+        "Habitats and Ecology"
+      ],
+      "anchor_text": "dams",
+      "anchor_text_rich": "dams",
+      "anchor_context": "Bulbostylis atracuminata is an annual sedge (Browning et al. 2020), commonly found in the seasonally dry tropical ecosystem with a predominantly warm and temperate climate (Larridon et al. 2008). Katanga hairsedge native habitat includes shallow wetlands near rivers in Zambia, and temporarily wet areas (marshes, riverbanks) and shallow soil from humid woodland to edge of open forest in Congo (Browning et al., 2020).  Collections have mainly been made in seasonal bogs and ponds in the DRC and Zambia, and in dams in Zambia (Global Biodiversity Information Facility, 2023). It is also regularly encountered in rocky grassland seepage zones on lateritic slopes.",
+      "anchor_context_rich": "Bulbostylis atracuminata is an annual sedge (Browning et al. 2020), commonly found in the seasonally dry tropical ecosystem with a predominantly warm and temperate climate (Larridon et al. 2008). Katanga hairsedge native habitat includes shallow wetlands near rivers in Zambia, and temporarily wet areas (marshes, riverbanks) and shallow soil from humid woodland to edge of open forest in Congo (Browning et al., 2020).  Collections have mainly been made in seasonal bogs and ponds in the DRC and Zambia, and in dams in Zambia (Global Biodiversity Information Facility, 2023). It is also regularly encountered in rocky grassland seepage zones on lateritic slopes."
+    },
+    {
+      "id": "1",
+      "author": "Jack Plummer",
+      "date": "2023-09-05T10:30:00Z",
+      "text": "Let's check these",
+      "anchor_heading_path": [
+        "Bibliography"
+      ],
+      "anchor_text": "2023. Botanic Gardens Conservation Internationa. Available at: . (Accessed: Sept 4, 2023).2023. Google Earth Pro. (Accessed: Sept 4, 2023).2023. Virunga National Park. Available at: . (Accessed: Sept 4, 2023).2023. World Database on Protected Areas. Available at: . (Accessed: Sept 4, 2023).",
+      "anchor_text_rich": "2023. Botanic Gardens Conservation Internationa. Available at: . (Accessed: Sept 4, 2023).2023. Google Earth Pro. (Accessed: Sept 4, 2023).2023. Virunga National Park. Available at: . (Accessed: Sept 4, 2023).2023. World Database on Protected Areas. Available at: . (Accessed: Sept 4, 2023).",
+      "anchor_context": "2023. Botanic Gardens Conservation Internationa. Available at: https://tools.bgci.org/plant_search.php?action=Find&lang=eng&ftrGenus=Bulbostylis&ftrSpecies=atracuminata&ftrEpithet=&ftrRedList=&ftrCWR=&ftrRedList1997=&x=0&y=0#results. (Accessed: Sept 4, 2023). 2023. Google Earth Pro. (Accessed: Sept 4, 2023). 2023. Virunga National Park. Available at: https://www.virungaparkcongo.com/congo-tour-destinations/upemba-national-park/. (Accessed: Sept 4, 2023). 2023. World Database on Protected Areas. Available at: https://www.protectedplanet.net/en/thematic-areas/wdpa?tab=WDPA. (Accessed: Sept 4, 2023).",
+      "anchor_context_rich": "2023. Botanic Gardens Conservation Internationa. Available at: . (Accessed: Sept 4, 2023). 2023. Google Earth Pro. (Accessed: Sept 4, 2023). 2023. Virunga National Park. Available at: . (Accessed: Sept 4, 2023). 2023. World Database on Protected Areas. Available at: . (Accessed: Sept 4, 2023)."
+    }
+  ]
+}

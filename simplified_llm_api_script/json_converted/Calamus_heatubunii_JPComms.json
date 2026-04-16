@@ -1,0 +1,872 @@
+{
+  "title": "Calamus_heatubunii_JPComms",
+  "level": 0,
+  "path": [],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "Draft",
+      "text_rich": "Draft"
+    },
+    {
+      "type": "paragraph",
+      "text": "Calamus heatubunii - W.J.Baker & J.Dransf.",
+      "text_rich": "Calamus heatubunii - W.J.Baker & J.Dransf."
+    },
+    {
+      "type": "paragraph",
+      "text": "PLANTAE - TRACHEOPHYTA - LILIOPSIDA - ARECALES - ARECACEAE - Calamus - heatubunii",
+      "text_rich": "PLANTAE - TRACHEOPHYTA - LILIOPSIDA - ARECALES - ARECACEAE - Calamus - heatubunii"
+    },
+    {
+      "type": "paragraph",
+      "text": "Common Names: No Common Names\nSynonyms: No Synonyms",
+      "text_rich": "Common Names: No Common Names\nSynonyms: No Synonyms"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Red List Status"
+        ],
+        [
+          "EN - Endangered, B1ab(i,ii,iii,iv)+2ab(i,ii,iii,iv) (IUCN version 3.1)"
+        ]
+      ],
+      "rows_rich": [
+        [
+          "Red List Status"
+        ],
+        [
+          "EN - Endangered, B1ab(i,ii,iii,iv)+2ab(i,ii,iii,iv) (IUCN version 3.1)"
+        ]
+      ]
+    },
+    {
+      "type": "style",
+      "data": {
+        "bold": [
+          "Draft",
+          "Calamus heatubunii",
+          "- W.J.Baker & J.Dransf.",
+          "Common Names:",
+          "Synonyms:"
+        ],
+        "italic": [
+          "Calamus heatubunii"
+        ]
+      }
+    }
+  ],
+  "children": [
+    {
+      "title": "Red List Assessment",
+      "level": 1,
+      "path": [
+        "Red List Assessment"
+      ],
+      "blocks": [],
+      "children": [
+        {
+          "title": "Assessment Information",
+          "level": 2,
+          "path": [
+            "Red List Assessment",
+            "Assessment Information"
+          ],
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Assessor(s): Jennings, L.",
+              "text_rich": "Assessor(s): Jennings, L."
+            },
+            {
+              "type": "paragraph",
+              "text": "Contributor(s): Turner, J.",
+              "text_rich": "Contributor(s): Turner, J."
+            },
+            {
+              "type": "paragraph",
+              "text": "Regions: Global",
+              "text_rich": "Regions: Global"
+            },
+            {
+              "type": "style",
+              "data": {
+                "bold": [
+                  "Assessor(s):",
+                  "Contributor(s):",
+                  "Regions:"
+                ],
+                "italic": []
+              }
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Assessment Rationale",
+          "level": 2,
+          "path": [
+            "Red List Assessment",
+            "Assessment Rationale"
+          ],
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Calamus heatubunii has an area of occupancy (AOO) and extent of occurrence (EOO) that fall below the respective thresholds for the Endangered category under Criterion B. There are also only 4 known locations and a projected continuing decline in the area and extent of its habitat as a result of deforestation caused by the urban expansion of Sorong and the active palm oil concessions, and also a projected decline in the AOO, EOO and number of locations. This species is therefore listed as Endangered B1ab(i,ii,iii,iv)+2ab(i,ii,iii,iv). On Waigeo the only known location is in a palm oil concession that is not yet active, but the species would not be able to survive in this area if it became active in the future.",
+              "text_rich": "Calamus heatubunii has an area of occupancy (AOO) and extent of occurrence (EOO) that fall below the respective thresholds for the Endangered category under Criterion B. There are also only 4 known locations and a projected continuing decline in the area and extent of its habitat as a result of deforestation caused by the urban expansion of Sorong and the active palm oil concessions, and also a projected decline in the AOO, EOO and number of locations. This species is therefore listed as Endangered B1ab(i,ii,iii,iv)+2ab(i,ii,iii,iv). On Waigeo the only known location is in a palm oil concession that is not yet active, but the species would not be able to survive in this area if it became active in the future."
+            },
+            {
+              "type": "style",
+              "data": {
+                "bold": [],
+                "italic": [
+                  "Calamus heatubunii"
+                ]
+              }
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "Distribution",
+      "level": 1,
+      "path": [
+        "Distribution"
+      ],
+      "blocks": [],
+      "children": [
+        {
+          "title": "Geographic Range",
+          "level": 2,
+          "path": [
+            "Distribution",
+            "Geographic Range"
+          ],
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Calamus heatubunii has been recorded in the far west of mainland New Guinea from several localities around Sorong in West Papua province, and from the island of Waigeo in the Raja Ampat Islands. The known elevation range as recorded from herbarium specimens is between 45 and 180 m asl.",
+              "text_rich": "Calamus heatubunii has been recorded in the far west of mainland New Guinea from several localities around Sorong in West Papua province, and from the island of Waigeo in the Raja Ampat Islands. The known elevation range as recorded from herbarium specimens is between 45 and 180 m asl."
+            },
+            {
+              "type": "style",
+              "data": {
+                "bold": [],
+                "italic": [
+                  "Calamus heatubunii"
+                ]
+              }
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Area of Occupancy (AOO)",
+          "level": 2,
+          "path": [
+            "Distribution",
+            "Area of Occupancy (AOO)"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Estimated area of occupancy (AOO) - in km2",
+                  "Justification"
+                ],
+                [
+                  "16",
+                  "Mapped using georeferenced herbarium specimens and GeoCAT."
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Estimated area of occupancy (AOO) - in km2",
+                  "Justification"
+                ],
+                [
+                  "16",
+                  "Mapped using georeferenced herbarium specimens and GeoCAT."
+                ]
+              ]
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Extent of Occurrence (EOO)",
+          "level": 2,
+          "path": [
+            "Distribution",
+            "Extent of Occurrence (EOO)"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Estimated extent of occurrence (EOO)- in km2",
+                  "EOO estimate calculated from Minimum Convex Polygon",
+                  "Justification"
+                ],
+                [
+                  "645.6",
+                  "-",
+                  "Mapped using georeferenced herbarium specimens and GeoCAT."
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Estimated extent of occurrence (EOO)- in km2",
+                  "EOO estimate calculated from Minimum Convex Polygon",
+                  "Justification"
+                ],
+                [
+                  "645.6",
+                  "-",
+                  "Mapped using georeferenced herbarium specimens and GeoCAT."
+                ]
+              ]
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Locations Information",
+          "level": 2,
+          "path": [
+            "Distribution",
+            "Locations Information"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Number of Locations",
+                  "Justification"
+                ],
+                [
+                  "4",
+                  "There are 3 distinct locations around Sorong, and one on Waigeo (via GeoCAT)"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Number of Locations",
+                  "Justification"
+                ],
+                [
+                  "4",
+                  "There are 3 distinct locations around Sorong, and one on Waigeo (via GeoCAT)"
+                ]
+              ]
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Elevation / Depth / Depth Zones",
+          "level": 2,
+          "path": [
+            "Distribution",
+            "Elevation / Depth / Depth Zones"
+          ],
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Elevation Lower Limit (in metres above sea level): 45",
+              "text_rich": "Elevation Lower Limit (in metres above sea level): 45"
+            },
+            {
+              "type": "paragraph",
+              "text": "Elevation Upper Limit (in metres above sea level): 180",
+              "text_rich": "Elevation Upper Limit (in metres above sea level): 180"
+            },
+            {
+              "type": "style",
+              "data": {
+                "bold": [
+                  "Elevation Lower Limit (in metres above sea level):",
+                  "Elevation Upper Limit (in metres above sea level):"
+                ],
+                "italic": []
+              }
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Biogeographic Realms",
+          "level": 2,
+          "path": [
+            "Distribution",
+            "Biogeographic Realms"
+          ],
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Biogeographic Realm: Australasian",
+              "text_rich": "Biogeographic Realm: Australasian"
+            },
+            {
+              "type": "style",
+              "data": {
+                "bold": [
+                  "Biogeographic Realm:"
+                ],
+                "italic": []
+              }
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "Occurrence",
+      "level": 1,
+      "path": [
+        "Occurrence"
+      ],
+      "blocks": [],
+      "children": [
+        {
+          "title": "Countries of Occurrence",
+          "level": 2,
+          "path": [
+            "Occurrence",
+            "Countries of Occurrence"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Country",
+                  "Presence",
+                  "Origin",
+                  "Formerly Bred",
+                  "Seasonality"
+                ],
+                [
+                  "Indonesia",
+                  "Extant",
+                  "Native",
+                  "-",
+                  "Resident"
+                ],
+                [
+                  "Indonesia -> Papua",
+                  "Extant",
+                  "Native",
+                  "-",
+                  "Resident"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Country",
+                  "Presence",
+                  "Origin",
+                  "Formerly Bred",
+                  "Seasonality"
+                ],
+                [
+                  "Indonesia",
+                  "Extant",
+                  "Native",
+                  "-",
+                  "Resident"
+                ],
+                [
+                  "Indonesia -> Papua",
+                  "Extant",
+                  "Native",
+                  "-",
+                  "Resident"
+                ]
+              ]
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "Population",
+      "level": 1,
+      "path": [
+        "Population"
+      ],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "No population information is available, and the current population trend is unknown.",
+          "text_rich": "No population information is available, and the current population trend is unknown."
+        }
+      ],
+      "children": []
+    },
+    {
+      "title": "Habitats and Ecology",
+      "level": 1,
+      "path": [
+        "Habitats and Ecology"
+      ],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Calamus heatubunii has been recorded from lowland forest, including secondary, hill and swamp forest (Baker and Dransfield 2017).",
+          "text_rich": "Calamus heatubunii has been recorded from lowland forest, including secondary, hill and swamp forest (Baker and Dransfield 2017)."
+        },
+        {
+          "type": "style",
+          "data": {
+            "bold": [],
+            "italic": [
+              "Calamus heatubunii"
+            ]
+          }
+        }
+      ],
+      "children": [
+        {
+          "title": "IUCN Habitats Classification Scheme",
+          "level": 2,
+          "path": [
+            "Habitats and Ecology",
+            "IUCN Habitats Classification Scheme"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Habitat",
+                  "Season",
+                  "Suitability",
+                  "Major Importance?"
+                ],
+                [
+                  "1.6. Forest -> Forest - Subtropical/Tropical Moist Lowland",
+                  "-",
+                  "Suitable",
+                  "-"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Habitat",
+                  "Season",
+                  "Suitability",
+                  "Major Importance?"
+                ],
+                [
+                  "1.6. Forest -> Forest - Subtropical/Tropical Moist Lowland",
+                  "-",
+                  "Suitable",
+                  "-"
+                ]
+              ]
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Plant / Fungi Specific",
+          "level": 2,
+          "path": [
+            "Habitats and Ecology",
+            "Plant / Fungi Specific"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Plant and Fungal Growth Forms"
+                ],
+                [
+                  "Tree - small"
+                ],
+                [
+                  "Vines"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Plant and Fungal Growth Forms"
+                ],
+                [
+                  "Tree - small"
+                ],
+                [
+                  "Vines"
+                ]
+              ]
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "Use and Trade",
+      "level": 1,
+      "path": [
+        "Use and Trade"
+      ],
+      "blocks": [],
+      "children": [
+        {
+          "title": "General Use and Trade Information",
+          "level": 2,
+          "path": [
+            "Use and Trade",
+            "General Use and Trade Information"
+          ],
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "No use/trade information for this species: true",
+              "text_rich": "No use/trade information for this species: true"
+            },
+            {
+              "type": "paragraph",
+              "text": "No uses are recorded for this species.",
+              "text_rich": "No uses are recorded for this species."
+            },
+            {
+              "type": "style",
+              "data": {
+                "bold": [
+                  "No use/trade information for this species:"
+                ],
+                "italic": []
+              }
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "Threats",
+      "level": 1,
+      "path": [
+        "Threats"
+      ],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The majority of the known herbarium collections were made close to Sorong from 1994 to 2013, with a single record from Waigeo in 1997. The Sorong lowlands are undergoing forest loss as a result of the expansion of the city of Sorong and the active palm oil concession PT Henrison Inti Persada (Global Forest Watch 2022), which is visible on satellite photos. Most of Waigeo is designated as a Nature Reserve, however the single record of this species from Waigeo is from close to Wagaliom, inside the oil palm concession PT. Irmasulindo 1. This concession does not appear to be active yet from satellite photos. Most of the collections in Baker and Dransfield (2017) are from villages and secondary forest, so the species appears to survive in disturbed forest.",
+          "text_rich": "The majority of the known herbarium collections were made close to Sorong from 1994 to 2013, with a single record from Waigeo in 1997. The Sorong lowlands are undergoing forest loss as a result of the expansion of the city of Sorong and the active palm oil concession PT Henrison Inti Persada (Global Forest Watch 2022), which is visible on satellite photos. Most of Waigeo is designated as a Nature Reserve, however the single record of this species from Waigeo is from close to Wagaliom, inside the oil palm concession PT. Irmasulindo 1. This concession does not appear to be active yet from satellite photos. Most of the collections in Baker and Dransfield (2017) are from villages and secondary forest, so the species appears to survive in disturbed forest."
+        }
+      ],
+      "children": [
+        {
+          "title": "Threats Classification Scheme",
+          "level": 2,
+          "path": [
+            "Threats",
+            "Threats Classification Scheme"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Threat",
+                  "Timing",
+                  "Scope",
+                  "Severity",
+                  "Impact Score"
+                ],
+                [
+                  "1.1. Residential & commercial development -> Housing & urban areas",
+                  "Ongoing",
+                  "-",
+                  "-",
+                  "Low Impact: 3"
+                ],
+                [
+                  "2.1.3. Agriculture & aquaculture -> Annual & perennial non-timber crops -> Agro-industry farming",
+                  "Ongoing",
+                  "-",
+                  "-",
+                  "Low Impact: 3"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Threat",
+                  "Timing",
+                  "Scope",
+                  "Severity",
+                  "Impact Score"
+                ],
+                [
+                  "1.1. Residential & commercial development -> Housing & urban areas",
+                  "Ongoing",
+                  "-",
+                  "-",
+                  "Low Impact: 3"
+                ],
+                [
+                  "2.1.3. Agriculture & aquaculture -> Annual & perennial non-timber crops -> Agro-industry farming",
+                  "Ongoing",
+                  "-",
+                  "-",
+                  "Low Impact: 3"
+                ]
+              ]
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "Conservation",
+      "level": 1,
+      "path": [
+        "Conservation"
+      ],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Calamus heatubunii is not found in any protected areas. Much of Waigeo island is a protected area, but the lowlands where this palm is most likely to occur are not protected. The distribution of this palm on Waigeo is unknown, so it may occur in the Waigeo Nature Reserve. Calamus heatubunii is not found in any ex situ collections (BGCI 2022).",
+          "text_rich": "Calamus heatubunii is not found in any protected areas. Much of Waigeo island is a protected area, but the lowlands where this palm is most likely to occur are not protected. The distribution of this palm on Waigeo is unknown, so it may occur in the Waigeo Nature Reserve. Calamus heatubunii is not found in any ex situ collections (BGCI 2022)."
+        },
+        {
+          "type": "style",
+          "data": {
+            "bold": [],
+            "italic": [
+              "Calamus heatubunii"
+            ]
+          }
+        }
+      ],
+      "children": [
+        {
+          "title": "Conservation Actions In- Place",
+          "level": 2,
+          "path": [
+            "Conservation",
+            "Conservation Actions In- Place"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Occur in at least one PA",
+                  "Note"
+                ],
+                [
+                  "Unknown",
+                  "One record from Waigeo outside of the protected area, but as this covers most of the island so this species may occur inside the boundary."
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Occur in at least one PA",
+                  "Note"
+                ],
+                [
+                  "Unknown",
+                  "One record from Waigeo outside of the protected area, but as this covers most of the island so this species may occur inside the boundary."
+                ]
+              ]
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Important Conservation Actions Needed",
+          "level": 2,
+          "path": [
+            "Conservation",
+            "Important Conservation Actions Needed"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Conservation Actions",
+                  "Note"
+                ],
+                [
+                  "1.1. Land/water protection -> Site/area protection",
+                  "-"
+                ],
+                [
+                  "3.4.2. Species management -> Ex-situ conservation -> Genome resource bank",
+                  "-"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Conservation Actions",
+                  "Note"
+                ],
+                [
+                  "1.1. Land/water protection -> Site/area protection",
+                  "-"
+                ],
+                [
+                  "3.4.2. Species management -> Ex-situ conservation -> Genome resource bank",
+                  "-"
+                ]
+              ]
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Research Needed",
+          "level": 2,
+          "path": [
+            "Conservation",
+            "Research Needed"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Research",
+                  "Note"
+                ],
+                [
+                  "1.2. Research -> Population size, distribution & trends",
+                  "-"
+                ],
+                [
+                  "1.3. Research -> Life history & ecology",
+                  "-"
+                ],
+                [
+                  "1.5. Research -> Threats",
+                  "-"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Research",
+                  "Note"
+                ],
+                [
+                  "1.2. Research -> Population size, distribution & trends",
+                  "-"
+                ],
+                [
+                  "1.3. Research -> Life history & ecology",
+                  "-"
+                ],
+                [
+                  "1.5. Research -> Threats",
+                  "-"
+                ]
+              ]
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "Ecosystem Services",
+      "level": 1,
+      "path": [
+        "Ecosystem Services"
+      ],
+      "blocks": [],
+      "children": [
+        {
+          "title": "Ecosystem Services Provided by the Species",
+          "level": 2,
+          "path": [
+            "Ecosystem Services",
+            "Ecosystem Services Provided by the Species"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Insufficient Information Available",
+                  "All coded services should have an importance score of 5 - Not Known."
+                ],
+                [
+                  "true",
+                  "-"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Insufficient Information Available",
+                  "All coded services should have an importance score of 5 - Not Known."
+                ],
+                [
+                  "true",
+                  "-"
+                ]
+              ]
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "Bibliography",
+      "level": 1,
+      "path": [
+        "Bibliography"
+      ],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "BGCI. 2022. Botanic Gardens Conservation International (BGCI) - PlantSearch. Available at: https://tools.bgci.org/plant_search.php. (Accessed: 2022).",
+          "text_rich": "BGCI. 2022. Botanic Gardens Conservation International (BGCI) - PlantSearch. Available at: . (Accessed: 2022)."
+        },
+        {
+          "type": "paragraph",
+          "text": "Bachman S, Moat J, Hill AW, de la Torre J, Scott B. 2011. Supporting Red List threat assessments with GeoCAT: geospatial conservation assessment tool. ZooKeys 150: 117–126.",
+          "text_rich": "Bachman S, Moat J, Hill AW, de la Torre J, Scott B. 2011. Supporting Red List threat assessments with GeoCAT: geospatial conservation assessment tool. ZooKeys 150: 117–126."
+        },
+        {
+          "type": "paragraph",
+          "text": "Baker, W.J. & Dransfield, J. 2017. More new rattans from New Guinea and the Solomon Islands (Calamus, Arecaceae). Phytotaxa 305(2): 61-86.",
+          "text_rich": "Baker, W.J. & Dransfield, J. 2017. More new rattans from New Guinea and the Solomon Islands (Calamus, Arecaceae). Phytotaxa 305(2): 61-86."
+        },
+        {
+          "type": "paragraph",
+          "text": "Henderson, A. 2020. A revision of Calamus (Arecaceae, Calamoideae, Calameae, Calaminae). Phytotaxa 445(1): 1-656.",
+          "text_rich": "Henderson, A. 2020. A revision of Calamus (Arecaceae, Calamoideae, Calameae, Calaminae). Phytotaxa 445(1): 1-656."
+        },
+        {
+          "type": "style",
+          "data": {
+            "bold": [],
+            "italic": [
+              "ZooKeys",
+              "Phytotaxa"
+            ]
+          }
+        }
+      ],
+      "children": []
+    }
+  ],
+  "comments": []
+}

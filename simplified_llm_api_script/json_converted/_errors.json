@@ -1,0 +1,8 @@
+{
+  "input_folder": "converted",
+  "output_folder": "json_converted",
+  "total": 10,
+  "parsed": 10,
+  "failed": 0,
+  "errors": []
+}

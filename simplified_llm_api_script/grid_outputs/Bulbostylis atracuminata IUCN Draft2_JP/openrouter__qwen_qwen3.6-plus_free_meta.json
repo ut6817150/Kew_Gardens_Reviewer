@@ -1,0 +1,8 @@
+{
+  "provider": "openrouter",
+  "model": "qwen/qwen3.6-plus:free",
+  "document": "Bulbostylis atracuminata IUCN Draft2_JP",
+  "started_at": "2026-04-04T19:13:47.598293+00:00",
+  "error": "2 validation errors for RuleResult\nfindings.0.section_path\n  Input should be a valid string [type=string_type, input_value=['Distribution', 'Geographic Range'], input_type=list]\n    For further information visit https://errors.pydantic.dev/2.12/v/string_type\nfindings.1.section_path\n  Input should be a valid string [type=string_type, input_value=['Habitats and Ecology'], input_type=list]\n    For further information visit https://errors.pydantic.dev/2.12/v/string_type",
+  "completed_at": "2026-04-04T19:15:47.976406+00:00"
+}

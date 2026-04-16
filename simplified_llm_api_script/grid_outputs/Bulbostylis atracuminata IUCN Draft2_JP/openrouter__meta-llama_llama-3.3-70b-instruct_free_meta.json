@@ -1,0 +1,8 @@
+{
+  "provider": "openrouter",
+  "model": "meta-llama/llama-3.3-70b-instruct:free",
+  "document": "Bulbostylis atracuminata IUCN Draft2_JP",
+  "started_at": "2026-04-04T20:16:02.454113+00:00",
+  "error": "OpenRouter request failed (429) for meta-llama/llama-3.3-70b-instruct:free: Provider returned error",
+  "completed_at": "2026-04-04T20:16:22.524418+00:00"
+}

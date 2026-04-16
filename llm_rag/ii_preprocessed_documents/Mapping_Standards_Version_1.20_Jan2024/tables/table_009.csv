@@ -1,0 +1,5 @@
+column_1,"A projection uses the datum as a point of reference, its location on Earth."
+"In GIS, there are two types of ""coordinate systems"": Geographic Coordinate System: a",
+georeference or location of the map on the globe and Projected Coordinate System: how,
+the map is displayed. The standard Geographical Coordinate System the IUCN Red List,
+uses is WGS 1984.,

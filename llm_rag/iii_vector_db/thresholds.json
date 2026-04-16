@@ -1,0 +1,57 @@
+{
+  "source": "IUCN Red List Categories and Criteria summary used in project code",
+  "note": "Maintain this file manually if project source documents change.",
+  "criteria": {
+    "A": {
+      "title": "Population reduction",
+      "summary": [
+        "Criterion A uses percentage population reduction over the relevant time window.",
+        "A1 thresholds: CR ≥ 90%, EN ≥ 70%, VU ≥ 50%.",
+        "A2, A3 and A4 thresholds: CR ≥ 80%, EN ≥ 50%, VU ≥ 30%."
+      ],
+      "fields": {}
+    },
+    "B": {
+      "title": "Geographic range",
+      "summary": [
+        "Criterion B requires B1 (EOO) and/or B2 (AOO), plus at least 2 of 3 conditions: severe fragmentation or number of locations, continuing decline, or extreme fluctuations.",
+        "B1 EOO thresholds: CR < 100 km², EN < 5,000 km², VU < 20,000 km².",
+        "B2 AOO thresholds: CR < 10 km², EN < 500 km², VU < 2,000 km².",
+        "Typical number of locations thresholds: CR = 1, EN ≤ 5, VU ≤ 10."
+      ],
+      "fields": {
+        "eoo": "Criterion B1 EOO thresholds: CR < 100 km², EN < 5,000 km², VU < 20,000 km².",
+        "aoo": "Criterion B2 AOO thresholds: CR < 10 km², EN < 500 km², VU < 2,000 km².",
+        "locations": "Typical number of locations thresholds under Criterion B: CR = 1, EN ≤ 5, VU ≤ 10."
+      }
+    },
+    "C": {
+      "title": "Small population size and decline",
+      "summary": [
+        "Criterion C total mature-individual thresholds: CR < 250, EN < 2,500, VU < 10,000.",
+        "C1 continuing decline thresholds: CR 25% in 3 years or 1 generation, EN 20% in 5 years or 2 generations, VU 10% in 10 years or 3 generations."
+      ],
+      "fields": {}
+    },
+    "D": {
+      "title": "Very small or restricted population",
+      "summary": [
+        "Criterion D thresholds: CR < 50 mature individuals, EN < 250 mature individuals, VU D1 < 1,000 mature individuals.",
+        "Criterion D2 applies only to VU."
+      ],
+      "fields": {
+        "mature_individuals": "Criterion D thresholds: CR < 50 mature individuals, EN < 250 mature individuals, VU D1 < 1,000 mature individuals.",
+        "d2": "Criterion D2 thresholds: AOO < 20 km² or number of locations ≤ 5, with a plausible future threat that could drive the taxon to CR or EX in a very short time."
+      }
+    },
+    "E": {
+      "title": "Quantitative analysis",
+      "summary": [
+        "Criterion E extinction probability thresholds: CR ≥ 50% within 10 years or 3 generations (max 100 years), EN ≥ 20% within 20 years or 5 generations (max 100 years), VU ≥ 10% within 100 years."
+      ],
+      "fields": {
+        "extinction_probability": "Criterion E extinction probability thresholds: CR ≥ 50% within 10 years or 3 generations (max 100 years), EN ≥ 20% within 20 years or 5 generations (max 100 years), VU ≥ 10% within 100 years."
+      }
+    }
+  }
+}

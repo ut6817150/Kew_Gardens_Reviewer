@@ -1,0 +1,266 @@
+[
+  {
+    "rule_name": "Threats Consistency",
+    "findings": [
+      {
+        "section_path": "Threats > Threats Classification Scheme",
+        "issue": "Missing threat classifications for road construction, urban expansion, and unregulated fires from the narrative which are not present in the classification scheme.",
+        "severity": "high",
+        "suggestion": "Add the missing threats under their respective categories in the classification scheme, such as road construction under 4.1, urban expansion under 1.2, and unregulated fire under 7.1.1."
+      },
+      {
+        "section_path": "Threats > Threats Classification Scheme",
+        "issue": "Misclassification of the dam's impact as abstraction of surface water instead of under dams construction.",
+        "severity": "medium",
+        "suggestion": "Reclassify the dam threat under the appropriate category related to dams (e.g., 7.2.10 or 7.2.11)."
+      }
+    ]
+  },
+  {
+    "rule_name": "Habitats Consistency",
+    "findings": [
+      {
+        "section_path": "Habitats and Ecology > IUCN Habitats Classification Scheme",
+        "issue": "The classification uses an incorrect and non-standard term 'woodland (inland)' which is not part of the IUCN classification scheme.",
+        "severity": "high",
+        "suggestion": "Replace with the appropriate standard habitat classification from the scheme, such as 1.4 Forest - Temperate."
+      },
+      {
+        "section_path": "Habitats and Ecology > IUCN Habitats Classification Scheme",
+        "issue": "Missing relevant habitat classifications that are mentioned in the narrative, such as 'rocky grassland seepage zones on lateritic slopes'.",
+        "severity": "medium",
+        "suggestion": "Add the missing habitats using appropriate classifications from the IUCN scheme and ensure all habitats mentioned in the narrative are included in the classification table."
+      }
+    ]
+  },
+  {
+    "rule_name": "Bibliography Consistency [Red List Standards Consistency (Section 5.1)]",
+    "findings": [
+      {
+        "section_path": "Bibliography",
+        "issue": "The source 'BGCI 2023' is included in the bibliography but is not cited in the text. Additionally, the entry '[Roalson 2019]' is incomplete and does not follow proper citation format.",
+        "severity": "medium",
+        "suggestion": "Remove 'BGCI 2023' from the bibliography if it is not cited. Complete the '[Roalson 2019]' entry with full citation details."
+      }
+    ]
+  },
+  {
+    "rule_name": "Geographic Range / Occurrences Consistency",
+    "findings": [
+      {
+        "section_path": "Distribution/Geographic Range",
+        "issue": "The Geographic Range section does not include information on the estimated extent of occurrence (EOO) in km², which is required for taxa assessed under criterion B. The EOO value mentioned in the Assessment Rationale (114,000 km²) is not replicated in the Geographic Range section.",
+        "severity": "high",
+        "suggestion": "Include the EOO value (114,000 km²) in the Geographic Range section and explain how it was estimated."
+      },
+      {
+        "section_path": "Distribution/Geographic Range",
+        "issue": "The Geographic Range section does not include information on the estimated area of occupancy (AOO) in km², which is required for taxa assessed under criterion B. The AOO value is mentioned in a separate section but should also be clearly indicated in the Geographic Range text.",
+        "severity": "high",
+        "suggestion": "Include the AOO value (44 km²) in the Geographic Range section and explain how it was estimated."
+      },
+      {
+        "section_path": "Occurrence/Countries of Occurrence",
+        "issue": "Zambia is coded as 'Possibly Extant' in the Occurrences section, but the Assessment Rationale and Geographic Range sections suggest that the species is known to occur in Zambia. This inconsistency may lead to confusion and affect the interpretation of the species' distribution.",
+        "severity": "medium",
+        "suggestion": "Update the Occurrences section to reflect the correct presence of the species in Zambia, aligning it with the information provided in the Assessment Rationale and Geographic Range sections."
+      }
+    ]
+  },
+  {
+    "rule_name": "Population Consistency",
+    "findings": [
+      {
+        "section_path": "Population",
+        "issue": "The section lacks specific population information such as size, trends, and structure. It only mentions that the population is suspected to be decreasing without providing qualifiers or justification.",
+        "severity": "high",
+        "suggestion": "Include more detailed population information, such as estimated size, reduction rates, and qualifiers. If data is unavailable, explain why and provide qualitative descriptions like 'rare' or 'common'."
+      },
+      {
+        "section_path": "Population > Population Information",
+        "issue": "The Current Population Trend is listed as 'Unknown', but the narrative suggests a suspected decrease. This is inconsistent and requires clarification.",
+        "severity": "medium",
+        "suggestion": "Update the Current Population Trend to reflect the suspected decline and provide a qualifier (e.g., 'suspected') to support this assessment."
+      },
+      {
+        "section_path": "Population",
+        "issue": "The section does not include specific data and qualifiers required for taxa assessed under criteria A or C, even though the species is assessed as Endangered under criterion B2ab(iii).",
+        "severity": "medium",
+        "suggestion": "Include specific data points such as population reduction rates, qualifiers, and justification for trends, even if the species is not assessed under criteria A or C."
+      },
+      {
+        "section_path": "Population",
+        "issue": "There is no clear justification provided for the current population trend, particularly given the suspected decline mentioned in the narrative.",
+        "severity": "high",
+        "suggestion": "Add clear justification for the current population trend, including analysis of available data and consideration of uncertainty."
+      }
+    ]
+  },
+  {
+    "rule_name": "Conservation Consistency",
+    "findings": [
+      {
+        "section_path": "Conservation",
+        "issue": "The conservation actions are not sufficiently aligned with the identified threats. For example, the threats from mining and agricultural land conversion are not directly addressed in the conservation actions needed, which include only general actions like site/area protection and resource/habitat protection without specific references to these key threats.",
+        "severity": "high",
+        "suggestion": "Revise the conservation actions needed to explicitly address the threats from mining, agricultural land conversion, and dams. For example, include actions related to mitigating the impacts of mining and agricultural activities, such as advocating for stricter regulations, promoting sustainable land-use practices, and engaging with mining companies and local communities."
+      },
+      {
+        "section_path": "Conservation > Important Conservation Actions Needed",
+        "issue": "The conservation actions needed are listed without sufficient detail or justification. The table includes actions like 'Site/area protection', 'Resource & habitat protection', 'Genome resource bank', 'Compliance and enforcement', and 'Invasive species control', but the notes column is empty, making it unclear how these actions will be implemented or why they are necessary.",
+        "severity": "medium",
+        "suggestion": "Add detailed notes to each conservation action needed, explaining why the action is important, how it will be implemented, and how it addresses specific threats. For example, specify how site/area protection will be enforced or how resource and habitat protection will be achieved."
+      },
+      {
+        "section_path": "Conservation > Conservation Actions In- Place",
+        "issue": "Most of the conservation actions in place are marked as 'Unknown', which provides no useful information about the actual conservation efforts currently being made. This lack of information makes it difficult to assess the effectiveness of current conservation strategies.",
+        "severity": "medium",
+        "suggestion": "Update the conservation actions in place with accurate and specific information. For example, clarify whether there are any known conservation actions, such as management plans, monitoring schemes, or educational programs, and provide details about their implementation and effectiveness."
+      },
+      {
+        "section_path": "Conservation",
+        "issue": "The section mentions that the species is not known to be represented in ex situ conservation, but there is no discussion of whether ex situ conservation might be a necessary or beneficial action for this species, especially given the threats it faces.",
+        "severity": "low",
+        "suggestion": "Consider adding a discussion about the potential role of ex situ conservation in safeguarding this species. If ex situ conservation is not currently happening, explain why it might not be necessary or suggest it as a potential future action if appropriate."
+      },
+      {
+        "section_path": "Conservation > Important Conservation Actions Needed",
+        "issue": "The conservation actions needed do not include any education and awareness actions, which are an important part of the conservation strategy, particularly for addressing threats related to human activities like farming and mining.",
+        "severity": "low",
+        "suggestion": "Add education and awareness actions to the list of conservation actions needed. For example, include actions aimed at educating local communities, policymakers, and other stakeholders about the importance of conservation and the specific threats faced by this species."
+      }
+    ]
+  },
+  {
+    "rule_name": "Category Justification",
+    "findings": [
+      {
+        "section_path": "Red List Assessment/Assessment Rationale",
+        "issue": "The number of locations (11) exceeds the typical threshold for B2 criterion (usually up to five locations), which might not align perfectly with the B2ab(iii) classification.",
+        "severity": "low",
+        "suggestion": "Consider whether the criterion B2ab(iii) is the most appropriate given the number of locations, or if another criterion might be more suitable."
+      }
+    ]
+  },
+  {
+    "rule_name": "References Formatting",
+    "findings": [
+      {
+        "section_path": "Bibliography",
+        "issue": "Italicization of 'et al.' is incorrect in some references.",
+        "severity": "medium",
+        "suggestion": "Remove italicization from 'et al.' in all references, as per the preferred style."
+      },
+      {
+        "section_path": "Bibliography",
+        "issue": "Ampersand used instead of 'and' in some author names.",
+        "severity": "medium",
+        "suggestion": "Replace '&' with 'and' in author names, e.g., 'Moat, J., Bachman, S., & Walker, B.' should be 'Moat, J., Bachman, S., and Walker, B.'"
+      },
+      {
+        "section_path": "Bibliography",
+        "issue": "Missing clustering of references with same primary author and year.",
+        "severity": "medium",
+        "suggestion": "Cluster references by primary author and add 'a', 'b', etc. after the publication year when same primary author and year are used."
+      },
+      {
+        "section_path": "Bibliography",
+        "issue": "Journal titles not italicized.",
+        "severity": "medium",
+        "suggestion": "Italicize all journal titles, e.g., 'Belgian Journal of Botany' should be '<i>Belgian Journal of Botany</i>'."
+      },
+      {
+        "section_path": "Bibliography",
+        "issue": "Incorrect punctuation in URLs.",
+        "severity": "low",
+        "suggestion": "Fix punctuation in URLs, e.g., 'Available at: .' should be 'Available at:' with appropriate URL formatting."
+      },
+      {
+        "section_path": "Habitats and Ecology",
+        "issue": "Misspelling of 'commands' as 'cmd's'.",
+        "severity": "low",
+        "suggestion": "Correct spelling errors, e.g., 'cmd's' should be 'commands'."
+      }
+    ]
+  },
+  {
+    "rule_name": "Formatting of Scientific/Common Name",
+    "findings": [
+      {
+        "section_path": "Habitats and Ecology",
+        "issue": "The common name 'Katanga hairsedge' is used without being paired with the scientific name in italics on first mention.",
+        "severity": "medium",
+        "suggestion": "The common name should be paired with the scientific name in italics on first mention: 'Katanga hairsedge (*Bulbostylis atracuminata*)'."
+      },
+      {
+        "section_path": "Threats",
+        "issue": "The common name 'copper bog sedge' is used without being paired with the scientific name in italics on first mention.",
+        "severity": "medium",
+        "suggestion": "The common name should be paired with the scientific name in italics on first mention: 'copper bog sedge (*Bulbostylis atracuminata*)'."
+      },
+      {
+        "section_path": "Distribution",
+        "issue": "The species is referred to as 'Bulbostylis atracuminata' without using the common name in conjunction with the scientific name on first mention.",
+        "severity": "low",
+        "suggestion": "To improve consistency, consider adding the common name on first mention: 'Bulbostylis atracuminata (Katanga hairsedge or copper bog sedge)'."
+      },
+      {
+        "section_path": "Conservation",
+        "issue": "The common name 'copper bog sedge' is used without being paired with the scientific name in italics on first mention.",
+        "severity": "medium",
+        "suggestion": "The common name should be paired with the scientific name in italics on first mention: 'copper bog sedge (*Bulbostylis atracuminata*)'."
+      },
+      {
+        "section_path": "Habitats and Ecology",
+        "issue": "The species is referred to as 'Bulbostylis atracuminata' without using the common name in conjunction with the scientific name on first mention.",
+        "severity": "low",
+        "suggestion": "To improve consistency, consider adding the common name on first mention: 'Bulbostylis atracuminata (Katanga hairsedge or copper bog sedge)'."
+      }
+    ]
+  },
+  {
+    "rule_name": "Check for Acronym Explanation",
+    "findings": [
+      {
+        "section_path": "Red List Assessment > Assessment Rationale",
+        "issue": "The acronym 'EOO' is used without being explained. The full term 'extent of occurrence' should be provided on first use.",
+        "severity": "medium",
+        "suggestion": "Revise the text to include the full term 'extent of occurrence (EOO)' on first mention."
+      },
+      {
+        "section_path": "Distribution > Geographic Range",
+        "issue": "The acronym 'KBAs' is used without explanation. The full term 'Key Biodiversity Areas' should be provided on first use.",
+        "severity": "medium",
+        "suggestion": "Revise the text to include the full term 'Key Biodiversity Areas (KBAs)' on first mention."
+      },
+      {
+        "section_path": "Threats",
+        "issue": "The acronym 'CITES' is used without explanation. The full term 'Convention on International Trade in Endangered Species of Wild Fauna and Flora' should be provided on first use.",
+        "severity": "medium",
+        "suggestion": "Revise the text to include the full term 'Convention on International Trade in Endangered Species of Wild Fauna and Flora (CITES)' on first mention."
+      },
+      {
+        "section_path": "Conservation",
+        "issue": "The term 'ex situ' is used without explanation. While it is an established term, it should still be explained as 'outside its natural habitat' for clarity.",
+        "severity": "low",
+        "suggestion": "Consider adding a brief explanation of 'ex situ' for readers unfamiliar with the term."
+      },
+      {
+        "section_path": "Conservation",
+        "issue": "The term 'in situ' is used without explanation. It should be clarified as 'in its natural habitat' for better understanding.",
+        "severity": "low",
+        "suggestion": "Consider adding a brief explanation of 'in situ' for readers unfamiliar with the term."
+      },
+      {
+        "section_path": "Bibliography",
+        "issue": "The acronym 'GBIF' is used without explanation. The full term 'Global Biodiversity Information Facility' should be provided on first use.",
+        "severity": "medium",
+        "suggestion": "Revise the text to include the full term 'Global Biodiversity Information Facility (GBIF)' on first mention."
+      }
+    ]
+  },
+  {
+    "rule_name": "rule_11_minor_check_argument_coherence",
+    "findings": []
+  }
+]

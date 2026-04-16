@@ -1,0 +1,15 @@
+[
+  {
+    "rule_name": "rule_01_consistency_threats",
+    "findings": [],
+    "metrics": {
+      "duration_seconds": 0.15070829499745741,
+      "input_tokens": 4778,
+      "output_tokens": 0,
+      "total_tokens": 4778,
+      "token_source": "estimated",
+      "status": "error",
+      "error": "OpenRouter request failed (404) for minimax/minimax-m2.5:free: No endpoints available matching your guardrail restrictions and data policy. Configure: https://openrouter.ai/settings/privacy"
+    }
+  }
+]

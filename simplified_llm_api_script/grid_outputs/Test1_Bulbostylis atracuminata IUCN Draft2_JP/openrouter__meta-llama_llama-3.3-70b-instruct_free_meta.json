@@ -1,0 +1,19 @@
+{
+  "provider": "openrouter",
+  "model": "meta-llama/llama-3.3-70b-instruct:free",
+  "document": "Test1_Bulbostylis atracuminata IUCN Draft2_JP",
+  "started_at": "2026-04-04T21:38:42.798948+00:00",
+  "error": "OpenRouter request failed (402) for meta-llama/llama-3.3-70b-instruct:free: Provider returned error",
+  "completed_at": "2026-04-04T21:38:43.216075+00:00",
+  "status": "error",
+  "rules_evaluated": 1,
+  "rules_attempted": 1,
+  "rules_succeeded": 0,
+  "rules_failed": 1,
+  "run_duration_seconds": 0.417,
+  "total_findings": 0,
+  "total_input_tokens": 4786,
+  "total_output_tokens": 0,
+  "total_tokens": 4786,
+  "token_estimation_used": true
+}

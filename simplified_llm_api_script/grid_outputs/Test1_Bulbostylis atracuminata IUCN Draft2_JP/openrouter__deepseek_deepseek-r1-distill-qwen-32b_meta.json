@@ -1,0 +1,19 @@
+{
+  "provider": "openrouter",
+  "model": "deepseek/deepseek-r1-distill-qwen-32b",
+  "document": "Test1_Bulbostylis atracuminata IUCN Draft2_JP",
+  "started_at": "2026-04-04T21:57:34.850211+00:00",
+  "error": "OpenRouter error: {'message': 'Internal Server Error', 'code': 500}",
+  "completed_at": "2026-04-04T21:59:35.065673+00:00",
+  "status": "error",
+  "rules_evaluated": 1,
+  "rules_attempted": 1,
+  "rules_succeeded": 0,
+  "rules_failed": 1,
+  "run_duration_seconds": 120.215,
+  "total_findings": 0,
+  "total_input_tokens": 4782,
+  "total_output_tokens": 0,
+  "total_tokens": 4782,
+  "token_estimation_used": true
+}

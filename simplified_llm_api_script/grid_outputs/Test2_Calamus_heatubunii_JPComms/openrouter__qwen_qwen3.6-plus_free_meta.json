@@ -1,0 +1,133 @@
+{
+  "provider": "openrouter",
+  "model": "qwen/qwen3.6-plus:free",
+  "document": "Test2_Calamus_heatubunii_JPComms",
+  "started_at": "2026-04-07T10:34:54.999775+00:00",
+  "error": "OpenRouter error: {'message': 'Upstream error from Alibaba: Request rate increased too quickly. To ensure system stability, please adjust your client logic to scale requests more smoothly over time.', 'code': 502}",
+  "completed_at": "2026-04-07T10:38:00.518601+00:00",
+  "status": "error",
+  "rules_evaluated": 11,
+  "rule_metrics": [
+    {
+      "rule_name": "Threats Consistency",
+      "duration_seconds": 75.412756212987,
+      "input_tokens": 4320,
+      "output_tokens": 3649,
+      "total_tokens": 7969,
+      "token_source": "provider",
+      "status": "success",
+      "error": null
+    },
+    {
+      "rule_name": "Habitats Consistency",
+      "duration_seconds": 150.35646283900132,
+      "input_tokens": 4462,
+      "output_tokens": 3470,
+      "total_tokens": 7932,
+      "token_source": "provider",
+      "status": "success",
+      "error": null
+    },
+    {
+      "rule_name": "rule_03_consistency_bibliography",
+      "duration_seconds": 9.038547849049792,
+      "input_tokens": 8067,
+      "output_tokens": 0,
+      "total_tokens": 8067,
+      "token_source": "estimated",
+      "status": "error",
+      "error": "OpenRouter error: {'message': 'Upstream error from Alibaba: Request rate increased too quickly. To ensure system stability, please adjust your client logic to scale requests more smoothly over time.', 'code': 502}"
+    },
+    {
+      "rule_name": "Geographic Range / Occurrences Consistency",
+      "duration_seconds": 143.1728237339994,
+      "input_tokens": 4642,
+      "output_tokens": 4142,
+      "total_tokens": 8784,
+      "token_source": "provider",
+      "status": "success",
+      "error": null
+    },
+    {
+      "rule_name": "rule_05_consistency_population",
+      "duration_seconds": 13.159798660024535,
+      "input_tokens": 2328,
+      "output_tokens": 0,
+      "total_tokens": 2328,
+      "token_source": "estimated",
+      "status": "error",
+      "error": "OpenRouter error: {'message': 'Upstream error from Alibaba: Request rate increased too quickly. To ensure system stability, please adjust your client logic to scale requests more smoothly over time.', 'code': 502}"
+    },
+    {
+      "rule_name": "Conservation Consistency",
+      "duration_seconds": 161.02628384297714,
+      "input_tokens": 4219,
+      "output_tokens": 3881,
+      "total_tokens": 8100,
+      "token_source": "provider",
+      "status": "success",
+      "error": null
+    },
+    {
+      "rule_name": "rule_07_justification_category",
+      "duration_seconds": 19.5830901080044,
+      "input_tokens": 12219,
+      "output_tokens": 0,
+      "total_tokens": 12219,
+      "token_source": "estimated",
+      "status": "error",
+      "error": "OpenRouter error: {'message': 'Upstream error from Alibaba: Request rate increased too quickly. To ensure system stability, please adjust your client logic to scale requests more smoothly over time.', 'code': 502}"
+    },
+    {
+      "rule_name": "References Formatting",
+      "duration_seconds": 172.67174429900479,
+      "input_tokens": 10172,
+      "output_tokens": 5532,
+      "total_tokens": 15704,
+      "token_source": "provider",
+      "status": "success",
+      "error": null
+    },
+    {
+      "rule_name": "Formatting of Scientific/Common Name",
+      "duration_seconds": 169.55228584603174,
+      "input_tokens": 8712,
+      "output_tokens": 4424,
+      "total_tokens": 13136,
+      "token_source": "provider",
+      "status": "success",
+      "error": null
+    },
+    {
+      "rule_name": "Check for Acronym Explanation",
+      "duration_seconds": 185.23913105996326,
+      "input_tokens": 7994,
+      "output_tokens": 5646,
+      "total_tokens": 13640,
+      "token_source": "provider",
+      "status": "success",
+      "error": null
+    },
+    {
+      "rule_name": "Check for Timeline and Argument Coherence",
+      "duration_seconds": 111.63932106504217,
+      "input_tokens": 7640,
+      "output_tokens": 2959,
+      "total_tokens": 10599,
+      "token_source": "provider",
+      "status": "success",
+      "error": null
+    }
+  ],
+  "overall": {
+    "rules_attempted": 11,
+    "rules_succeeded": 8,
+    "rules_failed": 3,
+    "run_duration_seconds": 185.519,
+    "total_findings": 30,
+    "total_input_tokens": 74775,
+    "total_output_tokens": 33703,
+    "total_tokens": 108478,
+    "token_estimation_used": true
+  }
+}

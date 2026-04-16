@@ -1,28 +1,86 @@
 """Regression tests for the block-level assessment parser."""
 
-import json
 import unittest
-from pathlib import Path
 
 from iucn_rules_checker.assessment_parser import AssessmentParser
 
 
 class AssessmentParserTests(unittest.TestCase):
-    """Lock in the parser's current block-by-block behavior."""
+    """
+    Lock in the parser's current block-by-block behavior.
 
-    @classmethod
-    def setUpClass(cls) -> None:
-        json_path = (
-            Path(__file__).resolve().parent.parent
-            / "test_json_file"
-            / "Myrcia neosmithii_draft_status_Apr2022_v2_parse_dict (1).json"
-        )
-        with json_path.open(encoding="utf-8") as handle:
-            cls.assessment = json.load(handle)
+    Purpose:
+        This test case groups regression checks for the current behavior covered by the enclosed tests.
+    """
 
     def test_parse_returns_block_level_full_report(self) -> None:
-        full_report = AssessmentParser().parse(self.assessment)
-        title = self.assessment["title"]
+        """
+        Test that parse returns block level full report.
+
+        Args:
+            None.
+
+        Returns:
+            None. The assertions inside the test body enforce the expected behavior.
+        """
+        assessment = {
+            "title": "Sample Assessment",
+            "blocks": [
+                {"type": "paragraph", "text_rich": "<b>Draft</b>"},
+                {
+                    "type": "paragraph",
+                    "text_rich": "<b><i>Myrcia neosmithii</i></b><b> - K.Campbell & K.Samra</b>",
+                },
+                {
+                    "type": "table",
+                    "rows_rich": [
+                        ["<b>Red List Status</b>"],
+                        ["VU - Vulnerable"],
+                    ],
+                },
+            ],
+            "children": [
+                {
+                    "title": "Red List Assessment",
+                    "blocks": [],
+                    "children": [
+                        {
+                            "title": "Assessment Information",
+                            "blocks": [
+                                {
+                                    "type": "paragraph",
+                                    "text_rich": "<b>Date of Assessment:</b> 2021-06-29",
+                                }
+                            ],
+                            "children": [],
+                        },
+                        {
+                            "title": "Assessment Rationale",
+                            "blocks": [
+                                {
+                                    "type": "paragraph",
+                                    "text_rich": "This species is known from just two collections and covers 10 km<sup>2</sup>.",
+                                }
+                            ],
+                            "children": [],
+                        },
+                    ],
+                },
+                {
+                    "title": "Bibliography",
+                    "blocks": [
+                        {
+                            "type": "paragraph",
+                            "text_rich": "Alonso, L.E. 2020. Example reference.",
+                        }
+                    ],
+                    "children": [],
+                },
+            ],
+        }
+
+        full_report = AssessmentParser().parse(assessment)
+        title = assessment["title"]
         paragraph_entries = [key for key in full_report if "[paragraph " in key]
         table_row_entries = [key for key in full_report if "[table " in key and "[row " in key]
 
@@ -34,9 +92,9 @@ class AssessmentParserTests(unittest.TestCase):
         rationale_1 = f"{title} > Red List Assessment > Assessment Rationale [paragraph 1]"
         bibliography_1 = f"{title} > Bibliography [paragraph 1]"
         self.assertIsInstance(full_report, dict)
-        self.assertEqual(len(full_report), 70)
-        self.assertEqual(len(paragraph_entries), 31)
-        self.assertEqual(len(table_row_entries), 39)
+        self.assertEqual(len(full_report), 7)
+        self.assertEqual(len(paragraph_entries), 5)
+        self.assertEqual(len(table_row_entries), 2)
         self.assertTrue(all(isinstance(key, str) for key in full_report))
         self.assertTrue(
             all(isinstance(value, str) and value.strip() for value in full_report.values())
@@ -60,8 +118,11 @@ class AssessmentParserTests(unittest.TestCase):
             "<b><i>Myrcia neosmithii</i></b><b> - K.Campbell & K.Samra</b>",
         )
         self.assertEqual(full_report[root_table_row_1], "<b>Red List Status</b>")
-        self.assertIn("VU - Vulnerable", full_report[root_table_row_2])
-        self.assertIn("Date of Assessment: </b>2021-06-29", full_report[assessment_info_1])
+        self.assertEqual(full_report[root_table_row_2], "VU - Vulnerable")
+        self.assertEqual(
+            full_report[assessment_info_1],
+            "<b>Date of Assessment:</b> 2021-06-29",
+        )
         self.assertIn("This species is known from just two collections", full_report[rationale_1])
         self.assertIn("Alonso, L.E.", full_report[bibliography_1])
         self.assertIn("<sup>2</sup>", full_report[rationale_1])
@@ -69,6 +130,15 @@ class AssessmentParserTests(unittest.TestCase):
         self.assertFalse(any("-&gt;" in value for value in full_report.values()))
 
     def test_parse_uses_rich_block_fields_only(self) -> None:
+        """
+        Test that parse uses rich block fields only.
+
+        Args:
+            None.
+
+        Returns:
+            None. The assertions inside the test body enforce the expected behavior.
+        """
         assessment = {
             "title": "Root",
             "blocks": [
@@ -102,6 +172,15 @@ class AssessmentParserTests(unittest.TestCase):
         self.assertNotIn("Root [table 2] [row 1]", full_report)
 
     def test_parse_ignores_style_blocks(self) -> None:
+        """
+        Test that parse ignores style blocks.
+
+        Args:
+            None.
+
+        Returns:
+            None. The assertions inside the test body enforce the expected behavior.
+        """
         assessment = {
             "title": "Root",
             "blocks": [
@@ -125,6 +204,15 @@ class AssessmentParserTests(unittest.TestCase):
         self.assertEqual(full_report["Root [paragraph 1]"], "Draft")
 
     def test_parse_preserves_non_ascii_characters_as_is(self) -> None:
+        """
+        Test that parse preserves non ASCII characters as is.
+
+        Args:
+            None.
+
+        Returns:
+            None. The assertions inside the test body enforce the expected behavior.
+        """
         assessment = {
             "title": "Région – Root",
             "blocks": [
@@ -155,6 +243,15 @@ class AssessmentParserTests(unittest.TestCase):
         )
 
     def test_parse_normalizes_non_breaking_spaces_to_regular_spaces(self) -> None:
+        """
+        Test that parse normalizes non breaking spaces to regular spaces.
+
+        Args:
+            None.
+
+        Returns:
+            None. The assertions inside the test body enforce the expected behavior.
+        """
         assessment = {
             "title": "Root\u00A0Title",
             "blocks": [

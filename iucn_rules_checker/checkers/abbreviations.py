@@ -1,4 +1,4 @@
-"""Abbreviation checker for IUCN assessments."""
+"""Abbreviation-focused rules for IUCN assessments."""
 
 import re
 from typing import List
@@ -8,13 +8,43 @@ from .base import BaseChecker
 
 
 class AbbreviationChecker(BaseChecker):
-    """Checker for abbreviation rules."""
+    """
+    Apply the package's abbreviation and Latin-term style rules.
+
+    Purpose:
+        This class groups related rules within the rules-based assessment workflow.
+    """
 
     def __init__(self):
+        """
+        Initialise the abbreviation checker.
+
+        Args:
+            None.
+
+        Returns:
+            None.
+        """
         super().__init__()
 
     def check_text(self, section_name: str, text: str) -> List[Violation]:
-        """Check for abbreviation violations."""
+        """
+        Run all abbreviation checks against one parsed section.
+
+        The dispatcher currently combines:
+        - ``check_eg_and_ie(...)``
+        - ``check_abbreviation_formats(...)``
+        - ``check_latin_terms_without_period(...)``
+        - ``check_et_al(...)``
+        - ``check_title_abbreviations(...)``
+
+        Args:
+            section_name (str): Parsed section key supplied by the caller.
+            text (str): Parsed section text supplied by the caller.
+
+        Returns:
+            List[Violation]: Violations produced by this method.
+        """
         violations = []
         violations.extend(self.check_eg_and_ie(section_name, text))
         violations.extend(self.check_abbreviation_formats(section_name, text))
@@ -24,37 +54,28 @@ class AbbreviationChecker(BaseChecker):
         return violations
 
     def check_eg_and_ie(self, section_name: str, text: str) -> List[Violation]:
-        """Check for ``e.g.`` and ``i.e.``-style abbreviations in body text.
+        """
+        Flag standalone ``e.g.`` / ``i.e.`` variants in body text.
 
-        This method strips simple inline bold/italic/superscript/subscript
-        HTML tags first:
-        ``<i>``, ``<em>``, ``<b>``, ``<strong>``, ``<sup>``, and ``<sub>``.
+        The rule strips simple inline italic, bold, superscript, and subscript
+        tags before matching. It then looks for standalone case-insensitive
+        variants of ``e.g.`` and ``i.e.``, including dotted, partly dotted,
+        and undotted forms such as ``E.g.``, ``eg``, ``I.e.``, and ``ie``.
 
-        Catches case-insensitive standalone variants of ``e.g.`` and ``i.e.``,
-        including dotted, partly dotted, and undotted forms.
-        Examples caught:
-        - ``E.g.``
-        - ``Eg.``
-        - ``e.g.``
-        - ``E.G.``
-        - ``eg``
-        - ``I.e.``
-        - ``Ie.``
-        - ``i.e.``
-        - ``IE``
-        - ``ie``
+        Matches are only reported when the abbreviation appears as its own
+        token. Letter sequences inside larger words, such as ``segment``,
+        ``diet``, ``species``, or ``siege``, are intentionally ignored.
 
-        It can match these at sentence start, mid-sentence, sentence end, and
-        inside parentheses, as long as they appear as standalone abbreviations.
+        Suggested fixes are plain-English replacements:
+        - ``e.g.`` -> ``for example,``
+        - ``i.e.`` -> ``that is,``
 
-        Misses cases where the same letters occur inside larger words or where
-        the surrounding context would require a more semantic judgement, such as
-        quotations, copied headings, or bibliography-specific exceptions.
-        Examples of missed cases:
-        - ``segment``
-        - ``diet``
-        - ``species``
-        - ``siege``
+        Args:
+            section_name (str): Parsed section key supplied by the caller.
+            text (str): Parsed section text supplied by the caller.
+
+        Returns:
+            List[Violation]: Violations produced by this method.
         """
         violations = []
         cleaned_text, index_map = self.strip_style_markers(
@@ -98,27 +119,27 @@ class AbbreviationChecker(BaseChecker):
         return violations
 
     def check_abbreviation_formats(self, section_name: str, text: str) -> List[Violation]:
-        """Check fixed abbreviation forms that should end with a period.
+        """
+        Normalize a small hard-coded set of abbreviation formats.
 
-        This method strips simple inline bold/italic/superscript/subscript
-        HTML tags first:
-        ``<i>``, ``<em>``, ``<b>``, ``<strong>``, ``<sup>``, and ``<sub>``.
-
-        Catches case-insensitive standalone uses of:
+        The rule strips simple inline italic, bold, superscript, and subscript
+        tags before matching. It then checks these specific patterns only:
         - ``etc`` -> ``etc.``
-        - ``in lit`` -> ``in lit.``
+        - ``in litt`` -> ``in litt.``
         - ``pers comm`` / ``pers comm.`` / ``pers. comm`` -> ``pers. comm.``
         - ``pers obs`` / ``pers obs.`` / ``pers. obs`` -> ``pers. obs.``
         - ``Prof`` -> ``Prof.``
 
-        Misses forms outside those hardcoded patterns, such as heavily broken
-        spacing/punctuation variants, different abbreviations not listed here,
-        and already-correct forms that already include the expected period.
-        Examples of missed cases:
-        - ``p e r s comm``
-        - ``in-lot`` or other non-matching typos
-        - ``Rev`` or ``Assoc Prof`` because those abbreviations are not covered
-        - ``etc.`` and ``pers. comm.`` because they are already in the expected form
+        Already-correct forms such as ``etc.``, ``in litt.``, ``pers. comm.``,
+        ``pers. obs.``, and ``Prof.`` are ignored. Abbreviations outside this
+        fixed shortlist, such as ``Rev``, are also ignored.
+
+        Args:
+            section_name (str): Parsed section key supplied by the caller.
+            text (str): Parsed section text supplied by the caller.
+
+        Returns:
+            List[Violation]: Violations produced by this method.
         """
         violations = []
         cleaned_text, index_map = self.strip_style_markers(
@@ -141,16 +162,16 @@ class AbbreviationChecker(BaseChecker):
                 suggested_fix="etc.",
             ))
 
-        inlit_pattern = re.compile(r'\bin\s+lit\b(?!t)', re.IGNORECASE)
-        for match in inlit_pattern.finditer(cleaned_text):
+        inlitt_pattern = re.compile(r'\bin\s+litt\b(?!\.)', re.IGNORECASE)
+        for match in inlitt_pattern.finditer(cleaned_text):
             start = index_map[match.start()]
             end = index_map[match.end() - 1] + 1
             violations.append(self.create_violation(
                 section_name=section_name,
                 text=text,
                 span=(start, end),
-                message="Use 'in lit.' not 'in lit', if referring to in published literature",
-                suggested_fix="in lit.",
+                message="Use 'in litt.' not 'in litt', if referring to in published literature",
+                suggested_fix="in litt.",
             ))
 
         perscomm_pattern = re.compile(
@@ -198,35 +219,36 @@ class AbbreviationChecker(BaseChecker):
         return violations
 
     def check_latin_terms_without_period(self, section_name: str, text: str) -> List[Violation]:
-        """Check Latin terms for italicization first, then for periods.
+        """
+        Enforce italics and no-period formatting for selected Latin terms.
 
-        This method checks a fixed list of Latin expressions in two stages:
-        - first, it strips non-italic style tags such as bold, superscript, and
-          subscript tags while preserving ``<i>...</i>`` and ``<em>...</em>``
-        - first, it checks whether the matched term is wrapped in ``<i>...</i>``
-          or ``<em>...</em>``
-        - only if the term is italicized does it then strip the surrounding
-          italics markup and check the resulting text for periods
+        The rule checks only a fixed list of Latin expressions:
+        ``in situ``, ``ex situ``, ``ad hoc``, ``in vivo``, ``in vitro``,
+        ``sensu lato``, ``sensu stricto``, ``per se``, ``de facto``, and
+        ``vice versa``.
 
-        Both failure paths use the same message:
-        - ``Latin term '<term>' must be italicized and not contain periods``
+        Matching is done in two stages:
+        - non-italic style tags are stripped while ``<i>`` / ``<em>`` are kept
+        - the matched term must appear inside simple HTML italics
+        - if italicized, the term is then checked for internal periods
 
-        Examples caught:
-        - ``in situ`` in plain text
-        - ``de facto`` in plain text
-        - ``sensu. lato`` in plain text
-        - ``<i>in. situ</i>``
-        - ``<i>in.situ</i>``
-        - ``<i>in.situ.</i>``
-        - ``<i>in situ</i>.``
+        The same message is used for both failure paths:
+        ``Latin term '<term>' must be italicized and not contain periods``
 
-        Examples not caught:
-        - ``<i>in situ</i>`` because it is italicized and undotted
-        - ``<em>de facto</em>`` because it is italicized and undotted
-        - ``status quo`` because it is not in the hardcoded list
-        - ``*in situ*`` because Markdown italics are not parsed here
-        - unusual malformed dotted forms such as ``in .. situ`` or ``in . situ``
-        - hyphenated forms such as ``in-situ``
+        Examples flagged include plain-text ``in situ``, plain-text
+        ``de facto``, ``<i>in. situ</i>``, ``<i>in.situ</i>``, and
+        ``<i>in situ</i>.``.
+
+        Correct italicized undotted forms such as ``<i>in situ</i>`` and
+        ``<em>de facto</em>`` are ignored. Terms outside the fixed list, such
+        as ``status quo``, are not checked. Markdown italics are not parsed.
+
+        Args:
+            section_name (str): Parsed section key supplied by the caller.
+            text (str): Parsed section text supplied by the caller.
+
+        Returns:
+            List[Violation]: Violations produced by this method.
         """
         violations = []
         cleaned_text, index_map = self.strip_style_markers(
@@ -268,7 +290,7 @@ class AbbreviationChecker(BaseChecker):
                         text=text,
                         span=(original_start, original_end),
                         message=f"Latin term '{term}' must be italicized and not contain periods",
-                        suggested_fix=f"<i>{term}</i>",
+                        suggested_fix=f"Italicized: {term}",
                     ))
                     continue
 
@@ -283,42 +305,36 @@ class AbbreviationChecker(BaseChecker):
                         text=text,
                         span=(original_start, original_end),
                         message=f"Latin term '{term}' must be italicized and not contain periods",
-                        suggested_fix=f"<i>{term}</i>",
+                        suggested_fix=f"Italicized: {term}",
                     ))
 
         return violations
 
     def check_et_al(self, section_name: str, text: str) -> List[Violation]:
-        """Check that ``et al.`` is italicized and uses the canonical punctuation.
+        """
+        Require the citation term ``et al.`` to use the preferred styling.
 
-        This method checks only ``et al`` / ``et al.`` and enforces the
-        canonical wording ``et al.`` while checking italics on the letters
-        ``et al`` only, not on the trailing period. That means both of these
+        This rule checks only ``et al`` / ``et al.``-style text. It strips
+        simple inline italic, bold, superscript, and subscript tags for
+        matching, then maps the match back to the original text.
+
+        The preferred form is italicized ``et al.``. Italics are checked on the
+        letters ``et al`` only, not on the trailing period, so both of these
         are accepted:
         - ``<i>et al.</i>``
         - ``<i>et al</i>.``
 
-        It strips all simple style tags for matching, then maps the matched
-        text back to the original rich text and checks whether the ``et al``
-        portion sits inside ``<i>...</i>`` / ``<em>...</em>``.
-
         The rule flags:
         - missing final periods, such as ``et al``
-        - internal dotted variants such as ``et. al.``
+        - internal dotted variants, such as ``et. al.``
         - plain-text forms such as ``et al.`` that are missing italics
 
-        Examples caught:
-        - ``et al``
-        - ``ET AL``
-        - ``et al.``
-        - ``et. al.``
-        - ``<i>et al</i>``
+        Args:
+            section_name (str): Parsed section key supplied by the caller.
+            text (str): Parsed section text supplied by the caller.
 
-        Examples not caught:
-        - ``<i>et al.</i>`` because it is already in the expected form
-        - ``<em>et al.</em>`` because it is already in the expected form
-        - ``<i>et al</i>.`` because only ``et al`` needs to be italicized
-        - unrelated abbreviations because this method only checks ``et al``
+        Returns:
+            List[Violation]: Violations produced by this method.
         """
         violations = []
         cleaned_text, index_map = self.strip_style_markers(
@@ -348,33 +364,36 @@ class AbbreviationChecker(BaseChecker):
                     text=text,
                     span=(original_match_start, original_match_end),
                     message="Use italicized 'et al.'",
-                    suggested_fix="<i>et al</i>.",
+                    suggested_fix="Italicized: et al.",
                 ))
 
         return violations
 
     def check_title_abbreviations(self, section_name: str, text: str) -> List[Violation]:
-        """Check UK-style title abbreviations that should not take periods.
+        """
+        Enforce periodless UK-style courtesy-title abbreviations.
 
-        This method strips all simple inline style tags first:
-        ``<i>``, ``<em>``, ``<b>``, ``<strong>``, ``<sup>``, and ``<sub>``.
-
-        Catches case-insensitive uses of:
+        The rule strips simple inline italic, bold, superscript, and subscript
+        tags before matching and checks only this fixed set:
         - ``Dr.``
         - ``Mr.``
         - ``Mrs.``
         - ``Ms.``
 
-        These are matched before whitespace, punctuation, or end of text, so
-        examples such as ``Dr. Green``, ``mr.``, ``Mrs.,`` and ``Ms.)`` are
-        all caught and suggested in their periodless UK-style forms.
+        Matching is case-insensitive and works before whitespace, punctuation,
+        or end of text, so forms such as ``Dr. Green``, ``mr.``, ``Mrs.,``,
+        and ``Ms.)`` are all flagged.
 
-        Misses titles that are not covered by this hardcoded list, as well as
-        already-correct forms without a period.
-        Examples of missed cases:
-        - ``Prof.`` because it is checked elsewhere
-        - ``Rev.`` and ``Assoc. Prof.`` because they are not covered here
-        - ``Dr`` and ``Mr`` because they are already in the expected form
+        Already-correct forms without a period, such as ``Dr`` and ``Mr``, are
+        ignored. Titles outside the fixed set, such as ``Prof.``, ``Rev.``, and
+        ``Assoc. Prof.``, are not handled here.
+
+        Args:
+            section_name (str): Parsed section key supplied by the caller.
+            text (str): Parsed section text supplied by the caller.
+
+        Returns:
+            List[Violation]: Violations produced by this method.
         """
         violations = []
         cleaned_text, index_map = self.strip_style_markers(
@@ -404,7 +423,22 @@ class AbbreviationChecker(BaseChecker):
         return violations
 
     def is_inside_italic(self, text: str, start: int, end: int) -> bool:
-        """Return whether a matched range appears inside simple HTML italics."""
+        """
+        Return whether a span sits inside simple ``<i>`` or ``<em>`` markup.
+
+        This is a lightweight heuristic rather than a full HTML parser. It
+        checks whether the most recent opening ``<i>`` / ``<em>`` tag before the
+        span is later than the most recent closing tag and whether a matching
+        closing tag appears after the span.
+
+        Args:
+            text (str): Parsed section text supplied by the caller.
+            start (int): Input value used by this method.
+            end (int): Input value used by this method.
+
+        Returns:
+            bool: Boolean result described by the summary line above.
+        """
         before = text[:start]
         after = text[end:]
 
@@ -424,7 +458,22 @@ class AbbreviationChecker(BaseChecker):
         return False
 
     def strip_italic_markup_around_term(self, text: str, start: int, end: int) -> str:
-        """Strip surrounding HTML italics tags before checking a term for periods."""
+        """
+        Return the enclosing italic fragment with ``<i>`` / ``<em>`` removed.
+
+        This helper expands the matched span outward to the surrounding simple
+        italic block, removes only ``<i>`` / ``<em>`` tags, and preserves any
+        trailing punctuation that should still count when period use is being
+        checked.
+
+        Args:
+            text (str): Parsed section text supplied by the caller.
+            start (int): Input value used by this method.
+            end (int): Input value used by this method.
+
+        Returns:
+            str: String value produced by this method.
+        """
         open_i = text.rfind('<i>', 0, start)
         open_em = text.rfind('<em>', 0, start)
 

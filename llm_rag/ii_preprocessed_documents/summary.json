@@ -1,0 +1,81 @@
+[
+  {
+    "source_file": "Guidelines_for_Reporting_Proportion_Threatened_ver_1_2.pdf",
+    "raw_text_block_count": 38,
+    "retrieval_block_count": 14,
+    "text_block_count": 14,
+    "table_block_count": 0,
+    "table_row_block_count": 0,
+    "fallback_table_row_count": 0,
+    "synthetic_parent_count": 0,
+    "repeated_edge_text_removed": []
+  },
+  {
+    "source_file": "Mapping_Standards_Version_1.20_Jan2024.pdf",
+    "raw_text_block_count": 380,
+    "retrieval_block_count": 200,
+    "text_block_count": 118,
+    "table_block_count": 10,
+    "table_row_block_count": 72,
+    "fallback_table_row_count": 0,
+    "synthetic_parent_count": 0,
+    "repeated_edge_text_removed": []
+  },
+  {
+    "source_file": "RedListGuidelines.pdf",
+    "raw_text_block_count": 1033,
+    "retrieval_block_count": 428,
+    "text_block_count": 348,
+    "table_block_count": 10,
+    "table_row_block_count": 70,
+    "fallback_table_row_count": 0,
+    "synthetic_parent_count": 0,
+    "repeated_edge_text_removed": [
+      "red list guidelines #"
+    ]
+  },
+  {
+    "source_file": "Required_and_Recommended_Supporting_Information_for_IUCN_Red_List_Assessments.pdf",
+    "raw_text_block_count": 186,
+    "retrieval_block_count": 68,
+    "text_block_count": 27,
+    "table_block_count": 3,
+    "table_row_block_count": 38,
+    "fallback_table_row_count": 38,
+    "synthetic_parent_count": 3,
+    "repeated_edge_text_removed": []
+  },
+  {
+    "source_file": "RL_categories_and_criteria.pdf",
+    "raw_text_block_count": 402,
+    "retrieval_block_count": 120,
+    "text_block_count": 97,
+    "table_block_count": 6,
+    "table_row_block_count": 17,
+    "fallback_table_row_count": 0,
+    "synthetic_parent_count": 0,
+    "repeated_edge_text_removed": []
+  },
+  {
+    "source_file": "RL_criteria_summary_sheet.pdf",
+    "raw_text_block_count": 65,
+    "retrieval_block_count": 37,
+    "text_block_count": 8,
+    "table_block_count": 5,
+    "table_row_block_count": 24,
+    "fallback_table_row_count": 0,
+    "synthetic_parent_count": 0,
+    "repeated_edge_text_removed": []
+  },
+  {
+    "source_file": "RL_Standards_Consistency.pdf",
+    "raw_text_block_count": 1259,
+    "retrieval_block_count": 303,
+    "text_block_count": 253,
+    "table_block_count": 6,
+    "table_row_block_count": 44,
+    "fallback_table_row_count": 0,
+    "synthetic_parent_count": 0,
+    "repeated_edge_text_removed": []
+  }
+]

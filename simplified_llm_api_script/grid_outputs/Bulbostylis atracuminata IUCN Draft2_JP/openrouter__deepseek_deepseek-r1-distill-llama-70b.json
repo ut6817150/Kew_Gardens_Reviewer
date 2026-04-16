@@ -1,0 +1,188 @@
+[
+  {
+    "rule_name": "Threats Consistency",
+    "findings": [
+      {
+        "section_path": "Threats > Threats Classification Scheme",
+        "issue": "The narrative describes specific threats (mining, agricultural land conversion, dam impact), but the classification scheme includes an incorrect statement that threats are unknown.",
+        "severity": "high",
+        "suggestion": "Remove the incorrect statement about threats being unknown and ensure all mentioned threats are accurately classified."
+      },
+      {
+        "section_path": "Threats > Threats Classification Scheme",
+        "issue": "Agricultural land conversion is detailed in the narrative but only classified under small-holder farming, potentially missing larger-scale activities.",
+        "severity": "medium",
+        "suggestion": "Update the classification to include appropriate categories for larger-scale agricultural threats if applicable."
+      },
+      {
+        "section_path": "Threats > Threats Classification Scheme",
+        "issue": "The dam's impact is classified under water abstraction, but the narrative suggests it affects soil moisture, which may better fit ecosystem modification.",
+        "severity": "medium",
+        "suggestion": "Consider reclassifying the dam's impact under ecosystem modifications if it's altering the habitat structure."
+      },
+      {
+        "section_path": "Threats > Threats Classification Scheme",
+        "issue": "Severity levels are partially specified but lack detail, particularly for agricultural and dam threats.",
+        "severity": "low",
+        "suggestion": "Provide more specific severity assessments for all threats based on their impact."
+      }
+    ]
+  },
+  {
+    "rule_name": "Habitats Consistency",
+    "findings": [
+      {
+        "section_path": "Habitats and Ecology > IUCN Habitats Classification Scheme",
+        "issue": "The Habitat classification scheme does not list all habitats mentioned in the narrative, such as riverbanks and marshe",
+        "severity": "medium",
+        "suggestion": "Add all relevant habitats from the narrative into the Habitat Classification Scheme."
+      }
+    ]
+  },
+  {
+    "rule_name": "Bibliography Consistency [Red List Standards Consistency (Section 5.1)]",
+    "findings": [
+      {
+        "section_path": "Bibliography",
+        "issue": "Inconsistent year in citation for Global Biodiversity Information Facility (GBIF). The text cites 'Global Biodiversity Information Facility, 2023' but the bibliography lists 'GBIF: the Global Biodiversity Information Facility. 2022'.",
+        "severity": "low",
+        "suggestion": "Correct the year in the citation to match the bibliography entry (2022 instead of 2023)."
+      },
+      {
+        "section_path": "Bibliography",
+        "issue": "Incomplete URLs in the bibliography. Several entries have URLs with placeholders (e.g., 'Available at: .').",
+        "severity": "low",
+        "suggestion": "Complete the URLs by filling in the correct links."
+      }
+    ]
+  },
+  {
+    "rule_name": "Geographic Range / Occurrences Consistency",
+    "findings": [
+      {
+        "section_path": "Distribution/Geographic Range",
+        "issue": "The Geographic Range section does not include specific data (EOO, AOO, locations) required for taxa assessed under criterion B. While some of this information is present in the Assessment Rationale, it is not explicitly included in the Geographic Range section as required.",
+        "severity": "medium",
+        "suggestion": "Add specific data on EOO, AOO, and locations within the Geographic Range section, ensuring consistency with the information provided in the Assessment Rationale."
+      },
+      {
+        "section_path": "Occurrence/Countries of Occurrence",
+        "issue": "The Occurrences section does not fully align with the detailed geographic range provided. The countries listed in the Occurrences section should reflect all locations mentioned in the Geographic Range section.",
+        "severity": "medium",
+        "suggestion": "Ensure that the Occurrences section includes all countries and regions mentioned in the Geographic Range section, with appropriate presence and origin coding."
+      }
+    ]
+  },
+  {
+    "rule_name": "Population Consistency",
+    "findings": [
+      {
+        "section_path": "Population",
+        "issue": "The population section does not provide a summary of available population information, nor does it explain why no information is available.",
+        "severity": "medium",
+        "suggestion": "Add a summary stating that no population information is available and explain why, e.g., 'No population surveys have been conducted for this species, likely due to limited research efforts in its range.'"
+      },
+      {
+        "section_path": "Population/Population Information",
+        "issue": "The current population trend is recorded as 'Unknown' without a qualifier or justification.",
+        "severity": "medium",
+        "suggestion": "Provide a justification for the unknown trend, e.g., 'The population trend is unknown due to lack of data, but suspected to be decreasing based on habitat degradation.'"
+      }
+    ]
+  },
+  {
+    "rule_name": "Conservation Consistency",
+    "findings": [
+      {
+        "section_path": "Conservation",
+        "issue": "The Conservation section is too brief and lacks detailed explanations of how conservation actions address the identified threats (mining, agricultural land conversion, dam impacts). The text does not provide a clear link between the threats and the conservation actions needed, making it inconsistent with the rule's requirements.",
+        "severity": "medium",
+        "suggestion": "Expand the Conservation section to include detailed explanations of how each action (both in place and needed) addresses specific threats. Ensure that the text follows the preferred style example, providing context and justification for the actions listed."
+      },
+      {
+        "section_path": "Conservation",
+        "issue": "The Conservation Actions Needed do not fully align with the identified threats. For example, actions targeting mining and agricultural encroachment are not explicitly listed under the relevant sections of the Conservation Actions Classification Scheme.",
+        "severity": "medium",
+        "suggestion": "Revise the Conservation Actions Needed to include specific actions that directly address mining and agricultural land conversion, using the appropriate classification scheme codes. Provide a rationale for why these actions are necessary and how they will mitigate the threats."
+      }
+    ]
+  },
+  {
+    "rule_name": "Category Justification",
+    "findings": []
+  },
+  {
+    "rule_name": "References Formatting",
+    "findings": [
+      {
+        "section_path": "Bibliography",
+        "issue": "Missing period after the year in bibliography entries.",
+        "severity": "low",
+        "suggestion": "Ensure all bibliography entries end with a period after the year."
+      },
+      {
+        "section_path": "Bibliography",
+        "issue": "Inconsistent use of 'et al.' in bibliography",
+        "severity": "medium",
+        "suggestion": "Use 'et al.' consistently for entries with three or more authors."
+      },
+      {
+        "section_path": "Bibliography",
+        "issue": "Author names and initials incorrectly formatted",
+        "severity": "medium",
+        "suggestion": "Format author names as 'Lastname, Initials.' without spaces."
+      },
+      {
+        "section_path": "Bibliography",
+        "issue": "Titles not italicized",
+        "severity": "medium",
+        "suggestion": "Italicize journal and book titles in the bibliography."
+      },
+      {
+        "section_path": "Bibliography",
+        "issue": "Incomplete URLs",
+        "severity": "medium",
+        "suggestion": "Provide complete URLs without truncation."
+      },
+      {
+        "section_path": "Bibliography",
+        "issue": "Typographical error",
+        "severity": "low",
+        "suggestion": "Correct 'Internationa' to 'International'."
+      }
+    ]
+  },
+  {
+    "rule_name": "Formatting of Scientific/Common Name",
+    "findings": [
+      {
+        "section_path": "Threats",
+        "issue": "The scientific name 'Bulbostylis atracuminata' is used repeatedly. According to the guidelines, the scientific name should be mentioned once, and thereafter the genus can be abbreviated if no common name exists.",
+        "severity": "medium",
+        "suggestion": "Use the full scientific name once, then abbreviate the genus (e.g., 'B. atracuminata') in subsequent references."
+      }
+    ]
+  },
+  {
+    "rule_name": "Check for Acronym Explanation",
+    "findings": [
+      {
+        "section_path": "Bibliography",
+        "issue": "The acronym BGCI is not explained on first occurrence, and the organization name is misspelled as 'Botanic Gardens Conservation Internationa'.",
+        "severity": "high",
+        "suggestion": "Correct the organization name to 'Botanic Gardens Conservation International (BGCI)' and ensure the acronym is provided in parentheses on first mention."
+      }
+    ]
+  },
+  {
+    "rule_name": "Timeline and Argument Coherence",
+    "findings": [
+      {
+        "section_path": "Bibliography",
+        "issue": "Some bibliography entries have incomplete URLs, which could affect the reader's ability to access cited sources.",
+        "severity": "low",
+        "suggestion": "Provide complete URLs for all bibliography entries to ensure full accessibility."
+      }
+    ]
+  }
+]

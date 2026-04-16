@@ -7,22 +7,36 @@ from typing import List, Optional, Tuple
 
 from ..violation import Violation
 
-SectionItem = Tuple[str, str]
-
 
 class BaseChecker(ABC):
-    """Shared checker interface and violation-construction helper."""
+    """
+    Shared checker interface and violation-construction helper.
+
+    Purpose:
+        This base class provides the shared interface and helper methods used by all concrete checkers.
+    """
 
     def begin_sweep(self) -> None:
-        """Prepare any temporary state before reviewing a full parsed report."""
+        """
+        Prepare any temporary state before reviewing a full parsed report.
+
+        Args:
+            None.
+
+        Returns:
+            None: Value produced by this method.
+        """
 
     def end_sweep(self) -> None:
-        """Clear any temporary state after reviewing a full parsed report."""
+        """
+        Clear any temporary state after reviewing a full parsed report.
 
-    def check(self, section_item: SectionItem) -> List[Violation]:
-        """Run this checker against one parsed ``(section_name, text)`` pair."""
-        section_name, text = section_item
-        return self.check_text(section_name, text)
+        Args:
+            None.
+
+        Returns:
+            None: Value produced by this method.
+        """
 
     def strip_style_markers(
         self,
@@ -33,7 +47,8 @@ class BaseChecker(ABC):
         superscript: bool = False,
         subscript: bool = False,
     ) -> Tuple[str, List[int]]:
-        """Strip selected inline style tags and map cleaned indexes back.
+        """
+        Strip selected inline style tags and map cleaned indexes back.
 
         By default this matches the old per-checker helper behavior and strips:
         - italic tags: ``<i>``, ``</i>``, ``<em>``, ``</em>``
@@ -47,6 +62,13 @@ class BaseChecker(ABC):
         - the cleaned text with the selected markers removed
         - an ``index_map`` where each position in the cleaned text points back
           to the matching character index in the original text
+
+        Args:
+            text (str): Parsed section text supplied by the caller.
+            italics (bool): Input value used by this method.
+            bold (bool): Input value used by this method.
+            superscript (bool): Input value used by this method.
+            subscript (bool): Input value used by this method.
         """
         tag_names = []
         if italics:
@@ -86,7 +108,16 @@ class BaseChecker(ABC):
 
     @abstractmethod
     def check_text(self, section_name: str, text: str) -> List[Violation]:
-        """Apply this rule to one parsed section."""
+        """
+        Apply this rule to one parsed section.
+
+        Args:
+            section_name (str): Parsed section key supplied by the caller.
+            text (str): Parsed section text supplied by the caller.
+
+        Returns:
+            List[Violation]: Violations produced by this method.
+        """
 
     def create_violation(
         self,
@@ -96,7 +127,19 @@ class BaseChecker(ABC):
         message: str,
         suggested_fix: Optional[str] = None,
     ) -> Violation:
-        """Build a violation with exact match text plus nearby context snippet."""
+        """
+        Build a violation with exact match text plus nearby context snippet.
+
+        Args:
+            section_name (str): Parsed section key supplied by the caller.
+            text (str): Parsed section text supplied by the caller.
+            span (Tuple[int, int]): Span tuple supplied by the caller.
+            message (str): Input value used by this method.
+            suggested_fix (Optional[str]): Input value used by this method.
+
+        Returns:
+            Violation: Violations produced by this method.
+        """
         start, end = span
         matched_text = text[start:end]
         tokens = list(re.finditer(r"\S+", text))
@@ -136,11 +179,27 @@ class BaseChecker(ABC):
         )
 
     def normalize_section_name(self, section_name: str) -> str:
-        """Hide paragraph suffixes in violations while keeping table suffixes."""
+        """
+        Hide paragraph suffixes in violations while keeping table suffixes.
+
+        Args:
+            section_name (str): Parsed section key supplied by the caller.
+
+        Returns:
+            str: String value produced by this method.
+        """
         return re.sub(r"\s+\[paragraph\s+\d+\]$", "", section_name, flags=re.IGNORECASE)
 
     def get_rule_method_name(self) -> str:
-        """Return the checker method name that directly created the violation."""
+        """
+        Return the checker method name that directly created the violation.
+
+        Args:
+            None.
+
+        Returns:
+            str: String value produced by this method.
+        """
         caller_frame = inspect.currentframe()
         if (
             caller_frame is None

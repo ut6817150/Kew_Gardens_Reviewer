@@ -1,0 +1,52 @@
+[
+  {
+    "rule_name": "Threats Consistency",
+    "findings": [
+      {
+        "section_path": "Threats",
+        "issue": "The Threats Classification Scheme includes a statement \"The threats to this species are unknown.\" which directly contradicts the detailed threat description provided in the Threats narrative (mining activity, agricultural land conversion, dam, road construction/urban expansion, unregulated fire).",
+        "severity": "high",
+        "suggestion": "Remove the unknown statement and update the Threats Classification Scheme to reflect all threats described in the narrative, using appropriate IUCN-CMP threat codes and providing timing, scope, and severity assessments."
+      },
+      {
+        "section_path": "Threats > Threats Classification Scheme",
+        "issue": "The classification scheme omits several threats mentioned in the narrative: road construction/urban expansion (should be coded under 4.1 Roads & Railroads, 1.1 Housing & Urban Areas, 1.2 Commercial & Industrial Areas), unregulated fire (7.1 Fire & Fire Suppression), and the dam near a location (should be coded under 7.2.9 Small Dams or 7.2.10 Large Dams rather than abstraction of surface water). Additionally, the dam threat is incorrectly represented as water abstraction for agricultural use.",
+        "severity": "high",
+        "suggestion": "Add missing threat codes for each described threat, correct the dam threat code, and ensure each entry includes appropriate timing (e.g., Ongoing, Future), scope (Minority/Majority), and severity based on the narrative details."
+      }
+    ]
+  },
+  {
+    "rule_name": "Habitats Consistency",
+    "findings": [
+      {
+        "section_path": "Habitats and Ecology/IUCN Habitats Classification Scheme",
+        "issue": "The habitat classification scheme table includes an invalid entry '5.2. woodland (inland) -> woodland (inland) –' which does not correspond to any valid IUCN habitat code.",
+        "severity": "high",
+        "suggestion": "Remove or correct this entry to a valid habitat code that matches the described woodland habitat (e.g., 1.6 Forest – Subtropical/tropical moist lowland or an appropriate shrubland/forest category)."
+      },
+      {
+        "section_path": "Habitats and Ecology/IUCN Habitats Classification Scheme",
+        "issue": "Several habitats mentioned in the narrative are missing from the classification scheme, including forest/woodland habitats, grassland seepage zones, rocky areas, artificial water storage (dams), and bogs.",
+        "severity": "high",
+        "suggestion": "Add all relevant habitats from the narrative to the classification scheme with appropriate codes, suitability, seasonality, and major importance."
+      },
+      {
+        "section_path": "Habitats and Ecology/IUCN Habitats Classification Scheme",
+        "issue": "The Major Importance column is blank ('-') for all habitats, but when Suitability is marked as Suitable, a Yes/No value is required.",
+        "severity": "medium",
+        "suggestion": "Fill in the Major Importance column with either Yes or No for each habitat, indicating whether it is important for the survival of the species."
+      },
+      {
+        "section_path": "Habitats and Ecology",
+        "issue": "The habitats summary does not explicitly mention breeding ecology or other ecological requirements that may be relevant to extinction risk, though not strictly required.",
+        "severity": "low",
+        "suggestion": "Consider adding a brief note on breeding system or other ecological traits if known, to strengthen the habitat and ecology section."
+      }
+    ]
+  },
+  {
+    "rule_name": "rule_03_consistency_bibliography",
+    "findings": []
+  }
+]

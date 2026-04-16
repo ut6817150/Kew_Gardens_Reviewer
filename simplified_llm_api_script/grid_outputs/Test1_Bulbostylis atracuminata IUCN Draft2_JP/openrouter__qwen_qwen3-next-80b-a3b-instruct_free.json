@@ -1,0 +1,15 @@
+[
+  {
+    "rule_name": "rule_01_consistency_threats",
+    "findings": [],
+    "metrics": {
+      "duration_seconds": 20.12329084594967,
+      "input_tokens": 4784,
+      "output_tokens": 0,
+      "total_tokens": 4784,
+      "token_source": "estimated",
+      "status": "error",
+      "error": "OpenRouter request failed (429) for qwen/qwen3-next-80b-a3b-instruct:free: Provider returned error"
+    }
+  }
+]

@@ -8,19 +8,43 @@ from .base import BaseChecker
 
 
 class ReferenceChecker(BaseChecker):
-    """Checker for citation and reference formatting rules."""
+    """
+    Checker for citation and reference formatting rules.
+
+    Purpose:
+        This class groups related rules within the rules-based assessment workflow.
+    """
 
     def __init__(self):
+        """
+        Initialise the reference checker.
+
+        Args:
+            None.
+
+        Returns:
+            None.
+        """
         super().__init__()
 
     def check_text(self, section_name: str, text: str) -> List[Violation]:
-        """Check for reference formatting violations."""
+        """
+        Check for reference formatting violations.
+
+        Args:
+            section_name (str): Parsed section key supplied by the caller.
+            text (str): Parsed section text supplied by the caller.
+
+        Returns:
+            List[Violation]: Violations produced by this method.
+        """
         violations = []
         violations.extend(self.check_citation_comma(section_name, text))
         return violations
 
     def check_citation_comma(self, section_name: str, text: str) -> List[Violation]:
-        """Check for a comma immediately before the year in bracketed citations.
+        """
+        Check for a comma immediately before the year in bracketed citations.
 
         This rule now uses a broader citation shell rather than trying to infer
         surname shape. It looks for:
@@ -37,6 +61,13 @@ class ReferenceChecker(BaseChecker):
         `(Smith 2020)`
         `[GBIF.org, 2021]`
         `Smith, 2020` because it is not bracketed
+
+        Args:
+            section_name (str): Parsed section key supplied by the caller.
+            text (str): Parsed section text supplied by the caller.
+
+        Returns:
+            List[Violation]: Violations produced by this method.
         """
         violations = []
         cleaned_text, index_map = self.strip_style_markers(

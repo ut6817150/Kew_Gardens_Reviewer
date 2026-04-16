@@ -1,0 +1,7 @@
+column_1,CODE,column_3,column_4,ORIGIN,column_6,column_7,DEFINITION,column_9
+,1,,Native,,,The species is/was native to the area.,,
+2,,,Reintroduced,,,The species is/was reintroduced within its known historical range through either direct or indirect human activity.,,
+3,,,Introduced,,,The species is/was introduced outside of its known historical distribution range through either direct or indirect human activity. Does not include species subject to assisted colonisation. Includes species intentionally moved outside of its native range to perform a specific ecological function.,,
+4,,,Vagrant,,,"The species is/was recorded once or sporadically, but it is known not to be native to the area.",,
+5,,,Origin Uncertain,,,"The species’ provenance in an area is not known (it may be native, reintroduced or introduced)",,
+6,,,Assisted Colonisation,,,Species subject to intentional movement and release outside its native range to reduce the extinction risk of the taxon.,,

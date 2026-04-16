@@ -1,0 +1,182 @@
+[
+  {
+    "rule_name": "Threats Consistency",
+    "findings": [
+      {
+        "section_path": "Threats > Threats Classification Scheme",
+        "issue": "Missing threat classifications for road building and fire; unresolved scope, severity, and impact fields.",
+        "severity": "high",
+        "suggestion": "Add road building under section 4.1 and fire under 7.1.1. Fill Scope, Severity, and Impact with specific details."
+      }
+    ]
+  },
+  {
+    "rule_name": "Habitats Consistency",
+    "findings": [
+      {
+        "section_path": "Habitats and Ecology > IUCN Habitats Classification Scheme",
+        "issue": "The habitat code 1.99 is not part of the IUCN Habitats Classification Scheme Version 3.1. The correct code for montane habitats should be 1.9 (Forest – Subtropical/tropical moist montane). Additionally, the swamp forest habitat mentioned in the narrative is missing from the classification table and should be included as 1.8 (Forest – Subtropical/tropical swamp).",
+        "severity": "medium",
+        "suggestion": "Replace the incorrect habitat code 1.99 with 1.9 and add the missing swamp forest habitat under code 1.8 to ensure consistency with the narrative and the classification scheme."
+      },
+      {
+        "section_path": "Habitats and Ecology > IUCN Habitats Classification Scheme",
+        "issue": "The Season and Major Importance fields in the habitats table are marked with '-'. While not strictly required, it is recommended to provide this information for clarity and completeness.",
+        "severity": "low",
+        "suggestion": "Consider filling in the Season and Major Importance fields where applicable to improve the clarity and completeness of the habitat information."
+      }
+    ]
+  },
+  {
+    "rule_name": "Bibliography Consistency [Red List Standards Consistency (Section 5.1)]",
+    "findings": [
+      {
+        "section_path": "Bibliography",
+        "issue": "Henderson, A. (2020) is included in the bibliography but not cited in the text.",
+        "severity": "high",
+        "suggestion": "Remove Henderson (2020) from the bibliography if it is not cited in the text, or cite it appropriately in the text."
+      },
+      {
+        "section_path": "Geographic Range",
+        "issue": "Khalid and Brandon 2021 is cited in the text but not included in the bibliography.",
+        "severity": "high",
+        "suggestion": "Add Khalid and Brandon (2021) to the bibliography with full reference details."
+      },
+      {
+        "section_path": "Threats",
+        "issue": "Global Forest Watch 2022 is cited in the text but not included in the bibliography.",
+        "severity": "high",
+        "suggestion": "Add Global Forest Watch (2022) to the bibliography with full reference details."
+      },
+      {
+        "section_path": "Bibliography",
+        "issue": "The citation format for [Baker and Dransfield 2017] in the bibliography is inconsistent with other references.",
+        "severity": "low",
+        "suggestion": "Format the citation for [Baker and Dransfield 2017] consistently with other references in the bibliography."
+      }
+    ]
+  },
+  {
+    "rule_name": "Geographic Range / Occurrences Consistency",
+    "findings": [
+      {
+        "section_path": "Distribution > Geographic Range",
+        "issue": "Qualifiers for EOO, AOO, and number of locations are not explicitly stated.",
+        "severity": "medium",
+        "suggestion": "Add explicit qualifiers (e.g., 'estimated', 'inferred') to EOO, AOO, and locations in the Geographic Range section."
+      },
+      {
+        "section_path": "Occurrence > Countries of Occurrence",
+        "issue": "Invalid presence code 'Just Ok' used.",
+        "severity": "high",
+        "suggestion": "Replace 'Just Ok' with a valid presence code (e.g., 'Extant', 'Possibly Extant') and ensure all entries are correct."
+      },
+      {
+        "section_path": "Occurrence > Countries of Occurrence",
+        "issue": "Redundant entry for 'Indonesia -> Papua'",
+        "severity": "low",
+        "suggestion": "Remove redundant country entries and ensure consistency with the Geographic Range section."
+      }
+    ]
+  },
+  {
+    "rule_name": "Population Consistency",
+    "findings": [
+      {
+        "section_path": "Population",
+        "issue": "The population section does not provide a detailed summary of population information as required. It lacks qualitative descriptors for population size or trends, does not explain why detailed information is unavailable, and does not include a qualifier for the population trend (e.g., observed, estimated, inferred, suspected).",
+        "severity": "high",
+        "suggestion": "Expand the population section to include (1) qualitative descriptors of population size (e.g., rare, common, abundant), (2) a detailed explanation of why population information is unavailable, and (3) a specific qualifier for the population trend (e.g., observed, estimated, inferred, suspected). Additionally, provide justification for the suspected population decline and include any available information on population structure or subpopulations."
+      }
+    ]
+  },
+  {
+    "rule_name": "Conservation Consistency",
+    "findings": [
+      {
+        "section_path": "Conservation > Important Conservation Actions Needed",
+        "issue": "The conservation actions needed, such as 1.1 (site/area protection) and 3.4.2 (genome resource bank), lack justification and connection to the identified threats in the Threats section. They are not tied back to the specific threats like urban expansion, palm oil concessions, and road building.",
+        "severity": "high",
+        "suggestion": "Provide explicit justification for the selected conservation actions, linking them directly to the identified threats. Explain how these actions will address habitat loss, urban expansion, and other pressures."
+      },
+      {
+        "section_path": "Conservation > Conservation Actions In- Place",
+        "issue": "The table indicates uncertainty about the species's occurrence in protected areas ('Unknown'), which could be more clearly explained. The classification scheme is used but without context on how it aligns with the identified threats and habitat protection needs.",
+        "severity": "medium",
+        "suggestion": "Clarify whether the species occurs in protected areas, especially considering the Waigeo Nature Reserve. Explain how the classification scheme choices align with addressing habitat loss and the specific threats identified in the assessment."
+      },
+      {
+        "section_path": "Conservation > Important Conservation Actions Needed",
+        "issue": "The 'Important Conservation Actions Needed' table lacks any note or justification for the selected actions. This makes it unclear why these specific actions were chosen or how they address the threats.",
+        "severity": "high",
+        "suggestion": "Add notes or justifications explaining why these conservation actions were selected, ensuring that they are directly tied to the specific threats identified (e.g., urban expansion, palm oil concessions)."
+      },
+      {
+        "section_path": "Conservation > Conservation Actions In- Place",
+        "issue": "The 'Occur in at least one PA' is marked as 'Unknown', and the note suggests the species 'may occur inside the boundary' of the Waigeo Nature Reserve but does not confirm whether the species is actually protected in any area.",
+        "severity": "medium",
+        "suggestion": "Update the 'Conservation Actions In-Place' section to clearly state whether the species is known to occur within any protected areas. If uncertain, suggest steps to determine this more clearly."
+      }
+    ]
+  },
+  {
+    "rule_name": "Category Justification",
+    "findings": [
+      {
+        "section_path": "Red List Assessment/Assessment Rationale",
+        "issue": "The assessment uses Criterion A1 for Vulnerable, but there is no documentation of generation length or the time period used for population decline, nor is there an explanation of the causes of decline being understood and reversible.",
+        "severity": "high",
+        "suggestion": "Either provide the necessary details for Criterion A1 (generation length, time period, causes of decline) or remove Criterion A1 if it does not apply."
+      }
+    ]
+  },
+  {
+    "rule_name": "References Formatting",
+    "findings": [
+      {
+        "section_path": "Threats",
+        "issue": "Missing reference in bibliography for Global Forest Watch 2022.",
+        "severity": "high",
+        "suggestion": "Add the full reference for Global Forest Watch 2022 in the bibliography section."
+      },
+      {
+        "section_path": "Conservation",
+        "issue": "BGCI 2022 reference in bibliography is incomplete (missing title and full URL).",
+        "severity": "high",
+        "suggestion": "Complete the BGCI 2022 reference with the full title and URL."
+      }
+    ]
+  },
+  {
+    "rule_name": "Formatting of Scientific/Common Name",
+    "findings": [
+      {
+        "section_path": "Threats",
+        "issue": "The scientific name *Calamus heatubunii* is not italicized and placed within brackets after the common name 'Sorong rattan' upon first mention. The correct format should be 'Sorong rattan (*Calamus heatubunii*)'.",
+        "severity": "medium",
+        "suggestion": "Revise the text to include the scientific name in italics within brackets after the first use of the common name."
+      }
+    ]
+  },
+  {
+    "rule_name": "rule_10_minor_check_acronyms",
+    "findings": []
+  },
+  {
+    "rule_name": "Check for Timeline and Argument Coherence",
+    "findings": [
+      {
+        "section_path": "Conservation > Conservation",
+        "issue": "The argument in the 'Conservation' section contains an inconsistency. It states that the species is not found in any protected areas but later suggests it may occur in a protected area.",
+        "severity": "medium",
+        "suggestion": "Revise the text to clarify whether the species is found in protected areas or not."
+      },
+      {
+        "section_path": "Red List Assessment > Assessment Rationale",
+        "issue": "The narrative lists the species as 'Vulnerable' but is actually assessed as 'Endangered'.",
+        "severity": "high",
+        "suggestion": "Correct the listing to reflect the accurate Red List category of 'Endangered'."
+      }
+    ]
+  }
+]

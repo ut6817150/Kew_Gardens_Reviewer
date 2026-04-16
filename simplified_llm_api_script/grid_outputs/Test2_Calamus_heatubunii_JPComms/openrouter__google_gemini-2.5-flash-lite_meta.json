@@ -1,0 +1,133 @@
+{
+  "provider": "openrouter",
+  "model": "google/gemini-2.5-flash-lite",
+  "document": "Test2_Calamus_heatubunii_JPComms",
+  "started_at": "2026-04-07T10:39:59.034429+00:00",
+  "error": "Unterminated string starting at: line 18 column 16 (char 1465)",
+  "completed_at": "2026-04-07T10:40:10.104079+00:00",
+  "status": "error",
+  "rules_evaluated": 11,
+  "rule_metrics": [
+    {
+      "rule_name": "Threats Consistency",
+      "duration_seconds": 4.576415246992838,
+      "input_tokens": 4178,
+      "output_tokens": 611,
+      "total_tokens": 4789,
+      "token_source": "provider",
+      "status": "success",
+      "error": null
+    },
+    {
+      "rule_name": "Habitats Consistency",
+      "duration_seconds": 4.228617975022644,
+      "input_tokens": 4333,
+      "output_tokens": 579,
+      "total_tokens": 4912,
+      "token_source": "provider",
+      "status": "success",
+      "error": null
+    },
+    {
+      "rule_name": "Bibliography Consistency [Red List Standards Consistency (Section 5.1)]",
+      "duration_seconds": 8.25734657200519,
+      "input_tokens": 7528,
+      "output_tokens": 1232,
+      "total_tokens": 8760,
+      "token_source": "provider",
+      "status": "success",
+      "error": null
+    },
+    {
+      "rule_name": "Geographic Range / Occurrences Consistency",
+      "duration_seconds": 2.3900565520161763,
+      "input_tokens": 4564,
+      "output_tokens": 375,
+      "total_tokens": 4939,
+      "token_source": "provider",
+      "status": "success",
+      "error": null
+    },
+    {
+      "rule_name": "Population Consistency",
+      "duration_seconds": 3.0855816960101947,
+      "input_tokens": 2226,
+      "output_tokens": 450,
+      "total_tokens": 2676,
+      "token_source": "provider",
+      "status": "success",
+      "error": null
+    },
+    {
+      "rule_name": "rule_06_consistency_conservation",
+      "duration_seconds": 3.179178963007871,
+      "input_tokens": 4169,
+      "output_tokens": 393,
+      "total_tokens": 4562,
+      "token_source": "provider",
+      "status": "error",
+      "error": "Unterminated string starting at: line 18 column 16 (char 1465)"
+    },
+    {
+      "rule_name": "rule_07_justification_category",
+      "duration_seconds": 2.488279305980541,
+      "input_tokens": 11644,
+      "output_tokens": 212,
+      "total_tokens": 11856,
+      "token_source": "provider",
+      "status": "error",
+      "error": "Unterminated string starting at: line 12 column 7 (char 769)"
+    },
+    {
+      "rule_name": "rule_08_formatting_references",
+      "duration_seconds": 10.837313444004394,
+      "input_tokens": 10045,
+      "output_tokens": 1012,
+      "total_tokens": 11057,
+      "token_source": "provider",
+      "status": "error",
+      "error": "1 validation error for RuleResult\nfindings.8.suggestion\n  Field required [type=missing, input_value={'section_path': 'Conserv...tation is 'BGCI 2022'.\"}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/missing"
+    },
+    {
+      "rule_name": "Formatting of Scientific/Common Name",
+      "duration_seconds": 4.069522210978903,
+      "input_tokens": 8574,
+      "output_tokens": 819,
+      "total_tokens": 9393,
+      "token_source": "provider",
+      "status": "success",
+      "error": null
+    },
+    {
+      "rule_name": "Check for Acronym Explanation",
+      "duration_seconds": 3.4241187460138462,
+      "input_tokens": 7879,
+      "output_tokens": 880,
+      "total_tokens": 8759,
+      "token_source": "provider",
+      "status": "success",
+      "error": null
+    },
+    {
+      "rule_name": "Check for Timeline and Argument Coherence",
+      "duration_seconds": 2.9895022680284455,
+      "input_tokens": 7534,
+      "output_tokens": 600,
+      "total_tokens": 8134,
+      "token_source": "provider",
+      "status": "success",
+      "error": null
+    }
+  ],
+  "overall": {
+    "rules_attempted": 11,
+    "rules_succeeded": 8,
+    "rules_failed": 3,
+    "run_duration_seconds": 11.07,
+    "total_findings": 37,
+    "total_input_tokens": 72674,
+    "total_output_tokens": 7163,
+    "total_tokens": 79837,
+    "token_estimation_used": false
+  }
+}

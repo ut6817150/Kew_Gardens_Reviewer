@@ -1,0 +1,133 @@
+{
+  "provider": "openrouter",
+  "model": "google/gemma-4-31b-it",
+  "document": "Test2_Calamus_heatubunii_JPComms",
+  "started_at": "2026-04-07T10:33:03.806818+00:00",
+  "error": null,
+  "completed_at": "2026-04-07T10:34:52.988478+00:00",
+  "status": "success",
+  "rules_evaluated": 11,
+  "rule_metrics": [
+    {
+      "rule_name": "Threats Consistency",
+      "duration_seconds": 24.673529187974054,
+      "input_tokens": 4230,
+      "output_tokens": 332,
+      "total_tokens": 4562,
+      "token_source": "provider",
+      "status": "success",
+      "error": null
+    },
+    {
+      "rule_name": "Habitats Consistency",
+      "duration_seconds": 108.35717799700797,
+      "input_tokens": 4385,
+      "output_tokens": 331,
+      "total_tokens": 4716,
+      "token_source": "provider",
+      "status": "success",
+      "error": null
+    },
+    {
+      "rule_name": "Bibliography Consistency [Red List Standards Consistency (Section 5.1)]",
+      "duration_seconds": 64.46815056703053,
+      "input_tokens": 7580,
+      "output_tokens": 566,
+      "total_tokens": 8146,
+      "token_source": "provider",
+      "status": "success",
+      "error": null
+    },
+    {
+      "rule_name": "Geographic Range / Occurrences Consistency",
+      "duration_seconds": 14.300657578976825,
+      "input_tokens": 4616,
+      "output_tokens": 237,
+      "total_tokens": 4853,
+      "token_source": "provider",
+      "status": "success",
+      "error": null
+    },
+    {
+      "rule_name": "Population Consistency",
+      "duration_seconds": 7.792519686976448,
+      "input_tokens": 2278,
+      "output_tokens": 157,
+      "total_tokens": 2435,
+      "token_source": "provider",
+      "status": "success",
+      "error": null
+    },
+    {
+      "rule_name": "Conservation Consistency",
+      "duration_seconds": 18.577268323046155,
+      "input_tokens": 4221,
+      "output_tokens": 377,
+      "total_tokens": 4598,
+      "token_source": "provider",
+      "status": "success",
+      "error": null
+    },
+    {
+      "rule_name": "Category Justification",
+      "duration_seconds": 10.845635698002297,
+      "input_tokens": 11696,
+      "output_tokens": 198,
+      "total_tokens": 11894,
+      "token_source": "provider",
+      "status": "success",
+      "error": null
+    },
+    {
+      "rule_name": "References Formatting",
+      "duration_seconds": 21.184401611972135,
+      "input_tokens": 10103,
+      "output_tokens": 570,
+      "total_tokens": 10673,
+      "token_source": "provider",
+      "status": "success",
+      "error": null
+    },
+    {
+      "rule_name": "Formatting of Scientific/Common Name",
+      "duration_seconds": 25.013578774000052,
+      "input_tokens": 8626,
+      "output_tokens": 437,
+      "total_tokens": 9063,
+      "token_source": "provider",
+      "status": "success",
+      "error": null
+    },
+    {
+      "rule_name": "Check for Acronym Explanation",
+      "duration_seconds": 72.59091807605,
+      "input_tokens": 7931,
+      "output_tokens": 265,
+      "total_tokens": 8196,
+      "token_source": "provider",
+      "status": "success",
+      "error": null
+    },
+    {
+      "rule_name": "Check for Timeline and Argument Coherence",
+      "duration_seconds": 35.431922452000435,
+      "input_tokens": 7586,
+      "output_tokens": 549,
+      "total_tokens": 8135,
+      "token_source": "provider",
+      "status": "success",
+      "error": null
+    }
+  ],
+  "overall": {
+    "rules_attempted": 11,
+    "rules_succeeded": 11,
+    "rules_failed": 0,
+    "run_duration_seconds": 109.182,
+    "total_findings": 36,
+    "total_input_tokens": 73252,
+    "total_output_tokens": 4019,
+    "total_tokens": 77271,
+    "token_estimation_used": false
+  }
+}

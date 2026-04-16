@@ -1,0 +1,1081 @@
+{
+  "title": "Test3_Madhuca takensis Aubrév._JP",
+  "level": 0,
+  "path": [],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "Draft",
+      "text_rich": "Draft"
+    },
+    {
+      "type": "paragraph",
+      "text": "Madhuca takensis - Aubrév.",
+      "text_rich": "Madhuca takensis - Aubrév."
+    },
+    {
+      "type": "paragraph",
+      "text": "PLANTAE - TRACHEOPHYTA - MAGNOLIOPSIDA - ERICALES - SAPOTACEAE - Madhuca - takensis",
+      "text_rich": "PLANTAE - TRACHEOPHYTA - MAGNOLIOPSIDA - ERICALES - SAPOTACEAE - Madhuca - takensis"
+    },
+    {
+      "type": "paragraph",
+      "text": "Common Names: No Common Names\nSynonyms: No Synonyms",
+      "text_rich": "Common Names: No Common Names\nSynonyms: No Synonyms"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Red List Status",
+          "Red List Status"
+        ],
+        [
+          "EN - Endangered, B2ab(iii); D (IUCN version 3.1)",
+          "EN - Endangered, B2ab(iii); D (IUCN version 3.1)"
+        ],
+        [
+          "",
+          ""
+        ],
+        [
+          "Possibly Extinct:",
+          "No"
+        ],
+        [
+          "Possibly Extinct in the Wild:",
+          "No"
+        ],
+        [
+          "Date Last Recorded (in the wild):",
+          ""
+        ]
+      ],
+      "rows_rich": [
+        [
+          "Red List Status",
+          "Red List Status"
+        ],
+        [
+          "EN - Endangered, B2ab(iii); D (IUCN version 3.1)",
+          "EN - Endangered, B2ab(iii); D (IUCN version 3.1)"
+        ],
+        [
+          "",
+          ""
+        ],
+        [
+          "Possibly Extinct:",
+          "No"
+        ],
+        [
+          "Possibly Extinct in the Wild:",
+          "No"
+        ],
+        [
+          "Date Last Recorded (in the wild):",
+          ""
+        ]
+      ]
+    },
+    {
+      "type": "style",
+      "data": {
+        "bold": [
+          "Draft",
+          "Madhuca takensis",
+          "- Aubrév.",
+          "Common Names:",
+          "Synonyms:"
+        ],
+        "italic": [
+          "Madhuca takensis"
+        ]
+      }
+    }
+  ],
+  "children": [
+    {
+      "title": "Red List Assessment",
+      "level": 1,
+      "path": [
+        "Red List Assessment"
+      ],
+      "blocks": [],
+      "children": [
+        {
+          "title": "Assessment Information",
+          "level": 2,
+          "path": [
+            "Red List Assessment",
+            "Assessment Information"
+          ],
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Date of Assessment: 2022-05-16",
+              "text_rich": "Date of Assessment: 2022-05-16"
+            },
+            {
+              "type": "paragraph",
+              "text": "Assessor(s): Pakkad, G.",
+              "text_rich": "Assessor(s): Pakkad, G."
+            },
+            {
+              "type": "paragraph",
+              "text": "Regions: Global",
+              "text_rich": "Regions: Global"
+            },
+            {
+              "type": "style",
+              "data": {
+                "bold": [
+                  "Date of Assessment:",
+                  "Assessor(s):",
+                  "Regions:"
+                ],
+                "italic": []
+              }
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Assessment Rationale",
+          "level": 2,
+          "path": [
+            "Red List Assessment",
+            "Assessment Rationale"
+          ],
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "This species, endemic to Tak province in Thailand, is only known from Mae Tuen Wildlife Sanctuary. Based on georeferenced herbarium specimens, the area of occupancy is estimated as 4 km2, falling within the threshold values for the Critically Endangered category under criterion B2. The major threat to the species is urbanization across its range, which is inferred to be contributing to a continuing decline in habitat area, extent, and quality. The species is considered to be restricted to one location. There is limited population information available. The only known subpopulation comprises eight mature individuals; the population trend is unknown. It is not clear whether the population is severely fragmented or subject to extreme fluctuations. Taking a precautionary approach, the species is assessed as Endangered B2ab(iii); D owing to its restricted AOO, limited number of locations, continuing habitat decline, and highly restricted population size. As the species is poorly studied, and suspected to be under-collected, further research into its distribution and population status will be necessary to validate this assessment of extinction risk.",
+              "text_rich": "This species, endemic to Tak province in Thailand, is only known from Mae Tuen Wildlife Sanctuary. Based on georeferenced herbarium specimens, the area of occupancy is estimated as 4 km2, falling within the threshold values for the Critically Endangered category under criterion B2. The major threat to the species is urbanization across its range, which is inferred to be contributing to a continuing decline in habitat area, extent, and quality. The species is considered to be restricted to one location. There is limited population information available. The only known subpopulation comprises eight mature individuals; the population trend is unknown. It is not clear whether the population is severely fragmented or subject to extreme fluctuations. Taking a precautionary approach, the species is assessed as Endangered B2ab(iii); D owing to its restricted AOO, limited number of locations, continuing habitat decline, and highly restricted population size. As the species is poorly studied, and suspected to be under-collected, further research into its distribution and population status will be necessary to validate this assessment of extinction risk."
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "Distribution",
+      "level": 1,
+      "path": [
+        "Distribution"
+      ],
+      "blocks": [],
+      "children": [
+        {
+          "title": "Geographic Range",
+          "level": 2,
+          "path": [
+            "Distribution",
+            "Geographic Range"
+          ],
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The species is endemic to Thailand. It has only been documented from Mae Tuen Wildlife Sanctuary in Tak province, with an additional unconfirmed report from adjacent Myanmar (Smitinand 2018). It occurs in dry deciduous forest between 200-800 m asl. Survey work is recommended to identify whether any further subpopulations occur in Thailand.",
+              "text_rich": "The species is endemic to Thailand. It has only been documented from Mae Tuen Wildlife Sanctuary in Tak province, with an additional unconfirmed report from adjacent Myanmar (Smitinand 2018). It occurs in dry deciduous forest between 200-800 m asl. Survey work is recommended to identify whether any further subpopulations occur in Thailand."
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Area of Occupancy (AOO)",
+          "level": 2,
+          "path": [
+            "Distribution",
+            "Area of Occupancy (AOO)"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Estimated area of occupancy (AOO) - in km2",
+                  "Justification"
+                ],
+                [
+                  "4",
+                  "Estimated from a 2 x 2 km grid cell for herbarium specimen point data mapped using GeoCAT (Bachman et al. 2011, GBIF.org 2022)."
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Estimated area of occupancy (AOO) - in km2",
+                  "Justification"
+                ],
+                [
+                  "4",
+                  "Estimated from a 2 x 2 km grid cell for herbarium specimen point data mapped using GeoCAT (Bachman et al. 2011, GBIF.org 2022)."
+                ]
+              ]
+            },
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Extreme fluctuations in area of occupancy (AOO)",
+                  "Justification"
+                ],
+                [
+                  "Unknown",
+                  "-"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Extreme fluctuations in area of occupancy (AOO)",
+                  "Justification"
+                ],
+                [
+                  "Unknown",
+                  "-"
+                ]
+              ]
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Locations Information",
+          "level": 2,
+          "path": [
+            "Distribution",
+            "Locations Information"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Number of Locations",
+                  "Justification"
+                ],
+                [
+                  "1",
+                  "It is only known from Mae Tuen Wildlife sanctuary, threatened by shifting agricultural practices."
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Number of Locations",
+                  "Justification"
+                ],
+                [
+                  "1",
+                  "It is only known from Mae Tuen Wildlife sanctuary, threatened by shifting agricultural practices."
+                ]
+              ]
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Very restricted AOO or number of locations (triggers VU D2)",
+          "level": 2,
+          "path": [
+            "Distribution",
+            "Very restricted AOO or number of locations (triggers VU D2)"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Very restricted in area of occupancy (AOO) and/or # of locations",
+                  "Justification"
+                ],
+                [
+                  "Yes",
+                  "The species has been recorded at 400 and 800 m asl in dry Dipterocarp forest in Mae Tuen Wildlife Sanctuary."
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Very restricted in area of occupancy (AOO) and/or # of locations",
+                  "Justification"
+                ],
+                [
+                  "Yes",
+                  "The species has been recorded at 400 and 800 m asl in dry Dipterocarp forest in Mae Tuen Wildlife Sanctuary."
+                ]
+              ]
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Elevation / Depth / Depth Zones",
+          "level": 2,
+          "path": [
+            "Distribution",
+            "Elevation / Depth / Depth Zones"
+          ],
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Elevation Lower Limit (in metres above sea level): 200",
+              "text_rich": "Elevation Lower Limit (in metres above sea level): 200"
+            },
+            {
+              "type": "paragraph",
+              "text": "Elevation Upper Limit (in metres above sea level): 800",
+              "text_rich": "Elevation Upper Limit (in metres above sea level): 800"
+            },
+            {
+              "type": "style",
+              "data": {
+                "bold": [
+                  "Elevation Lower Limit (in metres above sea level):",
+                  "Elevation Upper Limit (in metres above sea level):"
+                ],
+                "italic": []
+              }
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Map Status",
+          "level": 2,
+          "path": [
+            "Distribution",
+            "Map Status"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Map Status",
+                  "Use map from previous assessment",
+                  "How the map was created, including data sources/methods used:",
+                  "Please state reason for map not available:",
+                  "Data Sensitive?",
+                  "Justification",
+                  "Geographic range this applies to:",
+                  "Date restriction imposed:"
+                ],
+                [
+                  "Done",
+                  "-",
+                  "Point data generated from herbarium specimen records and species observations (Sawangchote 2009, GBIF.org 2021).",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Map Status",
+                  "Use map from previous assessment",
+                  "How the map was created, including data sources/methods used:",
+                  "Please state reason for map not available:",
+                  "Data Sensitive?",
+                  "Justification",
+                  "Geographic range this applies to:",
+                  "Date restriction imposed:"
+                ],
+                [
+                  "Done",
+                  "-",
+                  "Point data generated from herbarium specimen records and species observations (Sawangchote 2009, GBIF.org 2021).",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-"
+                ]
+              ]
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Biogeographic Realms",
+          "level": 2,
+          "path": [
+            "Distribution",
+            "Biogeographic Realms"
+          ],
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Biogeographic Realm: Indomalayan",
+              "text_rich": "Biogeographic Realm: Indomalayan"
+            },
+            {
+              "type": "style",
+              "data": {
+                "bold": [
+                  "Biogeographic Realm:"
+                ],
+                "italic": []
+              }
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "Occurrence",
+      "level": 1,
+      "path": [
+        "Occurrence"
+      ],
+      "blocks": [],
+      "children": [
+        {
+          "title": "Countries of Occurrence",
+          "level": 2,
+          "path": [
+            "Occurrence",
+            "Countries of Occurrence"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Country",
+                  "Presence",
+                  "Origin",
+                  "Formerly Bred",
+                  "Seasonality"
+                ],
+                [
+                  "Thailand",
+                  "Possibly Extinct",
+                  "Native",
+                  "Unknown",
+                  "Resident"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Country",
+                  "Presence",
+                  "Origin",
+                  "Formerly Bred",
+                  "Seasonality"
+                ],
+                [
+                  "Thailand",
+                  "Possibly Extinct",
+                  "Native",
+                  "Unknown",
+                  "Resident"
+                ]
+              ]
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "Population",
+      "level": 1,
+      "path": [
+        "Population"
+      ],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "This species is known from only one subpopulation comprising eight mature individual trees in Mae Tuen Wildlife Sanctuary. The population is suspected to be decreasing, although further research into population status and trends is required to confirm whether a decline is apparent and ongoing.",
+          "text_rich": "This species is known from only one subpopulation comprising eight mature individual trees in Mae Tuen Wildlife Sanctuary. The population is suspected to be decreasing, although further research into population status and trends is required to confirm whether a decline is apparent and ongoing."
+        }
+      ],
+      "children": [
+        {
+          "title": "Population Information",
+          "level": 2,
+          "path": [
+            "Population",
+            "Population Information"
+          ],
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Current Population Trend: Unknown",
+              "text_rich": "Current Population Trend: Unknown"
+            },
+            {
+              "type": "style",
+              "data": {
+                "bold": [
+                  "Current Population Trend:"
+                ],
+                "italic": []
+              }
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "Habitats and Ecology",
+      "level": 1,
+      "path": [
+        "Habitats and Ecology"
+      ],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "This species occurs in dry, deciduous forest in Mae Tuen Wildlife Sanctuary, and it has also been reported from limestone karst outcrops at low elevation [Chantaranothai 1999].",
+          "text_rich": "This species occurs in dry, deciduous forest in Mae Tuen Wildlife Sanctuary, and it has also been reported from limestone karst outcrops at low elevation [Chantaranothai 1999]."
+        }
+      ],
+      "children": [
+        {
+          "title": "IUCN Habitats Classification Scheme",
+          "level": 2,
+          "path": [
+            "Habitats and Ecology",
+            "IUCN Habitats Classification Scheme"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Habitat",
+                  "Season",
+                  "Suitability",
+                  "Major Importance?"
+                ],
+                [
+                  "1.5. Forest -> Forest – Subtropical/Tropical Dry",
+                  "-",
+                  "Suitable",
+                  "-"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Habitat",
+                  "Season",
+                  "Suitability",
+                  "Major Importance?"
+                ],
+                [
+                  "1.5. Forest -> Forest – Subtropical/Tropical Dry",
+                  "-",
+                  "Suitable",
+                  "-"
+                ]
+              ]
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Continuing Decline in Habitat",
+          "level": 2,
+          "path": [
+            "Habitats and Ecology",
+            "Continuing Decline in Habitat"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Continuing decline in area, extent and/or quality of habitat?",
+                  "Qualifier",
+                  "Justification"
+                ],
+                [
+                  "Yes",
+                  "Inferred",
+                  "The major threat to the species is urbanisation, which is inferred to be contributing to a continuing decline in quality and habitat area. From 2002 to 2021, Tak lost 5.48kha of humid primary forest, making up 7.4% of its total tree cover loss in the same time period. The total area of humid primary forest in Tak decreased by 1.4% in this time period (Global Forest Watch 2022)."
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Continuing decline in area, extent and/or quality of habitat?",
+                  "Qualifier",
+                  "Justification"
+                ],
+                [
+                  "Yes",
+                  "Inferred",
+                  "The major threat to the species is urbanisation, which is inferred to be contributing to a continuing decline in quality and habitat area. From 2002 to 2021, Tak lost 5.48kha of humid primary forest, making up 7.4% of its total tree cover loss in the same time period. The total area of humid primary forest in Tak decreased by 1.4% in this time period (Global Forest Watch 2022)."
+                ]
+              ]
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Systems",
+          "level": 2,
+          "path": [
+            "Habitats and Ecology",
+            "Systems"
+          ],
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "System: Terrestrial",
+              "text_rich": "System: Terrestrial"
+            },
+            {
+              "type": "style",
+              "data": {
+                "bold": [
+                  "System:"
+                ],
+                "italic": []
+              }
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Plant Specific",
+          "level": 2,
+          "path": [
+            "Habitats and Ecology",
+            "Plant Specific"
+          ],
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Wild relative of a crop? No",
+              "text_rich": "Wild relative of a crop? No"
+            },
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Plant Growth Forms"
+                ],
+                [
+                  "Tree - large"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Plant Growth Forms"
+                ],
+                [
+                  "Tree - large"
+                ]
+              ]
+            },
+            {
+              "type": "style",
+              "data": {
+                "bold": [
+                  "Wild relative of a crop?"
+                ],
+                "italic": []
+              }
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "Use and Trade",
+      "level": 1,
+      "path": [
+        "Use and Trade"
+      ],
+      "blocks": [],
+      "children": [
+        {
+          "title": "General Use and Trade Information",
+          "level": 2,
+          "path": [
+            "Use and Trade",
+            "General Use and Trade Information"
+          ],
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "No use/trade information for this species: true",
+              "text_rich": "No use/trade information for this species: true"
+            },
+            {
+              "type": "paragraph",
+              "text": "No information is available for this species.",
+              "text_rich": "No information is available for this species."
+            },
+            {
+              "type": "style",
+              "data": {
+                "bold": [
+                  "No use/trade information for this species:"
+                ],
+                "italic": []
+              }
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "Threats",
+      "level": 1,
+      "path": [
+        "Threats"
+      ],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The major threat to the species is urbanization, which is inferred to be contributing to a continuing decline in quality and habitat area. This species is only known from a small subpopulation in Mae Tuen Wildlife Sanctuary. From 2002 to 2021, Tak province lost 5.48 kha of humid primary forest, making up 7.4% of its total tree cover loss in the same time period. The total area of humid primary forest in Tak decreased by 1.4% in this time period (Global Forest Watch 2022). Road construction associated with tourism development may also affect some sites, and unregulated fire may represent an additional serious threat. These pressures are also likely contributing to a decline in mature individuals.",
+          "text_rich": "The major threat to the species is urbanization, which is inferred to be contributing to a continuing decline in quality and habitat area. This species is only known from a small subpopulation in Mae Tuen Wildlife Sanctuary. From 2002 to 2021, Tak province lost 5.48 kha of humid primary forest, making up 7.4% of its total tree cover loss in the same time period. The total area of humid primary forest in Tak decreased by 1.4% in this time period (Global Forest Watch 2022). Road construction associated with tourism development may also affect some sites, and unregulated fire may represent an additional serious threat. These pressures are also likely contributing to a decline in mature individuals."
+        }
+      ],
+      "children": [
+        {
+          "title": "Threats Classification Scheme",
+          "level": 2,
+          "path": [
+            "Threats",
+            "Threats Classification Scheme"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Threat",
+                  "Timing",
+                  "Scope",
+                  "Severity",
+                  "Impact Score"
+                ],
+                [
+                  "1.1. Residential & commercial development -> Housing & urban areas",
+                  "Ongoing",
+                  "-",
+                  "-",
+                  "Low Impact: 3"
+                ],
+                [
+                  "2.1.1. Agriculture & aquaculture -> Annual & perennial non-timber crops -> Shifting agriculture",
+                  "Ongoing",
+                  "-",
+                  "-",
+                  "Low Impact: 3"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Threat",
+                  "Timing",
+                  "Scope",
+                  "Severity",
+                  "Impact Score"
+                ],
+                [
+                  "1.1. Residential & commercial development -> Housing & urban areas",
+                  "Ongoing",
+                  "-",
+                  "-",
+                  "Low Impact: 3"
+                ],
+                [
+                  "2.1.1. Agriculture & aquaculture -> Annual & perennial non-timber crops -> Shifting agriculture",
+                  "Ongoing",
+                  "-",
+                  "-",
+                  "Low Impact: 3"
+                ]
+              ]
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "Conservation",
+      "level": 1,
+      "path": [
+        "Conservation"
+      ],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The species has been promoted to be a provincial tree (Tak province) and is well protected in Mae Tuen Wildlife Sanctuary. The Tak mahua is not known to be represented in ex situ conservation in botanic gardens or gene banks (BGCI 2021, Genesys 2021). The species has been listed as Vulnerable in a book of threatened Thai plants (Voradol et al. 2017). Several records fall close to KBAs, but this has not yet been reflected in the RLI or within local PAs. Given its apparent tolerance of disturbance, the species may remain secure across much of its range.",
+          "text_rich": "The species has been promoted to be a provincial tree (Tak province) and is well protected in Mae Tuen Wildlife Sanctuary. The Tak mahua is not known to be represented in ex situ conservation in botanic gardens or gene banks (BGCI 2021, Genesys 2021). The species has been listed as Vulnerable in a book of threatened Thai plants (Voradol et al. 2017). Several records fall close to KBAs, but this has not yet been reflected in the RLI or within local PAs. Given its apparent tolerance of disturbance, the species may remain secure across much of its range."
+        }
+      ],
+      "children": [
+        {
+          "title": "Conservation Actions In- Place",
+          "level": 2,
+          "path": [
+            "Conservation",
+            "Conservation Actions In- Place"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Action Recovery Plan",
+                  "Note"
+                ],
+                [
+                  "Yes",
+                  "The species has been promoted to be a provincial tree (Tak province) and is well protected in Wildlife Sanctuary area."
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Action Recovery Plan",
+                  "Note"
+                ],
+                [
+                  "Yes",
+                  "The species has been promoted to be a provincial tree (Tak province) and is well protected in Wildlife Sanctuary area."
+                ]
+              ]
+            },
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Occur in at least one PA",
+                  "Note"
+                ],
+                [
+                  "Yes",
+                  "The species has been recorded from protected areas (Mae Tuen Wildlife Sanctuary)."
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Occur in at least one PA",
+                  "Note"
+                ],
+                [
+                  "Yes",
+                  "The species has been recorded from protected areas (Mae Tuen Wildlife Sanctuary)."
+                ]
+              ]
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Important Conservation Actions Needed",
+          "level": 2,
+          "path": [
+            "Conservation",
+            "Important Conservation Actions Needed"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Conservation Actions",
+                  "Note"
+                ],
+                [
+                  "1.1. Land/water protection -> Site/area protection",
+                  "-"
+                ],
+                [
+                  "2.3. Invasive & other problematic species, genes & diseases -> Invasive non-native/alien species/diseases -> Invasive non-native/alien species",
+                  "-"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Conservation Actions",
+                  "Note"
+                ],
+                [
+                  "1.1. Land/water protection -> Site/area protection",
+                  "-"
+                ],
+                [
+                  "2.3. Invasive & other problematic species, genes & diseases -> Invasive non-native/alien species/diseases -> Invasive non-native/alien species",
+                  "-"
+                ]
+              ]
+            }
+          ],
+          "children": []
+        },
+        {
+          "title": "Research Needed",
+          "level": 2,
+          "path": [
+            "Conservation",
+            "Research Needed"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Research",
+                  "Note"
+                ],
+                [
+                  "1.2. Research -> Population size, distribution & trends",
+                  "-"
+                ],
+                [
+                  "1.3. Research -> Life history & ecology",
+                  "-"
+                ],
+                [
+                  "1.5. Research -> Threats",
+                  "-"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Research",
+                  "Note"
+                ],
+                [
+                  "1.2. Research -> Population size, distribution & trends",
+                  "-"
+                ],
+                [
+                  "1.3. Research -> Life history & ecology",
+                  "-"
+                ],
+                [
+                  "1.5. Research -> Threats",
+                  "-"
+                ]
+              ]
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "Ecosystem Services",
+      "level": 1,
+      "path": [
+        "Ecosystem Services"
+      ],
+      "blocks": [],
+      "children": [
+        {
+          "title": "Ecosystem Services Provided by the Species",
+          "level": 2,
+          "path": [
+            "Ecosystem Services",
+            "Ecosystem Services Provided by the Species"
+          ],
+          "blocks": [
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Insufficient Information Available",
+                  "All coded services should have an importance score of 5 - Not Known."
+                ],
+                [
+                  "true",
+                  "-"
+                ]
+              ],
+              "rows_rich": [
+                [
+                  "Insufficient Information Available",
+                  "All coded services should have an importance score of 5 - Not Known."
+                ],
+                [
+                  "true",
+                  "-"
+                ]
+              ]
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "Bibliography",
+      "level": 1,
+      "path": [
+        "Bibliography"
+      ],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "BCGI. 2022. PlantSearch. Botanic Gardens Conservation International. Available at: www.bgci.org/plant_search.php.",
+          "text_rich": "BCGI. 2022. PlantSearch. Botanic Gardens Conservation International. Available at: ."
+        },
+        {
+          "type": "paragraph",
+          "text": "Bachman et al. 2011. Supporting Red List threat assessments with GeoCAT: geospatial conservation assessment tool. ZooKeys 150: 117-126.",
+          "text_rich": "Bachman et al. 2011. Supporting Red List threat assessments with GeoCAT: geospatial conservation assessment tool. ZooKeys 150: 117-126."
+        },
+        {
+          "type": "paragraph",
+          "text": "Chantaranothai, P. 1999. The sapotaceae of Thailand. In: Santisuk, T. (ed.), Thai Forest Bulletin (Botany), pp. 139-166. Ghailand.",
+          "text_rich": "Chantaranothai, P. 1999. The sapotaceae of Thailand. In: Santisuk, T. (ed.), Thai Forest Bulletin (Botany), pp. 139-166. Ghailand."
+        },
+        {
+          "type": "paragraph",
+          "text": "GBIF. 2022. Global Biodiversity Information Facility. Available at: http://data.gbif.org/.",
+          "text_rich": "GBIF. 2022. Global Biodiversity Information Facility. Available at: ."
+        },
+        {
+          "type": "paragraph",
+          "text": "Genesys. 2022. Genesys Global Portal on Plant Genetic Resources. Available at: https://www.genesys-pgr.org/.",
+          "text_rich": "Genesys. 2022. Genesys Global Portal on Plant Genetic Resources. Available at: ."
+        },
+        {
+          "type": "paragraph",
+          "text": "Global Forest Watch. 2022. Thailand Deforestation Rates & Statistics. Available at: https://www.globalforestwatch.org/dashboards/country/THA/?category=summary&location=WyJjb3VudHJ5IiwiVEhBIl0%3D&map=eyJjYW5Cb3VuZCI6ZmFsc2UsImRhdGFzZXRzIjpbeyJkYXRhc2V0IjoicG9saXRpY2FsLWJvdW5kYXJpZXMiLCJsYXllcnMiOlsiZGlzcHV0ZWQtcG9saXRpY2FsLWJvdW5kYXJpZXMiLCJwb2xpdGljYWwtYm91bmRhcmllcyJdLCJib3VuZGFyeSI6dHJ1ZSwib3BhY2l0eSI6MSwidmlzaWJpbGl0eSI6dHJ1ZX0seyJkYXRhc2V0IjoidHJlZS1jb3Zlci1sb3NzIiwibGF5ZXJzIjpbInRyZWUtY292ZXItbG9zcyJdLCJvcGFjaXR5IjoxLCJ2aXNpYmlsaXR5Ijp0cnVlLCJ0aW1lbGluZVBhcmFtcyI6eyJzdGFydERhdGUiOiIyMDAxLTAxLTAxIiwiZW5kRGF0ZSI6IjIwMjEtMTItMzEiLCJ0cmltRW5kRGF0ZSI6IjIwMjEtMTItMzEifSwicGFyYW1zIjp7InRocmVzaG9sZCI6MzAsInZpc2liaWxpdHkiOnRydWV9fV19&showMap=true. (Accessed: 14 May, 2022).",
+          "text_rich": "Global Forest Watch. 2022. Thailand Deforestation Rates & Statistics. Available at: . (Accessed: 14 May, 2022)."
+        },
+        {
+          "type": "paragraph",
+          "text": "Voradol, C., Suphuntee, S., Tetsana, N., Poopath, M., and Tanikkool, S. 2017. Threatened Plants in Thailand. Office of the Forest Herbarium, Forest and Plant Conservation Research Office, Bangkok.",
+          "text_rich": "Voradol, C., Suphuntee, S., Tetsana, N., Poopath, M., and Tanikkool, S. 2017. Threatened Plants in Thailand. Office of the Forest Herbarium, Forest and Plant Conservation Research Office, Bangkok."
+        },
+        {
+          "type": "paragraph",
+          "text": "Wongnak, M. 2002. Diversity of Native Vegetation for Conservation Planing in Mae Tuen Forest, Tak Province. Department of Geology, Chiang Mai University.",
+          "text_rich": "Wongnak, M. 2002. Diversity of Native Vegetation for Conservation Planing in Mae Tuen Forest, Tak Province. Department of Geology, Chiang Mai University."
+        },
+        {
+          "type": "paragraph",
+          "text": "Sawasdee, P. 2018. Rare Trees of Northern Thailand. Chiang Mai Botanical Review 12: 44-58.",
+          "text_rich": "Sawasdee, P. 2018. Rare Trees of Northern Thailand. Chiang Mai Botanical Review 12: 44-58."
+        },
+        {
+          "type": "style",
+          "data": {
+            "bold": [],
+            "italic": [
+              "ZooKeys",
+              "Thai Forest Bulletin (Botany)",
+              "Threatened Plants in Thailand"
+            ]
+          }
+        }
+      ],
+      "children": []
+    }
+  ],
+  "comments": []
+}

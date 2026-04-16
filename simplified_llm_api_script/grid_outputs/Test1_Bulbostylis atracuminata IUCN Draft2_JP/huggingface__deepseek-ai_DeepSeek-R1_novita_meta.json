@@ -1,0 +1,19 @@
+{
+  "provider": "huggingface",
+  "model": "deepseek-ai/DeepSeek-R1:novita",
+  "document": "Test1_Bulbostylis atracuminata IUCN Draft2_JP",
+  "started_at": "2026-04-04T21:38:00.044590+00:00",
+  "error": "Error code: 402 - {'error': 'You have depleted your monthly included credits. Purchase pre-paid credits to continue using Inference Providers. Alternatively, subscribe to PRO to get 20x more included usage.'}",
+  "completed_at": "2026-04-04T21:38:11.048150+00:00",
+  "status": "error",
+  "rules_evaluated": 1,
+  "rules_attempted": 1,
+  "rules_succeeded": 0,
+  "rules_failed": 1,
+  "run_duration_seconds": 11.004,
+  "total_findings": 0,
+  "total_input_tokens": 4779,
+  "total_output_tokens": 0,
+  "total_tokens": 4779,
+  "token_estimation_used": true
+}

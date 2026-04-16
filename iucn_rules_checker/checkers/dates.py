@@ -8,7 +8,12 @@ from .base import BaseChecker
 
 
 class DateChecker(BaseChecker):
-    """Checker for date formatting rules."""
+    """
+    Checker for date formatting rules.
+
+    Purpose:
+        This class groups related rules within the rules-based assessment workflow.
+    """
 
     MONTHS = ['January', 'February', 'March', 'April', 'May', 'June',
               'July', 'August', 'September', 'October', 'November', 'December']
@@ -54,10 +59,28 @@ class DateChecker(BaseChecker):
     }
 
     def __init__(self):
+        """
+        Initialise the date checker.
+
+        Args:
+            None.
+
+        Returns:
+            None.
+        """
         super().__init__()
 
     def check_text(self, section_name: str, text: str) -> List[Violation]:
-        """Check for date formatting violations."""
+        """
+        Check for date formatting violations.
+
+        Args:
+            section_name (str): Parsed section key supplied by the caller.
+            text (str): Parsed section text supplied by the caller.
+
+        Returns:
+            List[Violation]: Violations produced by this method.
+        """
         violations = []
         violations.extend(self.check_ordinal_dates(section_name, text))
         violations.extend(self.check_century_format(section_name, text))
@@ -65,7 +88,8 @@ class DateChecker(BaseChecker):
         return violations
 
     def check_ordinal_dates(self, section_name: str, text: str) -> List[Violation]:
-        """Check ordinal day-month dates and basic calendar validity.
+        """
+        Check ordinal day-month dates and basic calendar validity.
 
         This method strips simple inline style tags first:
         ``<i>``, ``<em>``, ``<b>``, ``<strong>``, ``<sup>``, and ``<sub>``.
@@ -98,6 +122,13 @@ class DateChecker(BaseChecker):
         - ``11/01/2024`` and ``2024-05-15`` because numeric and ISO dates are out of scope
         - ``11th Jnauary`` because misspelled months do not match the month list
         - ``29th February 2024`` is not confirmed as valid from the year, because the year is not used
+
+        Args:
+            section_name (str): Parsed section key supplied by the caller.
+            text (str): Parsed section text supplied by the caller.
+
+        Returns:
+            List[Violation]: Violations produced by this method.
         """
         violations = []
         cleaned_text, index_map = self.strip_style_markers(
@@ -153,11 +184,28 @@ class DateChecker(BaseChecker):
         return violations
 
     def normalize_month_token(self, month: str) -> str:
-        """Normalize a month token for lookup in the day-limit table."""
+        """
+        Normalize a month token for lookup in the day-limit table.
+
+        Args:
+            month (str): Input value used by this method.
+
+        Returns:
+            str: String value produced by this method.
+        """
         return month.strip().rstrip('.').lower()
 
     def is_valid_day_month(self, day: int, month: str) -> bool:
-        """Return whether a day/month combination is calendar-valid without a year."""
+        """
+        Return whether a day/month combination is calendar-valid without a year.
+
+        Args:
+            day (int): Day value to validate.
+            month (str): Input value used by this method.
+
+        Returns:
+            bool: Boolean result described by the summary line above.
+        """
         normalized_month = self.normalize_month_token(month)
         max_day = self.MONTH_DAY_LIMITS.get(normalized_month)
         if max_day is None:
@@ -165,7 +213,8 @@ class DateChecker(BaseChecker):
         return 1 <= day <= max_day
 
     def check_century_format(self, section_name: str, text: str) -> List[Violation]:
-        """Check written-out centuries and prefer numeric forms.
+        """
+        Check written-out centuries and prefer numeric forms.
 
         This method strips simple inline style tags first:
         ``<i>``, ``<em>``, ``<b>``, ``<strong>``, ``<sup>``, and ``<sub>``.
@@ -199,6 +248,13 @@ class DateChecker(BaseChecker):
         - ``twenty-second century`` because it is not in the hardcoded mapping
         - ``nineteenth-century art`` because adjectival hyphenated compounds are out of scope
         - ``nineteenth centuries`` because plural forms are not checked
+
+        Args:
+            section_name (str): Parsed section key supplied by the caller.
+            text (str): Parsed section text supplied by the caller.
+
+        Returns:
+            List[Violation]: Violations produced by this method.
         """
         violations = []
         cleaned_text, index_map = self.strip_style_markers(
@@ -232,7 +288,8 @@ class DateChecker(BaseChecker):
         return violations
 
     def check_decade_format(self, section_name: str, text: str) -> List[Violation]:
-        """Check decade formatting for four-digit decades.
+        """
+        Check decade formatting for four-digit decades.
 
         This method strips simple inline style tags first:
         ``<i>``, ``<em>``, ``<b>``, ``<strong>``, ``<sup>``, and ``<sub>``.
@@ -256,6 +313,13 @@ class DateChecker(BaseChecker):
         - ``80's`` because the rule only matches four-digit decades
         - ``the eighties`` because written-out decades are out of scope
         - ``1980s-1990s`` because already-correct compact decade ranges are not rewritten here
+
+        Args:
+            section_name (str): Parsed section key supplied by the caller.
+            text (str): Parsed section text supplied by the caller.
+
+        Returns:
+            List[Violation]: Violations produced by this method.
         """
         violations = []
         cleaned_text, index_map = self.strip_style_markers(

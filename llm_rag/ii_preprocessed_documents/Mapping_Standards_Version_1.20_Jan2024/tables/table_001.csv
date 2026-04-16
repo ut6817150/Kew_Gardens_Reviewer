@@ -1,0 +1,11 @@
+Field,Description,Notes,column_4,Polygons/,column_6,Points
+,,,,Basins,,
+sci_name,Scientific name of the taxon,"This must match the corresponding field in SIS, e.g. “Panthera leo”; “Panthera leo ssp. persica”; “Veratrum mengtzeanum subsp. mengtzeanum”; ""Cedrus libani var. brevifolia"". Previously known as binomial.",✔,,,✔
+hybas_id,HydroBASIN ID [Required if HydroBASINS have been used for mapping the data],"If HydroBASINS have been used to provide distribution data, the hybas_id, which is the unique identifier of that basin where the taxon has been mapped, should be provided.",✔,,,
+presence,Is/Was the species in this area,See Presence codes (default is 1 if not indicated).,✔,,,✔
+origin,Why/ How the species is in this area,See Origin codes (default is 1 if not indicated).,✔,,,✔
+seasonal,What is the seasonal presence of the species in the area [Required if applicable],See Seasonality codes (default is 1 if not indicated or not applicable).,✔,,,✔
+compiler,"Name of the individual/s or institution responsible for generating the point or polygon distribution, if not IUCN","Names should be given in full (e.g., “John Smith”; “NatureServe”; “World Conservation Monitoring Centre”). If not indicated, this will default to “IUCN (International Union for Conservation of Nature)”.",✔,,,✔
+yrcompiled,"Year in which the taxon distribution was mapped, compiled, or modified","If not indicated, this will default to the current year.",✔,,,✔
+citation,Individual/s or institution/s responsible for providing the map data for the Red List assessment to IUCN. This field is used for the overall map citation,"This must be the same throughout the file. It is how the map data will be credited on the IUCN Red List. If not indicated, this will default to ""IUCN (International Union for Conservation of Nature)"".",✔,,,✔
+dec_lat,The geographical latitude in decimal degrees,"E.g., -41.097. Positive values are north of the equator; negative values are south of it. Valid values lie between -90 and 90.",,,,✔

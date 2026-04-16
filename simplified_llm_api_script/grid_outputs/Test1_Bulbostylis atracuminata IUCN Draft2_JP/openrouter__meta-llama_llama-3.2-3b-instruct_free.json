@@ -1,0 +1,15 @@
+[
+  {
+    "rule_name": "rule_01_consistency_threats",
+    "findings": [],
+    "metrics": {
+      "duration_seconds": 23.659052609989885,
+      "input_tokens": 4786,
+      "output_tokens": 0,
+      "total_tokens": 4786,
+      "token_source": "estimated",
+      "status": "error",
+      "error": "OpenRouter request failed (429) for meta-llama/llama-3.2-3b-instruct:free: Provider returned error"
+    }
+  }
+]

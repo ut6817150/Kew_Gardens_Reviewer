@@ -930,13 +930,9 @@ def run_batch_default(parser: AssessmentParser) -> int:
     return 0
 
 
-def parse_dict(docx_path: str) -> Dict[str, Any]:
+def parse_to_dict(docx_path: str) -> Dict[str, Any]:
     parser = AssessmentParser()
     return parser.parse_file(docx_path)
-
-
-def parse_to_dict(docx_path: str) -> Dict[str, Any]:
-    return parse_dict(docx_path)
 
 
 def main() -> int:

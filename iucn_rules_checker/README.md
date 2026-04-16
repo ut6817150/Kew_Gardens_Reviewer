@@ -1,52 +1,57 @@
 # IUCN Rules Checker
 
-Utilities for parsing an IUCN assessment JSON tree and running rule-based text checks on the parsed content.
+Utilities for parsing an assessment tree into a flat report and running the
+package's rules-based review flow on the parsed content.
+
 This package also powers the repo-level Streamlit interface in `app.py`.
 
-This README documents the code that currently exists in `iucn_rules_checker/`. For rule-by-rule checker behavior, see `checkers/README.md`.
+For rule-by-rule checker behavior, see:
+
+- `checkers/README.md`
 
 ## What This Folder Contains
 
-The package currently has three main responsibilities:
+The package currently has three main code responsibilities:
 
 - `assessment_parser.py`
-  Converts a hierarchical assessment tree into a flat `section_name -> text` mapping.
+  Converts a structured assessment dictionary into a flat
+  `section_name -> text` mapping.
 - `assessment_reviewer.py`
-  Runs the configured checker classes over an already parsed report and returns a list of violations.
+  Runs the configured checker classes over an already parsed report and
+  returns a list of violations.
 - `violation.py`
   Defines the `Violation` dataclass used as the shared output format.
 
-The checker implementations live in `checkers/`, and their regression tests live in `unittests/`.
+The checker implementations live in `checkers/`, and the regression tests live
+in `unittests/`.
 
 ## Requirements
 
 ### Runtime Dependencies
 
-The current Python code in `iucn_rules_checker/` uses only the Python standard library.
+The core Python code in `iucn_rules_checker/` uses only the Python standard
+library.
 
-External runtime dependencies:
+External runtime dependencies for the package itself:
 
 - none
-
-Standard-library modules used in the current codebase include:
-
-- `abc`
-- `dataclasses`
-- `inspect`
-- `json`
-- `pathlib`
-- `re`
-- `typing`
-- `unittest`
 
 ### Optional Tooling
 
 - Jupyter
-  Only needed if you want to open or run `test_json_file/test.ipynb`.
+  Needed only if you want to run the notebooks in:
+  - `evaluation/evaluation.ipynb`
+  - `test_word_document/test_word_document.ipynb`
+- `python-docx`
+  Needed for workflows that first convert Word documents to a Python dict
+  using the `parse_to_dict` function from `repo root > preprocessing > assessment_processor.py`
+- `beautifulsoup4`
+  Also needed for that Word-document conversion step
 
 ## AssessmentParser
 
-`AssessmentParser` expects a Python `dict` representing the assessment tree used in this project.
+`AssessmentParser` expects a Python `dict` representing the structured
+assessment tree used in this project.
 
 Expected structure:
 
@@ -64,7 +69,8 @@ Current parser behavior:
 - uses `text_rich` only for paragraph blocks
 - uses `rows_rich` only for table blocks
 - emits one output entry per table row, not one per table
-- preserves Unicode characters and normalizes non-breaking spaces to regular spaces
+- preserves Unicode characters and normalizes non-breaking spaces to regular
+  spaces
 - ignores `style` blocks entirely
 
 Parser input:
@@ -80,15 +86,16 @@ Parser output:
 Example:
 
 ```python
-import json
-from pathlib import Path
-
 from iucn_rules_checker.assessment_parser import AssessmentParser
 
-json_path = Path("iucn_rules_checker/test_json_file/Myrcia neosmithii_draft_status_Apr2022_v2_parse_dict (1).json")
-
-with json_path.open(encoding="utf-8") as handle:
-    assessment = json.load(handle)
+assessment = {
+    "title": "Root",
+    "blocks": [
+        {"type": "paragraph", "text_rich": "Draft"},
+        {"type": "table", "rows_rich": [["Status"], ["LC - Least Concern"]]},
+    ],
+    "children": [],
+}
 
 full_report = AssessmentParser().parse(assessment)
 print(len(full_report))
@@ -99,21 +106,30 @@ print(next(iter(full_report.items())))
 
 `IUCNAssessmentReviewer` reviews an already parsed report.
 
-The intended workflow is now explicitly two-step:
+The intended workflow is explicitly two-step:
 
 1. run `AssessmentParser.parse(assessment)` to build a flat `full_report`
-2. pass that `full_report` into `IUCNAssessmentReviewer.review_full_report(...)`
+2. pass that `full_report` into
+   `IUCNAssessmentReviewer.review_full_report(...)`
 
 Current reviewer behavior:
 
 - skips empty sections
-- skips parsed table sections entirely
+- routes parsed table sections to a dedicated `TableChecker`
 - routes bibliography sections to a dedicated `BibliographyChecker`
-- runs all other non-table sections through the normal checker list
+- runs all other non-table, non-bibliography sections through the normal checker list
 - calls `begin_sweep()` on every checker before a review pass
 - calls `end_sweep()` on every checker after the pass finishes
 
 ### Section Routing
+
+Parsed table sections are routed to `self.table_checker` only:
+
+- `TableChecker`
+
+Current `TableChecker` behavior combines:
+
+- `AbbreviationChecker.check_et_al(...)`
 
 Normal non-bibliography sections are checked by `self.checkers`:
 
@@ -138,47 +154,41 @@ Current `BibliographyChecker` behavior combines:
 - `check_ampersand_usage(...)`
 - `AbbreviationChecker.check_et_al(...)`
 - `PunctuationChecker.check_range_dashes(...)`
-- `NumberChecker.check_large_numbers(...)`
-
-Not included in the normal reviewer flow:
-
-- `LanguageChecker`
 
 Example:
-
-```python
-import json
-from pathlib import Path
-
-from iucn_rules_checker.assessment_parser import AssessmentParser
-from iucn_rules_checker.assessment_reviewer import IUCNAssessmentReviewer
-
-json_path = Path("iucn_rules_checker/test_json_file/Myrcia neosmithii_draft_status_Apr2022_v2_parse_dict (1).json")
-
-with json_path.open(encoding="utf-8") as handle:
-    assessment = json.load(handle)
-
-full_report = AssessmentParser().parse(assessment)
-reviewer = IUCNAssessmentReviewer()
-violations = reviewer.review_full_report(full_report)
-
-print(f"Violations: {len(violations)}")
-print(violations[0].to_dict())
-```
-
-You can also review an already-flat report:
 
 ```python
 from iucn_rules_checker.assessment_reviewer import IUCNAssessmentReviewer
 
 full_report = {
     "Assessment > Notes [paragraph 1]": "Examples occur e.g. in text.",
-    "Assessment > Bibliography [paragraph 1]": "Cheng, W.J. 1985. Tree flora of china. Vol II.",
+    "Assessment > Notes [table 1] [row 1]": "Smith et al. 2020",
+    "Assessment > Bibliography [paragraph 1]": "Smith & Jones 2020. Journal 10-20.",
 }
 
 reviewer = IUCNAssessmentReviewer()
 violations = reviewer.review_full_report(full_report)
+cleaned_violations = reviewer.clean_up_violations(list(violations))
+
+print(f"Violations: {len(cleaned_violations)}")
+print(cleaned_violations[0].to_dict())
 ```
+
+### `clean_up_violations(...)`
+
+`clean_up_violations(...)` is a helper on `IUCNAssessmentReviewer` that strips
+simple inline markup from:
+
+- `matched_text`
+- `matched_snippet`
+- `message`
+
+It removes these tags only:
+
+- italic tags: `<i>`, `<em>`
+- bold tags: `<b>`, `<strong>`
+- superscript tags: `<sup>`
+- subscript tags: `<sub>`
 
 ## Violation Output
 
@@ -201,7 +211,8 @@ Meaning of the text-related fields:
 - `matched_snippet`
   A short nearby context snippet.
 - `section_name`
-  The display section name. Paragraph suffixes such as `[paragraph 2]` are normalized away when violations are created.
+  The display section name. Paragraph suffixes such as `[paragraph 2]` are
+  normalized away when violations are created.
 
 Example `to_dict()` output:
 
@@ -223,9 +234,9 @@ All checker classes inherit from `checkers/base.py`.
 
 Shared methods include:
 
-- `check((section_name, text))`
 - `begin_sweep()`
 - `end_sweep()`
+- `check_text(section_name, text)`
 - `strip_style_markers(...)`
 - `create_violation(...)`
 - `normalize_section_name(...)`
@@ -243,7 +254,8 @@ It returns:
 - cleaned text
 - an index map from cleaned positions back to original-text positions
 
-That lets a checker match against normalized text but still create violations against the original rich-text source.
+That lets a checker match against normalized text but still create violations
+against the original rich-text source.
 
 ## Checkers
 
@@ -268,7 +280,16 @@ See `checkers/README.md` for the method-by-method rule documentation.
 
 The unit test suite uses the standard library `unittest` runner.
 
-Tests are designed to be run from the repository root, because they import modules using package paths such as `iucn_rules_checker.assessment_reviewer`.
+The unit tests are intended to be run from the repository root:
+
+- `IUCN_Reviewer/`
+
+That is the folder that contains `app.py` and the `iucn_rules_checker/`
+package directory.
+
+Tests are designed to be run from that repository root, because they import
+modules using package paths such as
+`iucn_rules_checker.assessment_reviewer`.
 
 Run the full suite:
 
@@ -283,104 +304,133 @@ python -m unittest iucn_rules_checker.unittests.test_assessment_parser
 python -m unittest iucn_rules_checker.unittests.test_assessment_reviewer
 ```
 
-## Test JSON File
+See also:
 
-Sample files used for testing and notebook-based inspection now live in `test_json_file/`:
+- `unittests/README.md`
 
-- `test_json_file/Myrcia neosmithii_draft_status_Apr2022_v2_parse_dict (1).json`
-- `test_json_file/test.ipynb`
+## Evaluation Folder
+
+`evaluation/` records how the rules-based system was evaluated and refined.
+
+It currently contains:
+
+- `evaluation.ipynb`
+  Notebook used to run the custom evaluation document through the review flow.
+- `test_doc_rules_based.docx`
+  Custom Word document used to refine rule behavior.
+- `IUCN_submissions_evaluation.xlsx`
+  Excel workbook containing the results of the initial sweep across 109 Kew
+  assessments.
+
+In this evaluation flow, the Word document is first converted to a Python dict
+using the `parse_to_dict` function from `repo root > preprocessing > assessment_processor.py`.
+
+See:
+
+- `evaluation/README.md`
+
+for the fuller evaluation notes.
+
+## Test Word Document
+
+Sample files used for Word-document testing and notebook-based inspection live
+in `test_word_document/`.
+
+Current contents:
+
+- `test_word_document/Acrocarpus_fraxinifolius_JP.docx`
+- `test_word_document/test_word_document.ipynb`
+- `test_word_document/README.md`
 
 The notebook is used for:
 
-- fresh imports from disk
-- parser checks
-- reviewer checks
-- JSON-style printing of parsed output and violations
+- loading a `.docx` file
+- converting it to a Python dict
+- parsing the resulting assessment dictionary
+- running the rules-based reviewer
+- printing the generated violations
 
-### Running Your Own JSON File
+### Test Your Own Word Document
 
-You can run the parser and reviewer on any assessment JSON file that follows the
-same tree structure expected by `AssessmentParser`.
+You can run the rules-based system on your own Word document in two common
+ways.
+
+#### From The Notebook
+
+Open:
+
+- `test_word_document/test_word_document.ipynb`
+
+and edit the path cell:
+
+- leave `CUSTOM_DOCX_PATH = None` to use the bundled sample Word document
+- set `CUSTOM_DOCX_PATH` to your own file path to test a different `.docx`
+
+Example:
+
+```python
+CUSTOM_DOCX_PATH = r"G:\\path\\to\\your_assessment.docx"
+```
+
+The notebook will then:
+
+1. load that Word document
+2. convert it to a Python dict using the `parse_to_dict` function from `repo root > preprocessing > assessment_processor.py`
+3. parse the resulting assessment dictionary with `AssessmentParser`
+4. generate violations with `IUCNAssessmentReviewer`
 
 #### From A Python Script
 
+If you want to run the same workflow from a script, first convert the Word
+document to a Python dict using the `parse_to_dict` function from
+`repo root > preprocessing > assessment_processor.py`, then pass the result
+into the core package.
+
 ```python
-import json
+from importlib.util import module_from_spec, spec_from_file_location
 from pathlib import Path
 
 from iucn_rules_checker.assessment_parser import AssessmentParser
 from iucn_rules_checker.assessment_reviewer import IUCNAssessmentReviewer
 
-json_path = Path(r"PATH\\TO\\YOUR\\ASSESSMENT.json")
+repo_root = Path(r"G:\\path\\to\\IUCN_Reviewer")
+processor_path = repo_root / "preprocessing" / "assessment_processor.py"
+docx_path = Path(r"G:\\path\\to\\your_assessment.docx")
 
-with json_path.open(encoding="utf-8") as handle:
-    assessment = json.load(handle)
+spec = spec_from_file_location("assessment_processor_runtime", processor_path)
+module = module_from_spec(spec)
+assert spec.loader is not None
+spec.loader.exec_module(module)
 
-parser = AssessmentParser()
-full_report = parser.parse(assessment)
+assessment = module.parse_to_dict(str(docx_path))
+full_report = AssessmentParser().parse(assessment)
 
 reviewer = IUCNAssessmentReviewer()
-violations = reviewer.review_full_report(full_report)
+violations = reviewer.clean_up_violations(
+    list(reviewer.review_full_report(full_report))
+)
 
 for violation in violations:
     print(violation.to_dict())
 ```
-
-#### From The Test Notebook
-
-Open `test_json_file/test.ipynb` and edit the JSON path cell:
-
-- leave `CUSTOM_JSON_PATH = None` to use the bundled `Myrcia neosmithii...` sample JSON
-- set `CUSTOM_JSON_PATH` to your own file path to run a different assessment
-
-Example:
-
-```python
-CUSTOM_JSON_PATH = r"G:\\path\\to\\your_assessment.json"
-```
-
-The rest of the notebook will then load that file, parse it, and run the
-reviewer against the resulting `full_report`.
 
 ## Project Structure
 
 ```text
 iucn_rules_checker/
 |- checkers/
+|  `- README.md
+|- evaluation/
 |  |- README.md
-|  |- abbreviations.py
-|  |- base.py
-|  |- bibliography.py
-|  |- dates.py
-|  |- formatting.py
-|  |- geography.py
-|  |- iucn_terms.py
-|  |- numbers.py
-|  |- punctuation.py
-|  |- references.py
-|  |- scientific.py
-|  |- spelling.py
-|  `- symbols.py
-|- test_json_file/
-|  |- Myrcia neosmithii_draft_status_Apr2022_v2_parse_dict (1).json
-|  `- test.ipynb
+|  |- evaluation.ipynb
+|  |- IUCN_submissions_evaluation.xlsx
+|  `- test_doc_rules_based.docx
+|- test_word_document/
+|  |- README.md
+|  |- Acrocarpus_fraxinifolius_JP.docx
+|  `- test_word_document.ipynb
 |- unittests/
-|  |- test_abbreviations.py
-|  |- test_bibliography.py
-|  |- test_assessment_parser.py
-|  |- test_assessment_reviewer.py
-|  |- test_base.py
-|  |- test_dates.py
-|  |- test_formatting.py
-|  |- test_geography.py
-|  |- test_iucn_terms.py
-|  |- test_numbers.py
-|  |- test_punctuation.py
-|  |- test_references.py
-|  |- test_scientific.py
-|  |- test_spelling.py
-|  `- test_symbols.py
-|- .gitignore
+|  `- test_*.py
 |- README.md
 |- assessment_parser.py
 |- assessment_reviewer.py
@@ -415,7 +465,8 @@ violations.append(
 1. Create a new checker under `checkers/` as a `BaseChecker` subclass.
 2. Implement `check_text(...)`.
 3. Wire it into `IUCNAssessmentReviewer.__init__`:
-   add it to `self.checkers` for normal sections, or compose it into `self.bibliography_checker` if it should only run on bibliography content.
+   add it to `self.checkers` for normal sections, or compose it into
+   `self.bibliography_checker` if it should only run on bibliography content.
 4. Add tests under `unittests/`.
 
 Minimal skeleton:
@@ -437,6 +488,10 @@ class MyChecker(BaseChecker):
 
 - `checkers/README.md`
   Detailed checker and rule documentation.
+- `evaluation/README.md`
+  Notes on the rules-based evaluation workflow.
+- `test_word_document/README.md`
+  Notes on the sample Word-document testing workflow.
 
 ## License
 

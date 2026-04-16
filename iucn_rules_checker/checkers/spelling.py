@@ -8,7 +8,12 @@ from .base import BaseChecker
 
 
 class SpellingChecker(BaseChecker):
-    """Checker for UK vs US spelling rules."""
+    """
+    Checker for UK vs US spelling rules.
+
+    Purpose:
+        This class groups related rules within the rules-based assessment workflow.
+    """
 
     UK_SPELLING_MAP = {
         "color": "colour",
@@ -107,6 +112,15 @@ class SpellingChecker(BaseChecker):
     }
 
     def __init__(self):
+        """
+        Initialise compiled spelling patterns used by the checker.
+
+        Args:
+            None.
+
+        Returns:
+            None (mutates compiled regex attributes in place).
+        """
         super().__init__()
         self.uk_pattern = re.compile(
             r'\b(' + '|'.join(re.escape(k) for k in self.UK_SPELLING_MAP.keys()) + r')\b',
@@ -118,7 +132,8 @@ class SpellingChecker(BaseChecker):
         )
 
     def check_text(self, section_name: str, text: str) -> List[Violation]:
-        """Check spelling preferences after removing simple style tags.
+        """
+        Check spelling preferences after removing simple style tags.
 
         This method strips simple inline style tags first:
         `<i>`, `<em>`, `<b>`, `<strong>`, `<sup>`, and `<sub>`.
@@ -146,6 +161,13 @@ class SpellingChecker(BaseChecker):
         markup.
         It may still miss words broken up by other tags or markup that leaves
         non-letter content between fragments.
+
+        Args:
+            section_name (str): Parsed section key supplied by the caller.
+            text (str): Parsed section text supplied by the caller.
+
+        Returns:
+            List[Violation]: Violations produced by this method.
         """
         violations = []
         cleaned_text, index_map = self.strip_style_markers(
@@ -195,7 +217,16 @@ class SpellingChecker(BaseChecker):
         return violations
 
     def apply_case_pattern(self, fix: str, matched_text: str) -> str:
-        """Apply the matched token's capitalization pattern to the fix."""
+        """
+        Apply the matched token's capitalization pattern to the fix.
+
+        Args:
+            fix (str): Input value used by this method.
+            matched_text (str): Input value used by this method.
+
+        Returns:
+            str: String value produced by this method.
+        """
         if matched_text.isupper():
             return fix.upper()
         if matched_text[0].isupper():

@@ -1,0 +1,15 @@
+[
+  {
+    "rule_name": "rule_01_consistency_threats",
+    "findings": [],
+    "metrics": {
+      "duration_seconds": 120.15838449297007,
+      "input_tokens": 4782,
+      "output_tokens": 0,
+      "total_tokens": 4782,
+      "token_source": "estimated",
+      "status": "error",
+      "error": "OpenRouter error: {'message': 'Internal Server Error', 'code': 500}"
+    }
+  }
+]

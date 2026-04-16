@@ -20,8 +20,9 @@ Method reference:
 - `end_sweep(...)`
   Hook called after a full parsed report is reviewed.
   The base implementation does nothing.
-- `check(...)`
-  Unpacks one `(section_name, text)` tuple and delegates to `check_text(...)`.
+- `check_text(...)`
+  Common checker entry point that receives one `(section_name, text)` pair and
+  returns that checker's `Violation` list.
 - `strip_style_markers(...)`
   Removes selected inline HTML-style markers and returns both cleaned text and
   an `index_map` back into the original text.
@@ -99,22 +100,22 @@ Detailed coverage:
   How it works:
   strips all simple style markers, then applies separate regexes for a fixed shortlist of abbreviations.
   Hard-coded list dependency:
-  this method only checks the abbreviations hardcoded in the source, currently including `etc`, `in lit`, `pers comm`, `pers obs`, and `Prof`.
+  this method only checks the abbreviations hardcoded in the source, currently including `etc`, `in litt`, `pers comm`, `pers obs`, and `Prof`.
 
   - Catches:
     - `etc`, `ETC`
-    - `in lit`, `IN LIT`
+    - `in litt`, `IN LITT`
     - `pers comm`, `pers comm.`, `pers. comm`
     - `pers obs`, `pers obs.`, `pers. obs`
     - `Prof`, `PROF`
-    - `<i>etc</i>`, `<b>in lit</b>`, `<i>Pers</i> <b>Comm</b>`, `<sub>Prof</sub>`
+    - `<i>etc</i>`, `<b>in litt</b>`, `<i>Pers</i> <b>Comm</b>`, `<sub>Prof</sub>`
 
   - Misses:
-    - already-correct `etc.`, `in lit.`, `pers. comm.`, `pers. obs.`
+    - already-correct `etc.`, `in litt.`, `pers. comm.`, `pers. obs.`
     - `Professor Smith`
     - `etcetera`
     - `p e r s comm`
-    - `Assoc Prof`
+    - `Rev. White`
     - abbreviations outside the hard-coded shortlist such as `cf.` or `ca.`
 
 - `check_latin_terms_without_period(...)`
@@ -317,9 +318,9 @@ Detailed coverage:
 
 - `check_genus_and_species(...)`
   How it works:
-  strips bold, superscript, and subscript tags but preserves italics, harvests genus/species names from ladder entries such as `PLANTAE - ... - Acrocarpus - fraxinifolius`, and then checks later occurrences of those harvested names for expected italics and case.
+  strips bold, superscript, and subscript tags but preserves italics, harvests genus/species names from ladder entries such as `PLANTAE - ... - Acrocarpus - fraxinifolius`, and then checks later occurrences of those harvested names for expected italics and case. It also checks a very small fixed supplemental genus/species list, currently `Chlidanthus` and `ariruma`, but only after some taxonomy ladder has already been harvested in the same sweep.
   Hard-coded/structural dependency:
-  this method depends on seeing a ladder-shaped taxonomy entry first; without a harvested genus/species pair, it has nothing to check.
+  this method depends on seeing a ladder-shaped taxonomy entry first; without a harvested genus/species pair, it does not check either the harvested names or the supplemental list.
 
   - Catches:
     - `Acrocarpus` after harvest when it is plain text instead of italicized
@@ -327,26 +328,31 @@ Detailed coverage:
     - `fraxinifolius` when it is plain text
     - `Fraxinifolius`
     - `<i>Fraxinifolius</i>`
+    - `Chlidanthus` after any ladder harvest when it is plain text instead of italicized
+    - `ariruma` after any ladder harvest when it is plain text instead of italicized
 
   - Misses:
     - the taxonomy ladder entry itself
     - names before any ladder has been harvested in the current sweep
-    - unrelated genus/species names that do not match the harvested pair
+    - `Chlidanthus` or `ariruma` before any ladder has been harvested in the current sweep
+    - unrelated genus/species names that do not match the harvested pair or the supplemental list
     - Markdown italics such as `*Acrocarpus*`
     - assessments where the taxonomy ladder is missing or written in a different structure
 
 - `check_higher_order_taxonomy_formatting(...)`
   How it works:
-  strips non-italic style tags, harvests higher taxonomy names from ladder entries, then checks later occurrences of those harvested names for two conditions: correct capitalization and no italics.
+  strips non-italic style tags, harvests higher taxonomy names from ladder entries, then checks later occurrences of those harvested names for two conditions: correct capitalization and no italics. It also checks a very small fixed supplemental list of higher-order names, currently only `Plantae`, but only after some taxonomy ladder has already been harvested in the same sweep.
   Hard-coded/structural dependency:
-  this method depends on seeing a ladder-shaped taxonomy entry first; it no longer infers higher taxa from suffixes alone.
+  this method depends on seeing a ladder-shaped taxonomy entry first; it no longer infers higher taxa from suffixes alone, and the supplemental list is inactive until that ladder harvest has happened.
 
   - Catches:
     - harvested names reused later such as `plantae` or `<i>Magnoliopsida</i>`
     - harvested names reused later such as `<i>Fabaceae</i>`
+    - supplemental names such as `plantae`, but only after any valid ladder has already been harvested in the current sweep
 
   - Misses:
     - literal rank labels such as `family`, `order`, `class`
+    - `Plantae` / `plantae` before any ladder has been harvested in the current sweep
     - non-harvested family-like names such as `orchidaceae` or `Felidae`
     - Markdown italics
     - taxonomic truth; it checks style, not biological correctness
@@ -425,7 +431,7 @@ Detailed coverage:
 
 - `check_directional_capitalization(...)`
   How it works:
-  strips all simple style markers, then looks for capitalized direction-led phrases such as `Eastern Ecuador` and compares the full phrase against an allowlist built from ISO country names, recognized regions, and correction-key phrases. If the phrase is not allowed, it suggests lowercasing the direction word.
+  strips all simple style markers, then looks for capitalized direction-led phrases such as `Eastern Ecuador` and compares the full phrase against an allowlist built from ISO country names, recognized regions, and correction-key phrases. If the phrase is not allowed, it suggests lowercasing the direction word. Paragraph-start uses and uses immediately after `. ` are skipped.
   Hard-coded list dependency:
   allowed phrases come from the hard-coded `ISO_3166_COUNTRIES`, `RECOGNISED_REGIONS`, and correction-key lists.
 
@@ -435,7 +441,9 @@ Detailed coverage:
     - `Western Colombia` -> `western Colombia`
 
   - Misses:
-    - proper names such as `North Korea`, `South Africa`, `North America`, `East Asia`, `West & Central Asia`
+    - paragraph-start `Eastern Ecuador contains...`
+    - `This changed. Northern Peru contains...`
+    - proper names such as `North Korea`, `South Africa`, `North America`, `East Asia`, `West & Central Asia`, `Northern Ireland`, `South China Sea`, `New South Wales`
     - already-lowercase forms such as `eastern Ecuador`
     - proper region names that are not in the checker's allowlists
     - deeper geopolitical reasoning
@@ -497,7 +505,7 @@ Detailed coverage:
 
 - `check_category_full_name_capitalization(...)`
   How it works:
-  strips all simple style markers, then loops through the hardcoded full category names in `CATEGORIES` and checks each full phrase for exact canonical case.
+  strips all simple style markers, then loops through the hardcoded full category names in `CATEGORIES` and checks each full phrase for exact canonical case. It also suppresses the shorter overlap matches `Endangered` inside `Critically Endangered` and `Extinct` inside `Extinct in the Wild`, so those longer category phrases are only reported once.
   Hard-coded list dependency:
   this method only knows the full category names present in the `CATEGORIES` list.
 
@@ -508,6 +516,8 @@ Detailed coverage:
 
   - Misses:
     - correctly cased `Critically Endangered`, `Near Threatened`, `Extinct in the Wild`
+    - the shorter overlap matches `Endangered` inside `Critically Endangered`
+    - the shorter overlap match `Extinct` inside `Extinct in the Wild`
     - misspellings that no longer match the category phrase
     - substantive correctness of the chosen Red List category
     - category names not present in the hard-coded `CATEGORIES` list
@@ -659,7 +669,7 @@ Aggregated method list:
 - `check_range_dashes(...)`
   Ensures numeric ranges use an unspaced en dash.
 - `check_for_example_commas(...)`
-  Ensures `for example` is enclosed by commas when used mid-sentence.
+  Checks comma placement around `for example`, with sentence-start and paragraph-start uses handled separately.
 - `check_colon_spacing(...)`
   Removes spaces before a colon.
 - `check_semicolon_spacing(...)`
@@ -691,18 +701,23 @@ Detailed coverage:
 
 - `check_for_example_commas(...)`
   How it works:
-  strips all simple style markers, then finds `for example` case-insensitively and checks whether a comma appears immediately before and after the phrase. Sentence-start uses are skipped at paragraph start or immediately after `.`, `!`, or `?`.
+  strips all simple style markers, then finds `for example` case-insensitively and applies a small decision flow:
+  - at paragraph start, or immediately after `. `, `! `, or `? `, it only checks whether the following comma is present
+  - otherwise it treats the phrase as mid-sentence and checks both sides
+  - if both commas are missing mid-sentence, it returns one combined message instead of two separate findings
   Hard-coded scope:
   this method only checks the literal phrase `for example`.
 
   - Catches:
+    - `For example the species occurs...`
     - `The species for example, occurs...`
     - `The species, for example occurs...`
     - `The species for example occurs...`
 
   - Misses:
     - correct `The species, for example, occurs...`
-    - sentence-start `For example, ...`
+    - correct `For example, ...`
+    - correct `This changed. For example, ...`
     - broader punctuation reasoning beyond this narrow comma rule
 
 - `check_colon_spacing(...)`
@@ -756,7 +771,7 @@ Detailed coverage:
 
 - `begin_sweep(...)`
   How it works:
-  forwards `begin_sweep()` to the embedded `AbbreviationChecker`, `NumberChecker`, and `PunctuationChecker` helpers.
+  forwards `begin_sweep()` to the embedded `AbbreviationChecker` and `PunctuationChecker` helpers.
 
   - Catches:
     - no violations; this is lifecycle setup only
@@ -770,9 +785,8 @@ Detailed coverage:
   - `check_ampersand_usage(...)`
   - `AbbreviationChecker.check_et_al(...)`
   - `PunctuationChecker.check_range_dashes(...)`
-  - `NumberChecker.check_large_numbers(...)`
 
-  The imported helper methods keep their original `rule_class` and `rule_method` values, so bibliography output can still contain `AbbreviationChecker`, `PunctuationChecker`, and `NumberChecker` violations.
+  The imported helper methods keep their original `rule_class` and `rule_method` values, so bibliography output can still contain `AbbreviationChecker` and `PunctuationChecker` violations.
   Hard-coded/structural dependency:
   this dispatcher depends on the literal section-name substring `Bibliography` and on the behavior of the embedded helper checkers.
 
@@ -780,18 +794,17 @@ Detailed coverage:
     - bibliography ampersands such as `Smith & Jones 2020`
     - bibliography `et al.` issues such as `Mishra et al. 2015`
     - bibliography numeric ranges such as `Journal 10-20`
-    - bibliography large numbers such as `Flora 5000 species`
 
   - Misses:
     - all non-bibliography sections
-    - bibliography issues outside the four checks listed above
+    - bibliography issues outside the three checks listed above
     - any deeper reference parsing beyond what the embedded helper methods already do
 
 - `check_ampersand_usage(...)`
   How it works:
-  only runs when `section_name` contains `Bibliography`, strips all simple style markers, then flags every literal `&` and suggests `and`.
+  only runs when `section_name` contains `Bibliography`, strips all simple style markers, clips the text to the portion before the first standalone four-digit year, then flags every literal `&` in that clipped author portion and suggests `and`.
   Hard-coded scope:
-  this method depends on the literal section-name substring `Bibliography` and the literal character `&`.
+  this method depends on the literal section-name substring `Bibliography`, the literal character `&`, and a simple first-year cutoff based on the first standalone four-digit number.
 
   - Catches:
     - `Smith & Jones 2020`
@@ -801,11 +814,12 @@ Detailed coverage:
   - Misses:
     - the same text outside bibliography sections
     - cases where no literal `&` is present
-    - because it is intentionally broad, it can also catch non-author ampersands inside bibliography text
+    - ampersands that appear only after the first standalone four-digit year, such as `Smith 2020 & Brown 2021`
+    - because it is still regex-based, it does not truly parse bibliography authorship structure
 
 - `end_sweep(...)`
   How it works:
-  forwards `end_sweep()` to the embedded `AbbreviationChecker`, `NumberChecker`, and `PunctuationChecker` helpers.
+  forwards `end_sweep()` to the embedded `AbbreviationChecker` and `PunctuationChecker` helpers.
 
   - Catches:
     - no violations; this is lifecycle cleanup only
@@ -815,8 +829,76 @@ Detailed coverage:
 
 Aggregated misses for `BibliographyChecker`:
 - it does not validate full bibliography structure
-- it only checks ampersands plus the embedded `et al.`, range-dash, and large-number rules
+- it only checks ampersands plus the embedded `et al.` and range-dash rules
 - it does not check DOI, URL, title, journal, page, or author-order formatting
+
+### `tables.py` - `TableChecker`
+
+Category: `Tables`
+
+Aggregated method list:
+- `begin_sweep(...)`
+  Starts the embedded helper checker used by table review.
+- `check_text(...)`
+  Runs the table-specific imported rule set.
+- `end_sweep(...)`
+  Ends the embedded helper checker used by table review.
+- `is_table_section(...)`
+  Detects parsed table-row section names.
+
+Detailed coverage:
+
+- `begin_sweep(...)`
+  How it works:
+  forwards `begin_sweep()` to the embedded `AbbreviationChecker` helper.
+
+  - Catches:
+    - no violations; this is lifecycle setup only
+
+  - Misses:
+    - all text checking, because it does not inspect text directly
+
+- `check_text(...)`
+  How it works:
+  returns no violations unless `section_name` represents parsed table content. In table sections, it combines:
+  - `AbbreviationChecker.check_et_al(...)`
+
+  The imported helper method keeps its original `rule_class` and `rule_method` values, so table output still contains `AbbreviationChecker` violations.
+  Hard-coded/structural dependency:
+  this dispatcher depends on the table-section naming pattern and on the behavior of the embedded abbreviation helper.
+
+  - Catches:
+    - table `et al.` issues such as `Smith et al. 2020`
+
+  - Misses:
+    - all non-table sections
+    - table issues outside the imported `et al.` rule
+    - any broader table parsing beyond what `AbbreviationChecker.check_et_al(...)` already does
+
+- `end_sweep(...)`
+  How it works:
+  forwards `end_sweep()` to the embedded `AbbreviationChecker` helper.
+
+  - Catches:
+    - no violations; this is lifecycle cleanup only
+
+  - Misses:
+    - all text checking, because it does not inspect text directly
+
+- `is_table_section(...)`
+  How it works:
+  uses the parsed section-name suffix pattern `[table N]` to detect table-derived content.
+
+  - Catches:
+    - no violations; this is routing support only
+
+  - Misses:
+    - any text checking, because it only inspects section names
+
+Aggregated misses for `TableChecker`:
+- it only checks the embedded `et al.` rule
+- it does not validate general table wording or table structure
+- it relies on parsed section names using the expected `[table N]` pattern
 
 ### `references.py` - `ReferenceChecker`
 
@@ -928,10 +1010,12 @@ Category: `Symbols`
 
 Current default reviewer:
 included in the standard non-bibliography `IUCNAssessmentReviewer` flow.
-Bibliography sections still do not use `SymbolChecker`, because those sections
-are routed to `BibliographyChecker` only.
+Bibliography and table sections still do not use `SymbolChecker`, because those
+sections are routed to `BibliographyChecker` and `TableChecker` only.
 
 Aggregated method list:
+- `check_ampersand_usage(...)`
+  Replaces literal `&` with `and`.
 - `check_area_units(...)`
   Normalizes a small set of text-based area units into squared-symbol forms.
 - `check_degree_text(...)`
@@ -944,6 +1028,23 @@ Aggregated method list:
   Removes spaces before `%` and adds spaces between integers and a short list of units.
 
 Detailed coverage:
+
+- `check_ampersand_usage(...)`
+  How it works:
+  strips all simple style markers, then flags every literal `&` and suggests `and`. Sections whose name contains `Assessment Information` are skipped.
+  Hard-coded scope:
+  this method only checks the literal character `&`.
+
+  - Catches:
+    - `forest & woodland`
+    - `grassland & wetland`
+    - `<i>forest</i> <b>&</b> woodland`
+
+  - Misses:
+    - `forest and woodland`
+    - text with no literal ampersand
+    - any `&` that appears in an `Assessment Information` section
+    - semantic cases where `&` might be intentionally preserved outside this style rule
 
 - `check_area_units(...)`
   How it works:
@@ -1048,6 +1149,7 @@ Aggregated misses for `SymbolChecker`:
 - it does not normalize every unit in the style guide
 - it is formatting-oriented, not measurement-aware
 - most rules use short fixed unit lists rather than general SI parsing
+- ampersand handling is literal and does not try to infer when `&` should be preserved for semantic reasons
 
 ## Notes On Overlap
 

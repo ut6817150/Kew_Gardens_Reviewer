@@ -1,0 +1,33 @@
+{
+  "provider": "openrouter",
+  "model": "qwen/qwen3.6-plus:free",
+  "document": "Test1_Bulbostylis atracuminata IUCN Draft2_JP",
+  "started_at": "2026-04-07T12:34:55.956535+00:00",
+  "error": "OpenRouter error: {'message': 'Upstream error from Alibaba: Request rate increased too quickly. To ensure system stability, please adjust your client logic to scale requests more smoothly over time.', 'code': 502}",
+  "completed_at": "2026-04-07T12:35:08.660628+00:00",
+  "status": "error",
+  "rules_evaluated": 1,
+  "rule_metrics": [
+    {
+      "rule_name": "rule_01_consistency_threats",
+      "duration_seconds": 12.668800585030112,
+      "input_tokens": 4778,
+      "output_tokens": 0,
+      "total_tokens": 4778,
+      "token_source": "estimated",
+      "status": "error",
+      "error": "OpenRouter error: {'message': 'Upstream error from Alibaba: Request rate increased too quickly. To ensure system stability, please adjust your client logic to scale requests more smoothly over time.', 'code': 502}"
+    }
+  ],
+  "overall": {
+    "rules_attempted": 1,
+    "rules_succeeded": 0,
+    "rules_failed": 1,
+    "run_duration_seconds": 12.704,
+    "total_findings": 0,
+    "total_input_tokens": 4778,
+    "total_output_tokens": 0,
+    "total_tokens": 4778,
+    "token_estimation_used": true
+  }
+}

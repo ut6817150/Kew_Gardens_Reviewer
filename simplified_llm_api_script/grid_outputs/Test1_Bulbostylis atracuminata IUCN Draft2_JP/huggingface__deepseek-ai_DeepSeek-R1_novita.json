@@ -1,0 +1,15 @@
+[
+  {
+    "rule_name": "rule_01_consistency_threats",
+    "findings": [],
+    "metrics": {
+      "duration_seconds": 1.1286834370112047,
+      "input_tokens": 4779,
+      "output_tokens": 0,
+      "total_tokens": 4779,
+      "token_source": "estimated",
+      "status": "error",
+      "error": "Error code: 402 - {'error': 'You have depleted your monthly included credits. Purchase pre-paid credits to continue using Inference Providers. Alternatively, subscribe to PRO to get 20x more included usage.'}"
+    }
+  }
+]

@@ -1,0 +1,9 @@
+anthropic
+httpx
+openai
+python-frontmatter
+pydantic
+python-dotenv
+python-docx
+beautifulsoup4
+tiktoken
