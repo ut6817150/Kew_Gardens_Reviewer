@@ -9,7 +9,29 @@ For rule-by-rule checker behavior, see:
 
 - `checkers/README.md`
 
-## What This Folder Contains
+## Files In This Folder
+
+Primary files and subfolders in `iucn_rules_checker/`:
+
+- `assessment_parser.py`
+  Converts a structured assessment dictionary into a flat
+  `section_name -> text` mapping.
+- `assessment_reviewer.py`
+  Runs the configured checker classes over an already parsed report and
+  returns a list of violations.
+- `violation.py`
+  Defines the `Violation` dataclass used as the shared output format.
+- `checkers/`
+  Contains the rule-specific checker implementations.
+- `evaluation/`
+  Contains the notebook and assets used for rules-based evaluation and
+  refinement.
+- `test_word_document/`
+  Contains the sample Word-document notebook workflow.
+- `unittests/`
+  Contains the regression test suite.
+- `README.md`
+  This document.
 
 The package currently has three main code responsibilities:
 

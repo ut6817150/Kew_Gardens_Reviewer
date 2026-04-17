@@ -9,6 +9,41 @@ This README is intentionally practical. For each live checker module, it explain
 - what each method catches
 - what each method misses
 
+## Files In This Folder
+
+Core files in `iucn_rules_checker/checkers/`:
+
+- `base.py`
+  Shared checker base class and helper utilities.
+- `abbreviations.py`
+  Abbreviation and Latin-term rules.
+- `bibliography.py`
+  Bibliography-specific rules and imported helper-rule composition.
+- `dates.py`
+  Date and date-style rules.
+- `formatting.py`
+  Formatting rules, including harvested taxonomy formatting.
+- `geography.py`
+  Geography and place-name rules.
+- `iucn_terms.py`
+  IUCN terminology and category-style rules.
+- `numbers.py`
+  Number-formatting and number-style rules.
+- `punctuation.py`
+  Punctuation and range-separator rules.
+- `references.py`
+  Reference and citation-format rules.
+- `scientific.py`
+  Scientific-name abbreviation rules.
+- `spelling.py`
+  Spelling and house-style language rules.
+- `symbols.py`
+  Symbol, unit, and measurement-format rules.
+- `tables.py`
+  Table-specific checker wrapper for table-only rules.
+- `README.md`
+  This document.
+
 ## Shared Base Class
 
 ### `base.py` - `BaseChecker`

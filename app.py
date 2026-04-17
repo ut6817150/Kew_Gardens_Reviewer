@@ -16,10 +16,10 @@ from preprocessing.assessment_processor import parse_to_dict
 from llm_rag.iv_inference.rag_runtime import init_rag_session_state
 from llm_rag.iv_inference.rag_runtime import sync_rag_state_with_upload
 
-from app_download_tab import render_download_tab
-from app_llm_tab import render_llm_tab
-from app_rag_tab import render_rag_tab
-from app_rules_tab import render_rules_tab
+from ui.app_download_tab import render_download_tab
+from ui.app_llm_tab import render_llm_tab
+from ui.app_rag_tab import render_rag_tab
+from ui.app_rules_tab import render_rules_tab
 
 # Read the shared OpenRouter credential once so the tab helpers can reuse it.
 OPENROUTER_API_KEY = os.getenv("OR_TOKEN")

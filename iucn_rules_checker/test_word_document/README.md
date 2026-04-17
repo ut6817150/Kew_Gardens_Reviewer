@@ -3,7 +3,7 @@
 This folder contains a simple notebook-based workflow for testing the
 rules-based system on a Word document.
 
-## What This Folder Contains
+## Files In This Folder
 
 - `Acrocarpus_fraxinifolius_JP.docx`
   Bundled sample Word document used for the default notebook run.
@@ -11,6 +11,8 @@ rules-based system on a Word document.
   Notebook that loads a Word document, converts it to a Python dict, parses the resulting dictionary with
   `AssessmentParser`, and then generates violations with
   `IUCNAssessmentReviewer`.
+- `README.md`
+  This document.
 
 ## How It Works
 
