@@ -1,3 +1,11 @@
+"""Reference retrieval asset builder.
+
+Purpose:
+    This module reads preprocessed retrieval blocks and builds the reference
+    assets used by the RAG retriever: sparse JSONL corpus records, parent table
+    contexts, build metadata, and the optional persistent Chroma dense index.
+"""
+
 from __future__ import annotations
 
 import argparse

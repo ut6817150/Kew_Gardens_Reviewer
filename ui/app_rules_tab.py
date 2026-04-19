@@ -4,7 +4,8 @@ Purpose:
     This module renders the deterministic rules-based review tab. It accepts
     the shared parsed assessment dictionary prepared by ``app.py``, runs the
     parser and reviewer pipeline on demand, and reshapes the resulting
-    violations for display and JSON export.
+    violations for display and JSON export. It is the deterministic counterpart
+    to the model-driven LLM and RAG workflows.
 """
 
 from __future__ import annotations
@@ -103,9 +104,9 @@ def render_rules_tab(
             if assessment is None:
                 raise ValueError("Rules-based feedback requires a parsed assessment dictionary.")
 
-            # Rebuild the full report from the shared assessment dict, then run
-            # the reviewer and keep both raw and cleaned outputs for different
-            # downstream export/display needs.
+            # Rebuild the full report from the shared assessment dict, then
+            # run the reviewer and keep both raw and cleaned outputs for
+            # different downstream export and display needs.
             parser = AssessmentParser()
             reviewer = IUCNAssessmentReviewer()
             full_report = parser.parse(assessment)

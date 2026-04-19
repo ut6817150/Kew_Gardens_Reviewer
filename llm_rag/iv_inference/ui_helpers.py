@@ -1,3 +1,10 @@
+"""Small UI-facing helpers for the RAG inference layer.
+
+Purpose:
+    This module keeps display-only cleanup helpers close to the inference code
+    that produces draft section names. The helpers avoid leaking parser-added
+    block markers into the Streamlit UI.
+"""
 
 from __future__ import annotations
 

@@ -3,7 +3,8 @@
 Purpose:
     This module renders the Excel export tab and builds the downloadable
     workbook from whichever feedback outputs are currently available in
-    Streamlit session state.
+    Streamlit session state. It does not generate review output itself; it only
+    packages outputs that other tabs have already produced.
 """
 
 from __future__ import annotations

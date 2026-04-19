@@ -1,3 +1,12 @@
+"""Embedding-loader helpers for reference retrieval.
+
+Purpose:
+    This module centralizes Hugging Face embedding setup. It resolves model
+    snapshots through the local cache first, falls back to a network lookup when
+    needed, and lets query-time retrieval continue in sparse-only mode when
+    embeddings cannot be loaded.
+"""
+
 from __future__ import annotations
 
 import logging

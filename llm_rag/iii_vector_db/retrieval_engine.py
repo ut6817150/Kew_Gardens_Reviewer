@@ -1,3 +1,12 @@
+"""Reference retrieval engine for the RAG pipeline.
+
+Purpose:
+    This module serves official IUCN reference evidence at query time. It
+    combines deterministic threshold lookup, dense Chroma retrieval, sparse
+    BM25-style retrieval, score fusion, reranking, table-parent expansion, and
+    supporting-information query decomposition.
+"""
+
 from __future__ import annotations
 
 import json

@@ -1,3 +1,12 @@
+"""RAG runtime orchestration for uploaded assessment review.
+
+Purpose:
+    This module coordinates the inference-time RAG workflow. It combines
+    deterministic threshold facts, reference retrieval, uploaded-draft
+    retrieval, prompt assembly, optional external LLM calls, and debug-payload
+    formatting for the Streamlit app and evaluation notebooks.
+"""
+
 from __future__ import annotations
 
 import importlib.util

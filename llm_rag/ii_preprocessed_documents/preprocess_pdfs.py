@@ -1,3 +1,12 @@
+"""PDF preprocessing for the RAG reference corpus.
+
+Purpose:
+    This module converts raw IUCN reference PDFs into retrieval-ready JSONL
+    records. It keeps page provenance, section context, extracted table
+    parents, row-level table records, and supporting-information fallback rows
+    so the vector-db build stage can preserve evidence structure.
+"""
+
 from __future__ import annotations
 
 import json

@@ -56,11 +56,25 @@ locations.
 Brazil. EOO <5,000 km². AOO
 <500 km². 4 locations.
 
+## Justification
+Consider the whole table for Area of Occupancy (AOO), Extent of Occurrence (EOO) and Locations Information before providing feedback.
+
+Each table should include a column titled 'Justification' and carry the relevant justification to support the information in other columns.
+
+A common example of valid justification is: The extent of occurrence (EOO) was estimated using GeoCAT software to produce a minimum convex polygon encompassing all occurrence records from herbarium specimens (Bachman et al. 2011).
+
 ## Section Requirements: Occurrences [Red List Standards Consistency (Sections 2.4.7)]
 Country occurrence coding (including presence and origin) for countries where the taxon is native
 or has been reintroduced is required supporting information for all Red List assessments.
 
 Countries that have been mentioned in the Geographic Range should be coded in the Occurrences section
+
+Coding of occurrence in countries where the taxon is vagrant or introduced is not strictly required; SIS provides Assessors with the opportunity to record these countries if they wish.
+
+### Sub-country Occurrence
+It is recommended that sub-country units be recorded at least for threatened species.
+
+Sub-country occurrence is useful information for searching the website and analysing significant sub-country data (e.g., to analyse data for threatened species occurring in Hawaii). It is therefore recommended that sub-country units for large countries and islands far from mainland countries be recorded if possible.
 
 ## Occurrences Coding
 Ensure that the occurrences coding aligns with standard, and is consistent with geographic range narrative.

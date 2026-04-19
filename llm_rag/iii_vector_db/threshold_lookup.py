@@ -1,3 +1,12 @@
+"""Deterministic Red List threshold lookup.
+
+Purpose:
+    This module answers stable threshold-style questions from the curated
+    `thresholds.json` data instead of relying on generative retrieval. It covers
+    common Red List threshold facts such as EOO, AOO, number of locations,
+    mature individuals, and extinction probability.
+"""
+
 from __future__ import annotations
 
 import json

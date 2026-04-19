@@ -4,7 +4,10 @@ Purpose:
     This module renders the prototype retrieval-augmented chat workflow. It
     reuses the shared parsed assessment dictionary prepared by ``app.py``,
     derives the report blocks needed by the draft-store pipeline, and manages
-    the chat-specific UI around the existing RAG runtime helpers.
+    the chat-specific UI around the existing RAG runtime helpers using the
+    shared sidebar-selected model and API-key configuration. It adapts the
+    shared sidebar config into the form expected by the RAG runtime and gates
+    the chat input when the config is incomplete.
 """
 
 from __future__ import annotations
@@ -20,12 +23,40 @@ from llm_rag.iv_inference.rag_runtime import build_report_from_assessment
 from llm_rag.iv_inference.rag_runtime import ensure_draft_store_from_report
 
 
+OPENROUTER_CHAT_COMPLETIONS_SUFFIX = "/chat/completions"
+
+
+def _build_rag_llm_config(selected_llm_config: dict[str, Any]) -> dict[str, Any]:
+    """
+    Adapt the shared selected LLM config for the RAG runtime.
+
+    Args:
+        selected_llm_config (dict[str, Any]): Sidebar-selected config shared by
+            the app shell.
+
+    Returns:
+        dict[str, Any]: RAG-ready config with the provider base URL normalized
+            to the format expected by the inference runtime.
+    """
+
+    rag_base_url = selected_llm_config["base_url"]
+    if rag_base_url.endswith(OPENROUTER_CHAT_COMPLETIONS_SUFFIX):
+        rag_base_url = rag_base_url[: -len(OPENROUTER_CHAT_COMPLETIONS_SUFFIX)]
+
+    return {
+        "base_url": rag_base_url,
+        "model": selected_llm_config["model"],
+        "api_key": selected_llm_config["api_key"],
+        "reasoning_enabled": selected_llm_config["reasoning_enabled"],
+    }
+
+
 def render_rag_tab(
     *,
     input_ready: bool,
     assessment: dict[str, Any] | None,
     file_signature: str | None,
-    rag_llm_config: dict[str, Any],
+    selected_llm_config: dict[str, Any],
 ) -> None:
     """
     Render the RAG chat tab.
@@ -36,12 +67,15 @@ def render_rag_tab(
         assessment (dict[str, Any] | None): Parsed assessment dictionary shared
             by ``app.py``, or ``None`` when no supported upload is ready.
         file_signature (str | None): Stable signature for the current upload.
-        rag_llm_config (dict[str, Any]): Hard-coded external LLM configuration
-            used by the RAG prototype.
+        selected_llm_config (dict[str, Any]): Shared sidebar-selected LLM
+            configuration used to derive the RAG runtime config.
 
     Returns:
         None: Value produced by this method.
     """
+
+    rag_llm_config = _build_rag_llm_config(selected_llm_config)
+    rag_config_ready = bool(rag_llm_config.get("api_key") and rag_llm_config.get("model"))
 
     st.subheader("RAG chat")
     st.write("Ask grounded questions about the uploaded assessment and the IUCN reference documents.")
@@ -82,14 +116,15 @@ def render_rag_tab(
             st.session_state["rag_messages"] = []
             st.rerun()
 
-        if rag_llm_config["base_url"].strip() and rag_llm_config["model"].strip():
+        if rag_config_ready and rag_llm_config["base_url"].strip():
             st.caption(
-                f"External LLM config is hard-coded in `app.py` using model `{rag_llm_config['model']}`."
+                f"External LLM uses the sidebar-selected model `{rag_llm_config['model']}`."
             )
         else:
             st.caption(
-                "External LLM config is hard-coded in `app.py` and is currently not fully set."
+                "External LLM is not fully configured yet. Check the sidebar model and API key selection."
             )
+            st.info("Configure a valid API key and model in the sidebar to use RAG chat.")
 
         if st.session_state.get("rag_draft_store") is None:
             st.caption("RAG context is prepared automatically when a new file is uploaded.")
@@ -131,6 +166,7 @@ def render_rag_tab(
         user_prompt = st.chat_input(
             "Ask about the uploaded assessment or the IUCN requirements.",
             key="rag_chat_input",
+            disabled=not rag_config_ready,
         )
 
         if user_prompt:

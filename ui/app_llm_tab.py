@@ -2,9 +2,10 @@
 
 Purpose:
     This module renders the model-driven feedback tab. It receives the shared
-    parsed assessment dictionary from ``app.py``, lets the user choose between
-    preset and custom OpenRouter models, runs the simplified LLM reviewer, and
-    formats the returned findings for display and JSON export.
+    parsed assessment dictionary from ``app.py``, uses the shared sidebar
+    model and API-key configuration, runs the simplified LLM reviewer, and
+    formats the returned findings for display and JSON export. It also gates
+    the primary action when the sidebar model configuration is incomplete.
 """
 
 from __future__ import annotations
@@ -21,14 +22,44 @@ from simplified_llm_api_script.llm_checker_v2 import provider_from_config
 from simplified_llm_api_script.llm_checker_v2 import review_document
 
 
+def _format_llm_error_message(error_text: str | None) -> str | None:
+    """
+    Convert raw provider errors into clearer user-facing messages.
+
+    Args:
+        error_text (str | None): Raw exception text captured from the LLM
+            provider flow.
+
+    Returns:
+        str | None: Friendly message to display in the UI, or ``None`` when
+            there is no error text.
+    """
+
+    if not error_text:
+        return None
+
+    lowered = error_text.lower()
+    if "503" in lowered or "502" in lowered:
+        return (
+            "The selected OpenRouter model is temporarily unavailable or overloaded. "
+            "Please try again later, or switch to a different model."
+        )
+    if "429" in lowered:
+        return (
+            "OpenRouter rate limit reached or quota exceeded for this model or API key. "
+            "Please wait and try again, or switch model or API key."
+        )
+    return error_text
+
+
 def render_llm_tab(
     *,
     input_ready: bool,
     assessment: dict[str, Any] | None,
     uploaded_name: str,
-    llm_tab_configs: dict[str, dict[str, Any]],
-    custom_llm_option: str,
-    openrouter_api_key: str | None,
+    selected_llm_label: str,
+    selected_llm_config: dict[str, Any],
+    custom_model_missing: bool,
 ) -> None:
     """
     Render the LLM feedback tab.
@@ -39,59 +70,39 @@ def render_llm_tab(
         assessment (dict[str, Any] | None): Parsed assessment dictionary shared
             by ``app.py``, or ``None`` when no supported upload is ready.
         uploaded_name (str): Original uploaded filename used for downloads.
-        llm_tab_configs (dict[str, dict[str, Any]]): Preset LLM configurations
-            shown in the model dropdown.
-        custom_llm_option (str): Label for the custom-model dropdown option.
-        openrouter_api_key (str | None): OpenRouter API key reused by the
-            custom-model branch.
+        selected_llm_label (str): Sidebar-selected LLM label used for the
+            current tab run.
+        selected_llm_config (dict[str, Any]): Fully resolved LLM config chosen
+            in the shared sidebar.
+        custom_model_missing (bool): Whether the custom-model branch is active
+            but still missing a model slug.
 
     Returns:
         None: Value produced by this method.
     """
 
-    st.subheader("LLM feedback")
-    st.write("Run the simplified LLM reviewer separately from the rules-based checks.")
-
-    # Keep model selection local to the tab while reusing the app-level config
-    # payloads passed in from ``app.py``.
-    selected_llm_label = st.selectbox(
-        "Choose LLM",
-        options=[*llm_tab_configs.keys(), custom_llm_option],
-        index=0,
-        key="llm_tab_model_choice",
+    llm_config_ready = bool(
+        selected_llm_config.get("api_key") and selected_llm_config.get("model")
     )
 
-    custom_llm_model = ""
-    if selected_llm_label == custom_llm_option:
-        # The custom branch still uses the shared OpenRouter key and reasoning
-        # settings; only the model slug is user-specified.
-        custom_llm_model = st.text_input(
-            "Enter OpenRouter model slug",
-            key="llm_custom_model_slug",
-            placeholder="e.g. openai/gpt-oss-120b:free",
-        ).strip()
-        selected_llm_config = {
-            "base_url": "https://openrouter.ai/api/v1/chat/completions",
-            "model": custom_llm_model,
-            "api_key": openrouter_api_key,
-            "reasoning_enabled": True,
-        }
-    else:
-        selected_llm_config = llm_tab_configs[selected_llm_label]
+    st.subheader("LLM feedback")
+    st.write("Run the simplified LLM reviewer separately from the rules-based checks.")
 
     st.caption(
         f"Selected config: OpenRouter model `{selected_llm_config['model']}` "
         f"with reasoning `{'on' if selected_llm_config['reasoning_enabled'] else 'off'}`."
     )
 
-    if selected_llm_label == custom_llm_option and not custom_llm_model:
-        st.info("Enter an OpenRouter model slug to enable the custom LLM option.")
+    if custom_model_missing:
+        st.info("Enter an OpenRouter model slug in the sidebar to enable the custom LLM option.")
+    elif not llm_config_ready:
+        st.info("Configure a valid API key and model in the sidebar to use this tab.")
 
     if st.button(
         "Generate feedback",
         key="generate_llm_feedback",
         type="primary",
-        disabled=not input_ready or (selected_llm_label == custom_llm_option and not custom_llm_model),
+        disabled=not input_ready or custom_model_missing or not llm_config_ready,
     ):
         with st.spinner("Generating LLM feedback..."):
             if assessment is None:
@@ -101,7 +112,7 @@ def render_llm_tab(
             llm_error = None
 
             try:
-                # Build the provider from the selected config and run the
+                # Build the provider from the shared sidebar config and run the
                 # existing sequential review workflow over the shared input dict.
                 provider = provider_from_config(selected_llm_config)
                 llm_results = asyncio.run(
@@ -120,6 +131,7 @@ def render_llm_tab(
                 "model_label": selected_llm_label,
                 "model_slug": selected_llm_config["model"],
                 "error": llm_error,
+                "display_error": _format_llm_error_message(llm_error),
                 "llm_results": [result.model_dump() for result in llm_results],
             }
 
@@ -134,7 +146,7 @@ def render_llm_tab(
         if feedback.get("error"):
             st.warning(
                 "The LLM review returned partial or empty results. "
-                f"Last error: {feedback['error']}"
+                f"Last error: {feedback.get('display_error') or feedback['error']}"
             )
 
         if not feedback.get("llm_results"):

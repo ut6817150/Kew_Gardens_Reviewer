@@ -1,3 +1,11 @@
+"""Command-line smoke test for reference retrieval.
+
+Purpose:
+    This module runs one local reference-side retrieval query and prints a
+    readable debug view. It is meant for quick human inspection after rebuilding
+    retrieval assets or changing retrieval logic, not as a formal benchmark.
+"""
+
 from __future__ import annotations
 
 import argparse

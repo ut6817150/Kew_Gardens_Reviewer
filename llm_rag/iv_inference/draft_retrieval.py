@@ -1,3 +1,12 @@
+"""Uploaded-draft retrieval helpers for RAG inference.
+
+Purpose:
+    This module builds a lightweight retrieval store from the parsed assessment
+    report and scores draft sections against user questions. It keeps draft
+    evidence separate from official reference evidence so the final prompt can
+    preserve that distinction.
+"""
+
 from __future__ import annotations
 
 import re

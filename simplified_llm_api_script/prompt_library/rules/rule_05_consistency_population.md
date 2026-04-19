@@ -7,6 +7,9 @@ category: 'section_consistency'
 # Population Consistency
 Ensure that the Population section follows the below specifications and is overall consistent in the information that is presented.
 
+Any justifications of the population size or trend are captured in the population narrative section. The other sub-sections are single selection options.
+
+
 ## Section Content Requirements: Population [Red List Standards Consistency (Section 2.2.3)]
 A summary of the currently available population information is required supporting information for
 all taxa that are not assessed as Least Concern. In SIS, this is recorded in the Population
@@ -70,7 +73,14 @@ population has declined by
 >90% since 2002.
 
 ## Current Population Trend [Red List Standards Consistency (Section 3.2.1a)]
-Current population trend is required supporting information for all IUCN Red List assessments.  The options for this are: Increasing, Decreasing, Stable, Unknown. It is also recommended that the qualifier be recorded for this information (observed, estimated, inferred, suspected).
+Current population trend is required supporting information for all IUCN Red List assessments.  The options for this are: Increasing, Decreasing, Stable, Unknown. It is also recommended that the qualifier be recorded for this information (observed, estimated, inferred, suspected, not applicable, unknown).
+
+In the SIS system where the information is uploaded, under the population trend section, there are two inputs - each a drop-down select list: 
+- "Current Population Trend": the trend options
+- "Current trend data derivation": the qualifier
+
+If the qualifier is not on the report, suggest that the "current trend data derivation" be reviewed.
+
 “Current” population trend refers to trends over a period of ca. three years around the present. The
 population narrative text should include clear justification for the current population trend recorded
 in this field. If quantitative data are available, analysis of these data needs to be interpreted

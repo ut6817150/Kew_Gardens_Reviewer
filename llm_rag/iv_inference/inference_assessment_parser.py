@@ -1,8 +1,10 @@
 """Inference-side assessment parser for RAG draft retrieval.
 
-This parser converts the uploaded assessment tree dict into a section-level
-HTML report mapping that is convenient for draft-side retrieval at inference
-time.
+Purpose:
+    This module converts the uploaded assessment tree dict into a section-level
+    HTML report mapping. The flatter report format is easier for draft-side
+    retrieval to index while still preserving nested section paths and rendered
+    paragraph/table content.
 """
 
 from __future__ import annotations

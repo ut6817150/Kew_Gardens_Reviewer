@@ -1,11 +1,13 @@
 ---
 scope: 'relevant_sections: All'
-severity: 'medium'
+severity: 'low'
 category: 'formatting'
 ---
 
 # Formatting of Scientific/Common Name
-Ensure that the threats section follows the below specifications and is overall consistent in the information that is presented.
+Ensure that the threats section follows the below specifications and is overall consistent in the information that is presented. 
+
+Be careful as there may be multiple species within the same genus. 
 
 ## Scientific and common names [Red List Standards Consistency (Section 3.3)]
 

@@ -107,3 +107,34 @@ should also be informed by the conservation actions already in place.
 - 6.5. Non-monetary values
 
 
+## Research Actions Classification scheme [Red List Standards Consistency (Section 2.4.5)]
+Research actions are discretionary (optional) supporting information.
+
+## Details: Research Needed Classification Scheme (Version 2.0)
+
+The hierarchical structure for the Research Needed as shown on the species Fact Sheets is provided here.
+
+Assessors are asked to use this Classification Scheme to indicate the research that is needed on the taxon concerned. In suggesting what research is needed, assessors are asked to be realistic and not simply select everything. The selection should be for those research subjects that are most needed to improve the status of the taxon being assessed and that could realistically be achieved within the next five years.
+
+A draft working document (Dec 2012) is available here. This provides a list of the research needs with definitions, examples and guidance notes on using the system. All comments on the Research Needed Classification Scheme are welcome.
+
+### 1. Research
+- 1.1. Taxonomy
+- 1.2. Population size, distribution & trends
+- 1.3. Life history & ecology
+- 1.4. Harvest, use & livelihoods
+- 1.5. Threats
+- 1.6. Actions
+
+### 2. Conservation Planning
+- 2.1. Species Action/Recovery Plan
+- 2.2. Area-based Management Plan
+- 2.3. Harvest & Trade Management Plan
+
+### 3. Monitoring
+- 3.1. Population trends
+- 3.2. Harvest level trends
+- 3.3. Trade trends
+- 3.4. Habitat trends
+
+### 4. Other

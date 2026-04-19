@@ -612,14 +612,14 @@ async def evaluate_rule(
 async def review_document(
     document_tree: dict,
     provider: LLMProvider | None = None,
-    mode: str = "concurrent",
+    mode: str = "sequential",
 ) -> list[RuleEvaluationResult]:
     """
     Evaluate a document tree against all rules.
 
-    mode="sequential": awaits each rule call one at a time — safe
+    mode="sequential" (default): awaits each rule call one at a time — safe
     for rate-limited providers like OpenRouter free tier.
-    mode="concurrent" (default): fires all rule calls at once with asyncio.gather.
+    mode="concurrent": fires all rule calls at once with asyncio.gather.
 
     This is the main entry point, designed to be called from other scripts
     with a dict (not a file path). Defaults to OpenRouterProvider if no
